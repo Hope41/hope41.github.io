@@ -1,12 +1,16 @@
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-F1R0H0BSJE');
+
 oncontextmenu = e => e.preventDefault()
 
 onload = () => {
-    let iframes = Object.values(document.getElementsByTagName('iframe'))
+	let code = document.getElementsByTagName('pre')
 
-    iframes.forEach((iframe, index) => {
-		let content = iframe.contentWindow || iframe.contentDocument
-		content.document.open()
-		content.document.write('<body style="margin:0;overflow:hidden"><canvas id=c></canvas><script>' + source[index] + '</script></body>')
-		content.document.close()
-	})
+	for (item of code) {
+		item.innerHTML = item.innerHTML
+		.replace(/\/\/.+\n/g, a => '<span class=note>' + a + '</span>')
+		.replace(/("|'|`).+("|'|`)/g, a => '<span class=string>' + a + '</span>')
+	}
 }

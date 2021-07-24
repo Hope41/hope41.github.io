@@ -24,3 +24,11 @@ iframe {
     font-size: 1.5rem;
     font-family: arial;
 }
+
+.note {
+    color: #070;
+}
+
+.string {
+    color: #b50;
+}
