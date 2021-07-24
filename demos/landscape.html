@@ -9,15 +9,17 @@
 
             let c = document.createElement('canvas')
             let ctx = c.getContext('2d')
+
             c.width = innerWidth
             c.height = innerHeight
             document.body.appendChild(c)
 
-            key = {up: false, left: false, right: false}
+            let key = {up: false, left: false, right: false}
 
-            speed = 0.01
+            let speed = 0.01
+            let camera_height = 10
 
-            obj = []
+            let obj = []
 
             function press() {
                 if (event.key == 'ArrowUp') key.up = true
@@ -31,61 +33,57 @@
                 if (event.key == 'ArrowRight') key.right = false
             }
 
-            function collide(a, b) {
-                if (a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y) return true
-            }
-
             function random(min, max) {
                 return (Math.random() * (max - min)) + min
             }
 
             function objects() {
-                x = random(-c.width, c.width * 2)
-                y = c.height / 2 + 1
-                width = 1
-                height = 0.5
+                let x = random(-c.width, c.width * 2)
+                let y = c.height / 2 + 1
+                let size = 1
+                let color = random(50, 100)
 
-                obj.unshift({x, y, width, height})
+                obj.unshift({x, y, size, color})
             }
 
             function loop() {
                 c.width = c.width
                 c.style.background = '#08f'
 
-                ctx.fillStyle = '#070'
+                ctx.fillStyle = '#060'
                 ctx.fillRect(0, c.height / 2, c.width, c.height / 2)
 
                 if (obj.length < 100) {
                     objects()
                 }
 
-                for (i of obj) {
+                for (let i of obj) {
                     distx = i.x - c.width / 2
                     disty = i.y - c.height / 2
 
                     if (key.up) {
-                    i.width *= 1 + speed
-                    i.height *= 1 + speed
-                    i.x += distx * speed
-                    i.y += disty * speed
+                        i.size *= 1 + speed
+                        i.x += distx * speed
+                        i.y += disty * speed
                     }
 
                     if (key.left) {
-                    i.x += 10
+                        i.x += 10
                     }
                     if (key.right) {
-                    i.x -= 10
+                        i.x -= 10
                     }
 
-                    ctx.font = i.height + 'em a'
-                    ctx.fillStyle = '#fff'
-                    ctx.fillText('\uD83C\uDF32', i.x, i.y)
+                    ctx.fillStyle = '#542'
+                    ctx.fillRect(i.x - i.size / 2, i.y, i.size, i.size * 4)
+                    ctx.fillStyle = 'rgb(0,'+i.color+',0)'
+                    ctx.fillRect(i.x - i.size * 2, i.y - i.size * 4, i.size * 4, i.size * 4)
 
                     ctx.fillStyle = '#fff6'
-                    ctx.fillRect(i.x, i.y - i.height * 100, i.width * 10, i.height * 10)
+                    ctx.fillRect(i.x, i.y - i.size * 100, i.size * 10, i.size * 5)
 
-                    if (i.x > c.width * 2 + i.width / 2 || i.x < -c.width - i.width / 2 || i.y > c.height) {
-                    obj.splice(obj.indexOf(i), 1)
+                    if (i.x > c.width * 2 + i.size / 2 || i.x < -c.width - i.size / 2 || i.y > c.height) {
+                        obj.splice(obj.indexOf(i), 1)
                     }
                 }
                 
