@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+    <head>
+        <title>Make A Psuedo 3D Landscape</title>
+
+        <script src = main.js></script>
+        <link rel = stylesheet href = main.css>
+        <script async src = "https://www.googletagmanager.com/gtag/js?id=G-F1R0H0BSJE"></script>
+    </head>
+
+    <body>
+        <section class = main>
+            <h1>Make A Psuedo 3D Landscape</h1>
+
+            <iframe src = demos/landscape1.html></iframe>
+            
+            Arrow keys to move
+            <hr>
+
+            <p>
+            In this lesson, we will learn how to make a psuedo 3D world.
+            First we will discuss how it works,
+            and then we can go on to javascript code.
+            <hr>
+            1. The ground<br>
+            Just making it clear, the ground is nothing complicated.<br>
+            It is a green rectangle in the center of the screen.
+            <hr>
+            2. The trees<br>
+            The trees are generated at the horizon width a very small width & height.<br>
+            As the camera moves forward, their size steadily increases along width their<h4>
+            X position (the horizontal coordinate) and their<br>
+            Y position (the vertical coordinate).</h4>
+            
+            The example below shows the positions changing and the coordinates
+
+            <iframe src = demos/landscape2.html></iframe>
+            
+            <p>
+            How do they move?
+            First, get the distance the object is from the center of the screen.
+<div class = code>
+<pre>
+Xdistance = object.x - screen.width &#xF7; 2
+Ydistance = object.y - screen.height &#xF7; 2
+</pre>
+</div>
+            Then, move the object based on its distance.
+<div class = code>
+<pre>
+object.x += Xdistance &#215; speed // this means that the object will move [Xdistance &#215; speed] each frame
+</pre>
+</div>
+            Lets define the speed as 0.01.<p>
+            So if the Xdistance is 25,<br>
+            then 25 &#215; 0.01 = 0.25<br>
+            so the objects x position would move 0.25px each frame!
+            <p>
+            Lets do the same with the Y position.
+<div class = code>
+<pre>
+object.x += Xdistance &#215; speed
+object.y += Ydistance &#215; speed
+</pre>
+</div>
+            Now. There is something missing! As you can see...
+
+            <iframe src = demos/landscape3.html></iframe>
+
+            <p>
+            Lets make the size update.
+<div class = code>
+<pre>
+object.size  &#215;= 1 + speed // this means the object will move [object.size &#215; (1 + speed)] each frame
+object.x += Xdistance &#215; speed
+object.y += Ydistance &#215; speed
+</pre>
+</div>
+            <iframe src = demos/landscape4.html></iframe>
+
+            <p>
+            let's start the html.
+
+<!-- <div class = code>
+<pre>
+&lt;!DOCTYPE html&gt;
+    &lt;body&gt;
+        &lt;script&gt;
+            // Javascript code goes here
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+            </div>
+
+            Now, in our script tag, we will make the canvas to draw our world on.
+
+<div class = code>
+<pre>
+document.body.style.margin = 0 // remove the default margin around the screen
+document.body.style.overflow = 'hidden' // hide any scroll bars
+let c = document.createElement('canvas') // define the canvas
+let ctx = c.getContext('2d') // the ctx (or context) is the thing that enables you to draw on the canvas
+document.body.appendChild(c) // add the canvas to the html
+</pre> --> -->
+        </section>
+    </body>
+</html>

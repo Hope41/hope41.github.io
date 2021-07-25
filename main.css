@@ -1,8 +1,22 @@
 iframe {
     width: 100%;
     height: 25rem;
-    border: none;
+    border-style: solid;
+    border-color: #000;
     background: #ddd;
+}
+
+iframe:hover {
+    border-color: #0ff;
+}
+
+a {
+    text-decoration: none;
+    color: #850;
+}
+
+a:hover {
+    color: #000;
 }
 
 .code {
@@ -16,6 +30,7 @@ iframe {
 .code pre {
 	font-family: monospace;
 	font-size: 1rem;
+    overflow: auto;
 }
 
 .main {
