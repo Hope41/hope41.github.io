@@ -16,10 +16,10 @@
             Arrow keys to move
             <hr>
 
-            <p>
+            <p></p>
             In this lesson, we will learn how to make a psuedo 3D world.
             First we will discuss how it works,
-            and then we can go on to javascript code.
+            and then we can go on to JavaScript code.
             <hr>
             1. The ground<br>
             Just making it clear, the ground is nothing complicated.<br>
@@ -27,15 +27,17 @@
             <hr>
             2. The trees<br>
             The trees are generated at the horizon width a very small width & height.<br>
-            As the camera moves forward, their size steadily increases along width their<h4>
+            As the camera moves forward, their size steadily increases along width their<p></p>
+            <span class = key>
             X position (the horizontal coordinate) and their<br>
-            Y position (the vertical coordinate).</h4>
-            
+            Y position (the vertical coordinate).
+            </span>
+            <p></p>
             The example below shows the positions changing and the coordinates
 
             <iframe src = demos/landscape2.html></iframe>
             
-            <p>
+            <p></p>
             How do they move?
             First, get the distance the object is from the center of the screen.
 <div class = code>
@@ -50,11 +52,11 @@ Ydistance = object.y - screen.height &#xF7; 2
 object.x += Xdistance &#215; speed // this means that the object will move [Xdistance &#215; speed] each frame
 </pre>
 </div>
-            Lets define the speed as 0.01.<p>
+            Lets define the speed as 0.01.<p></p>
             So if the Xdistance is 25,<br>
             then 25 &#215; 0.01 = 0.25<br>
             so the objects x position would move 0.25px each frame!
-            <p>
+            <p></p>
             Lets do the same with the Y position.
 <div class = code>
 <pre>
@@ -66,7 +68,7 @@ object.y += Ydistance &#215; speed
 
             <iframe src = demos/landscape3.html></iframe>
 
-            <p>
+            <p></p>
             Lets make the size update.
 <div class = code>
 <pre>
@@ -77,20 +79,20 @@ object.y += Ydistance &#215; speed
 </div>
             <iframe src = demos/landscape4.html></iframe>
 
-            <p>
+            <p></p>
             let's start the html.
 
-<!-- <div class = code>
+<div class = code>
 <pre>
 &lt;!DOCTYPE html&gt;
     &lt;body&gt;
         &lt;script&gt;
-            // Javascript code goes here
+            // JavaScript code goes here
         &lt;/script&gt;
     &lt;/body&gt;
 &lt;/html&gt;
 </pre>
-            </div>
+</div>
 
             Now, in our script tag, we will make the canvas to draw our world on.
 
@@ -100,8 +102,89 @@ document.body.style.margin = 0 // remove the default margin around the screen
 document.body.style.overflow = 'hidden' // hide any scroll bars
 let c = document.createElement('canvas') // define the canvas
 let ctx = c.getContext('2d') // the ctx (or context) is the thing that enables you to draw on the canvas
-document.body.appendChild(c) // add the canvas to the html
-</pre> --> -->
+document.body.appendChild(c) // add the canvas to the html page
+</pre>
+</div>
+        Now lets make our values:
+<div class = code>
+<pre>
+let key = {up: false, left: false, right: false}
+let speed = 0.01
+let obj = [] // the list where we will have our trees
+</pre>
+</div>
+        Before we go any further lets make a resize function.<br>
+        This means our game will be responsive.
+        The green is the new code:<!--CODE: GREY WHEN _#_ is around it and blue [let, var and const]-->
+<div class = code>
+<pre>
+<mark>addEventListener('resize', resize)</mark>
+document.body.style.margin = 0
+document.body.style.overflow = 'hidden'
+let c = document.createElement('canvas')
+</pre>
+</div>
+<div class = code>
+<pre>
+let speed = 0.01
+let obj = []
+<mark>
+function resize() {
+    c.width = innerWidth// set the canvas width
+    c.height = innerHeight // set the canvas height
+    obj = [] // clear the objects
+}
+resize()</mark>
+</pre>
+</div>
+        Also, because it will be useful later on, lets to add a <span class = key>random(min, max)</span> function.
+
+<div class = code>
+<pre>
+    c.height = innerHeight // set the canvas height
+    obj = [] // clear the objects
+}
+<mark>
+function random(min, max) {
+    return (Math.random() * (max - min)) + min
+}
+</mark>
+resize()
+</pre>
+</div>
+        We've finished setting up!
+        Now we need to start adding objects to our <span class = key>obj</span> list.<br>
+        Lets begin with an <span class = key>objects()</span> function:
+
+<div class = code>
+<pre>
+    return (Math.random() * (max - min)) + min
+}
+<mark>
+function objects() {
+    let x = random(0, c.width)
+    let y = c.height / 2 + 1
+    let size = 1
+
+    obj.unshift({x, y, size}) // unshift adds to the start of the list
+}</mark>
+
+resize()
+</pre>
+</div>
+        First, we defined <span class = key>x</span> as a random number between 0 and the canvas width.<br>
+        We then defined <span class = key>y</span> as <span class = key>half the screen height + one</span><p></p>
+        x = random horizontal<br>
+        y = half of screen + 1<br>
+        size = 1<p></p>
+        In the example below, the size is exaggerated due to illustrative purposes<p></p>
+        <iframe src = demos/landscape5.html></iframe>
+        <p></p>
+        We added <span class = key>+ 1</span> to <span class = key>y</span> because it means the objects will move down.<br>
+        This may sound confusing but the idea is actually quite simple:<p></p>
+        <iframe src = demos/landscape6.html></iframe>
+        <iframe src = demos/landscape7.html></iframe>
+        <iframe src = demos/landscape8.html></iframe>
         </section>
     </body>
 </html>
