@@ -185,6 +185,73 @@ resize()
         <iframe src = demos/landscape6.html></iframe>
         <iframe src = demos/landscape7.html></iframe>
         <iframe src = demos/landscape8.html></iframe>
+        If you look back at the explanation of this again, you will see the <span class = key>Ydistance</span>.<br>
+        The Ydistance is based from the center.<br>
+        The <span class = key>y position</span> moves by the Ydistance.<p></p>
+        If the <span class = key>Ydistance</span> is at 1, then the object can move down... as multiplying it by speed gets bigger.<br>
+        However, if the <span class = key>Ydistance</span> is at 0, then no matter what you multiply to it, it <span class = key>remains zero</span>.
+        Thats why on the 'Plus zero' example, the <span class = key>y position</span> didn't change.<p></p>
+
+        The next part is pretty straight forward... we will just do the same calculations as stated earlier.<br>
+        All we need is a loop that runs every frame to move our objects:
+
+<div class = code>
+<pre>
+    let size = 1
+
+    obj.unshift({x, y, size}) // unshift adds to the start of the list
+}
+<mark>
+function loop() {
+    // loop code
+    
+    requestAnimationFrame(loop)
+}
+
+loop()
+</mark>
+resize()
+</pre>
+</div>
+        Lets start by making some code that creates an object (or tree) whenever there are less than 100 of them on the screen.<br>
+<div class = code>
+<pre>
+function loop() {<mark>
+    if (obj.length < 100) {
+        objects() // call up objects function
+    }</mark>
+
+    requestAnimationFrame(loop)
+}
+
+loop()
+resize()
+</pre>
+</div>
+        Now we are making our objects, we can start drawing them and moving them:
+
+<div class = code>
+<pre>
+function loop() {
+    if (obj.length < 100) {
+        objects() // call up objects function
+    }
+    <mark>
+    for (let item of obj) {
+        ctx.fillStyle = '#f00'
+        ctx.fillRect(item.x, item.y, item.size, item.size)
+    }</mark>
+    requestAnimationFrame(loop)
+}
+
+loop()
+resize()
+</pre>
+</div>
+        This is what it looks like so far...
+        <iframe src = demos/landscape9.html></iframe>
+
+        Not overly impressive, but everything is set up so the next bit will be very simple.
         </section>
     </body>
 </html>
