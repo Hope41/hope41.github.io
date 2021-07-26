@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+    <body>
+        <script>
+            addEventListener('resize', resize)
+            document.body.style.margin = 0
+            document.body.style.overflow = 'hidden'
+            let c = document.createElement('canvas')
+            let ctx = c.getContext('2d')
+            document.body.appendChild(c)
+
+            let speed = 0.01
+            let obj = []
+
+            function resize() {
+                c.width = innerWidth
+                c.height = innerHeight
+                obj = []
+            }
+
+            function random(min, max) {
+                return (Math.random() * (max - min)) + min
+            }
+
+            function objects() {
+                let x = random(-c.width, c.width * 2)
+                let y = Math.round(c.height / 2) - 5
+                let size = 1
+                let color = random(50, 100)
+
+                obj.unshift({x, y, size, color})
+            }
+
+            function loop() {
+                c.width = c.width
+                c.style.background = '#000'
+
+                if (obj.length < 100) {
+                    objects()
+                }
+
+                for (let i of obj) {
+                    distx = i.x - c.width / 2
+                    disty = i.y - c.height / 2
+
+                    i.size *= 1 + speed
+                    i.x += distx * speed
+                    i.y += disty * speed
+
+                    ctx.fillStyle = '#f00'
+                    ctx.fillRect(i.x - i.size / 2, i.y - i.size / 2, i.size, i.size)
+
+                    ctx.fillStyle = '#fff'
+                    ctx.font = c.height / 200 + 'em arial'
+                    ctx.fillText('Plus negative number', 0, c.height / 200 * 14)
+
+                    if (i.x > c.width * 2 || i.x < -c.width || i.y > c.height) {
+                        obj.splice(obj.indexOf(i), 1)
+                    }
+                }
+                
+                requestAnimationFrame(loop)
+            }
+
+            resize()
+            loop()
+        </script>
+    </body>
+</html>
