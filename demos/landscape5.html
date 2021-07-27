@@ -1,7 +1,8 @@
 <!DOCTYPE html>
     <body>
         <script>
-            addEventListener('mousedown', click)
+            let touch = 'ontouchstart' in window ? 'touchstart' : 'click'
+            addEventListener(touch, click)
             document.body.style.margin = 0
             document.body.style.overflow = 'hidden'
             let c = document.createElement('canvas')
