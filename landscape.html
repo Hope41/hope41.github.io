@@ -13,10 +13,9 @@
 
             <iframe src = demos/landscape1.html></iframe>
             
-            Arrow keys to move
-            <hr>
-
-            <p></p>
+            Arrow keys to move<br>
+            You can download the .html file <a href = 'demos/landscape.zip' download>here</a>
+            <br><br><br>
             In this lesson, we will learn how to make a psuedo 3D world.
             First we will discuss how it works,
             and then we can go on to JavaScript code.
@@ -396,20 +395,21 @@ for (let item of obj) {
         <iframe src = demos/landscape12.html></iframe>
 
         That is the end of this lesson.<br>
-        You can download the .html file <span class = key>here</span>.<p></p>
+        Feel free to experiment with the html file provided.<p></p>
 
         <div class = code>
         Note: You may notice that when you press the left/right key, the trees aren't anywhere else around you.
         A way to solve this is by generating the trees between <span class = key>-c.width</span> and <span class = key>c.width * 2</span>,
-        and then removing the trees like:<br>
+        and then removing the trees with an offset:<br>
 <pre>
-if (item.x > c.width <mark>* 2</mark> || item.x < -<mark>c.width * 2</mark> || item.y > c.height) {
-    obj.splice(obj.indexOf(item), 1)
-}
+function objects() {
+    let x = <mark>random(-c.width, c.width * 2)</mark>
+    let y = c.height / 2 + 1
+    let size = 1
 </pre>
-        Instead of:
+        ... And in the loop function:
 <pre>
-if (item.x > c.width || item.x < -item.size || item.y > c.height) {
+if (item.x > <mark>c.width * 2</mark> || item.x < <mark>-c.width</mark> || item.y > c.height) {
     obj.splice(obj.indexOf(item), 1)
 }
 </pre>
