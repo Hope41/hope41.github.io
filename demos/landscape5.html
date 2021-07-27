@@ -1,8 +1,7 @@
 <!DOCTYPE html>
     <body>
         <script>
-            let touch = 'ontouchstart' in window ? 'touchstart' : 'click'
-            addEventListener(touch, click)
+            addEventListener('mousedown', click)
             document.body.style.margin = 0
             document.body.style.overflow = 'hidden'
             let c = document.createElement('canvas')
@@ -36,7 +35,7 @@
                 ctx.fillText('x (random) = '+ x, x - size / 2, y - size / 30 * 42)
                 ctx.fillText('y (canvas height ÷ 2 + 1) = '+ y, x - size / 2, y - size / 30 * 24)
 
-                ctx.fillText('Click to regenerate position', 0, size / 30 * 14)
+                ctx.fillText('Click to regenerate position (computers only)', 0, size / 30 * 14)
             }
 
             click()
