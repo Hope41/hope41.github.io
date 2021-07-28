@@ -5,21 +5,92 @@
         <script src = main.js></script>
         <link rel = stylesheet href = main.css>
     </head>
-
     <body>
         <section class = main>
             <h1>Make A Sentence Generator</h1>
 
             <iframe src = demos/sentence1.html></iframe>
-            
-            Arrow keys to move<br>
+            Click button to generate .<br>
             You can download the .html file <a href = 'demos/sentence.zip' download>here</a>
             <br><br><br>
             In this lesson, we will learn how to make a sentence generator.
             First we will discuss how it works,
             and then we can go on to JavaScript code.
             <hr>
-            
+            To make our sentence, we need a few lists of different types of words:<p></p>
+            <div class = code>
+                <span class = key>
+                    articles<br>
+                    living nouns<br>
+                    dead nouns<br>
+                    verbs<br>
+                    adverbs<br>
+                    prepositions<br>
+                </span>
+            </div>
+            <br>
+            Here is a simplified example of what each of those lists might contain:<p></p>
+            <div class = code>
+                <span class = key>articles:</span><br>A, The, One<p></p>
+                <span class = key>living nouns:</span><br>Cat, Dog, Mouse<p></p>
+                <span class = key>dead nouns:</span><br>Hill, Tree, Table<p></p>
+                <span class = key>verbs:</span><br>Jumped, Walked, Ran<p></p>
+                <span class = key>adverbs:</span><br>Quietly, Quickly, Sadly<p></p>
+                <span class = key>prepositions:</span><br>next to, beside, against
+            </div>
+            <p></p>
+            Using this list, we can make a sentence.<br>
+            We need to pick random words from each one in a certain order.<br>
+            In this case the order should be:
+            <div class = code>
+                <span class = a>article +<br></span>
+                <span class = b>living noun +<br></span>
+                <span class = c>verb +<br></span>
+                <span class = d>adverb +<br></span>
+                <span class = e>preposition +<br></span>
+                <span class = a>article +<br></span>
+                <span class = f>dead noun</span> = sentence
+            </div>
+            This way, We could make a scentance like, <span class = a>the</span> <span class = b>cat</span> <span class = c>walked</span> <span class = d>sadly</span> <span class = e>next to</span> <span class = a>one</span> <span class = f>hill</span>.<br>
+            As the concept goes, that's it.<br>
+            we now need to start writing code...
+            <hr>
+            Let's begin with making our html tags:
+<div class = code>
+<pre>
+&lt;!DOCTYPE html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;button&gt;Generate Sentence&lt;/button&gt; &lt;!-- our generate sentence button --&gt;
+
+        &lt;script&gt;
+            // JavaScript code goes here
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+        The result so far is a button on the screen:
+        <iframe src = demos/sentence2.html></iframe>
+        Lets also make a <span class = key>&lt;textarea&gt;</span> box to, in future, put our sentence in.<br>
+        make sure you read the notes in the code!<br>
+<div class = code>
+<pre>
+&lt;!DOCTYPE html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;button&gt;Generate Sentence&lt;/button&gt;<mark>
+        &lt;br&gt;
+        &lt;textarea id = box readonly&lt;/textarea&gt;</mark> // by giving our textarea an id, we can refer to it in using JavaScript. The readonly part is just making it so you can't write the box
+
+        &lt;script&gt;
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
         </section>
     </body>
 </html>
