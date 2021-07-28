@@ -74,7 +74,7 @@
         The result so far is a button on the screen:
         <iframe src = demos/sentence2.html></iframe>
         Lets also make a <span class = key>&lt;textarea&gt;</span> box to, in future, put our sentence in.<br>
-        make sure you read the notes in the code!<br>
+        make sure you read the notes in the code.<br>
 <div class = code>
 <pre>
 &lt;!DOCTYPE html&gt;
@@ -83,9 +83,158 @@
     &lt;body&gt;
         &lt;button&gt;Generate Sentence&lt;/button&gt;<mark>
         &lt;br&gt;
-        &lt;textarea id = box readonly&lt;/textarea&gt;</mark> // by giving our textarea an id, we can refer to it in using JavaScript. The readonly part is just making it so you can't write the box
+        &lt;textarea id = box readonly&gt;&lt;/textarea&gt;</mark> &lt;!-- by giving our textarea an id, we can refer to it in using JavaScript. The readonly part is just making it so you can't write the box --&gt;
 
         &lt;script&gt;
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+        Result:
+        <iframe src = demos/sentence3.html></iframe>
+        Now, if you are familiar with CSS, you can add styling to the game (as I have done in the main <a href = 'demos/sentence.zip' download>example</a>),
+        but this lesson is just running through how it is made.<p></p>
+        Let's start our javascript code by adding our needed lists:
+
+<div class = code>
+<pre>
+&lt;!DOCTYPE html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;button&gt;Generate Sentence&lt;/button&gt;
+        &lt;br&gt;
+        &lt;textarea id = box readonly&gt;&lt;/textarea&gt;
+
+        &lt;script&gt;<mark>
+            let articles     = ['the', 'a', 'one', 'some', 'a few', 'many']
+            let living_nouns = ['cat', 'dog', 'person', 'boy', 'frog', 'insect', 'rat', 'bug', 'person', 'cow', 'ant', 'spider']
+            let dead_nouns   = ['wall', 'hill', 'sofa', 'bed', 'house', 'chair', 'brick', 'building', 'step']
+            let verbs        = ['jumped', 'walked', 'ran', 'frowned', 'sniffed', 'fell', 'swam', 'smiled', 'hopped']
+            let adverbs      = ['silently', 'quickly', 'sadly', 'cunningly', 'anxiously', 'dramaticaly', 'dumbly']
+            let prepositions = ['next to', 'behind', 'in front of', 'under', 'on', 'on top of', 'opposite', 'upon', 'near', 'against', 'off']</mark>
+        &lt;/script&gt;
+</pre>
+</div>
+        Thats pretty straight forward.<br>
+        Feel free to add some more words to this.<p></p>
+        Now let's make a <span class = key>random(min, max)</span> function, as it will be useful later on.
+<div class = code>
+<pre>
+            let adverbs      = ['silently', 'quickly', 'sadly', 'cunningly', 'anxiously', 'dramaticaly', 'dumbly']
+            let prepositions = ['next to', 'behind', 'in front of', 'under', 'on', 'on top of', 'opposite', 'upon', 'near', 'against', 'off']
+            <mark>
+            function random(min, max) {
+                return Math.floor(Math.random() * (max - min) + min)
+            }</mark>
+        &lt;/script&gt;
+    &lt;/body&gt;
+</pre>
+</div>
+        We now need to make something happen when we press our button.<br>
+        The simplest way to do this is call up a function in the button tag:
+<div class = code>
+<pre>
+&lt;!DOCTYPE html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;button <mark>onclick = press()</mark>&gt;Generate Sentence&lt;/button&gt;
+        &lt;br&gt;
+        &lt;textarea id = box readonly&gt;&lt;/textarea&gt;
+
+        &lt;script&gt;
+            let articles     = ['the', 'a', 'one', 'some', 'a few', 'many']
+            let living_nouns = ['cat', 'dog', 'person', 'boy', 'frog', 'insect', 'rat', 'bug', 'person', 'cow', 'ant', 'spider']
+            let dead_nouns   = ['wall', 'hill', 'sofa', 'bed', 'house', 'chair', 'brick', 'building', 'step']
+            let verbs        = ['jumped', 'walked', 'ran', 'frowned', 'sniffed', 'fell', 'swam', 'smiled', 'hopped']
+            let adverbs      = ['silently', 'quickly', 'sadly', 'cunningly', 'anxiously', 'dramaticaly', 'dumbly']
+            let prepositions = ['next to', 'behind', 'in front of', 'under', 'on', 'on top of', 'opposite', 'upon', 'near', 'against', 'off']
+
+            function random(min, max) {
+                return Math.floor(Math.random() * (max - min) + min)
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+        Back in the script, lets define this <span class = key>press()</span> function
+<div class = code>
+<pre>
+&lt;!DOCTYPE html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;button onclick = press()&gt;Generate Sentence&lt;/button&gt;
+        &lt;br&gt;
+        &lt;textarea id = box readonly&gt;&lt;/textarea&gt;
+
+        &lt;script&gt;
+            let articles     = ['the', 'a', 'one', 'some', 'a few', 'many']
+            let living_nouns = ['cat', 'dog', 'person', 'boy', 'frog', 'insect', 'rat', 'bug', 'person', 'cow', 'ant', 'spider']
+            let dead_nouns   = ['wall', 'hill', 'sofa', 'bed', 'house', 'chair', 'brick', 'building', 'step']
+            let verbs        = ['jumped', 'walked', 'ran', 'frowned', 'sniffed', 'fell', 'swam', 'smiled', 'hopped']
+            let adverbs      = ['silently', 'quickly', 'sadly', 'cunningly', 'anxiously', 'dramaticaly', 'dumbly']
+            let prepositions = ['next to', 'behind', 'in front of', 'under', 'on', 'on top of', 'opposite', 'upon', 'near', 'against', 'off']
+
+            function random(min, max) {
+                return Math.floor(Math.random() * (max - min) + min)
+            }
+            <mark>
+            function press() {
+                // this code is run when you press the button
+            }</mark>
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+        To make sure it works lets make the computer say something when the button is clicked:
+<div class = code>
+<pre>
+                return Math.floor(Math.random() * (max - min) + min)
+            }
+
+            function press() {<mark>
+                alert('The computer says HELLO')</mark>
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+        <iframe src = demos/sentence4.html></iframe>
+        We have nearly finished setting up!<br>
+        We just need to make a <span class = key>combination()</span> function.
+        It may seem pointless now, but it will make sense later.
+<div class = code>
+<pre>
+            let living_nouns = ['cat', 'dog', 'person', 'boy', 'frog', 'insect', 'rat', 'bug', 'person', 'cow', 'ant', 'spider']
+            let dead_nouns   = ['wall', 'hill', 'sofa', 'bed', 'house', 'chair', 'brick', 'building', 'step']
+            let verbs        = ['jumped', 'walked', 'ran', 'frowned', 'sniffed', 'fell', 'swam', 'smiled', 'hopped']
+            let adverbs      = ['silently', 'quickly', 'sadly', 'cunningly', 'anxiously', 'dramaticaly', 'dumbly']
+            let prepositions = ['next to', 'behind', 'in front of', 'under', 'on', 'on top of', 'opposite', 'upon', 'near', 'against', 'off']
+
+            function random(min, max) {
+                return Math.floor(Math.random() * (max - min) + min)
+            }
+            <mark>
+            let a = l = d = v = ad = p = '' // define abbreviated lists as empty string
+
+            function combination() { // function that sets each abbreviation to a random thing from its list
+                a = articles[random(0, articles.length)]
+                l = living_nouns[random(0, living_nouns.length)]
+                d = dead_nouns[random(0, dead_nouns.length)]
+                v = verbs[random(0, verbs.length)]
+                ad = adverbs[random(0, adverbs.length)]
+                p = prepositions[random(0, prepositions.length)]
+            }</mark>
+
+            function press() {
+                alert('The computer says HELLO')
+            }
         &lt;/script&gt;
     &lt;/body&gt;
 &lt;/html&gt;
