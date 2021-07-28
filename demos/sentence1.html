@@ -49,7 +49,7 @@
                 return Math.floor(Math.random() * (max - min) + min)
             }
 
-            function combanation() {
+            function combination() {
                 a = articles[random(0, articles.length)]
                 l = living_nouns[random(0, living_nouns.length)]
                 d = dead_nouns[random(0, dead_nouns.length)]
@@ -59,7 +59,7 @@
             }
 
             function press() {
-                combanation()
+                combination()
                 str = ''
                 str += a + ' '
                 str += l
@@ -70,7 +70,7 @@
                 str += v + ' '
                 str += ad + ' '
                 str += p + ' '
-                combanation()
+                combination()
                 str += a + ' '
                 str += d
                 if (a == 'some' || a == 'a few' || a == 'many') {
