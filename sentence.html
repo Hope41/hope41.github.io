@@ -51,7 +51,7 @@
                 <span class = a>article +<br></span>
                 <span class = f>dead noun</span> = sentence
             </div>
-            This way, We could make a scentance like, <span class = a>the</span> <span class = b>cat</span> <span class = c>walked</span> <span class = d>sadly</span> <span class = e>next to</span> <span class = a>one</span> <span class = f>hill</span>.<br>
+            This way, We could make a sentence like, <span class = a>the</span> <span class = b>cat</span> <span class = c>walked</span> <span class = d>sadly</span> <span class = e>next to</span> <span class = a>one</span> <span class = f>hill</span>.<br>
             As the concept goes, that's it.<br>
             we now need to start writing code...
             <hr>
@@ -240,6 +240,105 @@
 &lt;/html&gt;
 </pre>
 </div>
+        In the <span class = key>press()</span> function, let's call up the <span class = key>combination()</span> function.<br>
+        Also, let's start a string that we are going to use to make our sentence.
+
+<div class = code>
+<pre>
+                return Math.floor(Math.random() * (max - min) + min)
+            }
+            let a = l = d = v = ad = p = '' // define abbreviated lists as empty string
+
+            function combination() { // function that sets each abbreviation to a random thing from its list
+                a = articles[random(0, articles.length)]
+                l = living_nouns[random(0, living_nouns.length)]
+                d = dead_nouns[random(0, dead_nouns.length)]
+                v = verbs[random(0, verbs.length)]
+                ad = adverbs[random(0, adverbs.length)]
+                p = prepositions[random(0, prepositions.length)]
+            }
+
+            function press() {<mark>
+                combination()
+                str = ' '</mark>
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+        Like explained previously, We need to add each word together in a certain order.<p></p>
+        In the combination function, all the abbreviated lists we made are changed to a random word from their list:<p></p>
+        <span class = note>
+            a = A random word in the articles list<br>
+            l = A random word in the living_nouns list<br>
+            d = A random word in the dead_nouns list<br>
+            v = A random word in the verbs list<br>
+            ad = A random word in the adverbs list<br>
+            p = A random word in the prepositions list<p></p>
+        </span>
+        So, we can add ech of those to the <span class = string>str</span> we made and finally
+        add them to our <span class = key>textarea box</span>
+<div class = code>
+<pre>
+            function press() {
+                combination()
+                str = ''
+                <mark>
+                str += a + ' '
+                str += l
+                if (a == 'some' || a == 'a few' || a == 'many') {
+                    str += 's'</mark> // if the article is a plural, add an S on the end of the living noun
+<mark>                }
+
+                str += ' '</mark> // remember to add spaces to your sentence!
+<mark>                str += v + ' '
+                str += ad + ' '
+                str += p + ' '
+                combination()</mark> // call up the combination again so the sentence may not have repeated articles: '<span class = a>THE</span> cat walked sadly on <span class = a>THE</span> hill'<span class = note> or </span>'<span class = a>THE</span> cat walked sadly on <span class = a>A FEW</span> hills'
+<mark>                str += a + ' '
+                str += d
+                if (a == 'some' || a == 'a few' || a == 'many') {
+                    str += 's'</mark> // if the article is a plural, add an S on the end of the dead noun
+<mark>                }
+                str += '.'</mark> // add a full stop!
+            }
+</pre>
+</div>
+        Now the <span class = string>str</span> should have the complete sentence.<br>
+        To quickly check, lets make the computer say it:
+<div class = code>
+<pre>
+            str += a + ' '
+            str += d
+            if (a == 'some' || a == 'a few' || a == 'many') {
+                str += 's'
+            }
+            str += '.' // add a full stop!
+<mark>
+            alert(str)</mark>
+        }
+</pre>
+</div>
+        Result:
+        <iframe src = demos/sentence5.html></iframe>
+        It works!<p></p>
+        Finally, lets put that sentence into our text box:
+<div class = code>
+<pre>
+            str += a + ' '
+            str += d
+            if (a == 'some' || a == 'a few' || a == 'many') {
+                str += 's'
+            }
+            str += '.' // add a full stop!
+<mark>
+            box.value = str</mark> // the computer already knows what 'box' is because in the html the textarea was given it as the id
+        }
+</pre>
+</div>
+        <iframe src = demos/sentence6.html></iframe>
+        That is the end of the lesson.
         </section>
     </body>
 </html>
