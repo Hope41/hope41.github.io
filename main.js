@@ -6,12 +6,9 @@ onload = () => {
 	for (let item of code) {
 		item.innerHTML = item.innerHTML
 
-		// if there are notes
 		.replace(/\/\/.+/g, a => '<span class=note>' + a + '</span>')
-
-		 // if there are strings
+		.replace(/&lt;!--([\s\S]*?)--&gt;/g, a => '<span class=note>' + a + '</span>')
 		.replace(/("|'|`).+("|'|`)/g, a => '<span class=string>' + a + '</span>')
-
-		.replace(/let|var|const|function/g, a => '<span class=key>' + a + '</span>')
+		.replace(/if|else|let|var|const|function/g, a => '<span class=key>' + a + '</span>')
 	}
 }

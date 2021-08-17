@@ -1,9 +1,13 @@
+html {
+    background: #333;
+}
+
 iframe {
     width: 100%;
     height: 25rem;
     border-style: solid;
     border-color: #000;
-    background: #ddd;
+    background: #0000;
 }
 
 iframe:hover {
@@ -12,17 +16,18 @@ iframe:hover {
 
 a {
     text-decoration: none;
-    color: #850;
+    color: #bbb;
 }
 
 a:hover {
-    color: #000;
+    background: #333;
 }
 
 .code {
+    background: #444;
 	padding-left: 1rem;
-	background: #ddd;
 	border: solid 1px #bbb;
+    border-color: #000;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
@@ -37,7 +42,21 @@ mark {
     background: #0704;
 }
 
+button {
+    background: #777;
+    border-color: #000;
+    border: solid 1px #bbb;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+}
+
+button:hover {
+    background: #666;
+    border-radius: 0rem;
+}
+
 .main {
+    color: #bbb;
     max-width: 64rem;
     margin: 0 auto;
     font-size: 1.5rem;
@@ -45,43 +64,13 @@ mark {
 }
 
 .note {
-    color: #070;
+    color: #5b5;
 }
 
 .string {
-    color: #b50;
+    color: #0f8;
 }
 
 .key {
-    color: #066;
-}
-
-
-.a {
-    color: #f00;
-}
-
-
-.b {
-    color: #08f;
-}
-
-
-.c {
-    color: #080;
-}
-
-
-.d {
-    color: #80f;
-}
-
-
-.e {
-    color: #096;
-}
-
-
-.f {
-    color: #773;
+    color: #5bb;
 }
