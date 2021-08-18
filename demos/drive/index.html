@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+    <head>
+        <title>Drive</title>
+        <meta charset = utf-8>
+
+        <script src = ../../main.js></script>
+        <link rel = stylesheet href = ../../main.css>
+    </head>
+
+    <body>
+        <section class = main>
+            <h1>Drive</h1>
+
+            This simple demo is a good start to understanding how to make a<br>
+            <span class = key>psuedo 3D</span>
+            <span class = note>(a 2D scene that <i>appears</i> to be 3D)</span>
+            world.<p></p>            
+            Arrow keys to drive.<p></p>
+            <button onclick = window.location.href='game.html'>play</button><p></p>
+
+            <h3>How It Works:</h3><p></p>
+            The road is made up of segments.
+            Each segment has different colors and shapes on them to make the world more interesting.
+            <iframe src = '1.html'></iframe>
+            Now, if we make this segment start small and then get bigger as its y-position increases, we get this:
+            <iframe src = '2.html'></iframe>
+            Look at the concept code below to understand this:
+<div class = code>
+<pre>
+// Position segment at center of screen
+segment_x = screen_width ÷ 2
+segment_y = screen_height ÷ 2
+
+// Set segment size to 1px
+segment_size = 1
+
+function loop:
+    segment_size ×= 1.1 // increase size
+    segment_y += segment_size ÷ 100 // increase y-position based on size
+    
+    // Note:
+    //  'a += b' <span class = note>is another way of saying</span> 'a = a + b'
+</pre>
+</div>
+        To make the road properly, we need more segments.<br>
+        So, every frame, we generate a new segment on the horizon.<br>
+        <iframe src = '3.html'></iframe>
+        With multiple segments, the road is taking shape.<p></p>
+
+        Now if we make the road generate segments with a white line on it for a while,
+        and then make segments without a line, we get a road like this:
+        <iframe src = '4.html'></iframe>
+        We can also add corners to the road by generating the segments with an offset:
+        <iframe src = '5.html'></iframe>
+        <iframe src = '6.html'></iframe>
+        Up to now we have drawn the segments as rectangles.<br>
+        If don't want to see the rectangles and just want a smooth road, draw polygons between each rectangle.<br>
+        The small demo below may help.<p></p>
+
+        <a href = '7-c.html'><span class = note>Here</span></a> is the concept code for <a href = '7.html'><span class = note>this</span></a> demo or,<br>
+        if you want to see the origional JavaScript source, click <a href = '7-s.html'><span class = note>here</span></a>.
+        </section>
+    </body>
+</html>

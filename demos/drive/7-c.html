@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+    <head>
+        <title>Drive</title>
+        <meta charset = utf-8>
+
+        <script src = ../../main.js></script>
+        <link rel = stylesheet href = ../../main.css>
+    </head>
+
+    <body>
+        <section class = main>
+<div class = code>
+<pre>
+segments = []
+point_x = innerWidth ÷ 2 // define offset (the point where segments are emitted)
+point_y = innerHeight ÷ 2
+
+resolution = 0
+
+speed = 0.1
+camera_height = 0.2
+
+line_length = 0.5
+line_width = 20
+
+curve_amount = 40
+curve_insensitivity = 100 // the amount the car sticks on the road
+curve_length = 0.01
+
+curve_offset = 0
+LL = line_length
+R = resolution
+line = false
+
+function make_segments():
+    x = point_x // add offset to x-position
+
+    y = point_y
+    size = 1
+
+    segments.add_to_start({x, y, size, line})
+
+function start():
+    loop()
+
+function loop():
+    screen.clear()
+    screen.fill_color = 'blue'
+
+    if key.up:
+        curve_offset += curve_length
+        point_x += sin(curve_offset) × (curve_amount × speed) // update offset
+        point_y += cos(curve_offset)
+
+        LL -= speed
+        if LL < 0:
+            line = true
+            if LL < -line_length:
+                LL = line_length
+                line = false
+
+        R -= speed × 10
+
+        if R < 0:
+            make_segments()
+            R = resolution
+
+    dist_x = point_x - innerWidth ÷ 2
+
+    for segment of segments:
+        if segment.line = true: fill_color = '#0004'
+        else: fill_color = '#0007'
+
+        draw_Rect(0, segment.y, innerWidth, segment.size ÷ 100)
+
+        next = segments.indexOf(segment) + 1
+
+        if (next > segments.length - 1):
+            next = segments.length - 1
+
+        fill_color = 'gray'
+        draw_shape(segment.x, segment.y - 1,
+                   segment.x + segment.size, segment.y - 1,
+                   segments[next].x + segments[next].size, segments[next].y,
+                   segments[next].x, segments[next].y)
+
+        if segment.line = true: fill_color = '#555'
+        else: fill_color = '#444'
+
+        // LEFT HARD SHOULDER
+        draw_shape(segment.x, segment.y - 1,
+                   segment.x + segment.size / line_width, segment.y - 1,
+                   segments[next].x + segments[next].size / line_width, segments[next].y,
+                   segments[next].x, segments[next].y)
+
+        // RIGHT HARD SHOULDER
+        draw_shape(segment.x + segment.size - segment.size ÷ line_width, segment.y - 1,
+                   segment.x + segment.size, segment.y - 1,
+                   segments[next].x + segments[next].size, segments[next].y,
+                   segments[next].x + segments[next].size - segments[next].size ÷ line_width, segments[next].y)
+
+        // ROAD LINES
+        if segment.line = true:
+            fill_color = 'white'
+            draw_shape(segment.x + segment.size ÷ 2 - segment.size ÷ line_width, segment.y - 1)
+                       segment.x + segment.size ÷ 2 + segment.size ÷ line_width, segment.y - 1,
+                       segments[next].x + segments[next].size ÷ 2 + segments[next].size ÷ line_width, segments[next].y,
+                       segments[next].x + segments[next].size ÷ 2 - segments[next].size ÷ line_width, segments[next].y)
+
+        if key.up:
+            segment.size *= 1 + speed
+            segment.y += (segment.size × camera_height) × speed
+
+            segment.x += (dist_x ÷ (curve_insensitivity ÷ speed)) × segment.size // drift off road
+
+        if key.left:
+            segment.x += innerWidth ÷ 200
+
+            point_x += (innerWidth ÷ 200) ÷ segments.length
+
+
+        if key.right:
+            segment.x -= innerWidth ÷ 200
+
+            point_x -= (innerWidth ÷ 200) ÷ segments.length
+
+        if segment.y > innerHeight + (segment.size × camera_height) × speed × resolution: // remove segments off bottom of screen
+            segments.remove(segment)
+
+start()
+</div>
+</pre>
+        </section>
+    </body>
+</html>

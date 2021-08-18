@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset = utf-8>
+
+        <style>
+            html {
+                font-family: arial;
+            }
+        </style>
+    </head>
+    <body>
+        Multiple segments moving
+
+        <canvas id = c></canvas>
+        <script>
+            let ctx = c.getContext('2d')
+
+            let speed = 0.1
+            let camera_height = 10
+            let segments = []
+
+            function make_segments() {
+                let x = innerWidth / 2
+                let y = innerHeight / 2
+                let size = 1
+                segments.unshift({x, y, size})
+            }
+
+            function random(min, max) {
+                return Math.round(Math.random() * (max - min) + min)
+            }
+
+            function resize() {
+                c.width = innerWidth
+                c.height = innerHeight
+            }
+
+            function start() {
+                document.body.style.background = '#fff'
+                document.body.style.margin = 0
+                document.body.style.overflow = 'hidden'
+
+                addEventListener('resize', resize)
+                resize()
+
+                loop()
+            }
+
+            function loop() {
+                c.width = c.width
+                c.style.background = '#588'
+
+                for (let segment of segments) {
+                    segment.size *= 1 + speed
+                    segment.y += (segment.size * camera_height) / 100
+
+                    ctx.fillStyle = '#0b5'
+                    ctx.fillRect(0, segment.y, innerWidth, segment.size)
+                    ctx.fillStyle = '#555'
+                    ctx.fillRect(segment.x - segment.size / 2, segment.y, segment.size, segment.size)
+                    ctx.fillStyle = '#ddd'
+                    ctx.fillRect(segment.x - segment.size / 20, segment.y, segment.size / 10, segment.size)
+
+                    if (segment.y > innerHeight) {
+                        segments = []
+                    }
+                }
+
+                make_segments()
+
+                requestAnimationFrame(loop)
+            }
+
+            start()
+        </script>
+    </body>
+</html>

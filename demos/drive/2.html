@@ -9,7 +9,8 @@
         </style>
     </head>
     <body>
-        One road segment with colors and shapes on it
+        One road segment moving
+
         <script>
             addEventListener('resize', resize)
             document.body.style.margin = 0
@@ -19,27 +20,36 @@
             let ctx = c.getContext('2d')
             document.body.appendChild(c)
 
-            let width = innerWidth / 4
-            let height = innerHeight / 10
+            let speed = 0.1
+            let camera_height = 10
+            let segment = {x: innerWidth / 2, y: innerHeight / 2, size: 1}
 
             function resize() {
                 c.width = innerWidth
                 c.height = innerHeight
 
-                width = innerWidth / 4
-                height = innerHeight / 10
+                segment.y = innerHeight / 2
+                segment.x = innerWidth / 2
             }
 
             function loop() {
                 c.width = c.width
                 c.style.background = '#588'
 
+                segment.size *= 1 + speed
+                segment.y += (segment.size * camera_height) / 100
+
+                if (segment.y > innerHeight) {
+                    segment.y = innerHeight / 2
+                    segment.size = 1
+                }
+
                 ctx.fillStyle = '#0b5'
-                ctx.fillRect(0, innerHeight / 2 - height / 2, innerWidth, height)
+                ctx.fillRect(0, segment.y, innerWidth, segment.size)
                 ctx.fillStyle = '#555'
-                ctx.fillRect(innerWidth / 2 - width / 2, innerHeight / 2 - height / 2, width, height)
+                ctx.fillRect(segment.x - segment.size / 2, segment.y, segment.size, segment.size)
                 ctx.fillStyle = '#ddd'
-                ctx.fillRect(innerWidth / 2 - width / 20, innerHeight / 2 - height / 2, width / 10, height)
+                ctx.fillRect(segment.x - segment.size / 20, segment.y, segment.size / 10, segment.size)
 
                 requestAnimationFrame(loop)
             }
