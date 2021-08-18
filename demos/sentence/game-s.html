@@ -1,23 +1,34 @@
 <!DOCTYPE html>
     <head>
-        <title>Sentence</title>
+        <title>Drive</title>
         <meta charset = utf-8>
 
+        <script src = ../../main.js></script>
         <link rel = stylesheet href = ../../main.css>
     </head>
+
     <body>
         <section class = main>
-            <button id = button onclick = load()>Click here to make a sentence</button><p></p>
-            <div id = box></div>
-        </section>
+<div class = code>
+<pre>
+&lt;!DOCTYPE html&gt;
+    &lt;head&gt;
+        &lt;meta charset = utf-8&gt;
+        &lt;link rel = stylesheet href = ../../main.css&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;section class = main&gt;
+            &lt;button id = button onclick = load()&gt;Click here to make a sentence&lt;/button&gt;&lt;p&gt;&lt;/p&gt;
+            &lt;div id = box&gt;&lt;/div&gt;
+        &lt;/section&gt;
 
-        <script>
+        &lt;script&gt;
             // @ means plural
             // # means irregular noun
 
             let articles = ['the', 'a', '@some', '@many', '@a lot of', '@a few']
             let adjectives = ['annoying', 'little', 'bad', 'sad', 'angry', 'lazy', 'adventurous', 'aggressive', 'brave', 'clumsy', 'defeated', 'smug', 'nervous']
-            let subject_nouns = ['man#men', 'mouse#mice', 'ant', 'creature', 'monster', 'frog', 'cat', 'dog', 'bug', 'dragon', 'flea', 'knight']
+            let subject_nouns = ['man#men', 'ant', 'creature', 'monster', 'frog', 'cat', 'dog', 'bug', 'dragon', 'flea', 'knight']
             let object_nouns = ['mouse#mice', 'house', 'hill', 'table', 'stool', 'rat', 'thing', 'fast train', 'bed', 'boy', 'object', 'penguin', 'bad thing']
             let verbs = ['sat', 'jumped', 'choked', 'skipped', 'fell', 'landed', 'screamed', 'cried', 'walked', 'ran', 'frowned', 'sniffed', 'fought', 'talked']
             let prepositions = ['on', 'next to', 'beside', 'behind', 'opposite']
@@ -102,8 +113,13 @@
                 str += a + ' '
                 str += o + '.'
 
-                document.getElementById('box').innerHTML = '<h3><span class = note>' + str + '</span></h3>'
+                document.getElementById('box').innerHTML = '&lt;h3&gt;&lt;span class = note&gt;' + str + '&lt;/span&gt;&lt;/h3&gt;'
             }
-        </script>
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+        </section>
     </body>
 </html>
