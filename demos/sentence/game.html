@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+    <head>
+        <title>Sentence</title>
+        <meta charset = utf-8>
+
+        <script src = ../../main.js></script>
+        <link rel = stylesheet href = ../../main.css>
+    </head>
+    <body>
+        <section class = main>
+            <button id = button onclick = load()>Click here to make a sentence</button>
+            <div id = box></div>
+        </section>
+
+        <script>
+            let articles = ['the', 'a', '@some', '@many', '@a lot of', '@a few']
+            let adjectives = ['little', 'bad', 'sad', 'angry', 'lazy', 'adventurous', 'aggressive', 'annoying', 'brave', 'clumsy', 'defeated', 'smug', 'nervous']
+            let living_nouns = ['man#men', 'ant', 'creature', 'monster', 'frog', 'cat', 'dog', 'bug', 'dragon', 'flea', 'knight']
+            let dead_nouns = ['mouse#mice', 'house', 'hill', 'table', 'stool', 'rat', 'thing', 'fast train', 'bed', 'boy', 'object', 'penguin']
+            let verbs = ['sat', 'jumped', 'choked', 'skipped', 'fell', 'landed', 'screamed', 'cried', 'walked', 'ran', 'frowned', 'sniffed', 'fought']
+            let prepositions = ['on', 'next to', 'beside', 'behind', 'opposite']
+
+            let a = A = l = d = v = p = ''
+
+            function random(min, max) {
+                return Math.round(Math.random() * (max - min) + min)
+            }
+
+            function generate() {
+                a = articles[random(0, articles.length - 1)]
+                ad = adjectives[random(0, adjectives.length - 1)]
+                l = living_nouns[random(0, living_nouns.length - 1)]
+                d = dead_nouns[random(0, dead_nouns.length - 1)]
+                v = verbs[random(0, verbs.length - 1)]
+                p = prepositions[random(0, prepositions.length - 1)]
+            }
+
+            function sort(obj) {
+                generate()
+
+                let v = eval(obj)
+
+                if (a.charAt(0) == '@') {
+                    a = a.replace('@', '')
+
+                    if (l.includes('#')) {
+                        l = l.substring(l.indexOf('#'), l.length)
+                    }
+                    if (d.includes('#')) {
+                        d = d.substring(d.indexOf('#'), d.length)
+                    }
+
+                    if (!l.includes('#') || !d.includes('#')) {
+                        l += 's'
+                        d += 's'
+                    }
+
+                    l = l.replace('#', '')
+                    d = d.replace('#', '')
+                }
+
+                else {
+                    if (l.includes('#')) l = l.substring(0, l.indexOf('#'))
+                    if (d.includes('#')) d = d.substring(0, d.indexOf('#'))
+                }
+
+                if (a == 'a') {
+                    if (v.charAt(0) == 'a' ||
+                        v.charAt(0) == 'e' ||
+                        v.charAt(0) == 'i' ||
+                        v.charAt(0) == 'o' ||
+                        v.charAt(0) == 'u') {
+                        a = 'an'
+                    }
+                }
+            }
+
+            function load() {
+                let str = ''
+
+                sort('ad')
+
+                str += a + ' '
+                str += ad + ' '
+                str += l + ' '
+                str += v + ' '
+                str += p + ' '
+
+                sort('d')
+
+                str += a + ' '
+                str += d + '.'
+
+                document.getElementById('box').innerText = str
+            }
+        </script>
+    </body>
+</html>
