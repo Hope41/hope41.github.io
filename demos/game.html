@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset = utf-8>
+    </head>
+    <body>
+        <canvas id = c></canvas>
+        <script>
+            let ctx = c.getContext('2d')
+            let world = []
+            let key = {up: false, down: false, left: false, right: false}
+
+            let gravity = 0.2
+            let block_size = 20
+            let man_size = 10
+            let block_life = 30
+            let world_width = 100
+            let world_height = 60
+            let sea_speed = 0.4
+            let thickness = 2
+
+            let man = {x: innerWidth / 2, y: innerHeight / 2, size: man_size, air: false, fall: 0, max_fall: man_size}
+
+            let ground = {x: 0, y: innerHeight / 2 + block_size * 2, size: innerWidth}
+
+            let sea = {x: 0, y: innerHeight, size: innerWidth}
+
+            function random(min, max) {
+                return Math.round(Math.random() * (max - min) + min)
+            }
+
+            function resize() {
+                c.width = innerWidth
+                c.height = innerHeight
+
+                ground.x = 0
+                ground.size = innerWidth
+
+                sea.x = 0
+                sea.size = innerWidth
+            }
+
+            function press() {
+                if (event.key == 'ArrowUp') key.up = true
+                if (event.key == 'ArrowDown') key.down = true
+                if (event.key == 'ArrowLeft') key.left = true
+                if (event.key == 'ArrowRight') key.right = true
+            }
+
+            function unpress() {
+                if (event.key == 'ArrowUp') key.up = false
+                if (event.key == 'ArrowDown') key.down = false
+                if (event.key == 'ArrowLeft') key.left = false
+                if (event.key == 'ArrowRight') key.right = false
+            }
+
+            function collide(a, b) {
+                return (
+                    a.x < b.x + b.size &&
+                    a.x + a.size > b.x &&
+                    a.y < b.y + b.size &&
+                    a.y + a.size > b.y
+                )
+            }
+
+            function interact(a, b) {
+                let margin = [
+                    (a.y + a.size) - b.y,
+                    a.y - (b.y + b.size),
+                    (a.x + a.size) - b.x,
+                    a.x - (b.x + b.size)
+                ]
+
+                let x = Math.abs(margin[2]) < Math.abs(margin[3]) ? 2 : 3
+                let y = Math.abs(margin[0]) < Math.abs(margin[1]) ? 0 : 1
+
+                if (Math.abs(margin[x]) < Math.abs(margin[y]))
+                    a.x -= margin[x]
+
+                else {
+                    if (margin[y] > 0) a.air = false
+
+                    a.y -= margin[y]
+                    a.fall = 0
+                }
+            }
+
+            function start() {
+                document.body.style.margin = 0
+                document.body.style.overflow = 'hidden'
+
+                addEventListener('resize', resize)
+                addEventListener('keydown', press)
+                addEventListener('keyup', unpress)
+                resize()
+
+                let size = block_size
+                let x = -size
+                let y = innerHeight / 2 + size
+                let timer = block_life
+                let crumble = false
+
+                for (let A = 0; A < world_height; A ++) { 
+                    for (let B = 0; B < world_width; B ++) {
+                        x += size
+                        let color = random(75, 125)
+
+                        if (random(0, thickness) == 0) world.push({x, y, size, timer, crumble, color})
+                    }
+                    y -= size
+                    x = -size
+                }
+
+
+                loop()
+            }
+
+            function loop() {
+                c.width = c.width
+                c.style.background = '#222'
+
+                ctx.fillStyle = '#80f'
+                ctx.fillRect(man.x, man.y, man.size, man.size)
+
+                ctx.fillStyle = '#444'
+                ctx.fillRect(ground.x, ground.y, ground.size, ground.size)
+
+                let disty = (innerHeight / 2) - man.y
+                let distx = (innerWidth / 2) - man.x
+
+                if (sea.y > 0) {
+                    sea.y -= sea_speed
+                    sea.y += disty / 100
+                }
+
+                if (!collide(man, sea)) {
+                    if (key.up && !man.air) {
+                        man.fall = -6
+                        man.air = true
+                    }
+
+                    if (key.left) {
+                        man.x -= 2
+                    }
+
+                    if (key.right) {
+                        man.x += 2
+                    }
+                }
+
+                man.y += man.fall
+                if (man.fall < man.max_fall) man.fall += gravity
+
+                if (man.y < world[world.length - 1].y) {
+                    man.fall = -4
+
+                    ctx.textAlign = 'center'
+                    ctx.font = innerWidth / 100 + 'em arial'
+                    ctx.fillStyle = '#08f'
+                    ctx.fillText('Win', innerWidth / 2 + 5, innerHeight+(innerWidth/100)*14-disty)
+                    ctx.fillStyle = '#fff'
+                    ctx.fillText('Win', innerWidth / 2, innerHeight+(innerWidth/100)*14-disty)
+                }
+
+                for (let i of world) {
+                    if (!i.crumble) {
+                        ctx.fillStyle = '#070'
+                        ctx.fillRect(i.x, i.y - i.size / 10, i.size, i.size / 10)
+                    }
+                    ctx.fillStyle = 'rgb('+i.color+','+i.color+','+i.color+','+i.timer/block_life+')'
+                    ctx.fillRect(i.x, i.y, i.size, i.size)
+
+                    if (collide(man, i)) {
+                        i.crumble = true
+                        interact(man, i)
+                    }
+
+                    if (i.crumble) {
+                        i.timer --
+                        i.y += random(0, (block_life / 2) / i.timer)
+
+                        if (i.timer < 0) {
+                            world.splice(world.indexOf(i), 1)
+                        }
+                    }
+
+                    i.y += disty / 100
+                    i.x += distx / 100
+                }
+                man.y += disty / 100
+                man.x += distx / 100
+
+                ground.y += disty / 100
+
+                if (man.y > ground.y - man.size) {
+                    interact(man, ground)
+                }
+
+                if (man.y > sea.y - man.size) {
+                    ctx.textAlign = 'center'
+                    ctx.font = innerWidth / 100 + 'em arial'
+                    ctx.fillStyle = '#08f'
+                    ctx.fillText('GAME OVER', innerWidth / 2 + 5, innerHeight / 2)
+                    ctx.fillStyle = '#fff'
+                    ctx.fillText('GAME OVER', innerWidth / 2, innerHeight / 2)
+                }
+
+                ctx.fillStyle = '#08fb'
+                ctx.fillRect(sea.x, sea.y, sea.size, sea.size)
+
+                requestAnimationFrame(loop)
+            }
+
+            start()
+        </script>
+    </body>
+</html>
