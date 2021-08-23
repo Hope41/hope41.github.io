@@ -45,7 +45,7 @@
                 bubble(innerWidth / 100)
             }
 
-            addEventListener('mousedown', () => {
+            addEventListener('pointerdown', () => {
                 if (!lose && !begin) {
                     if (tower[0].x < tower[1].x) {
                         size = (tower[0].x + tower[0].s) - tower[1].x
