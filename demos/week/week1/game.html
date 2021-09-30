@@ -293,6 +293,7 @@
                         time = 0
 
                         if (lives <= 0) {
+                            packs = []
                             coins = []
                             monsters = []
                             map = make()
@@ -449,6 +450,7 @@
                             lives = health
                             width += 5
                             height += 5
+                            packs = []
                             monsters = []
                             map = make()
                             coin_count = coins.length
