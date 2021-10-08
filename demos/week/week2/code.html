@@ -1,10 +1,23 @@
 <!DOCTYPE html>
     <head>
+        <title>Drive</title>
         <meta charset = utf-8>
+
+        <script src = ../../../main.js></script>
+        <link rel = stylesheet href = ../../../main.css>
     </head>
+
     <body>
-        <canvas id = c></canvas>
-        <script>
+        <section class = main>
+<div class = code>
+<pre>
+&lt;!DOCTYPE html&gt;
+    &lt;head&gt;
+        &lt;meta charset = utf-8&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;canvas id = c&gt;&lt;/canvas&gt;
+        &lt;script&gt;
             let ctx = c.getContext('2d')
             addEventListener('keydown', press)
             addEventListener('keyup', unpress)
@@ -183,6 +196,11 @@
 
             start()
             loop()
-        </script>
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</div>
+</pre>
+        </section>
     </body>
 </html>

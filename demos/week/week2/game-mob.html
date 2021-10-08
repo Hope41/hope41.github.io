@@ -6,8 +6,6 @@
         <canvas id = c></canvas>
         <script>
             let ctx = c.getContext('2d')
-            addEventListener('keydown', press)
-            addEventListener('keyup', unpress)
             addEventListener('resize', resize)
             oncontextmenu = e => e.preventDefault()
 
@@ -95,14 +93,6 @@
 
             let camera = new Camera(0, 0)
 
-            function press() {
-                if (event.key == ' ') key.space = true
-            }
-
-            function unpress() {
-                if (event.key == ' ') key.space = false
-            }
-
             function random(min, max) {
                 return Math.round(Math.random() * (max - min) + min)
             }
@@ -155,14 +145,12 @@
                 hero.calculate()
 
                 if (hero.collide) {
-                    if (key.space) {
-                        hero.speed_x += 1
+                    hero.speed_x += 1
 
-                        if (hero.speed_x > 1) {
-                            hero.speed_y -= y_force / Math.abs(hero.speed_x)
-                        }
-                        else hero.speed_x += 5
+                    if (hero.speed_x > 1) {
+                        hero.speed_y -= y_force / Math.abs(hero.speed_x)
                     }
+                    else hero.speed_x += 5
                 }
 
                 camera.update()
