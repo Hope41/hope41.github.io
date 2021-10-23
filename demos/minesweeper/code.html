@@ -1,0 +1,220 @@
+<xmp>
+<body>
+    <canvas id = c>
+    <script>
+        document.body.style.margin = 0
+        document.body.style.overflow = 'hidden'
+        document.body.style.backgroundColor = '#444'
+        document.addEventListener('mousedown', mouse)
+        oncontextmenu = (e) => e.preventDefault()
+
+        let ctx = c.getContext('2d')
+        c.width = innerWidth
+        c.height = innerHeight
+
+        let width = 9
+        let height = 9
+
+        let blockSize = 50
+        let padding = 5
+        let dropBomb = 'random(0, 10)'
+
+        let begin = true
+
+        let map = []
+
+        let bombs = 0
+        let selected = 0
+        let lose = false
+        let win = false
+
+        function start() {
+            map = []
+
+            bombs = 0
+            selected = 0
+            lose = false
+            win = false
+
+            if ((blockSize + padding) * height > c.height) 
+                blockSize = (c.height / height) - padding
+            if ((blockSize + padding) * width > c.width) 
+                blockSize = (c.width / width) - padding
+
+            level()
+            for (i of map) 
+                for (n of map) 
+                    if (n.bomb && collide(i, {
+                        x: n.x - i.size / 2,
+                        y: n.y - i.size / 2,
+                        size: i.size * 2
+                    })) 
+                        i.number++
+        loop()
+        }
+
+        function collide(a, b) {
+            if (a.x < b.x + b.size && a.x + a.size > b.x && a.y < b.y + b.size && a.y + a.size > b.y) 
+                return true
+        }
+
+        function random(min, max) {
+            return (Math.random() * (max - min)) + min
+        }
+
+        function mouse(e) {
+            let mx = e.clientX
+            let my = e.clientY
+            if (lose || win || begin) {
+                start()
+                if (begin) 
+                    begin = false
+                return
+            }
+
+            for (i of map) {
+                if (collide(i, {
+                    x: mx,
+                    y: my,
+                    size: 1
+                }) && i.hidden) {
+                    if (e.button == 0) {
+                        i.hidden = false
+                        selected++
+                        if (selected >= (width * height - bombs)) {
+                            win = true
+                        }
+                        if (i.bomb) 
+                            lose = true
+                    }
+
+                    if (e.button == 2) {
+                        i.flag = true
+                    }
+                }
+            }
+        }
+
+        function level() {
+            let timer = eval(dropBomb)
+
+            let size = blockSize
+            let x = -size
+            let y = 0
+
+            let hidden = true
+
+            for (i = height; i--;) {
+                for (n = width; n--;) {
+                    bomb = false
+                    timer--
+                    if (timer < 0) {
+                        if (n == width - 1 || i == height - 1 || n == 0 || i == 0 // no bombs on border
+
+                        ) {} else {
+                            bomb = true
+                            bombs++
+                            timer = eval(dropBomb)
+                        }
+                    }
+
+                    number = 0
+                    flag = false
+
+                    x += size + padding
+
+                    map.push({
+                        x,
+                        y,
+                        bomb,
+                        number,
+                        size,
+                        hidden,
+                        flag
+                    })
+                }
+
+                x = -size
+                y += size + padding
+            }
+        }
+
+        function loop() {
+            c.width = c.width
+
+            if (begin) {
+                ctx.fillRect(0, 0, c.width, c.height)
+
+                ctx.textAlign = 'center'
+                ctx.font = c.height / 200 + 'em arial'
+                ctx.fillStyle = '#fff'
+                ctx.fillText('Minesweeper', c.width / 2, c.height / 200 * 14)
+                ctx.font = c.height / 400 + 'em arial'
+                ctx.fillText('Uncover all spaces without bombs', c.width / 2, c.height / 200 * 28)
+                ctx.fillText('the number on each square says how many bombs are around it', c.width / 2, c.height / 200 * 42)
+                ctx.fillText('Click to uncover, right-click to flag', c.width / 2, c.height / 200 * 56)
+                ctx.fillText('All squares around the side are empty', c.width / 2, c.height / 200 * 70)
+                ctx.fillText('Click to start', c.width / 2, c.height / 200 * 84)
+            } else {
+                for (i of map) {
+                    square = 'ctx.fillRect(i.x, i.y, i.size, i.size)'
+
+                    ctx.strokeStyle = '#000'
+                    if (i.hidden) {
+                        ctx.fillStyle = '#999'
+                        eval(square)
+
+                        if (i.flag) {
+                            ctx.textAlign = 'center'
+                            ctx.font = i.size / 2 + 'px arial'
+                            ctx.fillStyle = '#900'
+                            ctx.fillText('🏴‍☠️', i.x + i.size / 2, i.y + i.size / 1.5)
+                        }
+                    } else {
+                        if (i.bomb) {
+                            ctx.fillStyle = '#000'
+                            eval(square)
+                        } else {
+                            ctx.fillStyle = '#393'
+                            eval(square)
+                            ctx.strokeRect(i.x, i.y, i.size, i.size)
+
+                            if (i.number) {
+                                ctx.textAlign = 'center'
+                                ctx.font = i.size + 'px arial'
+                                ctx.fillStyle = 'rgb(' + i.number * 60 + ',0,0)'
+                                ctx.fillText(i.number, i.x + i.size / 2, i.y + i.size - padding)
+                                ctx.strokeText(i.number, i.x + i.size / 2, i.y + i.size - padding)
+                            }
+                        }
+                    }
+
+                    if (lose || win) {
+                        i.hidden = false
+                    }
+                }
+
+                if (lose || win) {
+                    ctx.textAlign = 'center'
+                    ctx.fillStyle = '#000'
+                    ctx.font = c.width / 200 + 'em arial'
+                    ctx.strokeStyle = '#fff'
+                    if (lose) {
+                        ctx.fillText('Lose! Click to try again', c.width / 2, c.height / 2)
+                        ctx.strokeText('Lose! Click to try again', c.width / 2, c.height / 2)
+                    }
+
+                    if (win) {
+                        ctx.fillText('Win! Click to restart', c.width / 2, c.height / 2)
+                        ctx.strokeText('Win! Click to restart', c.width / 2, c.height / 2)
+                    }
+                }
+            }
+
+            requestAnimationFrame(loop)
+        }
+
+        start()
+    </script>
+</body>
+</xmp>

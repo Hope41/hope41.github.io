@@ -1,47 +1,29 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 
 <urlset xmlns = "http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image = "http://www.google.com/schemas/sitemap-image/1.1">
-    <url><loc>https://coffee.greyhope.uk/demos/drive/1.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/drive/2.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/drive/3.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/drive/4.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/drive/5.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/drive/6.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/drive/7.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/drive/7-c.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/drive/7-s.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/drive/game.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/drive/main.html</loc></url>
-    
-    <url><loc>https://coffee.greyhope.uk/demos/flood/game.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/flood/main.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/littledrive/main.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/littledrive/game.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/littledrive/code.html</loc></url>
 
-    <url><loc>https://coffee.greyhope.uk/demos/sentence/game.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/sentence/game-s.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/sentence/main.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/minesweeper/main.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/minesweeper/game.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/minesweeper/code.html</loc></url>
 
-    <url><loc>https://coffee.greyhope.uk/demos/tower/game.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/tower/main.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/mistcity/main.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/mistcity/game.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/mistcity/code.html</loc></url>
 
-    <url><loc>https://coffee.greyhope.uk/demos/week/main.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/rainbowtower/main.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/rainbowtower/game.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/rainbowtower/code.html</loc></url>
 
-    <url><loc>https://coffee.greyhope.uk/demos/week/week1/main.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/week/week1/game.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/sentencemaker/main.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/sentencemaker/game.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/sentencemaker/code.html</loc></url>
 
-    <url><loc>https://coffee.greyhope.uk/demos/week/week2/main.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/week/week2/game-des.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/week/week2/game-mob.html</loc></url>
-    <url><loc>https://coffee.greyhope.uk/demos/week/week2/code.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/simpleplatform/main.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/simpleplatform/game.html</loc></url>
+    <url><loc>https://coffee.greyhope.uk/demos/simpleplatform/code.html</loc></url>
 
-    <url>
-        <loc>https://coffee.greyhope.uk/index.html</loc>
-        <image:image>
-            <image:loc>https://coffee.greyhope.uk/coffee.png</image:loc>
-            <image:title>Coffee</image:title>
-        </image:image>
-        <image:image>
-            <image:loc>https://coffee.greyhope.uk/uk.png</image:loc>
-            <image:title>UK</image:title>
-        </image:image>
-    </url>
+    <url><loc>https://coffee.greyhope.uk/index.html</loc></url>
 </urlset>
