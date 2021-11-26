@@ -58,7 +58,9 @@ button {
     background: #ddd;
     border-color: #000;
     border: solid 1px #000;
+    border-radius: .1rem;
     font-size: 1.3rem;
+    margin-top: .1rem;
 }
 
 button:hover {
