@@ -74,3 +74,10 @@ button:hover {
     font-size: 1.5rem;
     font-family: arial;
 }
+
+#git {
+    background-color: #29b2;
+    float: right;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
