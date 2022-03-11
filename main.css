@@ -1,83 +1,216 @@
-html {
-    background: #eee;
+/*-------- fonts --------*/
+@font-face {
+    font-family: burger;
+    src: url(burger.otf)
+}
+@font-face {
+    font-family: nunito;
+    src: url(nunito.ttf)
+}
+@font-face {
+    font-family: code;
+    src: url(code.ttf)
 }
 
-iframe {
-    width: 100%;
-    height: 25rem;
-    border-style: solid;
-    border-color: #000;
-    background: #000;
+
+/*-------- variables --------*/
+:root {
+    --transition: 0.5s;
+    --radius: 1em;
+    --fontsize: 18px
 }
 
-iframe:hover {
-    border-color: #0ff;
+
+/*-------- setup --------*/
+body {
+    background-color: #eee;
+    margin: 0;
+    font-family: nunito;
+    font-size: var(--fontsize)
 }
 
+/*-------- topnav --------*/
+.topnav {
+    background-color: #999;
+    margin-bottom: 1em
+}
+.topnav > div > a {
+    color: #333;
+    font-size: 20px
+}
+.topnav > div > a:not(:first-child).text {
+    text-decoration: none;
+    margin: 0 .5em
+}
+.topnav > div > a > i {
+    margin: 0 .2em
+}
+.topnav > div > a:not(:first-child):hover {color: #777}
+.topnav > div > a:first-child {
+    text-decoration: none;
+    color: #000;
+    font-family: burger;
+    margin-right: .5em;
+    font-size: 60px
+}
+.topnav > div > i.fa-bars {display: none}
+
+
+/*-------- image --------*/
+.imgbox {
+    float: left;
+    margin-top: 2em
+}
+.imgbox a:hover > img{
+    opacity: .5;
+    transform: scaleX(.95) scaleY(.95)
+}
+.imgbox > a > div > h2 {
+    color: #47b;
+    margin-bottom: 1em
+}
+.imgbox > a > img {
+    transition-duration: var(--transition);
+    border-radius: var(--radius);
+    margin: 0 2em 1em 0;
+    float: left
+}
+.imgbox > a > div {color: #000}
+
+
+/*-------- links --------*/
 a {
     text-decoration: none;
-    color: #333;
+    color: #47b
+}
+a:hover {color: #037}
+
+
+/*-------- iframe --------*/
+div.iframe, div.image {
+    position: relative;
+    transition-duration: var(--transition)
+}
+div.image {
+    width: 100%;
+    display: inline-block
+}
+div.iframe > a, div.image > a {
+    /* position the link over the iframe */
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+div.iframe > iframe, div.image > img {
+    /* style all the iframes & images */
+    border: #000 1px solid;
+    border-radius: .5em;
+    width: 100%;
+    transition-duration: var(--transition)
+}
+div.iframe > iframe {height: 20em}
+div.iframe:hover > .fa-play, div.image:hover > .fa-play {
+    /* if you hover over an iframe or an
+    image with a play button, display it */
+    background: #000;
+    color: #fff
+}
+div.iframe:hover > iframe.play, div.image:hover > img {
+    /* if you hover over an iframe or an
+    image with a play button, fade it slightly */
+    opacity: .5
+}
+div.iframe > .fa-play, div.image > .fa-play {
+    /* play button for iframe & image */
+    color: #0000;
+    font-size: 37px;
+    border-radius: .2em;
+    position: absolute;
+    right: 50%;
+    bottom: 50%;
+    padding: .2em .7em;
+    transform: translate(50%, 50%);
+    transition-duration: var(--transition)
 }
 
-a:hover {
-    background: #bbb;
-}
 
-.code {
-    background: #bbb;
-    margin-top: 1rem;
-	padding-left: 1rem;
-	padding-top: .5rem;
-	padding-bottom: .5rem;
-}
+/*-------- highlight --------*/
+.hljs-string {color: #370}
+.hljs-keyword {color: #83b}
+.hljs-built_in {color: #088}
+.hljs-comment {color: #666}
+.hljs-number {color: #960}
+.hljs-attr {color: #960}
+.hljs-literal {color: #960}
+.hljs-tag {color: #555}
+.hljs-function {color: #555}
+.hljs-attribute {color: #555}
+.hljs-variable {color: #269}
+.hljs-name {color:#06c}
+.hljs-selector-tag {color: #662}
+.hljs-title {color: #06c}
+.hljs-selector-id {color: #06c}
+.hljs-meta {color: #06c}
+.hljs-params {color: #b60}
+.hljs-property {color: #076}
+.hljs-regexp {color: #d55}
 
-.code pre, .code xmp {
-	font-family: monospace;
-	font-size: 1rem;
+
+/*-------- other --------*/
+pre.code {
+    background-color: #0241;
+    border: #000 1px solid;
+    font-size: 15px;
+    font-family: code;
     overflow: auto;
-    margin-right: 1rem;
+    padding: 1em;
+    max-height: 20em;
+}
+h2 {margin: 0}
+mark {
+    font-weight: bold;
+    background: none
+}
+span.italic {font-style: italic}
+span.mobile {
+    font-weight: bold;
+    color: #070
+}
+i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
+    font-size: var(--fontsize);
+    cursor: pointer;
 }
 
-.mark {
-    background: #0704;
-    margin-right: 1rem;
-    margin-left: 1rem;
-    padding-left: 1rem;
+span.copyright {
+    float: left;
+    font-size: 15px;
+    margin-left: .5em
 }
 
-details {
-    background: #ddd;
-    margin-top: 1rem;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    margin-left: 1rem;
-    padding-left: 1rem;
-}
 
-button {
-    background: #ddd;
-    border-color: #000;
-    border: solid 1px #000;
-    border-radius: .1rem;
-    font-size: 1.3rem;
-    margin-top: .1rem;
-}
+/*-------- responsive --------*/
+@media screen and (min-width: 64em) {
+    .topnav > div {max-width: 64em; padding: .5em 6em; margin: 0 auto}
+    .main {max-width: 64em; padding: 1em 6em; margin: 0 auto}
 
-button:hover {
-    background: #999;
+    .imgbox > a > img {width: 50%}
 }
+@media screen and (min-width: 43em) and (max-width: 64em) {
+    .topnav > div {padding: .5em 4em}
+    .main {padding: 1em 4em}
 
-.main {
-    color: #333;
-    max-width: 64rem;
-    margin: 0 auto;
-    font-size: 1.5rem;
-    font-family: arial;
+    .imgbox > a > img {width: 60%}
 }
+@media screen and (max-width: 43em) {
+    .topnav > div {padding: .5em 1em}
+    .main {padding: 1em 2em}
+    .topnav > div > i.fa-bars {display: block; font-size: 20px; float: right; cursor: pointer}
+    .topnav > div > a:not(:first-child) {display: none}
+    .topnav.responsive a:not(:first-child) {padding-bottom: 1em; display: block}
 
-#git {
-    background-color: #29b2;
-    float: right;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    .imgbox > a > img {width: 100%}
 }
+* {box-sizing: border-box}
