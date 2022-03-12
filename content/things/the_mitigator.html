@@ -59,12 +59,13 @@
                     this.level = 0
                     this.level_end = 10
                     this.width = this.level_end
+                    this.change_level = false
+                    this.plants_on_screen = 0
                 }
 
                 set() {
                     this.array = []
                     this.enemies = []
-                    this.dead_enemies = []
                     this.clones = []
                     this.junk = []
                     this.used_power = []
@@ -99,6 +100,8 @@
                         screen.mist.r -= 50
                         screen.mist.g -= 50
                         screen.mist.a -= 20
+
+                        this.change_level = false
                     }
                 }
 
@@ -152,9 +155,31 @@
                     }
                 }
 
-                update() {
-                    const max_plants_on_screen = 50
+                checkIfAllEnemiesAreDead() {
+                    let all_dead = true
 
+                    this.enemies.forEach(item => {
+                        if (item.health >= 0) all_dead = false
+                    })
+
+                    if (all_dead) this.change_level = true
+                }
+
+                plantsOnScreen() {
+                    const max_plants_on_screen = 40
+
+                    this.plant_screen = []
+
+                    this.plants.forEach(item => {
+                        this.plant_screen.push(item)
+                    })
+
+                    if (this.plant_screen.length >= max_plants_on_screen)
+                        for (let i = 0; i < this.plant_screen.length - max_plants_on_screen; i ++)
+                            this.plants[this.plants.indexOf(this.plant_screen[i])].die = true
+                }
+
+                update() {
                     cam.update()
                     hero.update()
 
@@ -162,10 +187,7 @@
                         item.update()
                     })
 
-                    this.dead_enemies = []
-
                     this.enemies.forEach(item => {
-                        if (item.health <= 0) this.dead_enemies.push(item)
                         item.update()
                     })
 
@@ -202,23 +224,11 @@
                         cvs.width - cam.offset_x / scale + 1, cvs.height
                     )
 
-                    this.plant_screen = []
-
                     this.plants.forEach(item => {
-                        this.plant_screen.push(item)
-
                         item.update()
                     })
 
-                    if (this.plant_screen.length >= max_plants_on_screen) {
-                        for (let i = 0; i < this.plant_screen.length - max_plants_on_screen; i ++) {
-                            this.plants[this.plants.indexOf(this.plant_screen[i])].die = true
-                        }
-                    }
-
-                    if (this.dead_enemies.length >= this.enemies.length &&
-                        this.enemies.length && !screen.numbers.length)
-                            this.changeLevel()
+                    if (this.change_level) this.changeLevel()
                     else screen.fade.type = 'in'
 
                     if (hero.health <= 0) screen.fade.type = 'over'
@@ -612,13 +622,14 @@
                 kill() {
                     this.death('#433')
 
-                    if (this.health > -this.seed_health_loss) {
-                        if (this.health > -this.seed_health_loss - this.plant_health_loss) {
-                            this.jump(.12)
-                            this.health -= this.seed_health_loss
-                            if (this.bonus <= 0) this.bonus = 0
-                        }
+                    const jump_time = 10000
 
+                    if (this.health > -jump_time) {
+                        this.jump(.12)
+                        this.health -= jump_time * 2
+                        if (this.bonus <= 0) this.bonus = 0
+
+                        map.checkIfAllEnemiesAreDead()
                         for (let i = 0; i < random(2, 5); i ++) {
                             const x = random(0, this.width, 0)
                             map.plants.push(
@@ -1240,10 +1251,12 @@
 
                     this.plant = d.plant
                 }
+
                 update() {
                     super.update()
 
                     if (this.life_time < 0) {
+                        map.plantsOnScreen()
                         map.plants.push(
                             new Plant({
                                 x: this.x + this.width / 2,
@@ -1407,7 +1420,7 @@
 
                 update() {
                     if (!this.onScreen()) {
-                        map.plant_screen.splice(map.plant_screen.indexOf(this), 1)
+                        map.plants_on_screen --
                         return
                     }
 
