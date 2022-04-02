@@ -613,6 +613,8 @@
             <span class = italic>So</span>, you ask, <span class = italic>How does it work?</span>
             In the end I didn't use putImageData() OR Webgl.
             Instead I made a new canvas for the icon which was then called up whenever I wanted to draw one.
+            This is a much faster technique and I therefore was able to generate icons from a greater
+            distance without the performance suffering.
             These are the steps the program takes:
             <p></p>
             &emsp;1. Make a canvas that fits the screen.<br>
