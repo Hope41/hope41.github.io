@@ -32,7 +32,8 @@ body {
 /*-------- topnav --------*/
 .topnav {
     background-color: #999;
-    margin-bottom: 1em
+    margin-bottom: 1em;
+    padding: .2em 0
 }
 .topnav > div > a {
     color: #333;
@@ -51,7 +52,7 @@ body {
     color: #000;
     font-family: burger;
     margin-right: .5em;
-    font-size: 60px
+    font-size: 45px
 }
 .topnav > div > i.fa-bars {display: none}
 
