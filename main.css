@@ -204,7 +204,7 @@ span.copyright {
 
     .imgbox > a > img {width: 60%}
 }
-@media screen and (max-width: 43em) {
+@media screen and (max-width: 45em) {
     .topnav > div {padding: .5em 1em}
     .main {padding: 1em 2em}
     .topnav > div > i.fa-bars {display: block; font-size: 20px; float: right; cursor: pointer}
