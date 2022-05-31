@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+    <head>
+        <style>
+            body {
+                background: #fff;
+                margin: 0;
+                overflow: hidden
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function resize() {
+                cvs.width = innerWidth
+                cvs.height = innerHeight
+            }
+
+            function update() {
+                ctx.clearRect(0, 0, cvs.width, cvs.height)
+                time += .1
+
+                let sin = cvs.width / 2 - Math.sin(time) * cvs.height / 6 - 10
+                let cos = cvs.width / 2 - Math.cos(time) * cvs.height / 6 - 10
+        
+                const size = 20
+
+                ctx.textAlign = 'center'
+                ctx.font = size + 'px arial'
+
+                ctx.fillText('Math sin: ', cvs.width / 2, cvs.height / 2 - size * 3)
+                ctx.fillRect(sin, cvs.height / 2 - size * 2, 20, 20)
+
+                ctx.fillText('Math cos: ', cvs.width / 2, cvs.height / 2 + size)
+                ctx.fillRect(cos, cvs.height / 2 + size * 2, 20, 20)
+
+                requestAnimationFrame(update)
+            }
+
+            const cvs = document.createElement('canvas')
+            const ctx = cvs.getContext('2d')
+            let time = 0
+
+            document.body.appendChild(cvs)
+            addEventListener('resize', resize)
+            resize()
+            update()
+        </script>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+    <head>
+        <style>
+            body {
+                background: #fff;
+                margin: 0;
+                overflow: hidden
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function resize() {
+                cvs.width = innerWidth
+                cvs.height = innerHeight
+            }
+
+            function update() {
+                ctx.clearRect(0, 0, cvs.width, cvs.height)
+                time += .1
+
+                const swing = cvs.height / 3 - 10
+
+                ctx.fillStyle = '#000'
+                ctx.fillRect(cvs.width / 2 - swing, 0, 2, cvs.height)
+                ctx.fillRect(0, cvs.height / 2 - swing, cvs.width, 2)
+
+                ctx.fillStyle = '#f00'
+                ctx.fillRect(
+                    cvs.width / 2 - Math.sin(time) * swing,
+                    cvs.height / 2 + Math.cos(time) * swing,
+                    20, 20
+                )
+
+                ctx.fillStyle = '#05d'
+                ctx.fillRect(
+                    cvs.width / 2 - Math.sin(time) * swing,
+                    cvs.height / 2 - swing - 10,
+                    20, 20
+                )
+                ctx.fillStyle = '#0d5'
+                ctx.fillRect(
+                    cvs.width / 2 - swing - 10,
+                    cvs.height / 2 + Math.cos(time) * swing,
+                    20, 20
+                )
+
+                requestAnimationFrame(update)
+            }
+
+            const cvs = document.createElement('canvas')
+            const ctx = cvs.getContext('2d')
+            let time = 0
+
+            document.body.appendChild(cvs)
+            addEventListener('resize', resize)
+            resize()
+            update()
+        </script>
+    </body>
+</html>
