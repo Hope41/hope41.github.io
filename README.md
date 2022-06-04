@@ -1,5 +1,5 @@
 # Joachimford.uk
-Joachimford.uk is a personal website of some JavaScript projects, experiments and games that can all be played on a desktop computer and, occasionally,
+Joachimford.uk is my personal website including JavaScript projects, experiments and games that can all be played on a desktop computer and, occasionally,
 mobile devices as well.
 
 Things planned:
