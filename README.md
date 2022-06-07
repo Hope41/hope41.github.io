@@ -1,5 +1,5 @@
 # Joachimford.uk
-Joachimford.uk is my personal website including JavaScript projects, experiments and games that can all be played on a desktop computer and, occasionally,
+Joachimford.uk is my personal website that contains JavaScript projects, experiments and games that can all be played on a desktop computer and, occasionally,
 mobile devices as well.
 
 Things planned:
@@ -8,4 +8,4 @@ Things planned:
 
 More coming soon!
 
-Feel free to contact me at [contact@joachimford.uk](mailto:contact@joachimford.uk) if you would like to know more, or raise an issue on github if you have any ideas or thoughts.
+Feel free to contact me at [contact@joachimford.uk](mailto:contact@joachimford.uk), or raise an issue on github if you have any ideas or thoughts.
