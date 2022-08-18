@@ -30,6 +30,7 @@
         </section>
 
         <section class = main>
+            <span class = date>27.03.2022</span>
             <h1>Ray-casting City</h1>
             <div class = image source = /images/ray_casting_city_big.png link = experiments/ray_casting_city/main.html></div>
 
@@ -41,10 +42,10 @@
             <div class = code source = experiments/ray_casting_city/main.html></div>
             This experiment was fun to make, but also, as I began trying to add more
             features I realised that ray casting, great as it is, is very limited and tricky
-            to grow from. <span class = italic>'It is what it is'</span>, so to speak.<br>
+            to grow from.<p></p>
             The concept of a ray-caster is very simple.
             Although it may appear to look 3D, it is actually using 2D logic to project
-            various 'things' onto a canvas in such a manner that it looks 3D.
+            various rectangles onto a canvas in such a manner that it looks 3D.
             <p></p>
             This is a ray.
             <div class = iframe source = experiments/ray_casting_city/1.html></div>
@@ -59,11 +60,11 @@
             you have the base structure for the 3D casting.
             <div class = iframe source = experiments/ray_casting_city/4.html></div>
             <p></p>
-            So, take the ray on the far left.<br>
+            So, take the ray on the far left.
             That ray has a unique length based on what it's colliding with.
-            If you drew a rectangle on the far left of a canvas,
+            If a rectangle was drawn on the far left of the screen,
             and its height corresponded to the length of the ray
-            (the longer the ray, the shorter the rectangle),
+            (i.e. the longer the ray, the shorter the rectangle),
             you would have actually completed the main part of ray-casting.
             <p></p>
             This...
@@ -77,9 +78,8 @@
             <p></p>
             <div class = iframe source = experiments/ray_casting_city/6.html></div>
             <p></p>
-            As you can see, its looking a <span class = italic>bit</span> 3D,
-            but at the moment it's not very believable.
-            However, if a higher resolution is added (i.e. adding a ray for every ~pixel),
+            It's looking a bit more 3D now!
+            Now if we add a higher resolution (i.e. making a ray for every ~pixel),
             this would be the result:
             <p></p>
             <div class = iframe source = experiments/ray_casting_city/7.html></div>

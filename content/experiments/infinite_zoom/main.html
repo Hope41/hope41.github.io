@@ -11,9 +11,11 @@
             body {
                 background: #222;
                 margin: 0;
-                overflow: hidden
+                overflow: hidden;
             }
-            canvas {cursor: none}
+            canvas {
+                cursor: none
+            }
         </style>
     </head>
     <body>
@@ -88,23 +90,15 @@
                 }
 
                 fadeOut() {
-                    this.alpha -= .01
-                    if (this.alpha <= 0) this.die = true
-                }
-
-                fillRect(x, y) {
-                    return ctx.fillRect(
-                        this.x + x * this.size,
-                        this.y + y * this.size,
-                        this.size,
-                        this.size
-                    )
+                    const shrink = .01
+                    this.alpha -= shrink
+                    if (this.alpha <= shrink * 2) this.die = true
                 }
 
                 update() {
                     if (this.fade) this.fadeOut()
                     else {
-                        if (this.size > (cvs.width + cvs.height) / 75 && map.array.length < 100) {
+                        if (this.size > (cvs.width + cvs.height) / 300) {
                             map.addNewShapes(
                                 this.x,
                                 this.y,
@@ -133,13 +127,15 @@
                 }
 
                 draw() {
-                    for (let i = 0; i < shape.arr.length; i ++) {
-                        if (shape.arr[i]) {
-                            const pos = indexToPos(i, shape.size)
-                            ctx.fillStyle = rgb(50, 150, 50, this.alpha)
-                            this.fillRect(pos.x, pos.y)
-                        }
-                    }
+                    ctx.globalAlpha = this.alpha
+                    ctx.drawImage(
+                        icon_cvs,
+                        this.x,
+                        this.y,
+                        this.size * shape.size,
+                        this.size * shape.size
+                    )
+                    ctx.globalAlpha = 1
                 }
             }
 
@@ -171,6 +167,7 @@
                 cvs.height = innerHeight
 
                 resized = true
+                ctx.imageSmoothingEnabled = false
             }
 
             function update() {
@@ -200,8 +197,16 @@
                     const obj = map.array[Math.floor(map.array.length / 2)]
                     const dist_x = mouse.x - (obj.x + obj.size)
                     const dist_y = mouse.y - (obj.y + obj.size)
-                    const edge_x = (mouse.x > cvs.width / 2 ? mouse.x : cvs.width - mouse.x) / (cvs.width / 50)
-                    const edge_y = (mouse.y > cvs.height / 2 ? mouse.y : cvs.height - mouse.y) / (cvs.height / 50)
+                    const edge_x =
+                        (mouse.x > cvs.width / 2 ?
+                            mouse.x :
+                            cvs.width - mouse.x
+                        ) / (cvs.width / 50)
+                    const edge_y =
+                        (mouse.y > cvs.height / 2 ?
+                            mouse.y :
+                            cvs.height - mouse.y
+                        ) / (cvs.height / 50)
 
                     mouse.x -= dist_x / edge_x
                     mouse.y -= dist_y / edge_y
@@ -221,6 +226,10 @@
 
             const cvs = document.createElement('canvas')
             const ctx = cvs.getContext('2d')
+
+            const icon_cvs = document.createElement('canvas')
+            const icon_ctx = icon_cvs.getContext('2d')
+
             const shape = {
                 arr: [
                     0,1,1,1,0,0,
@@ -232,6 +241,17 @@
                 ],
                 size: 6
             }
+
+            icon_cvs.width = shape.size
+            icon_cvs.height = shape.size
+
+            for (let i = 0; i < shape.arr.length; i ++) {
+                if (shape.arr[i]) {
+                    icon_ctx.fillStyle = '#3f5'
+                    icon_ctx.fillRect(i % shape.size, ~~(i / shape.size), 1, 1)
+                }
+            }
+
             let resized = false
 
             document.body.appendChild(cvs)
