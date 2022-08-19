@@ -195,6 +195,10 @@ span.mobile {
     font-weight: bold;
     color: #070
 }
+span.not-mobile {
+    font-weight: bold;
+    color: #900
+}
 span.date {float: right}
 /* logos */
 i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
