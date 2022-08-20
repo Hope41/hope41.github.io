@@ -143,7 +143,7 @@ div.image:hover > img.play {
 div.iframe > i.fa-play,
 div.image > i.fa-play {
     color: #0000;
-    font-size: 37px;
+    font-size: 37px; 
     border-radius: .2em;
     position: absolute;
     right: 50%;
