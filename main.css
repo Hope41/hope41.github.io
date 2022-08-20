@@ -74,7 +74,8 @@ body {
     transition-duration: var(--transition);
     border-radius: var(--radius);
     margin: 0 2em 1em 0;
-    float: left
+    float: left;
+    box-shadow: 0px 0px 10px #0005
 }
 .imgbox > a > div {color: #000}
 
@@ -116,10 +117,11 @@ div.iframe > a, div.image > a {
 
 /* style */
 div.iframe > iframe, div.image > img {
-    border: #000 1px solid;
+    border: 0px;
     border-radius: .5em;
     width: 100%;
-    transition-duration: var(--transition)
+    transition-duration: var(--transition);
+    box-shadow: 0px 0px 10px #0005
 }
 
 /* if you hover over a div
@@ -177,7 +179,8 @@ div.image > i.fa-play {
 /*-------- other --------*/
 div.code > pre {
     background-color: #0241;
-    border: #000 1px solid;
+    box-shadow: 0px 0px 10px #0005;
+    border-radius: .5em;
     font-size: 15px;
     font-family: code;
     overflow: auto;
