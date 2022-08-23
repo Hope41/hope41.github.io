@@ -74,8 +74,19 @@ onload = () => {
         const pre = document.createElement('pre')
         const source = item.getAttribute('source')
         const lang = item.getAttribute('lang')
+        const symbol = '@'
 
-        pre.innerHTML = hljs.highlight(await load(source), {language: lang}).value
+        const code = (source ? await load(source) : item.textContent).split(symbol)
+        item.textContent = ''
+
+        let state = symbol
+        for (let i = 0; i < code.length; i ++) {
+            if (state) pre.innerHTML += hljs.highlight(code[i], {language: lang}).value
+            else pre.innerHTML += '<span class = hljs-hash>' + code[i] + '</span>'
+
+            if (state) state = ''
+            else state = symbol
+        }
 
         item.appendChild(pre)
     })

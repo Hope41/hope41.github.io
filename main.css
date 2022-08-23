@@ -101,7 +101,7 @@ div.iframe > iframe {height: 20em}
 
 /* image size */
 div.image {
-    width: 100%;
+    max-width: 100%;
     display: inline-block
 }
 
@@ -158,7 +158,7 @@ div.image > i.fa-play {
 .hljs-string {color: #370}
 .hljs-keyword {color: #83b}
 .hljs-built_in {color: #088}
-.hljs-comment {color: #666}
+.hljs-comment {color: #555}
 .hljs-number {color: #960}
 .hljs-attr {color: #960}
 .hljs-literal {color: #960}
@@ -174,6 +174,7 @@ div.image > i.fa-play {
 .hljs-params {color: #b60}
 .hljs-property {color: #076}
 .hljs-regexp {color: #d55}
+.hljs-hash {color: #0005}
 
 
 /*-------- other --------*/
@@ -185,7 +186,7 @@ div.code > pre {
     font-family: code;
     overflow: auto;
     padding: 1em;
-    max-height: 20em;
+    max-height: 20em
 }
 h2 {margin: 0}
 /* font emphasis */
@@ -198,10 +199,6 @@ span.mobile {
     font-weight: bold;
     color: #070
 }
-span.not-mobile {
-    font-weight: bold;
-    color: #900
-}
 span.date {float: right}
 /* logos */
 i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
@@ -210,11 +207,28 @@ i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
 }
 /* copyright */
 span.copyright {
-    float: left;
+    left: 0px;
+    bottom: 0px;
     font-size: 15px;
-    margin-left: .5em
+    margin-left: .5em;
+    position: fixed;
+    text-shadow: 0px 0px 10px #fff
 }
-
+span.snip {
+    border-radius: 3px;
+    border: 1px solid #777;
+    display: inline;
+    background: #ddd;
+    padding: 0px 2px;
+    color: #333;
+    font-size: 15px
+}
+div.step {
+    background: #eee;
+    box-shadow: 0px 0px 10px #0004;
+    padding: 1em;
+    border-radius: 10px;
+}
 
 /*-------- responsive --------*/
 @media screen and (min-width: 64em) {
