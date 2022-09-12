@@ -203,7 +203,7 @@ span.date {float: right}
 /* logos */
 i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
     font-size: var(--fontsize);
-    cursor: pointer;
+    cursor: pointer
 }
 /* copyright */
 span.copyright {
@@ -211,8 +211,7 @@ span.copyright {
     bottom: 0px;
     font-size: 15px;
     margin-left: .5em;
-    position: fixed;
-    text-shadow: 0px 0px 10px #fff
+    position: fixed
 }
 span.snip {
     border-radius: 3px;
@@ -227,7 +226,7 @@ div.step {
     background: #eee;
     box-shadow: 0px 0px 10px #0004;
     padding: 1em;
-    border-radius: 10px;
+    border-radius: 10px
 }
 
 /*-------- responsive --------*/
