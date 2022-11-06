@@ -32,7 +32,7 @@
         <section class = main>
             <span class = date>23.08.2022</span>
             <h1>Snakes And Ladders Talk Through - Level Generation</h1>
-            <div class = image source = /articles/images/snakes_and_ladders_talk_through_level_generation_1.png></div>
+            <div class = image source = /articles/extra/snakes_and_ladders_talk_through_level_generation/1.png></div>
             <p></p>
             The code for the level generation of Snakes And Ladders is by far the most
             ugly, trivial, and overwhelming piece of coding I wrote  in the entire game.
@@ -77,7 +77,7 @@ for (let i = 0; i < this.array.length; i ++) {
 </div>
             That's all you need to set up the map. Now we can start carving bits away.
             <p></p>
-            <div class = image source = /articles/images/snakes_and_ladders_talk_through_level_generation_2.png></div>
+            <div class = image source = /articles/extra/snakes_and_ladders_talk_through_level_generation/2.png></div>
             <p></p>
 
             <h3>Chambers</h3>
@@ -102,7 +102,7 @@ for(let x = chamber_x; x < chamber_x + chamber_width; x ++) {
 }
 </div>
             <p></p>
-            <div class = image source = /articles/images/snakes_and_ladders_talk_through_level_generation_3.png></div>
+            <div class = image source = /articles/extra/snakes_and_ladders_talk_through_level_generation/3.png></div>
             <p></p>
 
             <h3>Tunnels</h3>
@@ -120,13 +120,13 @@ for(let x = chamber_x; x < chamber_x + chamber_width; x ++) {
             With these rules applied, the maze should start to be taking shape.
             Note how the passages seem to point towards the bottom right corner:
             <p></p>
-            <div class = image source = /articles/images/snakes_and_ladders_talk_through_level_generation_4.png></div>
+            <div class = image source = /articles/extra/snakes_and_ladders_talk_through_level_generation/4.png></div>
             <p></p>
             If we just stop here, though, some channels may never connect.
             The way to fix this is to cut a channel through the right and
             bottom edge.
             <p></p>
-            <div class = image source = /articles/images/snakes_and_ladders_talk_through_level_generation_5.png></div>
+            <div class = image source = /articles/extra/snakes_and_ladders_talk_through_level_generation/5.png></div>
             <p></p>
 
             The next thing to add is ladders. This took a very long time for me to
@@ -147,7 +147,7 @@ for(let x = chamber_x; x < chamber_x + chamber_width; x ++) {
             only be generated inside chambers and it also means that Drillo will be
             able to get into rooms that he couldn't before.
             <p></p>
-            <div class = image source = /articles/images/snakes_and_ladders_talk_through_level_generation_6.png></div>
+            <div class = image source = /articles/extra/snakes_and_ladders_talk_through_level_generation/6.png></div>
             <p></p>
 
             <h3>Reverse generation</h3>
@@ -165,7 +165,7 @@ for(let x = chamber_x; x < chamber_x + chamber_width; x ++) {
             map.
 
             <p></p>
-            <div class = image source = /articles/images/snakes_and_ladders_talk_through_level_generation_7.png></div>
+            <div class = image source = /articles/extra/snakes_and_ladders_talk_through_level_generation/7.png></div>
             <p></p>
 
             <h3>Side effects</h3>

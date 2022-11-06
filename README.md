@@ -3,7 +3,7 @@
 
 Things planned:
 - Articles explaining and illustrating certain aspects of bigger projects
-- New games
+- New games including a platform runner that's currently in development
 
 More coming soon!
 

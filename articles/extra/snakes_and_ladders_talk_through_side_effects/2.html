@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset = utf-8>
+        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
+        <title>Snakes And Ladders</title>
+
+        <style>
+            body {
+                background: #fff;
+                margin: 0;
+                overflow: hidden
+            }
+
+            canvas {
+                width: 100%;
+                height: 100%;
+                user-select: none;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function rotFillRect(x, y, width, height, stroke = false) {
+                if (stroke) ctx.strokeRect(x * scale, y * scale, width * scale, height * scale)
+                else ctx.fillRect(x * scale, y * scale, width * scale, height * scale)
+            }
+
+            function fillRect(x, y, width, height, stroke = false) {
+                const real = realPos(x, y)
+
+                if (stroke) ctx.strokeRect(real.x, real.y, width * scale, height * scale)
+                else ctx.fillRect(real.x, real.y, width * scale, height * scale)
+            }
+
+            function realPos(x, y, w = 0, h = 0) {
+                x = x * scale + cvs.width / 2
+                y = y * scale + cvs.height / 2
+                w = w * scale
+                h = h * scale
+                return {x, y, w, h}
+            }
+
+            function line(arr, width = .01) {
+                for (let i = 0; i < arr.length; i += 2) {
+                    const real1 = realPos(arr[i], arr[i + 1])
+                    const real2 = realPos(arr[i + 2], arr[i + 3])
+
+                    const dist_x = real2.x - real1.x
+                    const dist_y = real2.y - real1.y
+
+                    const angle = Math.atan2(dist_y, dist_x)
+                    const dist = Math.sqrt(
+                        (dist_x * dist_x) +
+                        (dist_y * dist_y)
+                    )
+                    const thinkness = width * scale
+
+                    ctx.save()
+                    ctx.translate(real1.x, real1.y)
+                    ctx.rotate(angle)
+                    ctx.fillRect(0, -thinkness / 2, dist, thinkness)
+                    ctx.restore()
+                }
+            }
+
+            function enemy() {
+                const LEG_LIFT = .15
+                const LEG_SLIDE = .1
+                const LEG_LENGTH = .26
+                const segments = []
+
+                const generate = () => {
+                    const parts = 5
+                    let number = 0
+
+                    for (let i = 0; i < parts; i ++) {
+                        number += parts * i * 9
+                        segments.push(number)
+                    }
+                }
+                generate()
+
+                const step = (i, str) => {
+                    const offset = {
+                        x: (i / (segments.length - 1)) * width,
+                        y: height
+                    }
+
+                    let X = 'none'
+                    let Y = 0
+
+                    if (str == 'x') X = 0
+                    else if (str == 'y')
+                        Y = Math.sin(WALK + segments[i]) * LEG_LIFT
+                    else if (str == 'x_foot') 
+                        X = Math.cos(WALK + segments[i]) * LEG_SLIDE
+
+                    if (Y > 0) Y = 0
+                    return X != 'none' ? x + offset.x + X : y + offset.y + Y
+                }
+
+                ctx.fillStyle = 'rgb(100, 0, 0)'
+
+                for (let i = 0; i < segments.length; i ++) {
+                    line([
+                        step(i - 1, 'x'),
+                        step(i - 1, 'y') - LEG_LENGTH,
+                        step(i, 'x'),
+                        step(i, 'y') - LEG_LENGTH,
+                        step(i, 'x_foot'),
+                        step(i, 'y')
+                    ], .06)
+                }
+            }
+            function resize() {
+                cvs.width = innerWidth * dpr
+                cvs.height = (innerHeight + 1) * dpr
+
+                scale = (cvs.width + cvs.height) / 10
+            }
+
+            function update() {
+                ctx.clearRect(0, 0, cvs.width, cvs.height)
+                ctx.fillStyle = '#efe'
+                ctx.fillRect(0, 0, cvs.width, cvs.height)
+
+                WALK += .09
+                enemy()
+
+                ctx.fillStyle = '#0002'
+                const _width = width * 1.5 + Math.sin(WALK / 2) / 5
+                fillRect(x + width / 2 - _width / 2, y + height, _width, .08)
+
+                requestAnimationFrame(update)
+            }
+
+            const cvs = document.createElement('canvas')
+            const ctx = cvs.getContext('2d')
+            document.body.appendChild(cvs)
+
+            const dpr = devicePixelRatio
+            let scale = 0
+            let WALK = 0
+            const width = 1
+            const height = .35
+            const x = -width / 2
+            const y = -height / 2
+
+            addEventListener('resize', resize)
+            resize()
+            update()
+        </script>
+    </body>
+</html>

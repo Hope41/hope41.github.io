@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset = utf-8>
+        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
+        <title>Snakes And Ladders</title>
+
+        <style>
+            body {
+                background: #fff;
+                margin: 0;
+                overflow: hidden
+            }
+
+            canvas {
+                width: 100%;
+                height: 100%;
+                user-select: none;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function rotFillRect(x, y, width, height, stroke = false) {
+                if (stroke) ctx.strokeRect(x * scale, y * scale, width * scale, height * scale)
+                else ctx.fillRect(x * scale, y * scale, width * scale, height * scale)
+            }
+
+            function fillRect(x, y, width, height, stroke = false) {
+                const real = realPos(x, y)
+
+                if (stroke) ctx.strokeRect(real.x, real.y, width * scale, height * scale)
+                else ctx.fillRect(real.x, real.y, width * scale, height * scale)
+            }
+
+            function realPos(x, y, w = 0, h = 0) {
+                x = x * scale + cvs.width / 2
+                y = y * scale + cvs.height / 2
+                w = w * scale
+                h = h * scale
+                return {x, y, w, h}
+            }
+
+            function line(arr, width = .01, offset = {x: 0, y: 0}) {
+                for (let i = 0; i < arr.length; i += 2) {
+                    const real1 = realPos(arr[i], arr[i + 1])
+                    const real2 = realPos(arr[i + 2], arr[i + 3])
+                    const real3 = {x: offset.x * scale, y: offset.y * scale}
+
+                    const dist_x = real2.x - real1.x
+                    const dist_y = real2.y - real1.y
+
+                    const angle = Math.atan2(dist_y, dist_x)
+                    const dist = Math.sqrt(
+                        (dist_x * dist_x) +
+                        (dist_y * dist_y)
+                    )
+                    const thickness = width * scale
+
+                    ctx.save()
+                    ctx.translate(real1.x, real1.y)
+                    ctx.rotate(angle)
+                    ctx.fillRect(real3.x, real3.y - thickness / 2, dist, thickness)
+                    ctx.restore()
+                }
+            }
+
+            function enemy() {
+                const EYE_SIZE = .3 * (width + height) / 2
+                const EYE = {
+                    from_center: .03,
+                    from_top: .14
+                }
+                const PUPIL_SIZE = .05
+
+                const COLOR = 'rgb(160, 50, 0)'
+
+                const dist_x = width / 2
+                const dist_y = height / 2
+                const diagonal_dist = Math.sqrt((dist_x * dist_x) + (dist_y * dist_y)) / 2
+                const bump_dist = diagonal_dist / 2
+
+                const bump = Math.abs(Math.sin(WALK * 2) * bump_dist)
+
+                const Y = Math.sin(WALK) * dist_y
+                const X = Math.cos(WALK) * dist_x
+
+                ctx.fillStyle = COLOR
+                line([-X, -Y - bump, X, Y - bump], width)
+
+                const features = () => {
+                    // EYES
+                    ctx.fillStyle = '#eef'
+                    const eye1 = {
+                        x: x + width / 2 - EYE.from_center,
+                        y: y + EYE.from_top
+                    }
+                    const eye2 = {
+                        x: x + width / 2 + EYE.from_center,
+                        y: y + EYE.from_top
+                    }
+
+                    fillRect(eye1.x - EYE_SIZE, eye1.y, EYE_SIZE, EYE_SIZE)
+                    fillRect(eye2.x, eye2.y, EYE_SIZE, EYE_SIZE)
+                    
+                    // PUPILS
+                    const LIMIT = EYE_SIZE / 2 - PUPIL_SIZE / 2
+                    const center = {
+                        x_1: eye1.x - EYE_SIZE / 2 - PUPIL_SIZE / 2,
+                        y_1: eye1.y + EYE_SIZE / 2 - PUPIL_SIZE / 2,
+                        x_2: eye2.x + EYE_SIZE / 2 - PUPIL_SIZE / 2,
+                        y_2: eye2.y + EYE_SIZE / 2 - PUPIL_SIZE / 2
+                    }
+                    const rot = .3 + Math.sin(WALK) * .2
+
+                    ctx.fillStyle = '#900'
+                    fillRect(
+                        center.x_1 + Math.cos(rot + .1) * LIMIT,
+                        center.y_1 + Math.sin(rot + .1) * LIMIT,
+                        PUPIL_SIZE, PUPIL_SIZE
+                    )
+                    fillRect(
+                        center.x_2 + Math.cos(rot) * LIMIT,
+                        center.y_2 + Math.sin(rot) * LIMIT,
+                        PUPIL_SIZE, PUPIL_SIZE
+                    )
+
+                    // BROWS
+                    ctx.fillStyle = '#000'
+                    line([
+                        eye1.x - EYE_SIZE,
+                        eye1.y,
+                        eye1.x + (eye2.x + EYE_SIZE - eye1.x - EYE_SIZE) / 2,
+                        eye1.y + EYE_SIZE / 4,
+                        eye2.x + EYE_SIZE,
+                        eye2.y,
+                    ], .04)
+
+                    const speed = .03
+
+                    // open eyes after rolling
+                    if (closed) {
+                        eyelid -= speed
+
+                        if (eyelid <= 0) {
+                            eyelid = 0
+                            closed = false
+                        }
+                    }
+
+                    // close eyes before rolling
+                    const shrink = roll_timer * speed
+                    if (shrink < EYE_SIZE) eyelid = EYE_SIZE - shrink
+
+                    // Draw eyelid
+                    const pad = 1 / scale
+                    ctx.fillStyle = COLOR
+                    fillRect(x, y + EYE.from_top - pad, width, eyelid)
+                }
+
+                if (!dir) features()
+            }
+
+            function resize() {
+                cvs.width = innerWidth * dpr
+                cvs.height = (innerHeight + 1) * dpr
+
+                scale = (cvs.width + cvs.height) / 10
+            }
+
+            function update() {
+                ctx.clearRect(0, 0, cvs.width, cvs.height)
+                ctx.fillStyle = '#fee'
+                ctx.fillRect(0, 0, cvs.width, cvs.height)
+
+                // move square
+                roll_timer --
+                WALK += speed_x
+
+                // make the square's angle snap back to zero when flat
+                if (Math.abs(WALK) > Math.PI / 2) {
+                    WALK = 0
+
+                    // stop the square if needed
+                    if (roll_timer >= 0) {
+                        speed_x = 0
+                        dir = 0
+                        closed = true
+                    }
+                }
+
+                if (roll_timer < 0) {
+                    speed_x *= momentum
+                    speed_x += dir / damping
+                    dir = 1
+
+                    if (roll_timer < -move_time) {
+                        roll_timer = set(stop_range)
+                        move_time = set(move_range)
+                    }
+                }
+
+                enemy()
+
+                ctx.fillStyle = '#0002'
+                const _width = width * 1.5 + Math.abs(Math.sin(WALK * 2) / 5)
+                fillRect(x + width / 2 - _width / 2, y + height, _width, .08)
+
+                requestAnimationFrame(update)
+            }
+
+            const cvs = document.createElement('canvas')
+            const ctx = cvs.getContext('2d')
+            document.body.appendChild(cvs)
+
+            const dpr = devicePixelRatio
+            let scale = 0
+
+            const momentum = .9
+            const damping = 150
+            let WALK = 0
+            let speed_x = 0
+            let dir = 0
+
+            const width = .5
+            const height = .5
+            const x = -width / 2
+            const y = -height / 2
+
+            const set = range => {
+                return range.min + Math.random() * range.max
+            }
+
+            const stop_range = {min: 30, max: 100}
+            const move_range = {min: 60, max: 150}
+            let move_time = set(move_range)
+
+            let closed = false
+            let roll_timer = set(stop_range)
+            let eyelid = 0
+
+            addEventListener('resize', resize)
+            resize()
+            update()
+        </script>
+    </body>
+</html>

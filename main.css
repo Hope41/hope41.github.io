@@ -186,9 +186,12 @@ div.code > pre {
     font-family: code;
     overflow: auto;
     padding: 1em;
+    margin-bottom: 2em;
     max-height: 20em
 }
-h2 {margin: 0}
+h2, h3 {margin: 0}
+h3 {margin-top: .5em}
+
 /* font emphasis */
 mark {
     font-weight: bold;

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset = utf-8>
+        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
+        <title>Snakes And Ladders</title>
+
+        <style>
+            body {
+                background: #fff;
+                margin: 0;
+                overflow: hidden
+            }
+
+            canvas {
+                width: 100%;
+                height: 100%;
+                user-select: none;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function rotFillRect(x, y, width, height, stroke = false) {
+                if (stroke) ctx.strokeRect(x * scale, y * scale, width * scale, height * scale)
+                else ctx.fillRect(x * scale, y * scale, width * scale, height * scale)
+            }
+
+            function fillRect(x, y, width, height, stroke = false) {
+                const real = realPos(x, y)
+
+                if (stroke) ctx.strokeRect(real.x, real.y, width * scale, height * scale)
+                else ctx.fillRect(real.x, real.y, width * scale, height * scale)
+            }
+
+            function realPos(x, y, w = 0, h = 0) {
+                x = x * scale + cvs.width / 2
+                y = y * scale + cvs.height / 2
+                w = w * scale
+                h = h * scale
+                return {x, y, w, h}
+            }
+
+            function line(arr, width = .01, offset = {x: 0, y: 0}) {
+                for (let i = 0; i < arr.length; i += 2) {
+                    const real1 = realPos(arr[i], arr[i + 1])
+                    const real2 = realPos(arr[i + 2], arr[i + 3])
+                    const real3 = {x: offset.x * scale, y: offset.y * scale}
+
+                    const dist_x = real2.x - real1.x
+                    const dist_y = real2.y - real1.y
+
+                    const angle = Math.atan2(dist_y, dist_x)
+                    const dist = Math.sqrt(
+                        (dist_x * dist_x) +
+                        (dist_y * dist_y)
+                    )
+                    const thickness = width * scale
+
+                    ctx.save()
+                    ctx.translate(real1.x, real1.y)
+                    ctx.rotate(angle)
+                    ctx.fillRect(real3.x, real3.y - thickness / 2, dist, thickness)
+                    ctx.restore()
+                }
+            }
+
+            function enemy() {
+                const segments = []
+
+                const generate = () => {
+                    const parts = 2
+                    let number = 0
+
+                    for (let i = 0; i < parts; i ++) {
+                        number += parts * i
+                        segments.push(number)
+                    }
+                }
+                generate()
+
+                const LEG_LIFT = .2
+                const LEG_SLIDE = .14
+                const LEG_WIDTH = .1
+                const BODY_HEIGHT = .2
+                const HEAD_WIDTH = .55
+                const HEAD_HEIGHT = .3
+                const EYE_SIZE = .16
+                const BODY_BUMP = .04
+                const PUPIL_SIZE = .06
+                const FOOT_MARGIN = .1
+                const TAIL_THICKNESS = .1
+                const LEG_LENGTH = .3
+
+                const _width = width * .8
+
+                const POS_X = width / 2 + _width / 2
+                const POS_Y = -.01
+                const BUMP = Math.cos(WALK * 2) * BODY_BUMP
+
+                const step = (i, str) => {
+                    const offset = {
+                        x: POS_X - (i / (segments.length - 1)) * _width,
+                        y: height
+                    }
+
+                    let X = 'none'
+                    let Y = 'none'
+
+                    if (str == 'x') X = 0
+                    else if (str == 'y') Y = BUMP
+                    else if (str == 'x_foot') 
+                        X = Math.cos(WALK + segments[i]) * LEG_SLIDE
+                    else if (str == 'y_foot')
+                        Y = Math.sin(WALK + segments[i]) * LEG_LIFT
+                    else if (str == 'x_foot2') 
+                        X = Math.cos(WALK + segments[i] + Math.PI) * LEG_SLIDE
+                    else if (str == 'y_foot2')
+                        Y = Math.sin(WALK + segments[i] + Math.PI) * LEG_LIFT
+
+                    if (Y > 0) Y = 0
+                    return X != 'none' ? x + offset.x + X : y + offset.y + Y
+                }
+
+                ctx.fillStyle = 'rgb(50, 40, 40)'
+                for (let i = 0; i < segments.length; i ++) {
+                    line([
+                        step(i, 'x'),
+                        step(i, 'y') - LEG_LENGTH,
+                        step(i, 'x_foot'),
+                        step(i, 'y_foot')],
+                        LEG_WIDTH
+                    )
+                    line([
+                        step(i, 'x'),
+                        step(i, 'y') - LEG_LENGTH,
+                        step(i, 'x_foot2'),
+                        step(i, 'y_foot2')],
+                        LEG_WIDTH
+                    )
+                }
+                // BODY
+                fillRect(x, BUMP, width, -BODY_HEIGHT - .01)
+                // HEAD
+                fillRect(width / 2 - .1, -BODY_HEIGHT + BUMP, HEAD_WIDTH, -HEAD_HEIGHT - .01)
+
+                // EAR
+                fillRect(width / 2 - .08, -BODY_HEIGHT - HEAD_HEIGHT + BUMP, .1, -.05)
+                fillRect(width / 2 + .07, -BODY_HEIGHT - HEAD_HEIGHT + BUMP, .1, -.05)
+
+                // TAIL
+                const rot = 5.5 + Math.cos(WALK * 1.5) * .2
+                const pos = {x: x, y: y + BUMP + TAIL_THICKNESS / 2}
+
+                line([
+                    pos.x,
+                    pos.y,
+                    pos.x + Math.sin(rot) * .3,
+                    pos.y + Math.cos(rot) * .3], TAIL_THICKNESS,
+                    {x: 0, y: -TAIL_THICKNESS / 2}
+                )
+
+                // EYES
+                const eye1 = {
+                    x: width / 2,
+                    y: -BODY_HEIGHT - HEAD_HEIGHT / 2 - EYE_SIZE / 2 + BUMP,
+                    width: EYE_SIZE,
+                    height: EYE_SIZE
+                }
+
+                const eye2 = {
+                    x: width / 2 + EYE_SIZE + .02,
+                    y: -BODY_HEIGHT - HEAD_HEIGHT / 2 - EYE_SIZE / 2 + BUMP,
+                    width: EYE_SIZE,
+                    height: EYE_SIZE
+                }
+
+                ctx.fillStyle = 'rgb(255, 255, 255)'
+                fillRect(eye1.x, eye1.y, eye1.width, eye1.height)
+                fillRect(eye2.x, eye2.y, eye2.width, eye2.height)
+
+                ctx.strokeStyle = 'rgb(0, 0, 0)'
+                ctx.lineWidth = .01 * scale
+                fillRect(eye1.x, eye1.y, eye1.width, eye1.height, true)
+                fillRect(eye2.x, eye2.y, eye2.width, eye2.height, true)
+
+                // PUPILS
+                const eye_rot = Math.cos(WALK) / 9
+
+                const LIMIT = EYE_SIZE / 2 - PUPIL_SIZE / 2
+                const center = {
+                    x_1: eye1.x + eye1.width / 2 - PUPIL_SIZE / 2,
+                    y_1: eye1.y + eye1.height / 2 - PUPIL_SIZE / 2,
+                    x_2: eye2.x + eye2.width / 2 - PUPIL_SIZE / 2,
+                    y_2: eye2.y + eye2.height / 2 - PUPIL_SIZE / 2
+                }
+
+                ctx.fillStyle = 'rgb(0, 0, 0)'
+                fillRect(
+                    center.x_1 + Math.cos(eye_rot) * LIMIT,
+                    center.y_1 + Math.sin(eye_rot) * LIMIT,
+                    PUPIL_SIZE, PUPIL_SIZE
+                )
+                fillRect(
+                    center.x_2 + Math.cos(eye_rot) * LIMIT,
+                    center.y_2 + Math.sin(eye_rot) * LIMIT,
+                    PUPIL_SIZE, PUPIL_SIZE
+                )
+
+                // BROWS
+                line([
+                    eye1.x,
+                    eye1.y,
+                    eye1.x + (eye2.x + eye2.width - eye1.x) / 2,
+                    eye1.y + EYE_SIZE / 5,
+                    eye2.x + eye2.width,
+                    eye2.y,
+                ], .04)
+            }
+            function resize() {
+                cvs.width = innerWidth * dpr
+                cvs.height = (innerHeight + 1) * dpr
+
+                scale = (cvs.width + cvs.height) / 11
+            }
+
+            function update() {
+                ctx.clearRect(0, 0, cvs.width, cvs.height)
+                ctx.fillStyle = '#eef'
+                ctx.fillRect(0, 0, cvs.width, cvs.height)
+
+                WALK += .09
+                enemy()
+
+                ctx.fillStyle = '#0002'
+                const _width = width * 1.5 + Math.sin(WALK / 2) / 5
+                fillRect(x + width / 2 - _width / 2, y + height, _width, .08)
+
+                requestAnimationFrame(update)
+            }
+
+            const cvs = document.createElement('canvas')
+            const ctx = cvs.getContext('2d')
+            document.body.appendChild(cvs)
+
+            const dpr = devicePixelRatio
+            let scale = 0
+            let WALK = 0
+            const width = 1.3
+            const height = .5
+            const x = -width / 2
+            const y = -height / 2
+
+            addEventListener('resize', resize)
+            resize()
+            update()
+        </script>
+    </body>
+</html>

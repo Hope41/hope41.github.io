@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset = utf-8>
+        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
+
+        <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
+        <script src = /js/analytics.js></script>
+        <script src = /js/highlight.min.js></script>
+        <script src = /js/main.js></script>
+
+        <title>Joachim Ford</title>
+
+        <link rel = stylesheet href = /main.css>
+        <link href = /fontawesome/css/fontawesome.css rel = stylesheet>
+        <link href = /fontawesome/css/solid.css rel = stylesheet>
+        <link href = /fontawesome/css/brands.css rel = stylesheet>
+    </head>
+
+    <body>
+        <section class = topnav>
+            <div>
+                <a class = text href = '/'>Joachim Ford</a>
+                <i class = 'fa-solid fa-bars' onclick = bar()></i>
+                <a class = text href = /games>Games</a>
+                <a class = text href = /articles>Articles</a>
+                <a class = text href = /experiments>Experiments</a>
+                <a href = https://github.com/Hope41 target = _blank><i class = 'fa-brands fa-github'></i></a>
+                <a href = mailto:contact@joachimford.uk><i class = 'fa-solid fa-envelope'></i></a>
+            </div>
+        </section>
+
+        <section class = main>
+            <span class = date>23.08.2022</span>
+            <h1>Snakes And Ladders Talk Through - Side Effects</h1>
+            <div class = image source = /articles/extra/snakes_and_ladders_talk_through_side_effects/1.png></div>
+            <p></p>
+            This article runs trough how the side effects (enemies) of
+            <a href = /content/snakes_and_ladders.html target = _blank>Snakes And Ladders</a>
+            are animated and rendered. Each simplified demo has its source code underneath, so feel free to have a look.
+            Pay particular attention to the code inside the <span class = snip>enemy()</span> function, which handles
+            the drawing and animation.
+            <p></p>
+            Almost every enemy uses a very similar walking pattern that you may recognise from
+            <a href = /content/anthrophobia_fear_of_crowds.html target = _blank>Anthrophobia</a>.
+            In case you haven't already seen it, this "walking pattern" is based on a circle with
+            a limit at its base:
+            <p></p>
+            <div class = iframe source = /content/extra/anthrophobia_fear_of_crowds/2.html></div>
+            <p></p>
+            <h3>The Worm-like Stick Thingy</h3>
+            Even the first side effect uses this circular walking pattern. Notice how each of its bones move:
+            <p></p>
+            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/1.html></div>
+            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/1.html lang = html></div>
+            <p></p>
+            <h3>The Centipede</h3>
+            This side effect is very similar to the former one, only its body is extended upwards so that its legs move instead.
+            <p></p>
+            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/2.html></div>
+            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/2.html lang = html></div>
+            <p></p>
+            <h3>The Creeper</h3>
+            I'm sure you can figure out what's going on here.
+            <p></p>
+            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/3.html></div>
+            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/3.html lang = html></div>
+            <p></p>
+            <h3>The Wolfish Side Effect</h3>
+            As you may have already noticed, this enemy also uses the walking motion mentioned earlier.
+            Its four feet are divided into two pairs at the moment, but here's a challenge: If you paste the code below
+            into a new <span class = snip>.html</span> file, can you give the enemy four pairs of legs? (Tip: have a look in
+            the <span class = snip>enemy()</span> function)
+            <p></p>
+            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/4.html></div>
+            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/4.html lang = html></div>
+            <p></p>
+            <h3>The Monster</h3>
+            In this simplified example, the enemy is very similar to the last. In the real game, however, it occasionally spits
+            out cubes - shown in the next example - and jumps whenever Drillo runs underneath it.
+            <p></p>
+            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/5.html></div>
+            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/5.html lang = html></div>
+            <p></p>
+            <h3>The Cubic Side Effect</h3>
+            This side effect might look a bit basic, but surprisingly it turned out to be the hardest one to get going.
+            This is what it has to do:
+            <p></p>
+            &emsp; 1. Rotate in the direction it's moving.<br>
+            &emsp; 2. Bump up and down so that it looks like its rolling along the ground.<br>
+            &emsp; 3. Close and open its eyes before and after rolling.
+            <p></p>
+            Take a look at the source code if you need to understand it better.
+            <p></p>
+            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/6.html></div>
+            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/6.html lang = html></div>
+            <p></p>
+            <h3>The Crab</h3>
+            This enemy is by far, in my mind, the most interesting and visually impressive of them all.
+            I started off trying to make the crab's legs from scratch, but it was too complicated to animate just from my head.
+            Thankfully, because I could still vaugely picture how it should move, I was able to draw out its rough mechanics using
+            a small animation app. This turned out to be really useful as it meant I had a solid example work from.
+            <p></p>
+            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/7.html></div>
+            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/7.html lang = html></div>
+            <p></p>
+            <h3>The Last Side Effect</h3>
+            In the real game, this enemy hammers his head whenever Drillo jumps on top of it. It's so massive that it would never usually be able
+            to fit inside the Snakes And Ladders window, but having it to scale might be a bit impractical in this instance.
+            <p></p>
+            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/8.html></div>
+            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/8.html lang = html></div>
+            <p></p>
+            Anyway, thanks for reading this article to the end and please don't hesitate to
+            <a href = mailto:contact@joachimford.uk>contact me</a> if you have any further questions.
+            <p></p>
+        </section>
+
+        <span class = copyright>
+            © Copyright <span class = year></span>
+            Joachimford.uk — <a href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
+        </span>
+    </body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset = utf-8>
+        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
+        <title>Snakes And Ladders</title>
+
+        <style>
+            body {
+                background: #fff;
+                margin: 0;
+                overflow: hidden
+            }
+
+            canvas {
+                width: 100%;
+                height: 100%;
+                user-select: none;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function rotFillRect(x, y, width, height, stroke = false) {
+                if (stroke) ctx.strokeRect(x * scale, y * scale, width * scale, height * scale)
+                else ctx.fillRect(x * scale, y * scale, width * scale, height * scale)
+            }
+
+            function fillRect(x, y, width, height, stroke = false) {
+                const real = realPos(x, y)
+
+                if (stroke) ctx.strokeRect(real.x, real.y, width * scale, height * scale)
+                else ctx.fillRect(real.x, real.y, width * scale, height * scale)
+            }
+
+            function realPos(x, y, w = 0, h = 0) {
+                x = x * scale + cvs.width / 2
+                y = y * scale + cvs.height / 2
+                w = w * scale
+                h = h * scale
+                return {x, y, w, h}
+            }
+
+            function line(arr, width = .01) {
+                for (let i = 0; i < arr.length; i += 2) {
+                    const real1 = realPos(arr[i], arr[i + 1])
+                    const real2 = realPos(arr[i + 2], arr[i + 3])
+
+                    const dist_x = real2.x - real1.x
+                    const dist_y = real2.y - real1.y
+
+                    const angle = Math.atan2(dist_y, dist_x)
+                    const dist = Math.sqrt(
+                        (dist_x * dist_x) +
+                        (dist_y * dist_y)
+                    )
+                    const thinkness = width * scale
+
+                    ctx.save()
+                    ctx.translate(real1.x, real1.y)
+                    ctx.rotate(angle)
+                    ctx.fillRect(0, -thinkness / 2, dist, thinkness)
+                    ctx.restore()
+                }
+            }
+
+            function enemy() {
+                const LEG_WIDTH = .25
+                const LEG_LIFT = .3
+                const LEG_MOVE = .3
+                const KNEE_DOWN = 1
+                const LEG_BEND = .8
+                const EYE_SIZE = .8
+                const EYE_DOWN = .5
+                const PUPIL_SIZE = .12
+                const ARM_WIDTH = .25
+                const ARM_LENGTH = 1
+                const FOREARM_LENGTH = 1.5
+                const HANDLE_LENGTH = .3
+                const HAMMER_HEIGHT = .6
+                const HAMMER_LENGTH = 1
+                const fake_height = 5.5
+
+                const offset_y = Math.cos(WALK * 2) * .05
+                const half = width / 2
+                const center = x + half
+                const Y = y + offset_y + fake_height - LEG_WIDTH / 2
+
+                // LEGS
+                ctx.fillStyle = 'rgb(110, 0, 0)'
+                const leg = val => {
+                    const dir = Math.sign(val)
+                    const walk = WALK + Math.PI / 2 * dir
+
+                    const step = (val, lim = 0) => {return Math.sin(val) < lim ? Math.sin(val) : lim}
+
+                    const X = center + half * val - LEG_WIDTH / 2 * dir
+                    const foot_swing =
+                        step(walk) * Math.sin(walk) * LEG_BEND -
+                        Math.sin(walk + Math.PI / 2) * .3
+
+                    const thigh_angle = walk
+                    const shin_angle = foot_swing + Math.PI / 2
+                    const foot_angle = step(walk) * Math.sin(walk)
+
+                    const knee_pos = fake_height + KNEE_DOWN
+                    const knee = {
+                        x: X + Math.cos(thigh_angle) * LEG_MOVE,
+                        y: y + step(thigh_angle, .2) * LEG_LIFT
+                    }
+
+                    const shin_length = height - knee_pos - LEG_WIDTH / 2
+                    const ankle = {
+                        x: Math.cos(shin_angle) * shin_length,
+                        y: Math.sin(shin_angle) * shin_length
+                    }
+
+                    const foot_length = .5
+                    const foot = {
+                        x: Math.cos(foot_angle) * foot_length,
+                        y: Math.sin(foot_angle) * foot_length
+                    }
+
+                    line([
+                        // hip
+                        X, Y,
+
+                        // knee
+                        knee.x,
+                        knee_pos + knee.y,
+
+                        // ankle
+                        knee.x + ankle.x,
+                        knee_pos + knee.y + ankle.y,
+
+                        // foot
+                        knee.x + ankle.x + foot.x,
+                        knee_pos + knee.y + ankle.y + foot.y
+
+                    ], LEG_WIDTH)
+                }
+
+                leg(-.9)
+                leg(.9)
+
+                // BODY
+                ctx.fillStyle = 'rgb(120, 0, 0)'
+                fillRect(x, y + offset_y, width, fake_height)
+
+                // EYES
+                const eye = val => {
+                    const dir = Math.sign(val)
+                    const eye_x = center + half * val
+                    const eye_y = y + offset_y + EYE_DOWN
+
+                    ctx.fillStyle = '#fff'
+                    fillRect(eye_x, eye_y, EYE_SIZE * dir, EYE_SIZE)
+
+                    const eye_angle = Math.sin(WALK) / 3
+
+                    const sum = EYE_SIZE / 2 - PUPIL_SIZE / 2
+                    const X = Math.cos(eye_angle) * sum
+                    const Y = Math.sin(eye_angle) * sum
+
+                    ctx.fillStyle = '#000'
+                    fillRect(eye_x + sum * dir + X, eye_y + sum + Y, PUPIL_SIZE * dir, PUPIL_SIZE)
+
+                    line([
+                        eye_x + EYE_SIZE * dir, eye_y,
+                        eye_x, eye_y + .1
+                    ], .1)
+                }
+
+                eye(-.12)
+                eye(.12)
+
+                // ARMS
+                const arm = (val, arm_angle, forearm_angle, down) => {
+                    const dir = Math.sign(val)
+                    const arm_x = center + half * val - ARM_WIDTH / 2 * dir
+                    const arm_y = y + offset_y + down
+
+                    const elbow = {
+                        x: arm_x + Math.cos(arm_angle) * ARM_LENGTH * -dir,
+                        y: arm_y + Math.sin(arm_angle) * ARM_LENGTH
+                    }
+                    const wrist = {
+                        x: Math.cos(forearm_angle) * FOREARM_LENGTH * -dir,
+                        y: Math.sin(forearm_angle) * FOREARM_LENGTH
+                    }
+
+                    ctx.fillStyle = 'rgb(110, 0, 0)'
+                    line([
+                        arm_x, arm_y,
+                        elbow.x, elbow.y,
+                        elbow.x + wrist.x, elbow.y + wrist.y
+                    ], ARM_WIDTH)
+
+                    return {x: elbow.x + wrist.x, y: elbow.y + wrist.y, angle: forearm_angle}
+                }
+                const ham_walk = WALK + Math.PI
+                const hammer = arm(-1, Math.sin(ham_walk) / 3 + 2.2, Math.cos(ham_walk) / 3 + 1.3, 2.1)
+                const ball = arm(1, Math.sin(WALK) / 3 + 2.2, Math.cos(WALK) / 3 + 1.3, 2.1)
+
+                // HAMMER
+                ctx.fillStyle = 'rgb(90, 0, 0)'
+                line([
+                    hammer.x, hammer.y,
+                    hammer.x - Math.cos(hammer.angle) * HANDLE_LENGTH,
+                    hammer.y - Math.sin(hammer.angle) * HANDLE_LENGTH
+                ], ARM_WIDTH / .6)
+                line([
+                    hammer.x, hammer.y,
+                    hammer.x + Math.cos(hammer.angle) * HAMMER_HEIGHT,
+                    hammer.y + Math.sin(hammer.angle) * HAMMER_HEIGHT
+                ], HAMMER_LENGTH)
+
+                // BALL
+                ctx.fillStyle = 'rgb(110, 0, 0)'
+                const real = realPos(ball.x, ball.y)
+                ctx.beginPath()
+                ctx.arc(real.x, real.y, .35 * scale, 0, 7)
+                ctx.fill()
+            }
+            function resize() {
+                cvs.width = innerWidth * dpr
+                cvs.height = (innerHeight + 1) * dpr
+
+                scale = (cvs.width + cvs.height) / 30
+            }
+
+            function update() {
+                ctx.clearRect(0, 0, cvs.width, cvs.height)
+                ctx.fillStyle = '#efe'
+                ctx.fillRect(0, 0, cvs.width, cvs.height)
+
+                WALK += .05
+                enemy()
+
+                ctx.fillStyle = '#0002'
+                const _width = width * 1.8 + Math.cos(WALK) / 2
+                fillRect(x + width / 2 - _width / 2, y + height, _width, .13)
+
+                requestAnimationFrame(update)
+            }
+
+            const cvs = document.createElement('canvas')
+            const ctx = cvs.getContext('2d')
+            document.body.appendChild(cvs)
+
+            const dpr = devicePixelRatio
+            let scale = 0
+            let WALK = 0
+            const width = 2.6
+            const height = 7.5
+            const x = -width / 2
+            const y = -height / 2
+
+            addEventListener('resize', resize)
+            resize()
+            update()
+        </script>
+    </body>
+</html>
