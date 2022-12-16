@@ -219,11 +219,15 @@ span.copyright {
 span.snip {
     border-radius: 3px;
     border: 1px solid #777;
-    display: inline;
+    display: inline-block;
     background: #ddd;
     padding: 0px 2px;
     color: #333;
     font-size: 15px
+}
+span.preview {
+    color: #666;
+    font-style: italic
 }
 div.step {
     background: #eee;
@@ -233,18 +237,28 @@ div.step {
 }
 
 /*-------- responsive --------*/
-@media screen and (min-width: 64em) {
+
+/* width is greater than 55 - MAX width */
+@media screen and (min-width: 55em) {
     .topnav > div {max-width: 64em; padding: .5em 6em; margin: 0 auto}
     .main {max-width: 64em; padding: 1em 6em; margin: 0 auto}
 
     .imgbox > a > img {width: 50%}
 }
-@media screen and (min-width: 43em) and (max-width: 64em) {
-    .topnav > div {padding: .5em 4em}
-    .main {padding: 1em 4em}
 
-    .imgbox > a > img {width: 60%}
+/* width is greater than 45 less than 55 - MID width */
+@media screen and (min-width: 45em) and (max-width: 55em) {
+    .topnav > div {padding: .5em 1em .5em 3em}
+    .main {padding: 1em 2em}
+
+    .topnav > div > i.fa-bars {display: block; font-size: 20px; float: right; cursor: pointer}
+    .topnav > div > a:not(:first-child) {display: none}
+    .topnav.responsive a:not(:first-child) {padding-bottom: 1em; display: block}
+
+    .imgbox > a > img {width: 50%}
 }
+
+/* width is less than 45 - MIN width */
 @media screen and (max-width: 45em) {
     .topnav > div {padding: .5em 1em}
     .main {padding: 1em 2em}
