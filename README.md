@@ -2,7 +2,7 @@
 > [Joachimford.uk](https://joachimford.uk) is my personal website containing JavaScript games, articles and experiments. All the projects can be run on a desktop computer, and often mobile devices as well.
 
 Things planned:
-- A massive platform adventure where Drillo and his friend get imprissoned in the ominous tower of TGO. Currently in development, but should be completed during 2024.
+- A massive platform adventure where [Drillo and his friend](https://joachimford.uk/snakes-and-ladders/) get imprissoned in the ominous tower of TGO. Currently in development, but should be completed during 2024.
 
 More coming soon!
 
