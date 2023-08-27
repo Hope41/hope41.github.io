@@ -2,6 +2,7 @@
     <head>
         <meta charset = utf-8>
         <meta name = viewport content = 'width = device-width, initial-scale = 1'>
+        <meta name = keywords content = 'Infinite zoom, JavaScript infinite zoom, HTML5 infinite zoom'>
 
         <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
         <script src = /js/analytics.js></script>
@@ -33,32 +34,39 @@
         <section class = main>
             <span class = date>29.03.2022</span>
             <h1>Infinite Zoom</h1>
-            <div class = iframe source = /infinite-zoom link = /infinite-zoom></div>
+            <div class = big>
+                <a href = /infinite-zoom>
+                    <img src = /images/infinite_zoom_big.png>
+                    <div class = play>PLAY</div>
+                </a>
+            </div>
+
             <p></p>
             If you're using a mouse or touchpad,
             point in the direction you want to go.
             On a <span class = mobile>mobile device</span>,
-            tap on the place where you want to zoom in.
+            tap on the place where you want to zoom in. Alternatively,
+            if you leave it long enough, the automatic mouse will move around for you.
             <p></p>
             Here is the complete source code:
             <div class = code source = /infinite-zoom lang = html></div>
             <p></p>
-            The main inspiration came from
+            The main inspiration for this project came from
             <a href = https://frankforce.com/screensavers/pixel-words target = _blank>Pixel Words</a>
-            by <a href = https://frankforce.com target = _blank>Frank Force</a>,
-            but I wanted to make a JavaScript version.
-            So, after many months of thinking and two-and-a-half days of developing,
-            I got an, overly simplified, but still satisfying result.
+            by <a href = https://frankforce.com target = _blank>Frank Force</a>, and I wanted to see
+            if I could make something like it, as infinite zooms have always interested me.
             <p></p>
             This is how it works:
             <p></p>
-            &emsp;1. Make an image that consists of various squares put together.<br>
-            &emsp;2. Draw the image on the screen.<br>
-            &emsp;3. Zoom in.<br>
-            &emsp;4. Once the squares making up the image are bigger than a specified amount:<br>
-            &emsp;&emsp;1. Create a cloned image inside each of the old images' squares.<br>
-            &emsp;&emsp;2. Fade and then remove the old image.<br>
-            &emsp;5. Keep zooming in.
+            <div class = menu>
+                ∙ make an image that consists of various squares put together<br>
+                ∙ draw the image on the screen<br>
+                ∙ zoom in<br>
+                ∙ once the squares making up the image are bigger than a specified amount:<br>
+                &emsp;∙ create a clone of the image inside each of its squares<br>
+                &emsp;∙ fade and remove the old image<br>
+                ∙ continue zooming in
+            </div>
             <p></p>
             An annoying thing regarding the
             <a href = https://www.w3schools.com/Tags/canvas_fillrect.asp target = _blank>JavaScript fillRect()</a>
@@ -75,13 +83,8 @@
             that represented the icon.
             This meant I could draw double the distance without the performance suffering greatly.
             <p></p>
-            This was my previous version that used rectangles:
-            <p></p>
-            <div class = iframe source = extra/infinite_zoom/rubbish.html link = extra/infinite_zoom/rubbish.html></div>
-            <p></p>
-            Of course, it is possible to render a higher depth image at the start,
-            meaning we would get an even finer precision without a slackening of
-            performance, but at the moment I think it looks fine.
+            Anyway, hopefully this page was at least a little bit helpful, and maybe it'll
+            lead to a larger implementation in the future!
             <p></p>
         </section>
 

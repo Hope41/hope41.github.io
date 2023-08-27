@@ -15,7 +15,7 @@
 
 /*-------- variables --------*/
 :root {
-    --transition: 0.5s;
+    --transition: 0.3s;
     --radius: 1em;
     --fontsize: 18px
 }
@@ -56,30 +56,6 @@ body {
 }
 .topnav > div > i.fa-bars {display: none}
 
-
-/*-------- image --------*/
-.imgbox {
-    float: left;
-    margin-top: 2em
-}
-.imgbox a:hover > img{
-    opacity: .5;
-    transform: scaleX(.95) scaleY(.95)
-}
-.imgbox > a > div > h2 {
-    color: #47b;
-    margin-bottom: 1em
-}
-.imgbox > a > img {
-    transition-duration: var(--transition);
-    border-radius: var(--radius);
-    margin: 0 2em 1em 0;
-    float: left;
-    box-shadow: 0px 0px 10px #0005
-}
-.imgbox > a > div {color: #000}
-
-
 /*-------- links --------*/
 a {
     text-decoration: none;
@@ -87,70 +63,70 @@ a {
 }
 a:hover {color: #037}
 
-
-/*-------- iframes & images --------*/
-
-/* iframe size */
-div.iframe, div.image {
-    position: relative;
-    transition-duration: var(--transition)
-}
-
-/* iframe size */
-div.iframe > iframe {height: 20em}
-
-/* image size */
-div.image {
+/* big image */
+.big img {
     max-width: 100%;
-    display: inline-block
-}
-
-/* position the link */
-div.iframe > a, div.image > a {
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0
-}
-
-/* style */
-div.iframe > iframe, div.image > img {
-    border: 0px;
-    border-radius: .5em;
-    width: 100%;
     transition-duration: var(--transition);
+    border-radius: var(--radius);
+    margin: 0 2em 1em 0;
+    opacity: .9;
     box-shadow: 0px 0px 10px #0005
 }
 
-/* if you hover over a div
-with a play button, display it */
-div.iframe:hover > i.fa-play,
-div.image:hover > i.fa-play {
-    background: #000;
-    color: #fff
+.big {
+    position: relative
 }
 
-/* if you hover over a div with a
-play button, fade it slightly */
-div.iframe:hover > iframe.play,
-div.image:hover > img.play {
-    opacity: .5
-}
-
-/* play button for div */
-div.iframe > i.fa-play,
-div.image > i.fa-play {
-    color: #0000;
-    font-size: 37px; 
-    border-radius: .2em;
+.play {
     position: absolute;
     right: 50%;
     bottom: 50%;
-    padding: .2em .7em;
-    transform: translate(50%, 50%);
-    transition-duration: var(--transition)
+    font-family: burger;
+    font-size: 3em;
+    color: #000;
+    background-color: #fff;
+    border-radius: .1em;
+    padding: 0em .2em;
+    border: solid #000 .1em;
+    transform: translate(50%, 40%) rotate(5deg);
+    transition: .3s
+}
+.big:hover .play {
+    transform: translate(50%, 40%) rotate(5deg) scale(1.15);
+}
+
+.big > a > img:hover {
+    opacity: .7;
+}
+
+/* small image */
+.small {
+    float: left;
+    margin-top: 2em
+}
+.small a:hover > img {
+    opacity: .8;
+}
+.small > a > div > h2 {
+    color: #47b;
+    margin-bottom: 1em
+}
+.small > a > img {
+    transition-duration: var(--transition);
+    border-radius: var(--radius);
+    margin: 0 2em 1em 0;
+    float: left;
+    box-shadow: 0px 0px 10px #0005
+}
+.small > a > div {color: #000}
+
+/* iframe boxes */
+.iframe > iframe {
+    border: 0px;
+    border-radius: .5em;
+    width: 100%;
+    height: 20em;
+    box-shadow: 0px 0px 10px #0005
 }
 
 
@@ -197,26 +173,26 @@ mark {
     font-weight: bold;
     background: none
 }
-span.italic {font-style: italic}
 span.mobile {
     font-weight: bold;
     color: #070
 }
 span.date {float: right}
+
 /* logos */
 i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
     font-size: var(--fontsize);
     cursor: pointer
 }
-/* copyright */
-span.copyright {
+
+.copyright {
     left: 0px;
     bottom: 0px;
     font-size: 15px;
     margin-left: .5em;
     position: fixed
 }
-span.snip {
+.snip {
     border-radius: 3px;
     border: 1px solid #777;
     display: inline-block;
@@ -225,11 +201,11 @@ span.snip {
     color: #333;
     font-size: 15px
 }
-span.preview {
+.description {
     color: #666;
     font-style: italic
 }
-div.step {
+.menu {
     background: #eee;
     box-shadow: 0px 0px 10px #0004;
     padding: 1em;
@@ -243,7 +219,8 @@ div.step {
     .topnav > div {max-width: 64em; padding: .5em 6em; margin: 0 auto}
     .main {max-width: 64em; padding: 1em 6em; margin: 0 auto}
 
-    .imgbox > a > img {width: 50%}
+    .small > a > img {width: 50%}
+    .play {font-size: 3em}
 }
 
 /* width is greater than 45 less than 55 - MID width */
@@ -255,7 +232,8 @@ div.step {
     .topnav > div > a:not(:first-child) {display: none}
     .topnav.responsive a:not(:first-child) {padding-bottom: 1em; display: block}
 
-    .imgbox > a > img {width: 50%}
+    .small > a > img {width: 50%}
+    .play {font-size: 2.75em}
 }
 
 /* width is less than 45 - MIN width */
@@ -266,6 +244,7 @@ div.step {
     .topnav > div > a:not(:first-child) {display: none}
     .topnav.responsive a:not(:first-child) {padding-bottom: 1em; display: block}
 
-    .imgbox > a > img {width: 100%}
+    .small > a > img {width: 100%}
+    .play {font-size: 2.5em}
 }
 * {box-sizing: border-box}

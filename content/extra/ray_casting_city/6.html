@@ -68,9 +68,11 @@
 
                 draw() {
                     for (let i = 0; i < ray_amount; i ++) {
+                        // get the angle of each ray
                         const increment = fov / ray_amount
                         const angle = i * increment - fov / 2
 
+                        // get the length of the ray
                         const length = getLength(
                             angle + hero.angle,
                             hero.x + hero.width / 2,
@@ -78,9 +80,14 @@
                             view_max
                         )
 
+                        // get the height of the rectangle based on the rays length
                         const height = ((100 / length) * cvs.width) / 500
+
+                        // get the colour of the rectangle based on the rays length
                         const shade = 50 / length
 
+                        /* calculate the width of each rectangle (or segment)
+                        based off the amount of rays and the width of the screen */
                         const segment_width = Math.floor(cvs.width / ray_amount) + 1
 
                         ctx.fillStyle = 'rgb(' +
@@ -114,6 +121,15 @@
                 }
 
                 return max_look
+            }
+
+            function collide(obj1, obj2) {
+                return (
+                    obj1.x < obj2.x + obj2.width &&
+                    obj1.x + obj1.width > obj2.x &&
+                    obj1.y < obj2.y + obj2.height &&
+                    obj1.y + obj1.height > obj2.y
+                )
             }
 
             function cos(angle) {
@@ -155,8 +171,9 @@
 
             const view_max = 5
             const ray_accuracy = .02
-            const ray_amount = Math.round(cvs.width/20)
+            const ray_amount = Math.round(cvs.width)
             const fov = 100
+
             let time = 0
 
             document.body.appendChild(cvs)

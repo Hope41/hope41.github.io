@@ -11,6 +11,59 @@
     <body>
         <script>
             'use strict'
+            class Map {
+                constructor(width, height) {
+                    this.array = []
+                    for (let i = 0; i < width * height; i ++) this.array.push(0)
+
+                    this.width = width
+                    this.height = height
+                }
+
+                generate() {
+                    for (let i = 0; i < this.width * this.height; i ++) {
+                        const I = i % this.width
+
+                        if (i % (this.width * 2) < this.width && I % 2 == 0) {
+                            this.array[i] = 1
+
+                            if (i % (this.width * 4) < this.width && I % 4 == 0 ||
+                                (i + this.width * 2) % (this.width * 4) < this.width &&
+                                (I + 2) % 4 == 0) {
+                                    const dir = random(0, 4)
+
+                                    if (!dir) this.array[i-this.width] = 1
+                                    if (dir == 1) this.array[i+1] = 1
+                                    if (dir == 2) this.array[i+this.width] = 1
+                                    if (dir == 3) this.array[i-1] = 1
+                            }
+                        }
+
+
+                        if (I == 0 || I == this.width - 1 || 
+                            i < this.width || i > this.height * this.width - this.width)
+                                this.array[i] = 1
+                    }
+                }
+
+                update() {
+                    hero.update()
+
+                    ctx.fillStyle = '#666'
+                    this.array.forEach((item, index) => {
+                        if (item) {
+                            const pos = indexToPos(index, this.width)
+                            ctx.strokeRect(
+                                pos.x * scale,
+                                pos.y * scale,
+                                scale,
+                                scale
+                            )
+                        }
+                    })
+                }
+            }
+
             class Player {
                 constructor(x, y) {
                     this.x = x
@@ -97,7 +150,7 @@
 
             function setBlockSize() {
                 const screen_division = 1
-                return cvs.height / screen_division / height
+                return cvs.height / screen_division / map.height
             }
 
             function random(min, max, int = 1) {
@@ -116,26 +169,27 @@
             function update() {
                 ctx.clearRect(0, 0, cvs.width, cvs.height)
                 time ++
-                hero.update()
+
+                map.update()
 
                 requestAnimationFrame(update)
             }
 
             const cvs = document.createElement('canvas')
             const ctx = cvs.getContext('2d')
+            const map = new Map(10, 10)
             const hero = new Player(5.4, 5.4)
 
             const view_max = 5
+            const ray_accuracy = .02
             const ray_amount = 1
             const fov = 100
-
-            const width = 10
-            const height = 10
 
             let scale = setBlockSize()
             let time = 0
 
             document.body.appendChild(cvs)
+            map.generate()
 
             addEventListener('resize', resize)
             resize()

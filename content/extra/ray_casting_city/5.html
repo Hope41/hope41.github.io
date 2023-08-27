@@ -78,10 +78,10 @@
                             view_max
                         )
 
-                        const height = ((50 / length) * cvs.width) / 600
+                        const height = ((100 / length) * cvs.width) / 500
                         const shade = 50 / length
 
-                        const segment_width = Math.floor(cvs.width / 20) + 1
+                        const segment_width = Math.floor(cvs.width / ray_amount) + 1
 
                         ctx.fillStyle = 'rgb(' +
                             shade + ',' +
@@ -155,9 +155,8 @@
 
             const view_max = 5
             const ray_accuracy = .02
-            const ray_amount = 1
+            const ray_amount = Math.round(cvs.width/20)
             const fov = 100
-
             let time = 0
 
             document.body.appendChild(cvs)

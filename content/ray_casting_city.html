@@ -2,6 +2,7 @@
     <head>
         <meta charset = utf-8>
         <meta name = viewport content = 'width = device-width, initial-scale = 1'>
+        <meta name = keywords content = 'JavaScript ray caster, HTML5 ray casting, JavaScript 3d demo'>
 
         <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
         <script src = /js/analytics.js></script>
@@ -33,61 +34,67 @@
         <section class = main>
             <span class = date>27.03.2022</span>
             <h1>Ray-casting City</h1>
-            <div class = image source = /images/ray_casting_city_big.png link = /ray-casting-city></div>
-
+            <div class = big>
+                <a href = /ray-casting-city>
+                    <img src = /images/ray_casting_city_big.png>
+                    <div class = play>PLAY</div>
+                </a>
+            </div>
             <p></p>
-            A small project developed throughout March 2022<br>
-            Use the <mark>Arrows / WASD / ZQSD</mark> to move around a procedural 1000x1000 city.
+            A small 3D project developed throughout March 2022. Use the
+            <mark>Arrows, WASD, or ZQSD</mark> to move around a procedural city.
             <p></p>
             Here is the complete source code:
             <div class = code source = /ray-casting-city lang = html></div>
-            This experiment was fun to make, but also, as I began trying to add more
-            features I realised that ray casting, great as it is, is very limited and tricky
-            to grow from.<p></p>
+            Although this experiment was fun to make, I realised as I went along
+            that ray casting is actually pretty limited with its flexability. This
+            is why a lot of people have turned to methods like ray-tracing, ray-marching,
+            and others which are ways to improve the somewhat lifeless results
+            of ray-casting.
+            <p></p>
             The concept of a ray-caster is very simple.
             Although it may appear to look 3D, it is actually using 2D logic to project
-            various rectangles onto a canvas in such a manner that it looks 3D.
+            various rectangles onto a canvas in such a manner that it looks 3D. Here is how it works.
             <p></p>
-            This is a ray.
+            This is a single ray with some rectangles around it.
+            <p></p>
             <div class = iframe source = extra/ray_casting_city/1.html></div>
             <p></p>
-            ...And these are some rectangles.
+            This part makes sure the ray stops at the closest rectangle.
+            <p></p>
             <div class = iframe source = extra/ray_casting_city/2.html></div>
             <p></p>
-            If you make collision with the ray and the rectangles...
+            This example just uses more rays.
+            <p></p>
             <div class = iframe source = extra/ray_casting_city/3.html></div>
             <p></p>
-            ...and add multiple rays within a limit,
-            you have the base structure for the 3D casting.
+            This is actually the entirety of ray-casting.
+            Take the ray on the far left.
+            The ray has a unique length based on what it's colliding with.
+            Let's draw a rectangle on the far left of the screen,
+            where its height corresponds to the length of our ray
+            (i.e. the longer the ray, the shorter the rectangle).
+            A ray moving around like this...
+            <p></p>
+            <div class = iframe source = extra/ray_casting_city/2.html></div>
+            <p></p>
+            ...would look something similar to this:
+            <p></p>
             <div class = iframe source = extra/ray_casting_city/4.html></div>
             <p></p>
-            So, take the ray on the far left.
-            That ray has a unique length based on what it's colliding with.
-            If a rectangle was drawn on the far left of the screen,
-            and its height corresponded to the length of the ray
-            (i.e. the longer the ray, the shorter the rectangle),
-            you would have actually completed the main part of ray-casting.
-            <p></p>
-            This...
-            <div class = iframe source = extra/ray_casting_city/3.html></div>
-            <p></p>
-            ...would make something similar to this...
+            By implememting more rays, the result would look like this:
             <p></p>
             <div class = iframe source = extra/ray_casting_city/5.html></div>
             <p></p>
-            ...And with more rays, something like this:
+            It's looking a bit more 3D now, isn't it?
+            If we added a higher resolution (i.e. making a ray for every ~pixel),
+            this would be the result:
             <p></p>
             <div class = iframe source = extra/ray_casting_city/6.html></div>
             <p></p>
-            It's looking a bit more 3D now!
-            Now if we add a higher resolution (i.e. making a ray for every ~pixel),
-            this would be the result:
-            <p></p>
-            <div class = iframe source = extra/ray_casting_city/7.html></div>
-            <p></p>
             This is the source code for the demo above:
             <p></p>
-            <div class = code source = extra/ray_casting_city/7.html lang = html></div>
+            <div class = code source = extra/ray_casting_city/6.html lang = html></div>
             <p></p>
         </section>
 

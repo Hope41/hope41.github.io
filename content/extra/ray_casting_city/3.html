@@ -100,7 +100,7 @@
                             ctx.strokeStyle = '#00f'
                             line(
                                 0, 0, cos(angle) * length,
-                                sin(angle) * length, .1
+                                sin(angle) * length, .03
                             )
 
                             ctx.stroke()
@@ -215,7 +215,7 @@
 
             const view_max = 5
             const ray_accuracy = .02
-            const ray_amount = 1
+            const ray_amount = 10
             const fov = 100
 
             let scale = setBlockSize()
