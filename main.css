@@ -4,8 +4,8 @@
     src: url(burger.otf)
 }
 @font-face {
-    font-family: nunito;
-    src: url(nunito.ttf)
+    font-family: font;
+    src: url(ChakraPetch-Regular.ttf)
 }
 @font-face {
     font-family: code;
@@ -17,7 +17,7 @@
 :root {
     --transition: 0.3s;
     --radius: 1em;
-    --fontsize: 18px
+    --fontsize: 19px
 }
 
 
@@ -25,15 +25,21 @@
 body {
     background-color: #eee;
     margin: 0;
-    font-family: nunito;
-    font-size: var(--fontsize)
+    font-family: font;
+    font-size: var(--fontsize);
+    padding-top: 50px;
 }
 
 /*-------- topnav --------*/
 .topnav {
     background-color: #999;
-    margin-bottom: 1em;
-    padding: .2em 0
+    margin-bottom: 10px;
+    padding: 5px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 .topnav > div > a {
     color: #333;
@@ -41,17 +47,17 @@ body {
 }
 .topnav > div > a:not(:first-child).text {
     text-decoration: none;
-    margin: 0 .5em
+    margin: 0 15px
 }
 .topnav > div > a > i {
-    margin: 0 .2em
+    margin: 0 5px
 }
 .topnav > div > a:not(:first-child):hover {color: #777}
 .topnav > div > a:first-child {
     text-decoration: none;
     color: #000;
     font-family: burger;
-    margin-right: .5em;
+    margin-right: 15px;
     font-size: 45px
 }
 .topnav > div > i.fa-bars {display: none}
@@ -68,7 +74,8 @@ a:hover {color: #037}
     max-width: 100%;
     transition-duration: var(--transition);
     border-radius: var(--radius);
-    margin: 0 2em 1em 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
     box-shadow: 0px 0px 10px #0005
 }
 
@@ -81,14 +88,13 @@ a:hover {color: #037}
     right: 50%;
     bottom: 50%;
     font-family: burger;
-    font-size: 3em;
     color: #000;
     background-color: #fff;
-    border-radius: .1em;
-    padding: 0em .2em;
-    border: solid #000 .1em;
+    border-radius: 10px;
+    padding: 0em 10px;
+    border: solid #000 5px;
     transform: translate(50%, 40%) rotate(5deg);
-    transition: .3s
+    transition: .2s
 }
 .big:hover .play {
     transform: translate(50%, 40%) rotate(5deg) scale(1.15);
@@ -101,19 +107,19 @@ a:hover {color: #037}
 /* small image */
 .small {
     float: left;
-    margin-top: 2em
+    margin-top: 30px
 }
-.small a:hover > img {
-    opacity: .8;
+.small a > img:hover {
+    transform: scale(1.03);
 }
 .small > a > div > h2 {
     color: #47b;
-    margin-bottom: 1em
+    margin-bottom: 15px
 }
 .small > a > img {
     transition-duration: var(--transition);
     border-radius: var(--radius);
-    margin: 0 2em 1em 0;
+    margin: 0 40px 10px 0;
     float: left;
     box-shadow: 0px 0px 10px #0005
 }
@@ -122,9 +128,9 @@ a:hover {color: #037}
 /* iframe boxes */
 .iframe > iframe {
     border: 0px;
-    border-radius: .5em;
+    border-radius: 10px;
     width: 100%;
-    height: 20em;
+    height: 400px;
     box-shadow: 0px 0px 10px #0005
 }
 
@@ -155,30 +161,39 @@ a:hover {color: #037}
 /*-------- other --------*/
 div.code, div.codeWrap {
     background-color: #0241;
-    box-shadow: 0px 0px 10px #0005;
+    box-shadow: 0 0 10px #0005;
     border-radius: .5em;
     font-size: 15px;
     font-family: code;
     overflow: auto;
-    padding: 1em;
+    padding: 20px;
     margin: 2em 0 2em 0;
-    max-height: 20em
+    max-height: 400px
 }
 .codeWrap {
     overflow-wrap: break-word
 }
 
 h2, h3 {margin: 0}
-h3 {margin-top: .5em}
+h3 {margin-top: 10px}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #000;
+}
 
 /* font emphasis */
 mark {
     font-weight: bold;
-    background: none
+    background: none;
 }
 span.mobile {
     font-weight: bold;
     color: #070
+}
+span.gr {
+    color: #060
 }
 span.date {float: right}
 
@@ -192,7 +207,7 @@ i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
     left: 0px;
     bottom: 0px;
     font-size: 15px;
-    margin-left: .5em;
+    margin-left: 5px;
     position: fixed
 }
 .snip {
@@ -200,7 +215,7 @@ i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
     border: 1px solid #777;
     display: inline-block;
     background: #ddd;
-    padding: 0px 2px;
+    padding: 0 2px;
     color: #333;
     font-size: 15px
 }
@@ -211,41 +226,42 @@ i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
 .menu {
     background: #eee;
     box-shadow: 0px 0px 10px #0004;
-    padding: 1em;
+    padding: 30px;
     border-radius: 10px
 }
 
 /*-------- responsive --------*/
 
-/* width is greater than 55 - MAX width */
-@media screen and (min-width: 55em) {
-    .topnav > div {max-width: 64em; padding: .5em 6em; margin: 0 auto}
-    .main {max-width: 64em; padding: 1em 6em; margin: 0 auto}
+/* width is greater than 55 = MAX width */
+@media screen and (min-width: 1050px) {
+    .topnav > div {padding: 0 160px; margin: 0 auto}
+    .main {padding: 50px 160px; margin: 0 auto}
 
     .small > a > img {width: 50%}
     .play {font-size: 3em}
 }
 
-/* width is greater than 45 less than 55 - MID width */
-@media screen and (min-width: 45em) and (max-width: 55em) {
-    .topnav > div {padding: .5em 1em .5em 3em}
-    .main {padding: 1em 2em}
+/* width is greater than 45 less than 55 = MID width */
+@media screen and (min-width: 810px) and (max-width: 1050px) {
+    .topnav > div {padding: 0 70px; margin: 0 auto}
+    .main {padding: 10px 70px}
 
-    .topnav > div > i.fa-bars {display: block; font-size: 20px; float: right; cursor: pointer}
-    .topnav > div > a:not(:first-child) {display: none}
-    .topnav.responsive a:not(:first-child) {padding-bottom: 1em; display: block}
+    .topnav > div > a:not(:first-child).text {
+        text-decoration: none;
+        margin: 0 10px
+    }
 
     .small > a > img {width: 50%}
     .play {font-size: 2.75em}
 }
 
-/* width is less than 45 - MIN width */
-@media screen and (max-width: 45em) {
-    .topnav > div {padding: .5em 1em}
-    .main {padding: 1em 2em}
-    .topnav > div > i.fa-bars {display: block; font-size: 20px; float: right; cursor: pointer}
+/* width is less than 45 = MIN width */
+@media screen and (max-width: 810px) {
+    .topnav > div {padding: 0 70px}
+    .main {padding: 10px 70px}
+    .topnav > div > i.fa-bars {display: block; font-size: 20px; float: right; cursor: pointer; padding-top: 20px;}
     .topnav > div > a:not(:first-child) {display: none}
-    .topnav.responsive a:not(:first-child) {padding-bottom: 1em; display: block}
+    .topnav.responsive a:not(:first-child) {padding-bottom: 6px; display: block}
 
     .small > a > img {width: 100%}
     .play {font-size: 2.5em}
