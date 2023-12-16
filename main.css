@@ -93,15 +93,11 @@ a:hover {color: #037}
     border-radius: 10px;
     padding: 0 10px;
     border: solid #000 5px;
-    transform: translate(50%, 40%);
+    transform: translate(50%, 40%) rotate(5deg);
     transition: .2s
 }
 .big:hover .play {
-    transform: translate(50%, 40%) scale(1.05);
-}
-
-.big > a > img:hover {
-    opacity: .9;
+    transform: translate(50%, 40%) rotate(5deg) scale(1.05);
 }
 
 /* small image */
