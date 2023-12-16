@@ -1,6 +1,6 @@
 # [JoachimFord.uk](https://joachimford.uk)
-> [JoachimFord.uk](https://joachimford.uk) is my personal website including fully-featured JavaScript games and smaller experiments.
+> [JoachimFord.uk](https://joachimford.uk) is my personal website including fully-featured JavaScript games and small experiments.
 
-A massive platform adventure is currently being made where [Drillo and his friend](https://joachimford.uk/snakes-and-ladders/) get imprissoned in the tower of The Great Ominous. In development, but very, very near completion.
+[**Check out my new adventure game!**](https://joachimford.uk/content/ios_mission.html)
 
 Please contact me at [contact@joachimford.uk](mailto:contact@joachimford.uk) if you have any more game ideas!
