@@ -240,7 +240,7 @@ i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
 /* width is greater than 45 less than 55 = MID width */
 @media screen and (min-width: 810px) and (max-width: 1050px) {
     .topnav > div {padding: 0 70px; margin: 0 auto}
-    .main {padding: 10px 70px}
+    .main {padding: 50px 70px}
 
     .topnav > div > a:not(:first-child).text {
         text-decoration: none;
@@ -254,7 +254,7 @@ i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
 /* width is less than 45 = MIN width */
 @media screen and (max-width: 810px) {
     .topnav > div {padding: 0 70px}
-    .main {padding: 10px 70px}
+    .main {padding: 50px 70px}
     .topnav > div > i.fa-bars {display: block; font-size: 20px; float: right; cursor: pointer; padding-top: 20px;}
     .topnav > div > a:not(:first-child) {display: none}
     .topnav.responsive a:not(:first-child) {padding-bottom: 6px; display: block}
