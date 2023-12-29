@@ -274,94 +274,11 @@ h3, h2, h1 {
     padding: 15px 0;
 }
 
-/*-------- highlight --------*/
-/* .hljs-string {color: #370}
-.hljs-keyword {color: #83b}
-.hljs-built_in {color: #088}
-.hljs-comment {color: #555}
-.hljs-number {color: #960}
-.hljs-attr {color: #960}
-.hljs-literal {color: #960}
-.hljs-tag {color: #555}
-.hljs-function {color: #555}
-.hljs-attribute {color: #555}
-.hljs-variable {color: #269}
-.hljs-name {color:#06c}
-.hljs-selector-tag {color: #662}
-.hljs-title {color: #06c}
-.hljs-selector-id {color: #06c}
-.hljs-meta {color: #06c}
-.hljs-params {color: #b60}
-.hljs-property {color: #076}
-.hljs-regexp {color: #d55}
-.hljs-hash {color: #0005}*/
-
-
-/*-------- other --------*/
-/* div.code, div.codeWrap {
-    background-color: #0241;
-    box-shadow: 0 0 10px #0005;
-    border-radius: .5em;
-    font-size: 15px;
-    font-family: code;
-    overflow: auto;
-    padding: 20px;
-    margin: 2em 0 2em 0;
-    max-height: 400px
+.youtube {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
 }
-.codeWrap {
-    overflow-wrap: break-word
-}
-
-h2, h3 {margin: 0}
-h3 {margin-top: 10px}
-
-hr {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: #000;
-} */
-
-/* font emphasis */
-/* mark {
-    font-weight: bold;
-    background: none;
-}
-span.mobile {
-    font-weight: bold;
-    color: #070
-}
-span.gr {
-    color: #060
-}
-span.date {float: right} */
-
-/* logos */
-/* i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
-    font-size: var(--fontsize);
-    cursor: pointer
-}
-
-.copyright {
-    left: 0px;
-    bottom: 0px;
-    font-size: 15px;
-    margin-left: 5px;
-    position: fixed
-}
-.snip {
-    border-radius: 3px;
-    border: 1px solid #777;
-    display: inline-block;
-    background: #ddd;
-    padding: 0 2px;
-    color: #333;
-    font-size: 15px
-}
-.description {
-    color: #666;
-    font-style: italic
-} */
 
 
 @media screen and (min-width: 1050px) {

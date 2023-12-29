@@ -79,16 +79,16 @@
                 const a = 1 - time / 500
 
                 let A = a
-                if (A < .3) A = .3
+                if (A < .4) A = .4
                 ctx.fillStyle = 'rgb(0,0,0,'+A+')'
                 ctx.fillRect(0, 0, cvs.width, cvs.height)
 
                 ctx.fillStyle = 'rgb(255,255,255,'+(1-a)+')'
                 ctx.textAlign = 'center'
-                ctx.font = 'bold ' + s * 1.5 + 'px super'
+                ctx.font = s * 1.5 + 'px super'
                 ctx.fillText('IO\'S MISSION', cvs.width / 2, cvs.height / 2 + s - 400 / time * 10)
 
-                ctx.font = 'bold ' + s * .5 + 'px super'
+                ctx.font = s * .5 + 'px super'
                 ctx.fillText('THE NEW ADVENTURE GAME', cvs.width / 2, cvs.height / 2 + s * 2 + 100 / time * 5)
 
                 requestAnimationFrame(update)
