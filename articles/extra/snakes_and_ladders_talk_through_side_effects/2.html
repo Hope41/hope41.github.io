@@ -118,7 +118,7 @@
                 cvs.width = innerWidth * dpr
                 cvs.height = (innerHeight + 1) * dpr
 
-                scale = (cvs.width + cvs.height) / 10
+                scale = (cvs.width + cvs.height) / 8
             }
 
             function update() {
@@ -126,7 +126,7 @@
                 ctx.fillStyle = '#efe'
                 ctx.fillRect(0, 0, cvs.width, cvs.height)
 
-                WALK += .09
+                WALK += .14
                 enemy()
 
                 ctx.fillStyle = '#0002'

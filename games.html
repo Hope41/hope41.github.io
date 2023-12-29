@@ -1,36 +1,35 @@
 <!DOCTYPE html>
+<html>
     <head>
         <meta charset = utf-8>
         <meta name = viewport content = 'width = device-width, initial-scale = 1'>
-        <meta name = keywords content = 'games with source code, free JavaScript games, HTML5 games'>
+        <meta name = keywords content = 'Joachim Ford, JavaScript games, HTML5 games'>
 
         <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
-        <script src = js/analytics.js></script>
-        <script src = js/main.js></script>
-
+        <script src = /js/analytics.js></script>
+        <script src = /js/main.js></script>
         <title>Joachim Ford</title>
-
-        <link rel = stylesheet href = main.css>
-        <link href = fontawesome/css/fontawesome.css rel = stylesheet>
-        <link href = fontawesome/css/solid.css rel = stylesheet>
-        <link href = fontawesome/css/brands.css rel = stylesheet>
+        <link rel = stylesheet href = /main.css>
     </head>
 
     <body>
         <section class = topnav>
-            <div>
-                <a class = text href = '/'>Joachim Ford</a>
-                <i class = 'fa-solid fa-bars' onclick = bar()></i>
-                <a class = text href = games>Games</a>
-                <a class = text href = articles>Articles</a>
-                <a class = text href = news>News</a>
-                <a class = text href = experiments>Experiments</a>
-                <a href = https://github.com/Hope41 target = _blank><i class = 'fa-brands fa-github'></i></a>
-                <a href = mailto:contact@joachimford.uk><i class = 'fa-solid fa-envelope'></i></a>
+            <div class = joachimford>
+                <a href = '/'>Joachim Ford</a>
             </div>
+            <div class = nav>
+                <a class = text href = /games>Games</a>
+                <a class = text href = /articles>Articles</a>
+                <a class = text href = /news>News</a>
+                <a class = text href = /experiments>Experiments</a>
+                <a class = text href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+                <a class = text href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+            </div>
+            <img class = bars src = /svg/bars.svg onmousedown = bar()></img>
         </section>
 
         <section class = main>
+            <div class = date>Sorted By Quality</div>
             <div class = small>
                 <a href = content/ios_mission.html>
                     <img src = images/ios_mission.png>
@@ -39,7 +38,7 @@
                         <h2>Io's Mission</h2>
                         Drillo has been captured by The Great Ominous!
                         A fully-featured platform adventure where Io quests to
-                        rescue their friends.
+                        rescue his friends.
                         <p></p>
                         This game has full <span class = mobile>mobile support</span>.
                     </div>
@@ -68,17 +67,16 @@
                         overwhelming enemy robots with flowers.
                         <p></p>
                         This game has been shortlisted for the
-                        <span class = italic>Technocamps Game of Codes 2022</span>
-                        competition under the theme <mark>Combatting Climate Change.</mark>
+                        2022 Technocamps Game of Codes
+                        competition under the theme Combatting Climate Change.
                     </div>
                 </a>
             </div>
-            &nbsp;<br>
         </section>
 
         <span class = copyright>
             © Copyright <span class = year></span>
-            Joachimford.uk — <a href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
+            Joachimford.uk — <a class = normal href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
         </span>
     </body>
 </html>

@@ -2,33 +2,29 @@
     <head>
         <meta charset = utf-8>
         <meta name = viewport content = 'width = device-width, initial-scale = 1'>
-        <meta name = keywords content = 'online game, platform game, JavaScript platformer'>
+        <meta name = keywords content = 'Joachim Ford, online game, platform game, JavaScript platformer'>
 
         <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
         <script src = /js/analytics.js></script>
-        <script src = /js/highlight.min.js></script>
         <script src = /js/main.js></script>
-
         <title>Joachim Ford</title>
-
         <link rel = stylesheet href = /main.css>
-        <link href = /fontawesome/css/fontawesome.css rel = stylesheet>
-        <link href = /fontawesome/css/solid.css rel = stylesheet>
-        <link href = /fontawesome/css/brands.css rel = stylesheet>
     </head>
 
     <body>
         <section class = topnav>
-            <div>
-                <a class = text href = '/'>Joachim Ford</a>
-                <i class = 'fa-solid fa-bars' onclick = bar()></i>
+            <div class = joachimford>
+                <a href = '/'>Joachim Ford</a>
+            </div>
+            <div class = nav>
                 <a class = text href = /games>Games</a>
                 <a class = text href = /articles>Articles</a>
                 <a class = text href = /news>News</a>
                 <a class = text href = /experiments>Experiments</a>
-                <a href = https://github.com/Hope41 target = _blank><i class = 'fa-brands fa-github'></i></a>
-                <a href = mailto:contact@joachimford.uk><i class = 'fa-solid fa-envelope'></i></a>
+                <a class = text href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+                <a class = text href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
             </div>
+            <img class = bars src = /svg/bars.svg onmousedown = bar()></img>
         </section>
 
         <section class = main>
@@ -37,36 +33,32 @@
 
             <div class = big>
                 <a href = /the-mitigator target = _blank>
-                    <img src = /images/the_mitigator_big.png>
-                    <div class = play>PLAY</div>
+                    <img class = img src = /images/the_mitigator_big.png>
+                    <div class = play><img src = /svg/play.svg></svg></div>
                 </a>
             </div>
-
-            <p></p>
-            Control the robot around 10 levels, collecting litter and using plants to overwhelm the enemy robots.
-            <p></p>
-            Use the <b>arrows, WASD, or ZQSD</b> to move.
-            Press <mark>X</mark> or <mark>SPACE</mark> to use your upgrade.
-            You can only activate upgrades with power,
-            and can get more power by destroying enemies or collecting litter.
-            Hold the <mark>left</mark> or <mark>right</mark> keys along with the <mark>up</mark> key to climb walls.
-            <p></p>
-            This project was developed from February to March for the
-            Technocamps Game of Codes
-            competition 2022 under the theme <mark>Combatting Climate Change.</mark>
-            <p></p>
-            This is the entire source code (it's quite long):
-            <p></p>
-            index.html:
-            <div class = code source = /the-mitigator lang = html></div>
-            main.js:
-            <div class = code source = /the-mitigator/main.js lang = js></div>
-            <p></p>
+            <div class = quote>
+                <b>Control the robot around 10 levels, collecting litter and using
+                plants to overwhelm the enemy robots.
+                <p></p>
+                Use the arrows, WASD, or ZQSD to move. If you have enough power -
+                gained by destroying enemies or collecting litter - you can press
+                X or SPACE to throw seeds. Hold the UP key while moving to climb walls.</b>
+            </div>
+            <span class = gap>
+                This project was developed from February to March for the
+                Technocamps Game of Codes
+                competition 2022 under the theme Combatting Climate Change.
+                <p></p>
+                The entire source code is shown below.
+            </span>
+            <div class = code source = /the-mitigator></div>
+            <div class = code source = /the-mitigator/main.js></div>
         </section>
 
         <span class = copyright>
             © Copyright <span class = year></span>
-            Joachimford.uk — <a href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
+            Joachimford.uk — <a class = normal href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
         </span>
     </body>
 </html>

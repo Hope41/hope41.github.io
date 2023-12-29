@@ -1,45 +1,60 @@
 <!DOCTYPE html>
+<html>
     <head>
         <meta charset = utf-8>
         <meta name = viewport content = 'width = device-width, initial-scale = 1'>
-        <meta name = keywords content = 'JavaScript games, Procedurally generated, Procedural generation'>
+        <meta name = keywords content = 'Joachim Ford, procedural generation, procedural worlds'>
 
         <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
-        <script src = js/analytics.js></script>
-        <script src = js/main.js></script>
-
+        <script src = /js/analytics.js></script>
+        <script src = /js/main.js></script>
         <title>Joachim Ford</title>
-
-        <link rel = stylesheet href = main.css>
-        <link href = fontawesome/css/fontawesome.css rel = stylesheet>
-        <link href = fontawesome/css/solid.css rel = stylesheet>
-        <link href = fontawesome/css/brands.css rel = stylesheet>
+        <link rel = stylesheet href = /main.css>
     </head>
 
     <body>
         <section class = topnav>
-            <div>
-                <a class = text href = '/'>Joachim Ford</a>
-                <i class = 'fa-solid fa-bars' onclick = bar()></i>
-                <a class = text href = games>Games</a>
-                <a class = text href = articles>Articles</a>
-                <a class = text href = news>News</a>
-                <a class = text href = experiments>Experiments</a>
-                <a href = https://github.com/Hope41 target = _blank><i class = 'fa-brands fa-github'></i></a>
-                <a href = mailto:contact@joachimford.uk><i class = 'fa-solid fa-envelope'></i></a>
+            <div class = joachimford>
+                <a href = '/'>Joachim Ford</a>
             </div>
+            <div class = nav>
+                <a class = text href = /games>Games</a>
+                <a class = text href = /articles>Articles</a>
+                <a class = text href = /news>News</a>
+                <a class = text href = /experiments>Experiments</a>
+                <a class = text href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+                <a class = text href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+            </div>
+            <img class = bars src = /svg/bars.svg onmousedown = bar()></img>
         </section>
 
         <section class = main>
-            <a href = articles/snakes_and_ladders_talk_through_side_effects.html>
-            <h3>∙ Snakes And Ladders Talk Through - Side Effects</h3></a>
-            <a href = articles/snakes_and_ladders_talk_through_level_generation.html>
-            <h3>∙ Snakes And Ladders Talk Through - Level Generation</h3></a>
+            <div class = date>Sorted By Date</div>
+
+            <a class = article href = articles/ios_mission_the_bits_that_nobody_notices.html>
+                <img class = tiny src = /articles/extra/ios_mission_the_bits_that_nobody_notices/1.png>
+                <h3>Io's Mission - The Bits That Nobody Notices</h3>
+            </a>
+
+            <a class = article href = articles/ios_mission_the_hero.html>
+                <img class = tiny src = /articles/extra/ios_mission_the_hero/1.png>
+                <h3>Io's Mission - The Hero</h3>
+            </a>
+
+            <a class = article href = articles/snakes_and_ladders_talk_through_side_effects.html>
+                <img class = tiny src = /articles/extra/snakes_and_ladders_talk_through_side_effects/1.png>
+                <h3>Snakes And Ladders Talk Through: Side Effects</h3>
+            </a>
+
+            <a class = article href = articles/snakes_and_ladders_talk_through_level_generation.html>
+                <img class = tiny src = /articles/extra/snakes_and_ladders_talk_through_level_generation/1.png>
+                <h3>Snakes And Ladders Talk Through: Level Generation</h3></a>
+            </a>
         </section>
 
         <span class = copyright>
             © Copyright <span class = year></span>
-            Joachimford.uk — <a href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
+            Joachimford.uk — <a class = normal href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
         </span>
     </body>
 </html>

@@ -1,106 +1,146 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
+<html>
     <head>
         <meta charset = utf-8>
         <meta name = viewport content = 'width = device-width, initial-scale = 1'>
-        <meta name = keywords content = 'JavaScript ray caster, HTML5 ray casting, JavaScript 3d demo'>
+        <meta name = keywords content = 'Joachim Ford, JavaScript ray caster, JavaScript 3d'>
 
         <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
         <script src = /js/analytics.js></script>
-        <script src = /js/highlight.min.js></script>
         <script src = /js/main.js></script>
-
         <title>Joachim Ford</title>
-
         <link rel = stylesheet href = /main.css>
-        <link href = /fontawesome/css/fontawesome.css rel = stylesheet>
-        <link href = /fontawesome/css/solid.css rel = stylesheet>
-        <link href = /fontawesome/css/brands.css rel = stylesheet>
     </head>
 
     <body>
         <section class = topnav>
-            <div>
-                <a class = text href = '/'>Joachim Ford</a>
-                <i class = 'fa-solid fa-bars' onclick = bar()></i>
+            <div class = joachimford>
+                <a href = '/'>Joachim Ford</a>
+            </div>
+            <div class = nav>
                 <a class = text href = /games>Games</a>
                 <a class = text href = /articles>Articles</a>
                 <a class = text href = /news>News</a>
                 <a class = text href = /experiments>Experiments</a>
-                <a href = https://github.com/Hope41 target = _blank><i class = 'fa-brands fa-github'></i></a>
-                <a href = mailto:contact@joachimford.uk><i class = 'fa-solid fa-envelope'></i></a>
+                <a class = text href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+                <a class = text href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
             </div>
+            <img class = bars src = /svg/bars.svg onmousedown = bar()></img>
         </section>
 
         <section class = main>
             <span class = date>27.03.2022</span>
-            <h1>Ray-casting City</h1>
+            <h1>Ray Casting Blocks</h1>
             <div class = big>
                 <a href = /ray-casting-city target = _blank>
-                    <img src = /images/ray_casting_city_big.png>
-                    <div class = play>PLAY</div>
+                    <img class = img src = /images/ray_casting_city_big.png>
+                    <div class = play><img src = /svg/play.svg></svg></div>
                 </a>
             </div>
-            <p></p>
-            A small 3D project developed throughout March 2022. Use the
-            <mark>Arrows, WASD, or ZQSD</mark> to move around a procedural city.
-            <p></p>
-            Here is the complete source code:
-            <div class = code source = /ray-casting-city lang = html></div>
-            Although this experiment was fun to make, I realised as I went along
-            that ray casting is actually pretty limited with its flexability. This
-            is why a lot of people have turned to methods like ray-tracing, ray-marching,
-            and others which are ways to improve the somewhat lifeless results
-            of ray-casting.
-            <p></p>
-            The concept of a ray-caster is very simple.
-            Although it may appear to look 3D, it is actually using 2D logic to project
-            various rectangles onto a canvas in such a manner that it looks 3D. Here is how it works.
-            <p></p>
-            This is a single ray with some rectangles around it.
-            <p></p>
+            <div class = quote>
+                <b>A lively run through an infinite procedural city.
+                Initially developed throughout March 2022, but later updated in late 2023.
+                </b>
+            </div>
+            <span class = gap>
+                Here is the complete source code:
+            </span>
+            <div class = code source = /ray-casting-city></div>
+            <span class = gap>
+                I must say, although this experiment was very fun to make,
+                ray casting is actually quite limited when it comes to flexability.
+                That's why nowadays a lot of people have turned to methods like ray tracing, ray marching,
+                and other things which have been able to extend the limitations of ray casting.
+                It's still an awesome tool though, and I recommend it to anyone who's
+                new to coding in three dimentions (like me.)
+                <p></p>
+                The concept of a ray-caster is really simple.
+                Although it looks 3D, it really only uses 2D logic and then converts it
+                to 3D at the end. Here is how it works in <div class = snip>Three Easy Steps</div>.
+                <p></p>
+                <h3>~ STEP 1 ~</h3>
+
+                Create a bunch of rays (or "lines" if you prefer), but make sure
+                each ray stops when it hits an obstacle.
+            </span>
+
             <div class = iframe source = extra/ray_casting_city/1.html></div>
-            <p></p>
-            This part makes sure the ray stops at the closest rectangle.
-            <p></p>
+            <div class = code>for (let j = 0; j < rayItr; j ++) {
+    length = j * rayJmp
+
+    x += Math.cos(ang) * rayJmp
+    y += Math.sin(ang) * rayJmp
+
+    if (map.a[Math.floor(x) + Math.floor(y) * map.w] > 0)
+        break
+}</div>
+            <span class = gap>
+                <h3>~ STEP 2 ~</h3>
+
+                On your real screen, draw a rectangle for each ray you have. Its
+                position is based on the ray you're dealing with.
+                Its height is determined by the length of the ray.
+            </span>
+
+            <div class = code>ray on the left = rectangle on the left
+longer ray = shorter rectangle</div>
+
+            <span class = gap>
+                This is what it looks like. Not the most amazing graphics, I admit.
+            </span>
             <div class = iframe source = extra/ray_casting_city/2.html></div>
-            <p></p>
-            This example just uses more rays.
-            <p></p>
+            <div class = code>const w = cvs.width / rayAmt
+const h = 10 / length * scale
+const s = 100 / length
+
+ctx.fillStyle = 'rgb('+s+','+s+','+s+')'
+ctx.fillRect(i * w, cvs.height / 2 - h / 2, w, h)</div>
+            <span class = gap>
+                <h3>~ STEP 3 ~</h3>
+
+                Well, no matter what you think of it, you have already created a ray
+                casted scene. That wasn't so hard was it?
+                <p></p>
+                Ray casting can actually be really
+                useful for certain types of games. A taxi delivery game or a maze would work
+                well, or even an FPS, if you like that kind of thing!
+                <p></p>
+                All we need now is more rays! I've also moved the camera (which is
+                basically just the starting point of the rays) to help
+                you get a better picture of what's happening.
+            </span>
+
             <div class = iframe source = extra/ray_casting_city/3.html></div>
-            <p></p>
-            This is actually the entirety of ray-casting.
-            Take the ray on the far left.
-            The ray has a unique length based on what it's colliding with.
-            Let's draw a rectangle on the far left of the screen,
-            where its height corresponds to the length of our ray
-            (i.e. the longer the ray, the shorter the rectangle).
-            A ray moving around like this...
-            <p></p>
-            <div class = iframe source = extra/ray_casting_city/2.html></div>
-            <p></p>
-            ...would look something similar to this:
-            <p></p>
+
+            <span class = gap>
+                This is the source code for the demo above. It's surprisingly short, actually.
+            </span>
+
+            <div class = code source = extra/ray_casting_city/3.html></div>
+
+            <span class = gap>
+                <h3>"It's surprisingly short, actually"</h3>
+
+                After writing that last sentence, I decided to really see how short
+                I could get the above example. Turns out, the entire code can sit
+                quite happily at 273 characters.
+                You can try getting it even smaller if you like!
+            </span>
+
             <div class = iframe source = extra/ray_casting_city/4.html></div>
-            <p></p>
-            By implememting more rays, the result would look like this:
-            <p></p>
-            <div class = iframe source = extra/ray_casting_city/5.html></div>
-            <p></p>
-            It's looking a bit more 3D now, isn't it?
-            If we added a higher resolution (i.e. making a ray for every ~pixel),
-            this would be the result:
-            <p></p>
-            <div class = iframe source = extra/ray_casting_city/6.html></div>
-            <p></p>
-            This is the source code for the demo above:
-            <p></p>
-            <div class = code source = extra/ray_casting_city/6.html lang = html></div>
-            <p></p>
+            <div class = code source = extra/ray_casting_city/4.html></div>
+
+            <span class = gap>
+                Anyway, hopefully this page was slightly helpful, and maybe I'll
+                make something big using ray casting in the future. It's pretty
+                hard to overcome the initial limitations of ray casting, but if you can do it,
+                it's a great trick to have up your sleeve!
+            </span>
         </section>
 
         <span class = copyright>
             © Copyright <span class = year></span>
-            Joachimford.uk — <a href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
+            Joachimford.uk — <a class = normal href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
         </span>
     </body>
 </html>

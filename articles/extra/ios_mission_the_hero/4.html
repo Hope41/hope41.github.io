@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background: #fff;
+                margin: 0;
+                overflow: hidden
+            }
+
+            canvas {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id = cvs></canvas>
+        <script>
+            function resize() {
+                cvs.width = innerWidth * devicePixelRatio
+                cvs.height = innerHeight * devicePixelRatio
+
+                s = cvs.height / 9
+            }
+
+            const arr = [
+                'arm1',
+                'arm2',
+                'leg1',
+                'leg2',
+                'eyex',
+                'eyey',
+                'body',
+                'ang'
+            ]
+            function createBody() {
+                return {
+                    arm1: 0,
+                    arm2: 0,
+                    leg1: 0,
+                    leg2: 0,
+                    eyex: 0,
+                    eyey: 0,
+                    body: 0,
+                    ang: 0
+                }
+            }
+
+            let smooth = createBody()
+            let snap = createBody()
+            let state = 'stand'
+            let oldState = ''
+            let transition = 0
+
+            function live(STATE) {
+                const bod = createBody()
+
+                if (STATE == 'stand') {
+                    bod.arm1 = -.5 + Math.sin(time / 2) * .15
+                    bod.arm2 = .5 + Math.sin(time / 2) * .15
+                    bod.leg1 = -.5
+                    bod.leg2 = .5
+                    bod.eyex = Math.sin(time / 2) * .2
+                    bod.eyey = 0
+                    bod.body = 1.5
+                    bod.ang = 0
+                }
+                else if (STATE == 'swim') {
+                    bod.arm1 = -1 + Math.sin(time * 2) * .4
+                    bod.arm2 = 1 - Math.sin(time * 2) * .4
+                    bod.leg1 = -.5 + Math.sin(time * 2 - 1) * .2
+                    bod.leg2 = .5 - Math.sin(time * 2 - 1) * .2
+                    bod.eyex = 0
+                    bod.eyey = -.1 + Math.cos(time / 1.5) * .1
+                    bod.body = 1.5
+                    bod.ang = .5
+                }
+
+                return bod
+            }
+
+            function change() {
+                if (state == 'stand') state = 'swim'
+                else state = 'stand'
+            }
+
+            function draw(bod, x) {
+                const rect = (x, y, w, h) => ctx.fillRect(x - w / 2, y, w, h)
+                const heady = 2
+                const head = 2
+                const thick = .2
+                const main = head - thick * 2
+                const eyes = .6
+                const pupw = .2
+                const pups = .5
+                const len = 1.3
+                const start = cvs.height / 2 - heady*s + head*s
+                const y = -head*s + s / 1.5
+
+                ctx.save()
+                ctx.translate(cvs.width / 2 + x, cvs.height / 2)
+                ctx.rotate(bod.ang)
+
+                // BODY
+                ctx.fillStyle = '#222'
+                rect(0, 0, thick*s, bod.body*s)
+
+                // ARM1
+                ctx.save()
+                ctx.translate(0, 0)
+                ctx.rotate(bod.arm1)
+                rect(0, -heady*s + head*s, thick*s, s * len)
+                ctx.restore()
+
+                // ARM2
+                ctx.save()
+                ctx.translate(0, 0)
+                ctx.rotate(bod.arm2)
+                rect(0, -heady*s + head*s, thick*s, s * len)
+                ctx.restore()
+
+                // LEG1
+                ctx.save()
+                ctx.translate(0, bod.body*s)
+                ctx.rotate(bod.leg1)
+                rect(0, 0, thick*s, s * len)
+                ctx.restore()
+
+                // LEG2
+                ctx.save()
+                ctx.translate(0, bod.body*s)
+                ctx.rotate(bod.leg2)
+                rect(0, 0, thick*s, s * len)
+                ctx.restore()
+
+                // HEAD
+                ctx.fillStyle = '#222'
+                rect(0, -heady*s, head*s, head*s)
+
+                ctx.fillStyle = '#fff'
+                rect(0, -heady*s + (head-main)*s/2, main*s, main*s)
+
+                ctx.fillStyle = '#222'
+                rect(
+                    -s / 3.5 + bod.eyex*s,
+                    y + eyes*s/2 - pups*s/2 + bod.eyey*s,
+                    s*pupw, pups*s)
+                rect(
+                    s / 3.5 + bod.eyex*s,
+                    y + eyes*s/2 - pups*s/2 + bod.eyey*s,
+                    s*pupw, pups*s)
+
+                ctx.restore()
+            }
+
+            function update() {
+                ctx.fillStyle = '#bfb'
+                ctx.fillRect(0, 0, cvs.width, cvs.height)
+
+                time += .1
+
+                // get old and new hero states
+                const OLD = live(oldState)
+                const NEW = live(state)
+
+                // we can set the bad version straight away
+                snap = NEW
+
+                // the good version needs some more processing
+                if (oldState != state) {
+                    transition += .03
+
+                    if (transition >= 1) {
+                        transition = 0
+                        oldState = state
+                    }
+
+                    // iterate through all the body parts
+                    for (let i = 0; i < arr.length; i ++) {
+                        const oldPart = OLD[arr[i]]
+                        const newPart = NEW[arr[i]]
+                        const dist = newPart - oldPart
+
+                        smooth[arr[i]] = oldPart + (dist * (.5 + Math.cos(transition * Math.PI + Math.PI) * .5))
+                    }
+                }
+                // set if not transitioning
+                if (!transition) smooth = NEW
+
+                // change hero state when ready
+                switchTimer --
+                if (switchTimer < 0) {
+                    change()
+                    switchTimer = switchMax
+                }
+
+                const bar = 5
+                ctx.fillStyle = '#000'
+                ctx.fillRect(cvs.width / 2 - bar / 2, 0, bar, cvs.height)
+
+                ctx.textAlign = 'center'
+
+                ctx.font = 'bold ' + (cvs.width + cvs.height) * .02 + 'px sans-serif'
+                ctx.fillText('UNACCEPTABLE', cvs.width / 4, s)
+                ctx.fillText('VERY GOOD INDEED', cvs.width - cvs.width / 4, s)
+
+                ctx.fillStyle = '#0009'
+                ctx.font = 'bold ' + (cvs.width + cvs.height) * .015 + 'px monospace, sans-serif'
+                ctx.fillText('- what we have', cvs.width / 4, s * 1.5)
+                ctx.fillText('- what we want', cvs.width - cvs.width / 4, s * 1.5)
+
+                draw(snap, -cvs.width / 4)
+                draw(smooth, cvs.width / 4)
+
+                requestAnimationFrame(update)
+            }
+
+            const ctx = cvs.getContext('2d')
+            let time = 0
+            let s = 0
+
+            const switchMax = 70
+            let switchTimer = switchMax
+
+            addEventListener('resize', resize)
+            resize()
+            update()
+        </script>
+    </body>
+</html>

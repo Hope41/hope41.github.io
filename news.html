@@ -1,109 +1,99 @@
 <!DOCTYPE html>
+<html>
     <head>
         <meta charset = utf-8>
         <meta name = viewport content = 'width = device-width, initial-scale = 1'>
-        <meta name = keywords content = 'JoBase, JoBase games, JavaScript games'>
+        <meta name = keywords content = 'Joachim Ford, JoBase, JoBase games, JavaScript games'>
 
         <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
-        <script src = js/analytics.js></script>
-        <script src = /js/highlight.min.js></script>
-        <script src = js/main.js></script>
-
+        <script src = /js/analytics.js></script>
+        <script src = /js/main.js></script>
         <title>Joachim Ford</title>
-
-        <link rel = stylesheet href = main.css>
-        <link href = fontawesome/css/fontawesome.css rel = stylesheet>
-        <link href = fontawesome/css/solid.css rel = stylesheet>
-        <link href = fontawesome/css/brands.css rel = stylesheet>
+        <link rel = stylesheet href = /main.css>
     </head>
 
     <body>
         <section class = topnav>
-            <div>
-                <a class = text href = '/'>Joachim Ford</a>
-                <i class = 'fa-solid fa-bars' onclick = bar()></i>
-                <a class = text href = games>Games</a>
-                <a class = text href = articles>Articles</a>
-                <a class = text href = news>News</a>
-                <a class = text href = experiments>Experiments</a>
-                <a href = https://github.com/Hope41 target = _blank><i class = 'fa-brands fa-github'></i></a>
-                <a href = mailto:contact@joachimford.uk><i class = 'fa-solid fa-envelope'></i></a>
+            <div class = joachimford>
+                <a href = '/'>Joachim Ford</a>
             </div>
+            <div class = nav>
+                <a class = text href = /games>Games</a>
+                <a class = text href = /articles>Articles</a>
+                <a class = text href = /news>News</a>
+                <a class = text href = /experiments>Experiments</a>
+                <a class = text href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+                <a class = text href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+            </div>
+            <img class = bars src = /svg/bars.svg onmousedown = bar()></img>
         </section>
 
         <section class = main>
-            <p></p>
             <span class = date>10.07.2023</span>
-            <h2>Leap Lava</h2>
+            <h2 class = news>Leap Lava</h2>
             <span class = description>An (almost) 1 kilobyte platform game.</span>
-            <p></p>
             <div class = big>
                 <a href = news/leapLava.html target = _blank>
-                    <img src = /news/leap_lava.png>
-                    <div class = play>PLAY</div>
+                    <img class = img src = /news/leap_lava.png>
+                    <div class = play><img src = /svg/play.svg></svg></div>
                 </a>
             </div>
-            <p></p>
-            Hello everyone! Recently, I entered a competition for projects
-            under 1024 bytes of code.
-            It was a great challenge to compress a complete platform game into this tight size limitation.
-            <p></p>
-            Use the arrow keys to leap from the lava! Can you get to 2048 points in time?
-            <p></p>
-            Here is the entire 1067 byte source code: (It was originally 1024 bytes
-            but it's a bit longer due to performance and response fixes)
-<div class = codeWrap>
-    _='S=Math.sin,R=l=>{(w=a.width,h=a.height,Y>m+P?(k):(A-A-GU)Z5,t.2^$-$-Y+P)/15,i@P;)c[g="DStyle"]=L${P*SXZK},jK`f="DRect"](j5,w,h);X@60;)s/12,o=SX)*w/s,T=w+s,r(wZ-sZ+o*s-A)%T+T)%T-szr,G$,s,-h+$)vi<59?LB,B,B)`:"#011";(Yy,Y|I?u?y12:Y?Yyy.4zp=U+h-A,q=Y+GP-$,5jPHE8V)E29V^r?U4:lJ(U-=4^I=ji=-<+++)d=h-A+60,eS((O%P9)*O)<.6|(b%30==K)&iJ20*(SX)+i)-~X/3K*2-(bJi+SX+t/X/15))/.7^F$+Ge,p>d-50&p<d+60&q>F-PJ(Cq+(F-P^C<-9-5*y?Up-d?4:-4:(YC-y,I=1))zd,F,6je);c.ft="3em arial"v"#f50b"zj-$+hZ,w,m?mm-W=.2+.3*S(t/3K+tZ4K<2.4?W:2.4)E16QE37QvL255,jj${.6-(m-$)/3e3})`zjjw,hH,c.DText(t<2048?~~t:(m,"YOU WIN!!"^9,45^M>150J0==kJlocati.reload(^requestAnimatiFrame(R)},t=y=U=I=M=m=1,Y1jA=$50jk={},N=X,f)=>{38=q.Code)|90_|87_J(u=f^39_|68_?r=f:37_|65_|81_J(l=f)},down,1^up^R()zf](vg]=j0,_==q^),Z/2X(iV,q+9,14,14Q,q+14,5,5)P99L`rgb(K0)J&&H)v"#fff"GhZ-Ezp+DfillB${i}@=0;++i<w)/6K;i=(+=*i=ik./400*s>0=-onfor,c[=0:key~~((A=jM++=>NX';for(i of'@BDEGHJKLPQVXZ^_jvz')with(_.split(i))_=join(pop());eval(_)
-</div>
-            <p></p>
-            <hr>
-            <p></p>
+            <span class = gap>
+                Hello everyone! Recently, I entered a competition for projects
+                under 1024 bytes of code.
+                It was a great challenge to compress a complete platform game into this tight size limitation.
+                <p></p>
+                Use the arrow keys to leap from the lava! Can you get to 2048 points in time?
+                <p></p>
+                Here is the entire 1067 byte source code: (It was originally 1024 bytes
+                but it's a bit longer due to performance and response fixes)
+            </span>
+            <pre class = code>_='S=Math.sin,R=l=>{(w=a.width,h=a.height,Y>m+P?(k):(A-A-GU)Z5,t.2^$-$-Y+P)/15,i@P;)c[g="DStyle"]=L${P*SXZK},jK`f="DRect"](j5,w,h);X@60;)s/12,o=SX)*w/s,T=w+s,r(wZ-sZ+o*s-A)%T+T)%T-szr,G$,s,-h+$)vi<59?LB,B,B)`:"#011";(Yy,Y|I?u?y12:Y?Yyy.4zp=U+h-A,q=Y+GP-$,5jPHE8V)E29V^r?U4:lJ(U-=4^I=ji=-<+++)d=h-A+60,eS((O%P9)*O)<.6|(b%30==K)&iJ20*(SX)+i)-~X/3K*2-(bJi+SX+t/X/15))/.7^F$+Ge,p>d-50&p<d+60&q>F-PJ(Cq+(F-P^C<-9-5*y?Up-d?4:-4:(YC-y,I=1))zd,F,6je);c.ft="3em arial"v"#f50b"zj-$+hZ,w,m?mm-W=.2+.3*S(t/3K+tZ4K<2.4?W:2.4)E16QE37QvL255,jj${.6-(m-$)/3e3})`zjjw,hH,c.DText(t<2048?~~t:(m,"YOU WIN!!"^9,45^M>150J0==kJlocati.reload(^requestAnimatiFrame(R)},t=y=U=I=M=m=1,Y1jA=$50jk={},N=X,f)=>{38=q.Code)|90_|87_J(u=f^39_|68_?r=f:37_|65_|81_J(l=f)},down,1^up^R()zf](vg]=j0,_==q^),Z/2X(iV,q+9,14,14Q,q+14,5,5)P99L`rgb(K0)J&&H)v"#fff"GhZ-Ezp+DfillB${i}@=0;++i<w)/6K;i=(+=*i=ik./400*s>0=-onfor,c[=0:key~~((A=jM++=>NX';for(i of'@BDEGHJKLPQVXZ^_jvz')with(_.split(i))_=join(pop());eval(_)</pre>
+
             <span class = date>03.05.2023</span>
-            <h2>Squirtcopter</h2>
+            <h2 class = news>Squirtcopter</h2>
             <span class = description>An Infinite JoBase Shooter</span>
-            <p></p>
-            <div class = big><img src = /news/squirtcopter.png></div>
-            <p></p>
-            I've just finished another <a href = https://jobase.org>JoBase</a> game!
-            Use your helicopter to explore a procedural world of procedural enemies with procedural powers!
-            The game can go on forever, but my current record is 8581m
-            (I could have carried on, but I'd already spent some hours on it and was getting bored).
-            Anyway, feel free to <a href = mailto:contact@joachimford.uk>email me</a> your score if you like,
-            and I hope you enjoy it!<br>
-            You can play the game by typing
-            <span class = snip>python -m JoBase.examples.squirtcopter</span> into the terminal.
-            Alternatively, you can play it online
-            <a href = https://jobase.org/games/squirtcopter target = _blank>here</a>.
-            (I'll just mention that the online version of JoBase can be a bit laggy.
-            For best performance, download JoBase and run the game from there)
-            <p></p>
-            You can find its source code <a href = https://github.com/JoBase/JoBase/tree/main/JoBase/examples/squirtcopter target = blank>here</a>.
-            <p></p>
-            <hr>
-            <p></p>
+            <div class = big><img class = img src = /news/squirtcopter.png></div>
+            <span class = gap>
+                I've just finished another <a class = normal href = https://jobase.org>JoBase</a> game!
+                Use your helicopter to explore a procedural world of procedural enemies with procedural powers!
+                The game can go on forever, but my current record is 8581m
+                (I could have carried on, but I'd already spent some hours on it and was getting bored.)
+                <p></p>
+                Anyway, if you happen to give it a go, please
+                <a class = normal href = mailto:contact@joachimford.uk>give some feedback</a>! It's
+                really helpful to get other people's views.
+                <p></p>
+                You can play the game by typing
+                <span class = snip>python -m JoBase.examples.squirtcopter</span> into the terminal.
+                Alternatively, you can play it online
+                <a class = normal href = https://jobase.org/games/squirtcopter target = _blank>here</a>.
+                (I'll just mention that the online version of JoBase can be a bit laggy.
+                For best performance, download JoBase and run the game from there.)
+                Hope you enjoy it!
+                <p></p>
+                You can also find its source code
+                <a class = normal href = https://github.com/JoBase/JoBase/tree/main/JoBase/examples/squirtcopter target = blank>here</a>.
+            </span>
+
             <span class = date>10.12.2022</span>
-            <h2>Blue Hue</h2>
+            <h2 class = news>Blue Hue</h2>
             <span class = description>A JoBase Platform Game</span>
-            <p></p>
-            <div class = big><img src = /news/blue_hue.png></div>
-            <p></p>
-            I have just finished making a new platform game for
-            <a href = https://jobase.org target = _blank>JoBase</a> - a fast python library for beginner coders.
-            <p></p>
-            JoBase has been a collaboration between me and <a href = https://greyhope.uk target = _blank>my brother</a>
-            for a while now, and it's nice to finally have given it a solid contribution.<br>
-            You can play Blue Hue by installing JoBase (and Python, if you haven't already) and running the command
-            <span class = snip>python -m JoBase.examples.blue_hue</span> into the terminal.
-            Feel free to check its source code on
-            <a href = https://github.com/JoBase/JoBase/tree/main/JoBase/examples/blue_hue target = blank>Github</a>.
-            <p></p>
-            <hr>
-            <p></p>
+            <div class = big><img class = img src = /news/blue_hue.png></div>
+            <span class = gap>
+                Hello! I've just finished making a platform game for
+                <a class = normal href = https://jobase.org target = _blank>JoBase</a> - a new python library for beginner coders.
+                <p></p>
+                You can play <span class = high>Blue Hue</span> by installing JoBase (and Python, if you haven't already) and running the command
+                <span class = snip>python -m JoBase.examples.blue_hue</span> into the terminal.
+                Please check its source code on
+                <a class = normal href = https://github.com/JoBase/JoBase/tree/main/JoBase/examples/blue_hue target = blank>Github</a>!
+            </span>
         </section>
 
         <span class = copyright>
             © Copyright <span class = year></span>
-            Joachimford.uk — <a href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
+            Joachimford.uk — <a class = normal href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
         </span>
     </body>
 </html>

@@ -1,35 +1,47 @@
 <!DOCTYPE html>
+<html>
     <head>
         <meta charset = utf-8>
         <meta name = viewport content = 'width = device-width, initial-scale = 1'>
+        <meta name = keywords content = 'Joachim Ford, JavaScript experiments'>
 
         <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
-        <script src = js/analytics.js></script>
-        <script src = js/main.js></script>
-
+        <script src = /js/analytics.js></script>
+        <script src = /js/main.js></script>
         <title>Joachim Ford</title>
-
-        <link rel = stylesheet href = main.css>
-        <link href = fontawesome/css/fontawesome.css rel = stylesheet>
-        <link href = fontawesome/css/solid.css rel = stylesheet>
-        <link href = fontawesome/css/brands.css rel = stylesheet>
+        <link rel = stylesheet href = /main.css>
     </head>
 
     <body>
         <section class = topnav>
-            <div>
-                <a class = text href = '/'>Joachim Ford</a>
-                <i class = 'fa-solid fa-bars' onclick = bar()></i>
-                <a class = text href = games>Games</a>
-                <a class = text href = articles>Articles</a>
-                <a class = text href = news>News</a>
-                <a class = text href = experiments>Experiments</a>
-                <a href = https://github.com/Hope41 target = _blank><i class = 'fa-brands fa-github'></i></a>
-                <a href = mailto:contact@joachimford.uk><i class = 'fa-solid fa-envelope'></i></a>
+            <div class = joachimford>
+                <a href = '/'>Joachim Ford</a>
             </div>
+            <div class = nav>
+                <a class = text href = /games>Games</a>
+                <a class = text href = /articles>Articles</a>
+                <a class = text href = /news>News</a>
+                <a class = text href = /experiments>Experiments</a>
+                <a class = text href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+                <a class = text href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+            </div>
+            <img class = bars src = /svg/bars.svg onmousedown = bar()></img>
         </section>
 
         <section class = main>
+            <div class = date>Sorted By Quality</div>
+            <div class = small>
+                <a href = content/ray_casting_city.html>
+                    <img src = images/ray_casting_city.png>
+                    <div>
+                        <h2>Ray-casting Blocks</h2>
+                        A 3D city run experiment using ray-casting graphics.
+                        Watch the camera run though a vivid world of blocks.
+                        This experiment <span class = mobile>mobile friendly.</span>
+                    </div>
+                </a>
+            </div>
+
             <div class = small>
                 <a href = content/infinite_zoom.html>
                     <img src = images/infinite_zoom.png>
@@ -37,19 +49,7 @@
                         <h2>Infinite Zoom</h2>
                         Zoom in on an infinite fractal of faces. Inspired by
                         Pixel Words by Frank Force.
-                        This experiment is also <span class = mobile>mobile compatible.</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class = small>
-                <a href = content/ray_casting_city.html>
-                    <img src = images/ray_casting_city.png>
-                    <div>
-                        <h2>Ray-casting City</h2>
-                        An interactive city drive experiment using ray-casting graphics.
-                        Navigate around a featureless city in a vain hope to find a place
-                        of interest.
+                        This experiment is <span class = mobile>mobile friendly.</span>
                     </div>
                 </a>
             </div>
@@ -57,20 +57,18 @@
             <div class = small>
                 <a href = content/anthrophobia_fear_of_crowds.html>
                     <img src = images/anthrophobia_fear_of_crowds.png>
-
                     <div>
-                        <h2>Anthrophobia — Fear Of Crowds</h2>
+                        <h2>Anthrophobia</h2>
                         A procedural simulation of weird creatures walking around the screen.
-                        This experiment is <span class = mobile>mobile compatible.</span>
+                        This experiment is <span class = mobile>mobile friendly.</span>
                     </div>
                 </a>
             </div>
-            &nbsp;<br>
         </section>
 
         <span class = copyright>
             © Copyright <span class = year></span>
-            Joachimford.uk — <a href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
+            Joachimford.uk — <a class = normal href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
         </span>
     </body>
 </html>

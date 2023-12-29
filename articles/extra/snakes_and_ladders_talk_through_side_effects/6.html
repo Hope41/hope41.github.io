@@ -67,6 +67,7 @@
             }
 
             function enemy() {
+                time += .04
                 const EYE_SIZE = .3 * (width + height) / 2
                 const EYE = {
                     from_center: .03,
@@ -112,7 +113,7 @@
                         x_2: eye2.x + EYE_SIZE / 2 - PUPIL_SIZE / 2,
                         y_2: eye2.y + EYE_SIZE / 2 - PUPIL_SIZE / 2
                     }
-                    const rot = .3 + Math.sin(WALK) * .2
+                    const rot = Math.sin(time) * .1 + Math.random() * .2 - .4
 
                     ctx.fillStyle = '#900'
                     fillRect(
@@ -137,7 +138,7 @@
                         eye2.y,
                     ], .04)
 
-                    const speed = .03
+                    const speed = .05
 
                     // open eyes after rolling
                     if (closed) {
@@ -166,7 +167,7 @@
                 cvs.width = innerWidth * dpr
                 cvs.height = (innerHeight + 1) * dpr
 
-                scale = (cvs.width + cvs.height) / 10
+                scale = (cvs.width + cvs.height) / 8
             }
 
             function update() {
@@ -176,7 +177,7 @@
 
                 // move square
                 roll_timer --
-                WALK += speed_x
+                WALK += speed_x * 1.5
 
                 // make the square's angle snap back to zero when flat
                 if (Math.abs(WALK) > Math.PI / 2) {
@@ -232,13 +233,14 @@
                 return range.min + Math.random() * range.max
             }
 
-            const stop_range = {min: 30, max: 100}
-            const move_range = {min: 60, max: 150}
+            const stop_range = {min: 30, max: 70}
+            const move_range = {min: 50, max: 100}
             let move_time = set(move_range)
 
             let closed = false
             let roll_timer = set(stop_range)
             let eyelid = 0
+            let time = 0
 
             addEventListener('resize', resize)
             resize()

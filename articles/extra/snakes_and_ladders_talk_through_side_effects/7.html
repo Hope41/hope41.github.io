@@ -36,7 +36,7 @@
 
             function realPos(x, y, w = 0, h = 0) {
                 x = x * scale + cvs.width / 2
-                y = y * scale + cvs.height / 2
+                y = y * scale + cvs.height / 2 + cvs.height / 10
                 w = w * scale
                 h = h * scale
                 return {x, y, w, h}
@@ -132,7 +132,7 @@
                     const x2 = x1 + Math.cos(arm_ang) * ARM_LENGTH
                     const y2 = y1 + Math.sin(arm_ang) * ARM_LENGTH
 
-                    const snap = Math.sin(WALK / 3 + Math.cos(WALK) + val) * 2 + 1.8
+                    const snap = Math.sin(WALK / 6 + Math.cos(WALK / 2) + val) * 2 + 1.8
                     const snap_rot = snap > .5 ? .5 : snap > 0 && snap
 
                     // ARMS
@@ -190,7 +190,7 @@
                 cvs.width = innerWidth * dpr
                 cvs.height = (innerHeight + 1) * dpr
 
-                scale = (cvs.width + cvs.height) / 30
+                scale = (cvs.width + cvs.height) / 25
             }
 
             function update() {
@@ -198,7 +198,7 @@
                 ctx.fillStyle = '#ffe'
                 ctx.fillRect(0, 0, cvs.width, cvs.height)
 
-                WALK += .05
+                WALK += .2
                 enemy()
 
                 ctx.fillStyle = '#0002'

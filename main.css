@@ -12,127 +12,270 @@
     src: url(code.ttf)
 }
 
-
-/*-------- variables --------*/
 :root {
-    --transition: 0.3s;
-    --radius: 1em;
     --fontsize: 19px
 }
 
+html {
+    scroll-behavior: smooth;
+}
 
-/*-------- setup --------*/
 body {
     background-color: #eee;
     margin: 0;
     font-family: font;
-    font-size: var(--fontsize);
-    padding-top: 50px;
+    font-size: 19px;
+    padding-top: 100px;
+    padding-bottom: 60px;
 }
 
-/*-------- topnav --------*/
+a {
+    text-decoration: none;
+}
+
+a.button {
+    background-color: #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    color: #000;
+    width: fit-content;
+}
+
+a.button:hover {
+    background-color: #ccc;
+}
+
+a.normal, a.article {
+    color: #058
+}
+
+a.normal:hover, a.article:hover {
+    color: #08b
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
 .topnav {
     background-color: #999;
     margin-bottom: 10px;
-    padding: 5px 0;
+    padding: 5px;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1;
+    display: flex;
+    gap: 30px;
 }
-.topnav > div > a {
+
+.topnav .nav {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+.topnav .nav a {
     color: #333;
     font-size: 20px
 }
-.topnav > div > a:not(:first-child).text {
-    text-decoration: none;
-    margin: 0 15px
+.topnav .nav a:hover {
+    color: #555
 }
-.topnav > div > a > i {
-    margin: 0 5px
+
+.topnav img {
+    width: 18px;
 }
-.topnav > div > a:not(:first-child):hover {color: #777}
-.topnav > div > a:first-child {
-    text-decoration: none;
-    color: #000;
+
+.topnav img:hover {
+    opacity: .7;
+    cursor: pointer;
+}
+
+.topnav .bars {
+    display: none;
+    position: fixed;
+    width: 25px;
+    top: 30px;
+    right: 30px;
+}
+
+.topnav .joachimford {
     font-family: burger;
-    margin-right: 15px;
-    font-size: 45px
+    font-size: 45px;
+    width: fit-content
 }
-.topnav > div > i.fa-bars {display: none}
 
-/*-------- links --------*/
-a {
-    text-decoration: none;
-    color: #47b
+.topnav .joachimford a {
+    color: #000;
+    width: 100%;
 }
-a:hover {color: #037}
 
-/* big image */
-.big img {
-    max-width: 100%;
-    transition-duration: var(--transition);
-    border-radius: var(--radius);
-    margin-top: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0px 0px 10px #0005
+.big .img {
+    border-radius: 10px;
+    box-shadow: 0px 0px 7px #0004
 }
 
 .big {
-    position: relative
+    position: relative;
+}
+
+.big img {
+    width: 100%;
 }
 
 .play {
+    transition: .2s;
+    width: 100px;
+    height: auto;
     position: absolute;
-    right: 50%;
-    bottom: 50%;
-    font-family: burger;
-    color: #000;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 0 10px;
-    border: solid #000 5px;
-    transform: translate(50%, 40%) rotate(5deg);
-    transition: .2s
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
 }
 .big:hover .play {
-    transform: translate(50%, 40%) rotate(5deg) scale(1.05);
+    transform: translate(-50%, -50%) scale(1.05);
 }
 
-/* small image */
+.quote {
+    color: #333;
+    padding: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+h3, h2, h1 {
+    margin: 10px 0;
+}
+
+.news {
+    margin: 0;
+}
+
+.code {
+    background-color: #ddd;
+    color: #222;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: code;
+    max-height: 300px;
+    width: 100%;
+    padding-left: 30px;
+    overflow-y: scroll;
+    border: 2px #ccc solid
+}
+
+.code pre {
+    overflow-x: hidden;
+    white-space: pre-wrap
+}
+
+.hash {
+    color: #999
+}
+.string {
+    color: #482;
+}
+
+.copyright {
+    left: 0;
+    bottom: 0;
+    padding: 5px;
+    position: fixed;
+    background-color: #fffb;
+    border-radius: 0 10px 0 0;
+}
+
 .small {
-    float: left;
-    margin-top: 30px
+    margin-bottom: 10px;
 }
-.small a > img:hover {
-    transform: scale(1.03);
-}
-.small > a > div > h2 {
-    color: #47b;
-    margin-bottom: 15px
-}
-.small > a > img {
-    transition-duration: var(--transition);
-    border-radius: var(--radius);
-    margin: 0 40px 10px 0;
-    float: left;
-    box-shadow: 0px 0px 10px #0005
-}
-.small > a > div {color: #000}
 
-/* iframe boxes */
-.iframe > iframe {
+.small img {
+    margin-top: 15px;
+    border-radius: 10px;
+    width: 50%;
+    transition: .2s;
+    float: left;
+    margin-right: 20px;
+    box-shadow: 0px 0px 7px #0003
+}
+.small:hover img {
+    transform: scale(1.02);
+}
+.small h2 {
+    color: #47b;
+}
+.small div {
+    color: #000;
+    padding-top: 10px;
+}
+
+.mobile {
+    font-weight: bold;
+    color: #070
+}
+
+.high {
+    color: #250
+}
+
+.iframe iframe {
     border: 0px;
     border-radius: 10px;
     width: 100%;
     height: 400px;
-    box-shadow: 0px 0px 10px #0005
+    box-shadow: 0px 0px 7px #0003;
 }
 
+.snip {
+    border-radius: 3px;
+    display: inline-block;
+    padding: 1px 3px;
+    font-size: 18px;
+    font-family: code;
+    background-color: #ddd;
+}
+
+.date {
+    margin-left: auto;
+    margin-right: 0;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 5px;
+    user-select: none;
+}
+
+.description {
+    color: #444;
+    font-style: italic;
+}
+
+.article {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    padding: 3px 0
+}
+
+.tiny {
+    width: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #0005;
+}
+
+.tiny img {
+    height: 100%;
+}
+
+.gap {
+    padding: 15px 0;
+}
 
 /*-------- highlight --------*/
-.hljs-string {color: #370}
+/* .hljs-string {color: #370}
 .hljs-keyword {color: #83b}
 .hljs-built_in {color: #088}
 .hljs-comment {color: #555}
@@ -151,11 +294,11 @@ a:hover {color: #037}
 .hljs-params {color: #b60}
 .hljs-property {color: #076}
 .hljs-regexp {color: #d55}
-.hljs-hash {color: #0005}
+.hljs-hash {color: #0005}*/
 
 
 /*-------- other --------*/
-div.code, div.codeWrap {
+/* div.code, div.codeWrap {
     background-color: #0241;
     box-shadow: 0 0 10px #0005;
     border-radius: .5em;
@@ -177,10 +320,10 @@ hr {
     margin-top: 20px;
     margin-bottom: 20px;
     color: #000;
-}
+} */
 
 /* font emphasis */
-mark {
+/* mark {
     font-weight: bold;
     background: none;
 }
@@ -191,10 +334,10 @@ span.mobile {
 span.gr {
     color: #060
 }
-span.date {float: right}
+span.date {float: right} */
 
 /* logos */
-i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
+/* i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
     font-size: var(--fontsize);
     cursor: pointer
 }
@@ -218,48 +361,59 @@ i.fa-brands, i.fa-solid:not(i.fa-play, i.fa-bars) {
 .description {
     color: #666;
     font-style: italic
-}
-.menu {
-    background: #eee;
-    box-shadow: 0px 0px 10px #0004;
-    padding: 30px;
-    border-radius: 10px
-}
+} */
 
-/*-------- responsive --------*/
 
-/* width is greater than 55 = MAX width */
 @media screen and (min-width: 1050px) {
-    .topnav > div {padding: 0 160px; margin: 0 auto}
-    .main {padding: 50px 160px; margin: 0 auto}
-
-    .small > a > img {width: 50%}
-    .play {font-size: 3em}
+    body {
+        padding-left: 150px;
+        padding-right: 150px
+    }
+    .topnav {
+        padding-left: 150px;
+    }
 }
 
-/* width is greater than 45 less than 55 = MID width */
 @media screen and (min-width: 810px) and (max-width: 1050px) {
-    .topnav > div {padding: 0 70px; margin: 0 auto}
-    .main {padding: 10px 70px}
+    body {
+        padding-left: 100px;
+        padding-right: 100px
+    }
+    .topnav {
+        padding-left: 100px;
+    }
+}
 
-    .topnav > div > a:not(:first-child).text {
-        text-decoration: none;
-        margin: 0 10px
+@media screen and (max-width: 810px) {
+    body {
+        padding-left: 50px;
+        padding-right: 50px
+    }
+    .topnav {
+        padding-left: 50px;
     }
 
-    .small > a > img {width: 50%}
-    .play {font-size: 2.75em}
-}
+    .topnav .bars {
+        display: block
+    }
 
-/* width is less than 45 = MIN width */
-@media screen and (max-width: 810px) {
-    .topnav > div {padding: 0 70px}
-    .main {padding: 10px 70px}
-    .topnav > div > i.fa-bars {display: block; font-size: 20px; float: right; cursor: pointer; padding-top: 20px;}
-    .topnav > div > a:not(:first-child) {display: none}
-    .topnav.responsive a:not(:first-child) {padding-bottom: 6px; display: block}
+    .topnav .text {
+        display: none
+    }
 
-    .small > a > img {width: 100%}
-    .play {font-size: 2.5em}
+    .topnav.responsive {
+        flex-direction: column;
+        gap: 5px
+    }
+
+    .topnav.responsive .nav {
+        gap: 5px;
+        flex-wrap: wrap;
+        margin-top: 0
+    }
+
+    .topnav.responsive .text {
+        display: block;
+    }
 }
 * {box-sizing: border-box}

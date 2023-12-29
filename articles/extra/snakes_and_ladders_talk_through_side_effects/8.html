@@ -73,7 +73,7 @@
                 const LEG_BEND = .8
                 const EYE_SIZE = .8
                 const EYE_DOWN = .5
-                const PUPIL_SIZE = .12
+                const PUPIL_SIZE = .15
                 const ARM_WIDTH = .25
                 const ARM_LENGTH = 1
                 const FOREARM_LENGTH = 1.5
@@ -157,7 +157,7 @@
                     ctx.fillStyle = '#fff'
                     fillRect(eye_x, eye_y, EYE_SIZE * dir, EYE_SIZE)
 
-                    const eye_angle = Math.sin(WALK) / 3
+                    const eye_angle = Math.sin(WALK / 1.5) / 6
 
                     const sum = EYE_SIZE / 2 - PUPIL_SIZE / 2
                     const X = Math.cos(eye_angle) * sum
@@ -235,7 +235,7 @@
                 ctx.fillStyle = '#efe'
                 ctx.fillRect(0, 0, cvs.width, cvs.height)
 
-                WALK += .05
+                WALK += .07
                 enemy()
 
                 ctx.fillStyle = '#0002'
