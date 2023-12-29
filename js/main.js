@@ -32,7 +32,7 @@ onload = () => {
             if (state) {
                 pre.innerHTML += code[i]
                     .replace(/</g, '&lt;')
-                    .replace(/(\/\/.*)/g,'<span class = string>$1</span>')
+                    .replace(/(\/\/.*|\'.*\')/g,'<span class = string>$1</span>')
             }
             else pre.innerHTML += '<span class = hash>' + code[i] + '</span>'
 
