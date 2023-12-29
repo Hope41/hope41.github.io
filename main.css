@@ -375,7 +375,6 @@ span.date {float: right} */
 }
 
 @media screen and (min-width: 810px) and (max-width: 1050px) {
-<<<<<<< HEAD
     body {
         padding-left: 100px;
         padding-right: 100px
@@ -384,10 +383,6 @@ span.date {float: right} */
         padding-left: 100px;
     }
 }
-=======
-    .topnav > div {padding: 0 70px; margin: 0 auto}
-    .main {padding: 50px 70px}
->>>>>>> 361959e337057cf28c04ee68e5a5c3e0a36880a3
 
 @media screen and (max-width: 810px) {
     body {
@@ -402,19 +397,9 @@ span.date {float: right} */
         display: block
     }
 
-<<<<<<< HEAD
     .topnav .text {
         display: none
     }
-=======
-/* width is less than 45 = MIN width */
-@media screen and (max-width: 810px) {
-    .topnav > div {padding: 0 70px}
-    .main {padding: 50px 70px}
-    .topnav > div > i.fa-bars {display: block; font-size: 20px; float: right; cursor: pointer; padding-top: 20px;}
-    .topnav > div > a:not(:first-child) {display: none}
-    .topnav.responsive a:not(:first-child) {padding-bottom: 6px; display: block}
->>>>>>> 361959e337057cf28c04ee68e5a5c3e0a36880a3
 
     .topnav.responsive {
         flex-direction: column;
