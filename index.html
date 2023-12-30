@@ -86,10 +86,10 @@
                 ctx.fillStyle = 'rgb(255,255,255,'+(1-a)+')'
                 ctx.textAlign = 'center'
                 ctx.font = s * 1.5 + 'px super'
-                ctx.fillText('IO\'S MISSION', cvs.width / 2, cvs.height / 2 + s - 400 / time * 10)
+                ctx.fillText('IO\'S MISSION', cvs.width / 2, cvs.height / 2 - 400 / time * 10)
 
                 ctx.font = s * .5 + 'px super'
-                ctx.fillText('THE NEW ADVENTURE GAME', cvs.width / 2, cvs.height / 2 + s * 2 + 100 / time * 5)
+                ctx.fillText('THE NEW ADVENTURE GAME', cvs.width / 2, cvs.height / 2 + s + 100 / time * 5)
 
                 requestAnimationFrame(update)
             }
