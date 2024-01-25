@@ -39,7 +39,7 @@
             w=a.width
             h=a.height
 
-            // death/win
+            // death
             Y>v+99?(k=0,H++):(A-=(A-h/2-X)/25,t+=.2)
             B-=(B-Y+99)/15
 
@@ -54,9 +54,9 @@
             s=i*i/12
             o=S(i)*w/s
             Q=w+s
-            r=((w/2-s/2+o*s-A/400*s)%Q+Q)%Q-s
+            r=((w/2-s/2+o*s-A/300*s)%Q+Q)%Q-s
             c[f](r,h/2-B/400*s,s,-h+B)
-            c[Z]=i<59?`rgb(${i},${i},${i})`:'#011'}
+            c[Z]=i<59?`rgb(${i},${i},${i})`:'#000'}
 
             // hero
             Y+=y
@@ -77,10 +77,10 @@
             c[f](d,E,60,e)
             }
 
-            c.font='3em arial'
+            c.font='3em"'
 
             // lava
-            c[Z]='#f50b'
+            c[Z]='#f40c'
             c[f](0,-B+h/2,w,v>0?v=0:v-=(W=.2+S(t/30)*.3+t/240)<2.4?W:2.4)
 
             // eyes
@@ -88,13 +88,11 @@
             c[f](p+37,q+14,5,5)
 
             // glow
-            c[Z]=`rgb(255,0,0,${.6-(v-B)/3e3})`
+            c[Z]=`rgb(99,9,0,${.6-(v-B)/3e3})`
             c[f](0,0,w,h)
 
             c[Z]='#fff'
-            c.fillText(t<2048?~~t:(v=0,H++,'YOU WIN!!'),9,45)
-
-            H>150&&k==0&&location.reload()
+            c.fillText(t<2048&&k?~~t:(H++,k==0?'LOSE':(v=0,'WIN!')),9,45)
             requestAnimationFrame(R)
             }
 
