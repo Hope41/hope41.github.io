@@ -286,7 +286,7 @@ h3, h2, h1 {
     }
 }
 
-@media screen and (min-width: 810px) and (max-width: 1050px) {
+@media screen and (min-width: 860px) and (max-width: 1050px) {
     body {
         padding-left: 100px;
         padding-right: 100px
@@ -296,7 +296,7 @@ h3, h2, h1 {
     }
 }
 
-@media screen and (min-width: 500px) and (max-width: 810px) {
+@media screen and (min-width: 500px) and (max-width: 860px) {
     body {
         padding-left: 30px;
         padding-right: 30px;
