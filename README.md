@@ -7,6 +7,5 @@
 
 Currently in development:
 - a new (and better, hopefully) adventure game where Biro and his friends quest to save the world from Impending Doom. More info when nearer completion
-- one or two new minigames to play in the odd fifteen minutes
-
+  
 Please contact me at [hello@joachimford.uk](mailto:hello@joachimford.uk) if you have any ideas or suggestions!
