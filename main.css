@@ -8,6 +8,10 @@
     src: url(/fonts/ChakraPetch-Regular.ttf)
 }
 @font-face {
+    font-family: boldFont;
+    src: url(/fonts/ChakraPetch-Medium.ttf)
+}
+@font-face {
     font-family: code;
     src: url(/fonts/code.ttf)
 }
@@ -89,7 +93,11 @@ body {
 
 a {text-decoration: none}
 p {margin: 0}
-h4, h3, h2, h1 {margin: 0}
+h4, h3, h2, h1 {
+    margin: 0;
+    font-weight: normal;
+    font-family: boldFont
+}
 
 button {
     border: none;
@@ -233,8 +241,8 @@ a.button:hover {
 }
 
 .bio {
+    font-family: boldFont;
     font-style: italic;
-    font-weight: bold;
     color: #888
 }
 
@@ -264,7 +272,7 @@ a.button:hover {
 }
 
 .mobile {
-    font-weight: bold;
+    font-family: boldFont;
     color: var(--buttonnorm)
 }
 
