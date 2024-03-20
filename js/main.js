@@ -1,6 +1,5 @@
 'use strict'
 const KEY = 'JoachimFordUkColorThemeData'
-alert("small test for mobile. To be removed shortly.")
 
 function toggleTheme() {
     if (document.body.className == 'light')
