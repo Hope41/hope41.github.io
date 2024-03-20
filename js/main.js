@@ -2,8 +2,10 @@
 const KEY = 'JoachimFordUkColorThemeData'
 
 function toggleTheme() {
-    document.body.classList.toggle('dark')
-    document.body.classList.toggle('light')
+    if (document.body.className == 'light')
+        document.body.className = 'dark'
+    else document.body.className = 'light'
+
     localStorage.setItem(KEY, document.body.className)
 }
 
@@ -13,8 +15,7 @@ onload = () => {
     if (year) year.textContent = new Date().getFullYear()
 
     // Get current theme
-    if (document.body.className != localStorage.getItem(KEY))
-        toggleTheme()
+    if (localStorage.getItem(KEY) == 'light') toggleTheme()
 
     // Highlight code
     for (let i = 0; i < code.length; i ++) {
