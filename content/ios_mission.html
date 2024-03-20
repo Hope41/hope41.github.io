@@ -14,48 +14,39 @@
 
         <style>
             #a {
-                color: #422;
-                background-color: #dcc;
-            }
-
-            #a:hover {
-                background-color: #cbb;
+                color: #edd;
+                background-color: #533;
             }
 
             #b {
-                color: #442;
-                background-color: #ddc;
-            }
-
-            #b:hover {
-                background-color: #ccb;
+                color: #ffe;
+                background-color: #553;
             }
 
             #c {
-                color: #242;
-                background-color: #cdc;
+                color: #ded;
+                background-color: #353;
             }
 
-            #c:hover {
-                background-color: #bcb;
-            }
+            #a:hover {background-color: #755}
+            #b:hover {background-color: #775}
+            #c:hover {background-color: #575}
+            a.button {border: none}
         </style>
     </head>
 
     <body>
         <section class = topnav>
-            <div class = joachimford>
-                <a href = '/'>Joachim Ford</a>
+            <div class = title>
+                <a class = brand href = '/'>Joachim Ford</a>
+                <a class = about href = /about>About</a>
             </div>
             <div class = nav>
-                <a class = text href = /games>Games</a>
-                <a class = text href = /articles>Articles</a>
-                <a class = text href = /news>News</a>
-                <a class = text href = /experiments>Experiments</a>
-                <a class = text href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
-                <a class = text href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+                <a href = /games>Games</a>
+                <a href = /experiments>Experiments</a>
+                <a href = /articles>Articles</a>
+                <a href = /news>News</a>
             </div>
-            <img class = bars src = /svg/bars.svg onmousedown = bar()></img>
         </section>
 
         <section class = main>
@@ -69,9 +60,9 @@
                 </a>
             </div>
 
-            <div class = quote>
+            <div class = demo>
                 <b>Help Io climb the tower before his friends are thrown into the dungeons!
-                <span class = high>Io's Mission</span> is a fully-featured platform adventure
+                Io's Mission is a fully-featured platform adventure
                 where Io saves his friends from The Great Ominous.
                 <p></p>
                 The runtime for this game is about half an hour, but it saves your
@@ -83,83 +74,55 @@
                 <a href = https://github.com/Hope41/ios-mission target = _blank class = button id = b><b>Give it a Star</b></a>
                 <a href = mailto:feedback@joachimford.uk target = _blank class = button id = c><b>Send Feedback</b></a>
             </div>
-            <span class = gap>
-                Well, I'm glad that's over! I've spent almost a year and a half on this game, and it only takes
-                half an hour to play. Never mind, I'm sure it was worth it in some way or another.
-                <p></p>
-                The entire source code for this game is huge. 
+            <div class = demo>
+                <p>Well, I'm glad that's over! I've spent almost a year and a half on this game, and it only takes
+                half an hour to play. Never mind, I'm sure it was worth it in some way or another.</p>
+
+                <p>The entire source code for this game is huge. 
                 The source code for <a class = normal href = /content/the_mitigator.html target = _blank>The Mitigator</a> was just over 100kb,
                 <a class = normal href = /content/snakes_and_ladders.html target = _blank>Snakes And Ladders</a> was about 200kb,
-                but Io's Mission is nearly 1000kb.
+                but Io's Mission adds up to almost 1000kb.
                 Of course, a lot of this figure is taken up by the sound files, but there's still a lot of hand-written code
                 in there - about half of it.
-                In relatable terms, this game is over half a million characters long.
-            </span>
+                In relatable terms, this game is over half a million characters long.</p>
+            </div>
             <h3>Things I Learned</h3>
-            <div class = quote>
-                ∙ When making platform games, don't try to generating your levels purely with algorithms.
-                <p></p>
-                ∙ Make sure you think about the structure of the game before you begin. How do I want the actors to move? What order should I draw things in? What features will be useful for other parts of the game?
-                <p></p>
-                ∙ Make sure the main character looks good in your mind before adding him to your game. It's saves a lot of time.
-                <p></p>
-                ∙ Have a good idea of the gameplay before starting. What's the aim? How can I make it fun to play?
+            <div class = demo>
+                <p>∙ When making platform games, don't try to generating your
+                levels purely with algorithms.</p>
+
+                <p>∙ Make sure you think about the structure of the game before
+                you begin. How do I want the actors to move? What order
+                should I draw things in? What features will be useful for
+                other parts of the game?</p>
+
+                <p>∙ Make sure the main character looks good in your mind
+                before adding him to your game. It's saves a lot of time.</p>
+
+                <p>∙ Have a good idea of the gameplay before starting. What's
+                the aim? How can I make it fun to play?</p>
             </div>
-            <span class = gap>
-                Making <span class = high>Io's Mission</span> taught me loads.
-                You can read more about how I made it in the articles below.
-            </span>
-            <div class = quote>
-                ∙ <a class = normal href = /articles/ios_mission_the_hero>Io's Mission - The Hero</a><br>
-                ∙ <a class = normal href = /articles/ios_mission_the_bits_that_nobody_notices>Io's Mission - The Bits That Nobody Notices</a>
+            <div class = demo>
+                <p>You can read more about how I made <b>Io's Mission</b>
+                in the articles below. If you're still interested, feel free to take a
+                look at the source code by following the link.</p>
+
+                <div class = description>
+                    ∙ <a class = normal href = /articles/ios_mission_the_hero>Io's Mission: The Hero</a><br>
+                    ∙ <a class = normal href = /articles/ios_mission_the_bits_that_nobody_notices>Io's Mission: The Bits That Nobody Notices</a>
+                </div>
+
+                <div class = gap>
+                    <a href = https://github.com/Hope41/ios-mission target = _blank class = button id = c><b>Check Out the Source Code</b></a>
+                </div>
             </div>
-            <span class = gap>
-                <h3>The Source Code</h3>
-                So here it is! The entire 500000 character source code, excluding sound files.
-                You can see the code with the sound files <a href = https://github.com/Hope41/ios-mission target = _blank class = normal>on Github</a>.
-            </span>
-            <div class = code source = /ios-mission></div>
-            <div class = code source = /ios-mission/src/arrow.js></div>
-            <div class = code source = /ios-mission/src/barrel.js></div>
-            <div class = code source = /ios-mission/src/base.js></div>
-            <div class = code source = /ios-mission/src/cam.js></div>
-            <div class = code source = /ios-mission/src/cannon.js></div>
-            <div class = code source = /ios-mission/src/cannonball.js></div>
-            <div class = code source = /ios-mission/src/chat.js></div>
-            <div class = code source = /ios-mission/src/checkpoint.js></div>
-            <div class = code source = /ios-mission/src/chests.js></div>
-            <div class = code source = /ios-mission/src/city.js></div>
-            <div class = code source = /ios-mission/src/cloud.js></div>
-            <div class = code source = /ios-mission/src/constants.js></div>
-            <div class = code source = /ios-mission/src/crabs.js></div>
-            <div class = code source = /ios-mission/src/crocodiles.js></div>
-            <div class = code source = /ios-mission/src/door.js></div>
-            <div class = code source = /ios-mission/src/fish.js></div>
-            <div class = code source = /ios-mission/src/functions.js></div>
-            <div class = code source = /ios-mission/src/game.js></div>
-            <div class = code source = /ios-mission/src/hero.js></div>
-            <div class = code source = /ios-mission/src/images.js></div>
-            <div class = code source = /ios-mission/src/key.js></div>
-            <div class = code source = /ios-mission/src/log.js></div>
-            <div class = code source = /ios-mission/src/main.js></div>
-            <div class = code source = /ios-mission/src/map.js></div>
-            <div class = code source = /ios-mission/src/mines.js></div>
-            <div class = code source = /ios-mission/src/monkeys.js></div>
-            <div class = code source = /ios-mission/src/parrot.js></div>
-            <div class = code source = /ios-mission/src/pirates.js></div>
-            <div class = code source = /ios-mission/src/reed.js></div>
-            <div class = code source = /ios-mission/src/sequence.js></div>
-            <div class = code source = /ios-mission/src/sharks.js></div>
-            <div class = code source = /ios-mission/src/ship.js></div>
-            <div class = code source = /ios-mission/src/sign.js></div>
-            <div class = code source = /ios-mission/src/staff.js></div>
-            <div class = code source = /ios-mission/src/trees.js></div>
-            <p></p>
         </section>
 
+        <button class = theme onclick = toggleTheme()>Change Theme</button>
         <span class = copyright>
-            © Copyright <span class = year></span>
-            JoachimFord.uk — <a class = normal href = mailto:contact@joachimford.uk>hello@joachimford.uk</a>
+            © Copyright <span class = year></span> joachimford.uk
+            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
         </span>
     </body>
 </html>

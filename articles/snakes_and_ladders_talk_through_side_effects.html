@@ -15,18 +15,16 @@
 
     <body>
         <section class = topnav>
-            <div class = joachimford>
-                <a href = '/'>Joachim Ford</a>
+            <div class = title>
+                <a class = brand href = '/'>Joachim Ford</a>
+                <a class = about href = /about>About</a>
             </div>
             <div class = nav>
-                <a class = text href = /games>Games</a>
-                <a class = text href = /articles>Articles</a>
-                <a class = text href = /news>News</a>
-                <a class = text href = /experiments>Experiments</a>
-                <a class = text href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
-                <a class = text href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+                <a href = /games>Games</a>
+                <a href = /experiments>Experiments</a>
+                <a href = /articles>Articles</a>
+                <a href = /news>News</a>
             </div>
-            <img class = bars src = /svg/bars.svg onmousedown = bar()></img>
         </section>
 
         <section class = main>
@@ -34,145 +32,342 @@
             <h1>Snakes And Ladders Talk Through: Side Effects</h1>
             <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_side_effects/1.png></div>
 
-            <span class = gap>
-                This article runs through how the enemies of
+            <div class = demo>
+                <p>This article runs through how the enemies of
                 <a class = normal href = /content/snakes_and_ladders.html target = _blank>Snakes And Ladders</a>
                 are animated and rendered. Each simplified example has its source code underneath, so please to have a look
                 if you need help.
                 Pay particular attention to the code inside the <span class = snip>enemy()</span> function, which handles
-                the drawing and animation.
-                <p></p>
-                Nearly every enemy uses a very similar walking pattern - one that you may recognise from
-                <a class = normal href = /content/anthrophobia_fear_of_crowds.html target = _blank>Anthrophobia</a>.
-                In case you haven't already seen it, this "walking pattern" is based on a circle with
-                a limit at its base.
-            </span>
+                the drawing and animation.</p>
 
-            <span class = gap>
-                <h3>The Worm-like Stick Thingy</h3>
-                It's quite hard to see, but even the first enemy uses this circular walking pattern.
-                Notice how the joints move. It's a small change,
-                but it's vital to achieve the illusion of moving forward.
-            </span>
-
-            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/1.html></div>
-            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/1.html></div>
-
-            <span class = gap>
-                <h3>The Centipede</h3>
-
-                This side effect is very similar to the first one,
-                except that its body has been is brought upwards
-                so that its legs move instead. The iconic walking motion
-                is also more visible in this creature because you can see
-                its legs individually.
-            </span>
-
-            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/2.html></div>
-            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/2.html></div>
-
-            <span class = gap>
-                <h3>The Creeper</h3>
-
-                I'm sure you can figure out what's going on here.
-            </span>
-
-            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/3.html></div>
-            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/3.html></div>
-
-            <span class = gap>
-                <h3>The Wolfish Side Effect</h3>
-
-                This enemy also uses the motion mentioned earlier.
-                Its four feet are divided into two pairs at the moment,
-                but here's a challenge: If you paste the code below
-                into a new <span class = snip>.html</span> file, can you give the enemy four pairs of legs?
-                <p></p>
-                Tip: have a look in the <span class = snip>enemy()</span> function.
-            </span>
-
-            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/4.html></div>
-            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/4.html></div>
-
-            <span class = gap>
-                <h3>The Monster</h3>
-
-                In the real game, this enemy occasionally spits out cubes - shown
-                in the next example - and jumps whenever Drillo runs underneath it.
-                This simplified example doesn't have these features,
-                but if you want you can have a look at the real enemy code
-                <a class = normal href = https://github.com/Hope41/snakes-and-ladders/effect.js>here</a>.
-            </span>
-
-            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/5.html></div>
-            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/5.html></div>
-
-            <span class = gap>
-                <h3>The Cubic Side Effect</h3>
-
-                I agree that this enemy looks a bit basic,
-                but surprisingly it turned out to be the hardest one to get working.
-                Overall, this enemy has to go through four main procedures to give
-                you the final result.
-            </span>
-
-            <div class = quote>
-                ∙ Rotate in the direction it's moving <span class = high>(easy)</span><br>
-                ∙ Close and open its eyes before and after rolling <span class = high>(not so easy)</span><br>
-                ∙ Bump up and down so that it looks like its rolling along the ground <span class = high>(rather tricky)</span><br>
-                ∙ Make sure it only stops rolling when resting on an edge <span class = high>(tricky)</span>
+                <p>Please keep in mind that not all the enemies are showcased on this page -
+                you'll have to play the game to find that out!
+                The main purpose for this article is to help people understand the
+                <i>logic</i> behind the creatures.</p>
             </div>
 
-            <span class = gap>
-                Take a look at the source code if you need to understand it better.
-            </span>
+            <div class = demo>
+                <p>Nearly every enemy uses a very similar walking pattern - one that you may recognise from
+                <a class = normal href = /content/anthrophobia_fear_of_crowds.html target = _blank>Anthrophobia</a>.
+                In case you haven't already seen it, this "walking pattern" is based on a circle with
+                a limit at its base.</p>
 
-            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/6.html></div>
-            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/6.html></div>
+                <iframe src = /content/extra/anthrophobia_fear_of_crowds/2.html></iframe>
 
-            <span class = gap>
+                <p>It's quite hard to see, but even the first enemy uses this circular walking pattern.
+                Notice how the joints move. It's a small change,
+                but it's vital to achieve the illusion of moving forward.</p>
+            </div>
+
+            <iframe src = /articles/extra/snakes_and_ladders_talk_through_side_effects/1.html></iframe>
+
+<pre class = code>const FOOT_LIFT = .35
+const FOOT_SLIDE = .3
+const segments = []
+
+const generate = () => {
+    const parts = 6
+    let number = 0
+
+    for (let i = 0; i < parts; i ++) {
+        number += parts * i * i
+        segments.push(number)
+    }
+}
+generate()
+
+const step = (i, str) => {
+    const range = 1 / segments.length * FOOT_SLIDE
+    const length = range > .1 ? range : .1
+
+    let X = 0
+    let Y = 0
+
+    if (str == 'x')
+        X = (i * width) / (segments.length - 1) + Math.cos(WALK + segments[i]) * length
+    else
+        Y = Math.sin(WALK + segments[i]) * FOOT_LIFT
+
+    Y = Y > 0 ? height : height + Y
+
+    return X ? x + X : y + Y
+}
+
+ctx.fillStyle = 'rgb(50, 0, 0)'
+for (let i = 0; i < segments.length; i ++) {
+    line([
+        step(i - 1, 'x'),
+        step(i - 1, 'y'),
+        step(i, 'x'),
+        step(i, 'y')
+    ], .06)
+}</pre>
+
+            <div class = demo>
+                <h3>The Cubic Side Effect</h3>
+
+                <p>I agree that this enemy looks a little basic,
+                but surprisingly it turned out to be the hardest one to get working.
+                Overall, this enemy has to go through four main procedures to give
+                you the final result.</p>
+
+                <div class = subDemo>
+                    <p>∙ Rotate in the direction it's moving <b>(easy)</b></p>
+                    <p>∙ Close and open its eyes before and after rolling <b>(not so easy)</b></p>
+                    <p>∙ Bump up and down so that it looks like its rolling along the ground <b>(rather tricky)</b></p>
+                    <p>∙ Make sure it only stops rolling when resting on an edge <b>(tricky)</b></p>
+                </div>
+
+                <p>Take a look at the source code if you need to understand it better.</p>
+            </div>
+
+            <iframe src = /articles/extra/snakes_and_ladders_talk_through_side_effects/6.html></iframe>
+<pre class = code>time += .04
+const EYE_SIZE = .3 * (width + height) / 2
+const EYE = {
+    from_center: .03,
+    from_top: .14
+}
+const PUPIL_SIZE = .05
+
+const COLOR = 'rgb(160, 50, 0)'
+
+const dist_x = width / 2
+const dist_y = height / 2
+const diagonal_dist = Math.sqrt((dist_x * dist_x) + (dist_y * dist_y)) / 2
+const bump_dist = diagonal_dist / 2
+
+const bump = Math.abs(Math.sin(WALK * 2) * bump_dist)
+
+const Y = Math.sin(WALK) * dist_y
+const X = Math.cos(WALK) * dist_x
+
+ctx.fillStyle = COLOR
+line([-X, -Y - bump, X, Y - bump], width)
+
+const features = () => {
+    // EYES
+    ctx.fillStyle = '#eef'
+    const eye1 = {
+        x: x + width / 2 - EYE.from_center,
+        y: y + EYE.from_top
+    }
+    const eye2 = {
+        x: x + width / 2 + EYE.from_center,
+        y: y + EYE.from_top
+    }
+
+    fillRect(eye1.x - EYE_SIZE, eye1.y, EYE_SIZE, EYE_SIZE)
+    fillRect(eye2.x, eye2.y, EYE_SIZE, EYE_SIZE)
+    
+    // PUPILS
+    const LIMIT = EYE_SIZE / 2 - PUPIL_SIZE / 2
+    const center = {
+        x_1: eye1.x - EYE_SIZE / 2 - PUPIL_SIZE / 2,
+        y_1: eye1.y + EYE_SIZE / 2 - PUPIL_SIZE / 2,
+        x_2: eye2.x + EYE_SIZE / 2 - PUPIL_SIZE / 2,
+        y_2: eye2.y + EYE_SIZE / 2 - PUPIL_SIZE / 2
+    }
+    const rot = Math.sin(time) * .1 + Math.random() * .2 - .4
+
+    ctx.fillStyle = '#900'
+    fillRect(
+        center.x_1 + Math.cos(rot + .1) * LIMIT,
+        center.y_1 + Math.sin(rot + .1) * LIMIT,
+        PUPIL_SIZE, PUPIL_SIZE
+    )
+    fillRect(
+        center.x_2 + Math.cos(rot) * LIMIT,
+        center.y_2 + Math.sin(rot) * LIMIT,
+        PUPIL_SIZE, PUPIL_SIZE
+    )
+
+    // BROWS
+    ctx.fillStyle = '#000'
+    line([
+        eye1.x - EYE_SIZE,
+        eye1.y,
+        eye1.x + (eye2.x + EYE_SIZE - eye1.x - EYE_SIZE) / 2,
+        eye1.y + EYE_SIZE / 4,
+        eye2.x + EYE_SIZE,
+        eye2.y,
+    ], .04)
+
+    const speed = .05
+
+    // open eyes after rolling
+    if (closed) {
+        eyelid -= speed
+
+        if (eyelid <= 0) {
+            eyelid = 0
+            closed = false
+        }
+    }
+
+    // close eyes before rolling
+    const shrink = roll_timer * speed
+    if (shrink < EYE_SIZE) eyelid = EYE_SIZE - shrink
+
+    // Draw eyelid
+    const pad = 1 / scale
+    ctx.fillStyle = COLOR
+    fillRect(x, y + EYE.from_top - pad, width, eyelid)
+}
+
+if (!dir) features()</pre>
+
+            <div class = demo>
                 <h3>The Crab</h3>
 
-                Getting the legs to move like this was really hard. In the end,
+                <p>Getting the legs to move like this was really hard. In the end,
                 it turned out to be helpful to make a small drawing animation
                 of it first before writing it as code. I know, creating "drawing animations"
                 of your creatures might sound a bit pointless, but it can actually
                 save a lot of time if your creature is already difficult to
-                visualise in your head.
-            </span>
+                visualise in your head.</p>
+            </div>
 
-            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/7.html></div>
-            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/7.html></div>
+            <iframe src = /articles/extra/snakes_and_ladders_talk_through_side_effects/7.html></iframe>
 
-            <span class = gap>
-                <h3>The Last Side Effect</h3>
+<pre class = code>const offset = Math.sin(WALK * 2) * .1
+const fake_height = 1.2
 
-                In the real game, this enemy hammers his head whenever Drillo jumps on top of it.
-                I've scaled it down a bit so it can fit in on the screen, but usually you can only
-                see parts of it. I admit the walking is slightly weird.
-            </span>
+const LEG_WIDTH = .2
+const LEG_PIVOT = .4
+const FOOT_MOVE = .4
+const FOOT_LIFT = .3
+const KNEE_HEIGHT = .5
+const ARM_WIDTH = .2
+const EYE_DOWN = .3
+const EYE_SIZE = .6
+const PUPIL_SIZE = .15
+const ARM_LENGTH = 1.4
 
-            <div class = iframe source = /articles/extra/snakes_and_ladders_talk_through_side_effects/8.html></div>
-            <div class = code source = /articles/extra/snakes_and_ladders_talk_through_side_effects/8.html></div>
+const half = width / 2
+const center = x + half
+// LEG
+ctx.fillStyle = 'rgb(34,170,136)'
+const leg = val => {
+    const dir = Math.sign(val)
+    const walk = WALK + Math.sin(val * val + dir * 9) * 5
 
-            <span class = gap>
+    const step = Math.cos(walk) < 0 && Math.cos(walk)
+    const foot = {
+        x: Math.sin(-walk) * FOOT_MOVE,
+        y: step * FOOT_LIFT
+    }
+    const knee = {
+        x: Math.sin(-walk) * FOOT_MOVE / 2,
+        y: step * FOOT_LIFT
+    }
+
+    const x = center + val * half
+    line([
+        x,
+        y + offset + fake_height - LEG_WIDTH / 2,
+        x + knee.x + LEG_PIVOT * dir,
+        y + height - KNEE_HEIGHT + knee.y,
+        x + foot.x + LEG_PIVOT * dir,
+        y + height + foot.y
+    ], LEG_WIDTH)
+}
+
+leg(-.9)
+leg(-.6)
+leg(-.3)
+leg(.3)
+leg(.6)
+leg(.9)
+
+// ARM
+const wobble = Math.abs(Math.sin(WALK / 5)) / 10
+const _arm_ang = Math.sin(WALK) * .5 - Math.PI / 2
+const clw_ang = Math.sin(WALK) * .2 - Math.PI / 2
+
+for (let i = 0; i < 2; i ++) {
+    const val = i ? 1 : -1
+
+    const __arm_ang = Math.PI / 7 * val
+    const arm_ang = _arm_ang + __arm_ang * 1.5
+
+    const x1 = center + val * (half - ARM_WIDTH / 2)
+    const y1 = y + offset + fake_height / 2
+    const x2 = x1 + Math.cos(arm_ang) * ARM_LENGTH
+    const y2 = y1 + Math.sin(arm_ang) * ARM_LENGTH
+
+    const snap = Math.sin(WALK / 6 + Math.cos(WALK / 2) + val) * 2 + 1.8
+    const snap_rot = snap > .5 ? .5 : snap > 0 && snap
+
+    // ARMS
+    ctx.fillStyle = 'rgb(34,170,136)'
+    line([x1, y1, x2, y2], ARM_WIDTH)
+
+    // CLAWS
+    ctx.fillStyle = 'rgb(221,85,34)'
+    const real = realPos(x2, y2)
+    ctx.save()
+    ctx.translate(real.x, real.y)
+    ctx.save()
+    ctx.rotate(clw_ang)
+    rotFillRect(0, 0, .9, .5 * val)
+    ctx.restore()
+    ctx.save()
+    ctx.rotate(clw_ang - snap_rot * val)
+    rotFillRect(0, 0, .8, -.2 * val)
+    ctx.restore()
+    ctx.restore()
+}
+
+// BODY
+ctx.fillStyle = 'rgb(34,153,119)'
+fillRect(x, y + offset, width, fake_height)
+
+// EYES
+const eye = val => {
+    const dir = Math.sign(val)
+    const eye_x = center + half * val
+    const eye_y = y + EYE_DOWN + offset
+
+    ctx.fillStyle = 'rgb(255,255,255)'
+    fillRect(eye_x, eye_y, EYE_SIZE * dir, EYE_SIZE)
+
+    const ang = Math.sin(WALK) * .3
+
+    const sum = EYE_SIZE / 2 - PUPIL_SIZE / 2
+    const X = Math.cos(ang) * sum
+    const Y = Math.sin(ang) * sum
+
+    ctx.fillStyle = 'rgb(0,0,0)'
+    fillRect(eye_x + sum * dir + X, eye_y + sum + Y, PUPIL_SIZE * dir, PUPIL_SIZE)
+
+    ctx.fillStyle = 'rgb(51,0,0)'
+    line([
+        eye_x + EYE_SIZE * dir, eye_y,
+        eye_x, eye_y + .1
+    ], .1)
+}
+eye(-.3)
+eye(.3)</pre>
+
+            <div class = demo>
                 <h3>The ...?</h3>
 
-                Well, I <i>was</i> planning on showcasing the X-ray Orb here,
-                but I decided to leave it out so as not to spoil the game for you,
-                in case you haven't played
-                <a class = normal href = /content/snakes_and_ladders.html target = _blank>Snakes And Ladders</a>
-                yet. You'll just have to find out when you get there!
-                <p></p>
-                Anyway, thanks for reading this far and please
-                <a class = normal href = mailto:contact@joachimford.uk>contact me</a>
-                if you have any further questions!
-            </span>
+                <p>Well, I <i>was</i> planning on putting the X-Ray Orb here...
+                but I decided to leave it out so as not to spoil the game for you.
+                You'll just have to find out when you get there, if you haven't already!
+
+                <p>Anyway, thanks for reading to the end, and feel free to
+                <a class = normal href = mailto:contact@joachimford.uk>let me know</a>
+                if you have any more questions!</p>
+            </div>
         </section>
 
+        <button class = theme onclick = toggleTheme()>Change Theme</button>
         <span class = copyright>
-            © Copyright <span class = year></span>
-            Joachimford.uk — <a class = normal href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
+            © Copyright <span class = year></span> joachimford.uk
+            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
         </span>
     </body>
 </html>

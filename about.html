@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = utf-8>
+        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
+        <meta name = keywords content = 'Joachim Ford, JavaScript games, Ios Mission'>
+
+        <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
+        <script src = /js/analytics.js></script>
+        <script src = /js/main.js></script>
+        <title>Joachim Ford</title>
+        <link rel = stylesheet href = /main.css>
+        <link rel = icon type = image/x-icon  href = /favs/favicon.ico>
+        <style>
+            h1 {
+                margin-left: auto;
+                margin-right: auto;
+                color: var(--buttonnorm);
+            }
+
+            .me {
+                margin-left: auto;
+                margin-right: auto;
+                border-radius: 50%;
+                width: 40%;
+                max-width: 250px;
+                min-width: 80px;
+                border: 7px solid var(--topnavbuttonhover);
+            }
+        </style>
+    </head>
+
+    <body>
+        <section class = topnav>
+            <div class = title>
+                <a class = brand href = '/'>Joachim Ford</a>
+                <a class = about href = /about>About</a>
+            </div>
+            <div class = nav>
+                <a href = /games>Games</a>
+                <a href = /experiments>Experiments</a>
+                <a href = /articles>Articles</a>
+                <a href = /news>News</a>
+            </div>
+        </section>
+
+        <section class = main>
+            <img class = me src = images/me.png>
+            <div class = demo>
+                <span class = description>
+                    Hi there! I'm Joachim Ford, a solo game developer
+                    who likes to create unique indie games in pure JavaScript.
+                    I'm always open to suggestions and feedback, so feel free to
+                    check out my <a class = normal href = github.com/Hope41 target = _blank>GitHub</a>
+                    or get in touch at
+                    <a class = normal href = mailto:hello@joachimford.uk target = _blank>hello@joachimford.uk</a>.
+                </span>
+            </div>
+
+            <div class = demo>
+                <span class = description>
+                    I've also spent some time working for
+                    <a class = normal href = https://jobase.org>JoBase</a>,
+                    and some of my games such as
+                    <b>SquirtCopter</b> and <b>Blue Hue</b> have been recently
+                    featured on the website.
+                </span>
+            </div>
+
+            <h1>Things I'm Working On...</h1>
+
+            <div class = demo>
+                <span class = description>
+                    Well, where do I start? I really do have rather a lot of
+                    projects on the go. Here's a breif overview of what I'm up to,
+                    but remember you can always check out my past releases on the
+                    <a class = normal href = /news target = _blank>news</a> tab.
+                </span>
+            </div>
+        </section>
+
+        <button class = theme onclick = toggleTheme()>Change Theme</button>
+        <span class = copyright>
+            © Copyright <span class = year></span> joachimford.uk
+            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+        </span>
+    </body>
+</html>

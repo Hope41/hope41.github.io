@@ -1,45 +1,43 @@
 'use strict'
-function bar() {
-    const topnav = document.querySelector('.topnav')
-    if (topnav.className == 'topnav') topnav.className += ' responsive'
-    else topnav.className = 'topnav'
+const KEY = 'JoachimFordUkColorThemeData'
+
+function toggleTheme() {
+    document.body.classList.toggle('dark')
+    document.body.classList.toggle('light')
+    localStorage.setItem(KEY, document.body.className)
 }
 
 onload = () => {
-    const iframe = document.querySelectorAll('.iframe')
     const code = document.querySelectorAll('.code')
     const year = document.querySelector('.year')
-
-    const load = async text => await (await fetch(text)).text()
     if (year) year.textContent = new Date().getFullYear()
 
-    iframe.forEach(item => {
-        const source = item.getAttribute('source')
-        const iframe = document.createElement('iframe')
-        iframe.src = source
+    // Get current theme
+    if (document.body.className != localStorage.getItem(KEY))
+        toggleTheme()
 
-        item.appendChild(iframe)
-    })
+    // Highlight code
+    for (let i = 0; i < code.length; i ++) {
+        const box = code[i]
+        const lines = box.textContent.split('¬')
+        let isGrayed = false
 
-    code.forEach(async item => {
-        const pre = document.createElement('pre')
-        const source = item.getAttribute('source')
-        const code = (source ? await load(source) : item.textContent).split('¬')
-        item.textContent = ''
-
-        let state = 'hash'
-        for (let i = 0; i < code.length; i ++) {
-            if (state) {
-                pre.innerHTML += code[i]
+        for (let i = 0; i < lines.length; i ++) {
+            if (isGrayed) lines[i] = '<span class = gray>' + lines[i] + '</span>'
+            else {
+                lines[i] = lines[i]
                     .replace(/</g, '&lt;')
-                    .replace(/(\/\/.*|\'.*\')/g,'<span class = string>$1</span>')
+                    .replace(/(\/\/.*)/g, '<span class = comment>$1</span>')
+                    .replace(/(\'.*\')/g, '<span class = string>$1</span>')
+                    .replace(/(\b\d+\b|\.)/g, '<span class = number>$1</span>')
+                    .replace(/((?<=function)(.*)(?=\())/g, '<span class = name>$1</span>')
+
+                lines[i] = lines[i]
+                    .replace(/\b(if|else|return|function|const|let|for|in|of|break|continue)\b/g, '<span class = keyword>$1</span>')
             }
-            else pre.innerHTML += '<span class = hash>' + code[i] + '</span>'
 
-            if (state) state = ''
-            else state = 'hash'
+            isGrayed = !isGrayed
         }
-
-        item.appendChild(pre)
-    })
+        box.innerHTML = lines.join('')
+    }
 }

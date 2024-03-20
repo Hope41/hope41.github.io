@@ -12,14 +12,7 @@
         <link rel = stylesheet href = /main.css>
         <link rel = icon type = image/x-icon  href = /favs/favicon.ico>
         <style>
-            @font-face {
-                font-family: super;
-                src: url(/super.otf);
-            }
-
-            html {
-                height: 100%
-            }
+            html {height: 100%}
 
             body {
                 margin: 0;
@@ -32,88 +25,95 @@
 
             canvas {
                 width: 100%;
-                height: 100%
+                height: 100%;
+            }
+
+            .main {
+                margin: 0;
+                padding: 0
             }
         </style>
     </head>
 
     <body>
         <section class = topnav>
-            <div class = joachimford>
-                <a href = '/'>Joachim Ford</a>
+            <div class = title>
+                <a class = brand href = '/'>Joachim Ford</a>
+                <a class = about href = /about>About</a>
             </div>
             <div class = nav>
-                <a class = text href = /games>Games</a>
-                <a class = text href = /articles>Articles</a>
-                <a class = text href = /news>News</a>
-                <a class = text href = /experiments>Experiments</a>
-                <a class = text href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
-                <a class = text href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+                <a href = /games>Games</a>
+                <a href = /experiments>Experiments</a>
+                <a href = /articles>Articles</a>
+                <a href = /news>News</a>
             </div>
-            <img class = bars src = /svg/bars.svg onmousedown = bar()></img>
         </section>
 
-        <a href = /content/ios_mission><canvas id = cvs></canvas></a>
-        <script>
-            function resize() {
-                cvs.width = innerWidth * devicePixelRatio
-                cvs.height = innerHeight * devicePixelRatio + 1
-
-                s = cvs.width / 15
-                if (cvs.width > cvs.height) s = cvs.height / 15
-            }
-
-            function update() {
-                ctx.clearRect(0, 0, cvs.width, cvs.height)
-                time ++
-
-                const iRatio = img.width / img.height
-                const cRatio = cvs.width / cvs.height
-
-                let w = 0
-                let h = 0
-                if (iRatio < cRatio) {
-                    w = cvs.width
-                    h = (img.height / img.width) * cvs.width
+        <section class = main>
+            <a href = /content/ios_mission><canvas id = cvs></canvas></a>
+            <script>
+                function resize() {
+                    cvs.width = innerWidth * devicePixelRatio
+                    cvs.height = innerHeight * devicePixelRatio + 1
+                    s = cvs.width / 15
+                    if (cvs.width > cvs.height) s = cvs.height / 15
                 }
-                else {
-                    w = iRatio * cvs.height
-                    h = cvs.height
+                function fillText(text, x, y, alpha) {
+                    ctx.fillStyle = 'rgb(0,0,0,'+alpha*2+')'
+                    ctx.fillText(text, x + s / 10, y + s / 10)
+                    ctx.fillStyle = 'rgb(255,255,255,'+alpha+')'
+                    ctx.fillText(text, x, y)
                 }
+                function update() {
+                    ctx.clearRect(0, 0, cvs.width, cvs.height)
+                    time ++
+                    const iRatio = img.width / img.height
+                    const cRatio = cvs.width / cvs.height
+                    let w = 0
+                    let h = 0
+                    if (iRatio < cRatio) {
+                        w = cvs.width
+                        h = (img.height / img.width) * cvs.width
+                    }
+                    else {
+                        w = iRatio * cvs.height
+                        h = cvs.height
+                    }
+                    ctx.drawImage(
+                        img,
+                        cvs.width / 2 - w / 2,
+                        cvs.height / 2 - h / 2 + 80,
+                        w, h)
+                    ctx.fillStyle = '#f801'
+                    ctx.fillRect(0, 0, cvs.width, cvs.height)
+                    const a = 1 - time / 500
+                    let A = a
+                    if (A < .4) A = .4
+                    ctx.fillStyle = 'rgb(0,0,0,'+A+')'
+                    ctx.fillRect(0, 0, cvs.width, cvs.height)
+                    ctx.textAlign = 'center'
+                    ctx.font = s * 1.5 + 'px super'
+                    fillText('IO\'S MISSION', cvs.width / 2, cvs.height / 2 - 100 / time * 10, 1-a)
+                    ctx.font = s * .5 + 'px super'
+                    fillText('THE NEW ADVENTURE GAME', cvs.width / 2, cvs.height / 2 + s + 50 / time * 5, 1-a)
+                    requestAnimationFrame(update)
+                }
+                const ctx = cvs.getContext('2d')
+                const img = new Image()
+                img.src = 'images/bg.jpg'
+                let time = 0
+                let s = 0
+                addEventListener('resize', resize)
+                resize()
+                update()
+            </script>
+        </section>
 
-                ctx.drawImage(
-                    img,
-                    cvs.width / 2 - w / 2,
-                    cvs.height / 2 - h / 2 + 80,
-                    w, h)
-
-                const a = 1 - time / 500
-
-                let A = a
-                if (A < .4) A = .4
-                ctx.fillStyle = 'rgb(0,0,0,'+A+')'
-                ctx.fillRect(0, 0, cvs.width, cvs.height)
-
-                ctx.fillStyle = 'rgb(255,255,255,'+(1-a)+')'
-                ctx.textAlign = 'center'
-                ctx.font = s * 1.5 + 'px super'
-                ctx.fillText('IO\'S MISSION', cvs.width / 2, cvs.height / 2 - 400 / time * 10)
-
-                ctx.font = s * .5 + 'px super'
-                ctx.fillText('THE NEW ADVENTURE GAME', cvs.width / 2, cvs.height / 2 + s + 100 / time * 5)
-
-                requestAnimationFrame(update)
-            }
-
-            const ctx = cvs.getContext('2d')
-            const img = new Image()
-            img.src = 'bg.png'
-            let time = 0
-            let s = 0
-
-            addEventListener('resize', resize)
-            resize()
-            update()
-        </script>
+        <button class = theme onclick = toggleTheme()>Change Theme</button>
+        <span class = copyright>
+            © Copyright <span class = year></span> joachimford.uk
+            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+        </span>
     </body>
 </html>

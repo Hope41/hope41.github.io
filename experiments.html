@@ -15,18 +15,16 @@
 
     <body>
         <section class = topnav>
-            <div class = joachimford>
-                <a href = '/'>Joachim Ford</a>
+            <div class = title>
+                <a class = brand href = '/'>Joachim Ford</a>
+                <a class = about href = /about>About</a>
             </div>
             <div class = nav>
-                <a class = text href = /games>Games</a>
-                <a class = text href = /articles>Articles</a>
-                <a class = text href = /news>News</a>
-                <a class = text href = /experiments>Experiments</a>
-                <a class = text href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
-                <a class = text href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+                <a href = /games>Games</a>
+                <a href = /experiments>Experiments</a>
+                <a href = /articles>Articles</a>
+                <a href = /news>News</a>
             </div>
-            <img class = bars src = /svg/bars.svg onmousedown = bar()></img>
         </section>
 
         <section class = main>
@@ -60,9 +58,11 @@
             </a>
         </section>
 
+        <button class = theme onclick = toggleTheme()>Change Theme</button>
         <span class = copyright>
-            © Copyright <span class = year></span>
-            Joachimford.uk — <a class = normal href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
+            © Copyright <span class = year></span> joachimford.uk
+            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
         </span>
     </body>
 </html>

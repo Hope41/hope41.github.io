@@ -15,18 +15,16 @@
 
     <body>
         <section class = topnav>
-            <div class = joachimford>
-                <a href = '/'>Joachim Ford</a>
+            <div class = title>
+                <a class = brand href = '/'>Joachim Ford</a>
+                <a class = about href = /about>About</a>
             </div>
             <div class = nav>
-                <a class = text href = /games>Games</a>
-                <a class = text href = /articles>Articles</a>
-                <a class = text href = /news>News</a>
-                <a class = text href = /experiments>Experiments</a>
-                <a class = text href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
-                <a class = text href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+                <a href = /games>Games</a>
+                <a href = /experiments>Experiments</a>
+                <a href = /articles>Articles</a>
+                <a href = /news>News</a>
             </div>
-            <img class = bars src = /svg/bars.svg onmousedown = bar()></img>
         </section>
 
         <section class = main>
@@ -34,81 +32,86 @@
             <h1>Io's Mission: The Hero</h1>
             <div class = big><img class = img src = /articles/extra/ios_mission_the_hero/1.png></div>
 
-            <div class = quote>
-                <b>Table Of Contents</b>
-                <p></p>
-                ∙ <a class = normal href = /articles/ios_mission_the_hero#intro>Introduction</a><br>
-                ∙ <a class = normal href = /articles/ios_mission_the_hero#movement>The Transitioning Extravaganza</a><br>
-                ∙ <a class = normal href = /articles/ios_mission_the_hero#code>Getting to the Code</a><br>
-                &emsp;∙ <a class = normal href = /articles/ios_mission_the_hero#step1>Step 1</a><br>
-                &emsp;∙ <a class = normal href = /articles/ios_mission_the_hero#step2>Step 2</a><br>
-                &emsp;∙ <a class = normal href = /articles/ios_mission_the_hero#step3>Step 3</a><br>
-                ∙ <a class = normal href = /articles/ios_mission_the_hero#conclusion>Conclusion</a>
+            <div class = demo>
+                <span class = description>
+                    <b>Table Of Contents</b>
+                    <p></p>
+                    ∙ <a class = normal href = /articles/ios_mission_the_hero#intro>Introduction</a><br>
+                    ∙ <a class = normal href = /articles/ios_mission_the_hero#movement>The Transitioning Extravaganza</a><br>
+                    ∙ <a class = normal href = /articles/ios_mission_the_hero#code>Getting to the Code</a><br>
+                    &emsp;∙ <a class = normal href = /articles/ios_mission_the_hero#step1>Step 1</a><br>
+                    &emsp;∙ <a class = normal href = /articles/ios_mission_the_hero#step2>Step 2</a><br>
+                    &emsp;∙ <a class = normal href = /articles/ios_mission_the_hero#step3>Step 3</a><br>
+                    ∙ <a class = normal href = /articles/ios_mission_the_hero#conclusion>Conclusion</a>
+                </span>
             </div>
-            <span class = gap id = intro>
-                <h2>Introduction</h2>
-                The development of
+            <div class = demo id = intro>
+                <h3>Introduction</h3>
+
+                <p>The development of
                 <a class = normal href = /content/ios_mission target = _blank>Io's Mission</a>
                 ran me into a lot of challenges. I was unsure - even when I'd
                 been making it for almost a year - whether I'd really be able to
                 pull it off.
                 It may sound surprising to you, but the most complicated
-                part of the whole game turned out to be <span class = high>Io</span>
-                himself.
-                <p></p>
-                He went through a lot of changes as he grew older. For a
-                long time, his head didn't lean forward as he walked, and
-                the even swing of his arms wasn't there.
-                <p></p>
-                His appearence changed as well. Here is a picture of his
-                growth over time.
-            </span>
+                part of the whole game turned out to be <b>Io</b>
+                himself.</p>
 
+                <p>He went through a lot of changes as he grew older. For a
+                long time, his head didn't lean forward as he walked, and
+                the even the swing of his arms was absent.
+                His appearence changed as well. Here is a picture of his
+                growth over time.</p>
+            </div>
+            <br>
             <div class = big><img class = img src = /articles/extra/ios_mission_the_hero/2.png></div>
 
-            <span class = gap id = movement>
-                <h2>The Transitioning Extravaganza</h2>
-
-                Aside from everything I've already mentioned, I view the most
+            <div class = demo id = movement>
+                <h3>The Transitioning Extravaganza</h3>
+                <p>Aside from everything I've already mentioned, I view the most
                 interesting - and challenging, if you haven't done it before -
                 part of Io's functionings to be his
-                "transitioning between states."
-                <p></p>
-                I don't know if you noticed, but whenever Io
+                "transitioning between states."</p>
+
+                <p>I don't know if you noticed, but whenever Io
                 changed position (like rolling or jumping into the sea),
                 he would take a few frames to "transition" between poses.
                 In other words, his body joints would smoothly move
-                to a new position, instead of just switching immidiately.
-                <p></p>
-                Look closely at the example below to understand it better.
-            </span>
+                to a new position, instead of just switching immidiately.</p>
 
-            <div class = iframe source = /articles/extra/ios_mission_the_hero/3.html></div>
-
-            <span class = gap>
-                In the first part of the example, Io "jolts" to the next position.
+                <p>Look closely at the example below to understand it better.</p>
+            </div>
+            <br>
+            <iframe src = /articles/extra/ios_mission_the_hero/3.html></iframe>
+            <br>
+            <div class = demo>
+                <p>In the first part of the example, Io "jolts" to the next position.
                 In the second part, Io slowly transitions between states to give
-                the character a more natural feel.
-                <p></p>
-                It may be a bit tricky to implement at first,
-                but the results will definitely pay off!
-            </span>
+                the character a more natural feel.</p>
 
-            <span class = gap>
-                <h2 id = code>Getting to the Code</h2>
-                So far we've only discussed this "smooth transitioning" in concept.
+                <p>It may be a bit tricky to implement at first,
+                but the results will definitely pay off!</p>
+                </div>
+
+            <div class = demo>
+                <h3 id = code>Getting to the Code</h3>
+
+                <p>So far we've only discussed this "smooth transitioning" in concept.
                 Now we're going to go slightly further by looking at what we
-                need to do in <i>code.</i>
-                <p></p>
-                Let's start by constructing a template character. He has
+                need to do in <i>code.</i></p>
+
+                <p>Let's start by constructing a template character. He has
                 a few main joints and some abilities - like walking, standing
                 and climbing. The first stage is getting him (or her) on the screen.
-                That's quite easy, so let's skip to the next step - defining each joint.
-                <h4 id = step1>STEP 1: Defining Each Joint</h4>
-                To do this, create a dictionary that stores all of your character's <b>moving parts.</b>
-            </span>
+                That's quite easy, so let's skip to the next step - defining each joint.</p>
+            </div>
 
-<div class = code>const hero = {
+            <div class = demo>
+                <h4 id = step1>STEP 1: Defining Each Joint</h4>
+                <p>To do this, create a dictionary that stores all of your character's
+                <b>moving parts.</b></p>
+
+<pre class = code>const hero = {
     arm1: 0, // angle
     arm2: 0,
     leg1: 0,
@@ -117,29 +120,28 @@
     eyex: 0, // position
     eyey: 0,
     body: 0
-}</div>
+}</pre>
 
-            <span class = gap>
-                As well as defining these variables, make sure they actually
+                <p>As well as defining these variables, make sure they actually
                 <i>change</i> what the hero looks like.
                 For example, if <span class = snip>hero.arm1</span>
                 is set to <span class = snip>1</span>, the character on the screen
-                should have his arm at an angle of one radian.
+                should have his arm at an angle of one radian.</p>
+            </div>
 
+
+            <div class = demo>
                 <h4 id = step2>STEP 2: Setting the Hero's State</h4>
 
-                The next step is to define what <i>state</i> our character is currently
-                in. Create a new variable to determine what he's doing.
-            </span>
+                <p>The next step is to define what <i>state</i> our character is currently
+                in. Create a new variable to determine what he's doing.</p>
 
-<div class = code>activeState = 'walking'</div>
+<pre class = code>activeState = 'walking'</pre>
 
-            <span class = gap>
-                Now we need to move the hero based on his state.
-                Have a look at the code below to understand how to do this.
-            </span>
+                <p>Now we need to move the hero based on his state.
+                Have a look at the code below to understand how to do this.</p>
 
-            <div class = code>// this changes the hero's joints based on the inputted state
+<pre class = code>// this changes the hero's joints based on the inputted state
 function changeHeroJoints(inputState) {
 
     if (inputState == 'walking') {
@@ -171,20 +173,19 @@ function update() {
 
 
     ¬draw hero ect...
-</div>
-            <span class = gap>
-                I'll explain a little of what the code above actually does.
-                Remember we created a string called <span class = snip>activeState</span>?
-                This "keyword" is put into the <span class = snip>changeHeroJoints()</span>
-                function, which in turn updates the character's body parts. If you
-                need help, read the comments within the code.
-                <p></p>
-                The character should now be moving based on what is entered into
-                the <span class = snip>changeHeroJoints()</span> function.
-                In the code below, I've given the character another state: climbing.
-            </span>
+</pre>
 
-<div class = code>¬        hero.leg2 = Math.cos(time) * .5
+            <p>I'll explain a little of what the code above actually does.
+            Remember we created a string called <span class = snip>activeState</span>?
+            This "keyword" is put into the <span class = snip>changeHeroJoints()</span>
+            function, which in turn updates the character's body parts. If you
+            need help, read the comments within the code.</p>
+
+            <p>The character should now be moving based on what is entered into
+            the <span class = snip>changeHeroJoints()</span> function.
+            In the code below, I've given the character another state: climbing.</p>
+
+<pre class = code>¬        hero.leg2 = Math.cos(time) * .5
         hero.eyex = 1
     }¬
 
@@ -219,37 +220,38 @@ function update() {
 
 
     draw hero ect...¬
+</pre>
 </div>
-
-            <span class = gap>
-                Well that was a lot of coding! Thankfully that's the end of
+            <div class = demo>
+                <p>Well that was a lot of coding! Thankfully that's the end of
                 the set-up code, and the rest should <i>hopefully</i> be a
                 little easier to understand.
                 Right now, our character behaves much like
-                the "switching" Io - mentioned earlier -
-                and that's just unacceptable.
-                <p></p>
-                Without further ado, let us now commence with the implementation of our famous
-                Transitioning Extravaganza, and proceed to the final
-                part of this section.
+                the "switching" Io - shown earlier -
+                and that's just unacceptable.</p>
 
+                <p>Without further ado, let us now commence with the implementation of our famous
+                Transitioning Extravaganza, and press on to the final
+                part of this section.</p>
+            </div>
+
+            <div class = demo>
                 <h4 id = step3>STEP 3: Coding The Transitioning Extravaganza</h4>
 
-                Ah, we're finally at step three. Let's have a quick recap by having
-                a look at the comparison again.
-            </span>
+                <p>We're finally at step three. Let's have a quick recap by taking
+                a look at the comparison again.</p>
+            </div>
 
-            <div class = iframe source = /articles/extra/ios_mission_the_hero/4.html></div>
+            <iframe src = /articles/extra/ios_mission_the_hero/4.html></iframe>
 
-            <span class = gap>
-                So, how do we make it smooth? The first stage is turn our <span class = snip>hero</span>
+            <div class = demo>
+                <p>So, how do we make it smooth? The first stage is turn our <span class = snip>hero</span>
                 dictionary into a function. Sounds pointless, but it will be very
-                useful later on.
-                <p></p>
-                Write your code a bit like this:
-            </span>
+                useful later on.</p>
 
-<div class = code>// creates a new template body and returns it
+                <p>Write your code a bit like this:</p>
+
+<pre class = code>// creates a new template body and returns it
 function createBody() {
     return {
         arm1: 0,
@@ -263,17 +265,16 @@ function createBody() {
     }
 }
 const hero = createBody()
-</div>
+</pre>
 
-            <span class = gap>
-                Our <span class = snip>changeHeroJoints()</span> function also
+                <p>Our <span class = snip>changeHeroJoints()</span> function also
                 needs a slight change-around. Instead of <i>directly</i> manipulating
                 the character's body, change the function so that it returns
-                a new body instead, which can be used later on.
-                <p></p>
-                Pay particular attention to the comments in the following updated code.
-            </span>
-<div class = code>const hero = createBody()
+                a new body instead, which can be used later on.</p>
+
+                <p>Pay particular attention to the comments in the following updated code.</p>
+
+<pre class = code>const hero = createBody()
 
 function changeHeroJoints(inputState) {
 
@@ -319,18 +320,16 @@ transition = 0
 
 
     draw hero ect...¬
-</div>
+</pre>
 
-            <span class = gap>
-                At the moment, the code shown above won't do anything. If you look
+                <p>At the moment, the code shown above won't do anything. If you look
                 carefully, you'll notice that our <span class = snip>hero</span>
-                body isn't being changed.
-                <p></p>
-                The code is very incomplete, so let's finish it off. Have a read
-                of the comments if you need help.
-            </span>
+                body isn't being changed.</p>
 
-<div class = code>// create a new array representing all the moving parts
+                <p>The code is very incomplete, so let's finish it off. Have a read
+                of the comments if you need help.</p>
+
+<pre class = code>// create a new array representing all the moving parts
 // in our hero's body. This is important
 const arr = [
     'arm1',
@@ -380,62 +379,251 @@ function update() {
 
 
     draw hero ect...¬
-</div>
+</pre>
 
-            <span class = gap>
-                Well, what is the code doing? First, we created a new array -
+                <p>Well, what is the code doing? First, we created a new array -
                 one that directly mirrored the contents of our <span class = snip>
-                createBody()</span> function.
-                <p></p>
-                Later, in our <span class = snip>update()</span> loop, we went
+                createBody()</span> function.</p>
+
+                <p>Later, in our <span class = snip>update()</span> loop, we went
                 through every body part <b>one by one,</b> and changed the hero's
-                body based on the transition's progress.
-                <p></p>
-                We can actually give one small improvement to this code.
+                body based on the transition's progress.</p>
+
+                <p>We can actually give one small improvement to this code.
                 Currently, the transition works in a "linear" way, but it
                 looks much better (in my opinion anyway) to have it move
-                in a "bezier" fashion. Take a look at the difference to see what I mean.
-            </span>
+                in a "bezier" fashion. Take a look at the difference to see what I mean.</p>
+            </div>
 
-            <div class = iframe source = /articles/extra/ios_mission_the_hero/5.html></div>
+            <iframe src = /articles/extra/ios_mission_the_hero/5.html></iframe>
 
-            <span class = gap>
-                It's a very, very small difference. It's all about the "feel" you get from it.
+            <div class = demo>
+                <p>It's a very, very small difference. It's all about the "feel" you get from it.
                 When it was transitioning, did you think first
-                one looked slightly robotic, whereas the other was a bit smoother?
-                <p></p>
-                If you didn't notice a difference you don't need to worry about it,
+                one looked slightly robotic, whereas the other was a bit smoother?</p>
+
+                <p>If you didn't notice a difference you don't need to worry about it,
                 but for those who like minor details (like me), make this one small edit.
-                No need to worry about figuring out the maths.
-            </span>
+                No need to worry about figuring out the maths.</p>
 
-<div class = code>¬hero[arr[i]] = oldPart + (dist * ¬(.5 + Math.cos(transition * Math.PI + Math.PI) * .5)¬)</div>
+<pre class = code>¬hero[arr[i]] = oldPart + (dist * ¬(.5 + Math.cos(transition * Math.PI + Math.PI) * .5)¬)</pre>
 
-            <span class = gap>
-                To discover more pointless details from
+                <p>To discover more pointless details from
                 <a class = normal href = /content/ios_mission target = _blank>Io's Mission</a>,
-                check out my <a class = normal href = ios_mission_the_bits_that_nobody_notices.html>next article</a>.
-            </span>
+                check out my <a class = normal href = ios_mission_the_bits_that_nobody_notices.html>next article</a>.</p>
+            </div>
 
-            <span class = gap id = conclusion>
-                <h2>Conclusion</h2>
+            <div class = demo id = conclusion>
+                <h3>Conclusion</h3>
 
-                Phew! That was a lot of coding! I only really touched on one aspect of Io's
+                <p>Phew! That was a lot of coding! I only really touched on one aspect of Io's
                 code on this page, but it's something I've always struggled with, and I wrote
-                it to help fellow coders who are puzzling with it too.
-                <p></p>
-                I admit it is a little complicated, but it's a very good thing to get working.
-                And remember it's always easier the second time round!
-                <p></p>
-                Below is the code for a working version of smooth transitioning.
-                It might be useful to refer to.
-            </span>
-<div class = code source = /articles/extra/ios_mission_the_hero/6.html></div>
+                it to help fellow coders who are puzzling with it too.</p>
+
+                <p>I admit it is a little complicated, but it's a very good thing to get working.
+                And remember it's always easier the second time round!</p>
+
+                <p>Below is the code for a working version of smooth transitioning.
+                It might be useful to refer to.</p>
+
+<pre class = code>&lt;!DOCTYPE html>
+&lt;html>
+    &lt;head>
+        &lt;style>
+            body {
+                background: #fff;
+                margin: 0;
+                overflow: hidden
+            }
+
+            canvas {
+                width: 100%;
+            }
+        &lt;/style>
+    &lt;/head>
+    &lt;body>
+        &lt;canvas id = cvs>&lt;/canvas>
+        &lt;script>
+            function resize() {
+                cvs.width = innerWidth * devicePixelRatio
+                cvs.height = innerHeight * devicePixelRatio
+
+                s = cvs.height / 9
+            }
+
+            function createBody() {
+                return {
+                    arm1: 0,
+                    arm2: 0,
+                    leg1: 0,
+                    leg2: 0,
+                    eyex: 0,
+                    eyey: 0,
+                    body: 0,
+                    ang: 0
+                }
+            }
+
+            const arr = [
+                'arm1',
+                'arm2',
+                'leg1',
+                'leg2',
+                'eyex',
+                'eyey',
+                'body',
+                'ang'
+            ]
+
+            let hero = createBody()
+
+            let activeState = 'walking'
+            let oldState = ''
+            let transition = 0
+
+            function live(inputState) {
+                const bod = createBody()
+
+                if (inputState == 'walking') {
+                    const sway = .3 + Math.cos(time / 5) * .05
+                    bod.arm1 = -.5
+                    bod.arm2 = .5
+                    bod.leg1 = Math.sin(time / 10) * .5 - sway
+                    bod.leg2 = Math.sin(time / 10 + Math.PI) * .5 - sway
+                    bod.eyex = .2
+                    bod.ang = sway
+                    bod.body = 1.5
+                }
+
+                else if (inputState == 'climbing') {
+                    bod.arm1 = 1.3 + Math.sin(time / 10) * .5
+                    bod.arm2 = 1.3 + Math.sin(time / 10 + Math.PI) * .5
+
+                    bod.leg1 = 1 + Math.sin(time / 10) * .5
+                    bod.leg2 = 1 + Math.sin(time / 10 + Math.PI) * .5
+
+                    bod.ang = Math.cos(time / 10) * .05
+
+                    bod.eyex = -.2
+                    bod.body = 1.5
+                }
+
+                return bod
+            }
+
+            function update() {
+                requestAnimationFrame(update)
+
+                time += 1
+
+                // get old and new hero states
+                const oldBody = live(oldState)
+                const newBody = live(activeState)
+
+                // transition if has not met goal
+                if (oldState != activeState) {
+                    transition += .02
+
+                    // reset transition if finished
+                    if (transition >= 1) {
+                        transition = 0
+                        oldState = activeState
+                    }
+
+                    // iterate through all the body parts
+                    for (let i = 0; i < arr.length; i ++) {
+                        const oldPart = oldBody[arr[i]]
+                        const newPart = newBody[arr[i]]
+                        const dist = newPart - oldPart
+
+                        // change the hero's joints
+                        hero[arr[i]] = oldPart + (dist * (.5 + Math.cos(transition * Math.PI + Math.PI) * .5))
+                    }
+                }
+
+                // set straight away if not transitioning
+                if (!transition)
+                    hero = newBody
+
+                // change hero state when ready
+                if (time % 200 < 1) {
+                    if (activeState == 'walking')
+                        activeState = 'climbing'
+                    else activeState = 'walking'
+                }
+
+                // draw hero ect...
+                ctx.fillStyle = '#bfd'
+                ctx.fillRect(0, 0, cvs.width, cvs.height)
+                const rect = (x, y, w, h) => ctx.fillRect(x - w / 2, y, w, h)
+                const heady = 2
+                const head = 2
+                const thick = .2
+                const main = head - thick * 2
+                const eyes = .6
+                const pupw = .2
+                const pups = .5
+                const len = 1.3
+                const start = cvs.height / 2 - heady*s + head*s
+                const y = -head*s + s / 1.5
+                ctx.save()
+                ctx.translate(cvs.width / 2, cvs.height / 2)
+                ctx.rotate(hero.ang)
+                ctx.fillStyle = '#222'
+                rect(0, 0, thick*s, hero.body*s)
+                ctx.save()
+                ctx.translate(0, 0)
+                ctx.rotate(hero.arm1)
+                rect(0, -heady*s + head*s, thick*s, s * len)
+                ctx.restore()
+                ctx.save()
+                ctx.translate(0, 0)
+                ctx.rotate(hero.arm2)
+                rect(0, -heady*s + head*s, thick*s, s * len)
+                ctx.restore()
+                ctx.save()
+                ctx.translate(0, hero.body*s)
+                ctx.rotate(hero.leg1)
+                rect(0, 0, thick*s, s * len)
+                ctx.restore()
+                ctx.save()
+                ctx.translate(0, hero.body*s)
+                ctx.rotate(hero.leg2)
+                rect(0, 0, thick*s, s * len)
+                ctx.restore()
+                ctx.fillStyle = '#222'
+                rect(0, -heady*s, head*s, head*s)
+                ctx.fillStyle = '#fff'
+                rect(0, -heady*s + (head-main)*s/2, main*s, main*s)
+                ctx.fillStyle = '#222'
+                rect(-s / 3.5 + hero.eyex*s,
+                    y + eyes*s/2 - pups*s/2 + hero.eyey*s,
+                    s*pupw, pups*s)
+                rect(s / 3.5 + hero.eyex*s,
+                    y + eyes*s/2 - pups*s/2 + hero.eyey*s,
+                    s*pupw, pups*s)
+                ctx.restore()
+            }
+
+            const ctx = cvs.getContext('2d')
+            let time = 0
+            let s = 0
+
+            addEventListener('resize', resize)
+            resize()
+            update()
+        &lt;/script>
+    &lt;/body>
+&lt;/html></pre>
+
+            </div>
         </section>
 
+        <button class = theme onclick = toggleTheme()>Change Theme</button>
         <span class = copyright>
-            © Copyright <span class = year></span>
-            Joachimford.uk — <a class = normal href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
+            © Copyright <span class = year></span> joachimford.uk
+            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
         </span>
     </body>
 </html>

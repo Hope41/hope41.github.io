@@ -19,7 +19,7 @@
             }
 
             function rect(x, y, w, h) {
-                ctx.fillRect(x * scale, y * scale, w * scale, h * scale)
+                ctx.fillRect(camX + x * scale, camY + y * scale, w * scale, h * scale)
             }
 
             function translate(x, y) {
@@ -31,8 +31,13 @@
                 ctx.fillRect(0, 0, cvs.width, cvs.height)
 
                 time += .08
+                if (Math.sin(time * 2 - 1.4) > .9) {
+                    camX = (Math.random() - .5) * scale * 6
+                    camY = (Math.random() - .5) * scale * 6
+                }
+                else camX = camY = 0
 
-                const speed = (time * 53 + Math.cos(time * 2 - 1) * 15) * scale
+                const speed = (time * 53 + Math.cos(time * 2 - 1) * 20) * scale
 
                 for (let i = 0; i < 3; i ++) {
                     const xPos = Math.sin(i * i * 4) * cvs.width
@@ -41,8 +46,8 @@
 
                     ctx.fillStyle = '#fff4'
                     ctx.fillRect(
-                        (((xPos - speed) % max) + max) % max - w,
-                        cvs.height / 4 + Math.sin(i * i * i) * cvs.height / 2 - 150,
+                        camX + (((xPos - speed) % max) + max) % max - w,
+                        camY + cvs.height / 4 + Math.sin(i * i * i) * cvs.height / 2 - 150,
                         w * scale, 100 * scale)
                 }
 
@@ -51,8 +56,8 @@
                 for (let i = 0; i < grass; i ++) {
                     ctx.fillStyle = '#378'
                     ctx.fillRect(
-                        (((i * cvs.width / grass - speed) % cvs.width) + cvs.width) % cvs.width,
-                        cvs.height / 2 + yDrop, 10 * scale, -grassH - Math.sin(i * i) * grassH + Math.sin(time / 2 + i * 9) * 10 * scale)
+                        camX + (((i * cvs.width / grass - speed) % cvs.width) + cvs.width) % cvs.width,
+                        camY + cvs.height / 2 + yDrop, 10 * scale, -grassH - Math.sin(i * i) * grassH + Math.sin(time / 2 + i * 9) * 10 * scale)
                 }
 
                 ctx.save()
@@ -102,7 +107,7 @@
                 ctx.restore()
 
                 ctx.fillStyle = '#145'
-                ctx.fillRect(0, cvs.height / 2 + yDrop - 4 * scale, cvs.width, cvs.height)
+                ctx.fillRect(0, camY + cvs.height / 2 + yDrop - 4 * scale, cvs.width, cvs.height)
 
 
                 requestAnimationFrame(update)
@@ -118,6 +123,9 @@
             const grass = 10
             const laceW = 6
             const laceH = 15
+
+            let camX = 0
+            let camY = 0
 
             let scale = 0
 

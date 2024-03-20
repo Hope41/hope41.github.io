@@ -21,26 +21,22 @@
                 height: 100%;
                 z-index: -1;
             }
-            h2 {
-                font-family: code;
-            }
+            h2 {font-family: code}
         </style>
     </head>
 
     <body>
         <section class = topnav>
-            <div class = joachimford>
-                <a href = '/'>Joachim Ford</a>
+            <div class = title>
+                <a class = brand href = '/'>Joachim Ford</a>
+                <a class = about href = /about>About</a>
             </div>
             <div class = nav>
-                <a class = text href = /games>Games</a>
-                <a class = text href = /articles>Articles</a>
-                <a class = text href = /news>News</a>
-                <a class = text href = /experiments>Experiments</a>
-                <a class = text href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
-                <a class = text href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+                <a href = /games>Games</a>
+                <a href = /experiments>Experiments</a>
+                <a href = /articles>Articles</a>
+                <a href = /news>News</a>
             </div>
-            <img class = bars src = /svg/bars.svg onmousedown = bar()></img>
         </section>
 
         <section class = main>
@@ -50,89 +46,95 @@
             <h1>Io's Mission: The Bits That Nobody Notices</h1>
             <div class = big><img class = img src = /articles/extra/ios_mission_the_bits_that_nobody_notices/1.png></div>
 
-            <span class = gap>
-                Hello everyone! This article talks about some of the pointless
+            <div class = demo>
+                <p>Hello everyone! This article talks about some of the pointless
                 details I added to the game
                 <a class = normal href = /content/ios_mission>Io's Mission</a>.
                 I've only picked the best ones, so it's not too long.
-                The subjects are listed in no particular order.
-            </span>
-            <span class = gap>
+                The subjects are listed in no particular order.</p>
+            </div>
+            <div class = demo>
                 <h2>DETAIL 01</h2>
-                For some reason, I decided it was very important to make sure the crabs
+                <p>For some reason, it seemed very important to make sure the crabs
                 (the ones in the beach level) walked properly. Did you notice that
-                they moved up and down slightly as the crawled along the sand?
-                <p></p>
-                The difference is only a few pixels in the real game. I've scaled
+                they moved up and down slightly as the crawled along the sand?</p>
+
+                <p>The difference is only a few pixels in the real game. I've scaled
                 the crab up a bit so you can see this "walking up and down" more clearly,
                 but I've also put a normal one next to it so you can see the comparison.
                 Note that in its normal state, the vertical movement is unnoticable.
-                Unless you have very good eyes.
-            </span>
-            <div class = iframe source = /articles/extra/ios_mission_the_bits_that_nobody_notices/3.html></div>
-            <span class = gap>
+                Unless you have very good eyes.</p>
+            </div>
+            <iframe src = /articles/extra/ios_mission_the_bits_that_nobody_notices/3.html></iframe>
+            <div class = demo>
                 <h2>DETAIL 02</h2>
-                Another pointless detail is the scanlines. If you want
+                <p>Another pointless detail is the scanlines. If you want
                 a technical definition for them, go and look it up, but for the sake of
                 simplicity, scanlines are just horizontal transparent bars stretching
                 from one side of the screen to the other. Did you notice them?
-                You probably did.
-                <p></p>
-                The part I don't expect you to have noticed was the fact that these
+                You probably did.</p>
+
+                <p>The part I don't expect you to have noticed was the fact that these
                 "scanlines" change strength in different parts of the screen.
                 In the image below, I've exaggerated these weights 100x to help you see
-                them better.
-            </span>
+                them better.</p>
+            </div>
             <div class = big><img class = img src = /articles/extra/ios_mission_the_bits_that_nobody_notices/4.png></div>
-            <span class = gap>
-                Pointless, if you ak me. However, we must also remember that - as my father
+            <div class = demo>
+                <p>Pointless, if you ak me. However, we must also remember that - as my father
                 used to say - "it's all in the details." The invisible weights on
                 these scanlines are certainly crucial to the gameplay of Io's Mission.
-                I can't imagine what it would look like without them.
-            </span>
-            <span class = gap>
+                I can't imagine what it would look like without them.</p>
+            </div>
+            <div class = demo>
                 <h2>DETAIL 03</h2>
-                A whole week was spent on the crocodiles. The first day was taken
+                <p>A whole week was spent on the crocodiles. The first day was taken
                 up with deciding on the main colours and shapes, another two days
                 were taken up with getting the movement right (like sinking and
-                attacking).
-                <p></p>
-                In the remaining four days I created the legs and the
+                attacking).</p>
+
+                <p>In the remaining four days I created the legs and the
                 tail. Trouble is, you hardly EVER see either of those things in
                 the real game. Perhaps an occasional flick from the swamp, or the
                 legs are revealed for an instant when he jumps, but aside from
-                that these parts are practically invisible.
-            </span>
+                that these parts are practically invisible.</p>
+            </div>
             <div class = big><img class = img src = /articles/extra/ios_mission_the_bits_that_nobody_notices/5.png></div>
-            <span class = gap>
-                Important note: for those who have exceptionally good eyes
+            <div class = demo>
+                <p>Important note: for those who have exceptionally good eyes
                 you actually <i>will</i> be able to see the whole crocodile during the
                 game. The swamp is set to only 96% opacity, so you can see through in theory.
-                I can't, by the way.
-            </span>
+                I can't, by the way.</p>
+            </div>
 
-            <span class = gap>
+            <div class = demo>
                 <h2>THE SMALLER DETAILS</h2>
-                I could go on for ages if I wanted to. Did you notice that Io breathed?
-                Or that, when he transitioned, he used a bezier movement instead
+                <p>This article could be much longer, but thank goodness,
+                the rest has been conveniently bunched into a single paragraph.
+                You can skip it if you want to :)</p>
+
+                <p>Did you notice that Io breathed? Or that, when he transitioned,
+                he used a bezier movement instead
                 of linear? Did you notice that the grass and seaweed swayed in
                 the breeze? Or did you even notice that the water was very, very,
                 slightly transparent? Did you notice the lights flashed on the
-                machines? Or that Drillo's friend was constantly walking?
-                <p></p>
-                I've officially spent far too much time on pointless details.
+                machines? Or that Drillo's friend was constantly walking?</p>
+
+                <p>I've officially spent far too much time on pointless details.
                 Does it really add anything to
                 <a class = normal href = /content/ios_mission>Io's Mission</a>?
                 That's up to you. But for now I'm tired of writing articles and
-                making games.
-                <p></p>
-                See you next time!
-            </span>
+                making games.</p>
+
+                <p>See you next time!</p>
+            </div>
         </section>
 
+        <button class = theme onclick = toggleTheme()>Change Theme</button>
         <span class = copyright>
-            © Copyright <span class = year></span>
-            Joachimford.uk — <a class = normal href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
+            © Copyright <span class = year></span> joachimford.uk
+            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
         </span>
     </body>
 </html>

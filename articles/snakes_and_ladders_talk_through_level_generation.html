@@ -15,57 +15,56 @@
 
     <body>
         <section class = topnav>
-            <div class = joachimford>
-                <a href = '/'>Joachim Ford</a>
+            <div class = title>
+                <a class = brand href = '/'>Joachim Ford</a>
+                <a class = about href = /about>About</a>
             </div>
             <div class = nav>
-                <a class = text href = /games>Games</a>
-                <a class = text href = /articles>Articles</a>
-                <a class = text href = /news>News</a>
-                <a class = text href = /experiments>Experiments</a>
-                <a class = text href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
-                <a class = text href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+                <a href = /games>Games</a>
+                <a href = /experiments>Experiments</a>
+                <a href = /articles>Articles</a>
+                <a href = /news>News</a>
             </div>
-            <img class = bars src = /svg/bars.svg onmousedown = bar()></img>
         </section>
 
         <section class = main>
             <span class = date>23.08.2022</span>
             <h1>Snakes And Ladders Talk Through: Level Generation</h1>
             <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_level_generation/1.png></div>
-            <span class = gap>
-                The source code for the level generation of 
+            <div class = demo>
+                <p>Each level in the game
                 <a class = normal href = /content/snakes_and_ladders target = _blank>Snakes And Ladders</a>
-                is by far the most overwhelming piece of code in the entire game.
-                Despite this, I also think it's also the most interesting part.
-                <p></p>
-                <h3>Set up</h3>
-                To begin the level generation, we need to start by making a list that stores the
-                level. We can do this by constructing an array:
-            </span>
+                is completely different every time.
+                The code for this is - as you can imagine - very overwhelming.
+                In fact, it's the most complicated piece of code in the entire game.
+                Ironically, it also happens to be the most interesting part...
+                well, in my mind anyway. So let's plough on regardless.</p>
+            </div>
 
-<div class = code>this.array = [] // an array that stores the level
+            <div class = demo>
+                <h3>Set up</h3>
+                <p>To begin the level generation, we need to start by making a list
+                that stores the current level. We can do this by constructing an array.</p>
+
+<pre class = code>this.array = [] // an array that stores the level
 this.width = 100 // the amount of columns
 this.height = 100 // the amount of rows
-</div>
+</pre>
 
-            <span class = gap>
-                The first thing to do to our array is to fill it in
+                <p>The first thing to do to our array is to completely fill it
                 with blocks, which we can mine out later. In the code
-                snippet below, a block is represented by <span class = snip>1</span>.
-            </span>
+                snippet below, a "block"
+                is represented by <span class = snip>1</span>.</p>
 
-<div class = code>// iterate through the amount of blocks in the world
+<pre class = code>// iterate through the amount of blocks in the world
 for (let i = 0; i < this.width * this.height; i ++) {
     this.array.push(1) // fill the level with blocks
 }
-</div>
+</pre>
 
-            <span class = gap>
-                To draw the blocks, you can write code similar to this:
-            </span>
+                <p>To draw the blocks, you can write code similar to this:</p>
 
-<div class = code>// set the scale
+<pre class = code>// set the scale
 const block_size = 50
 
 // iterate through every square in the level
@@ -75,138 +74,136 @@ for (let x = 0; x < this.width; x ++) {
 
         // draw it if the current square is a block
         if (block == 1)
-            ctx.fillRect(x * block_size, y * block_size, 1 * block_size, 1 * block_size)
+            ctx.fillRect(x * block_size, y * block_size, block_size, block_size)
     }
 }
-</div>
+</pre>
 
-            <span class = gap>
-                That's all you need to set up the map. Now we can start carving bits away.
-            </span>
+                <p>That's all you need to set up the map. Now we can start carving bits away!</p>
+            </div>
 
             <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_level_generation/2.png></div>
 
-            <span class = gap>
+            <div class = demo>
                 <h3>Chambers</h3>
 
-                The next thing to do is to start mining rooms. Each chamber
+                <p>The next stage is to start mining rooms. Each chamber
                 has a random width and height, and is positioned in a grid.
                 Store the chambers in an array, so that the computer can know
-                where to place the tunnels and actors later on.
-            </span>
+                where to place the tunnels and actors later on.</p>
 
-<div class = code>¬this.array = []¬
+<pre class = code>¬this.array = []¬
 this.chambers = [] // make an array that stores the chambers
 ¬this.width = 100
-this.height = 100¬</div>
+this.height = 100¬</pre>
 
-            <span class = gap>
-                In the code below, <span class = snip>0</span> refers to plain air.
-            </span>
 
-<div class = code>// this code makes a single chamber.
+                <p>In the code below, <span class = snip>0</span> refers to plain air.</p>
+
+<pre class = code>// this code makes a single chamber.
 // note that chamber x, y, width and height have already been defined.
 
 for (let x = chamber_x; x < chamber_x + chamber_width; x ++) {
     for (let y = chamber_y; y < chamber_y + chamber_height; y ++) {
         this.array[x + y * this.width] = 0
     }
-}</div>
+}</pre></div>
 
             <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_level_generation/3.png></div>
 
-            <span class = gap>
+            <div class = demo>
                 <h3>Tunnels</h3>
 
-                Making the tunnels is a complex part, so I will just give you a
+                <p>Making the tunnels is a tricky part, so I will just give you a
                 simplified overview. To begin, we need to know how each chamber
-                should be connected. I went with the binary-tree maze structure
-                which is the simplest procedural maze that anyone could hope to
-                make. This is how it works:
-            </span>
+                should be connected. I went for the Binary Tree maze algorithm,
+                which - in case you're wondering - is the simplest
+                procedural maze ever. This is how it works:</p>
+            </div>
 
-            <div class = quote>
+            <div class = demo>
                 ∙ Get your chambers set up<br>
-                ∙ Starting at the top left, connect your chamber to either:<br>
+                ∙ Starting at the top left corner, connect your chamber to either:<br>
                 &emsp; ∙ The chamber on the right<br>
                 &emsp; ∙ The chamber underneath
             </div>
 
-            <span class = gap>
-                With these rules applied, the maze should start to be taking shape.
-                Note how the passages seem to point towards the bottom right corner:
-            </span>
+            <div class = demo>
+                <p>With these rules applied, the maze should start to be taking shape.
+                Note how the passages seem to point towards the bottom right corner:</p>
+            </div>
 
             <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_level_generation/4.png></div>
 
-            <span class = gap>
-                If we just stop here, though, some channels may never connect.
-                The way to fix this is to cut a channel through the right and
-                bottom edge.
-            </span>
+            <div class = demo>
+                <p>You may notice a problem.
+                The thing is, if we just stop here, some channels may never connect.
+                The way to fix this is to cut a long channel through the right and
+                bottom edge, and that solves the problem.</p>
+            </div>
 
             <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_level_generation/5.png></div>
 
-            <span class = gap>
-                The next thing to add is ladders. This took a very long time for me to
+            <div class = demo>
+                <h3>Ladders</h3>
+                <p>The next thing to add is ladders. This took a very long time for me to
                 get right, but in the end the solution turned out to be really simple:
                 Let's say a chamber decides to connect itself to the one beneath
-                it. To help me explain, I will call the first chamber Jeff and the second
-                chamber Andrew.
-                <p></p>
-                A tunnel emerges from the base of Jeff and snakes its way down. At the moment,
+                it. To help me explain, let's call the first chamber Jeff and the second
+                chamber Andrew.</p>
+
+                <p>A tunnel emerges from the base of Jeff and snakes its way down. At the moment,
                 the tunnel stops as soon as it touches Andrew's head, but let's
                 change that rule. Let's make it so that the tunnel has to proceed
                 through Andrew's body untill it reaches the ground. This may sound
                 pointless, as the tunnel would just be mining through plain air,
-                but it means that we are able to start building a ladder.
-                <p></p>
-                Let's add a new rule: If the tunnel finds itself mining though Andrew's
+                but it means that we are able to start building a ladder.</p>
+
+                <p>Let's add a new rule: If the tunnel finds itself mining though Andrew's
                 body, add a ladder block behind it. This new rule means that ladders will
                 only be generated inside chambers and it also means that Drillo will be
-                able to get into rooms that he couldn't before.
-            </span>
+                able to get into rooms that he couldn't before.</p>
+            </div>
 
             <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_level_generation/6.png></div>
 
-            <span class = gap>
+            <div class = demo>
                 <h3>Reverse generation</h3>
 
-                As you can see, the world still looks very different from the real game.
+                <p>As you can see, the world still looks very different from the real game.
                 What we are missing is <b>reverse generation</b> - a final "filter"
                 that removes the pointless blocks. At the end of the generation code,
-                I run through every block in the level and do the following:
-            </span>
+                I run through every block in the level and do the following:</p>
+            </div>
 
-            <div class = quote>
+            <div class = demo>
                 ∙ If the current block is surrounded by other blocks:<br>
                 &emsp;∙ Turn the current block into thin air
             </div>
 
-            <span class = gap>
-                The advantage of this final filter is it speeds up in-game performance, it makes
+            <div class = demo>
+                <p>The advantage of this final filter is it speeds up in-game performance, it makes
                 the level look better (in my opinion), and it also gives the world a vast feeling
                 of nothingness - meaning the player is not able to see the sharp boundaries of the
-                map.
-            </span>
+                map.</p>
+            </div>
 
             <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_level_generation/7.png></div>
 
-            <span class = gap>
+            <div class = demo>
                 <h3>Side effects</h3>
 
-                This final section briefly discusses how each side effect is placed in the level
+                <p>This final section briefly discusses how each side effect is placed in the level
                 and how the level adapts to them. To set everything up, put a side effect in each
-                chamber, making sure that it does't get dropped above a tunnel hole.
-                <p></p>
-                If you played the game, you may have noticed the average size of each chamber
+                chamber, making sure that it does't get dropped above a tunnel hole.</p>
+
+                <p>If you played the game, you may have noticed the average size of each chamber
                 grew as the game went on. This is because the size for each side effect is stored
                 from the start. It means that the computer can know exactly how big its chambers
-                should be for the current level.
-                <p></p>
-                In the game, there's a function called <span class = snip>getLevelEffects()</span>,
-                which returns an array of all the enemy types for the level.
-            </span>
+                should be for the current level.</p>
+
+                <p>In the game, there's a function called <span class = snip>getLevelEffects()</span>,
+                which returns an array of all the enemy types for the level.</p>
 
 <div class = code>function getLevelEffects() {
     if (game.level <= 2) return [0]
@@ -220,13 +217,11 @@ for (let x = chamber_x; x < chamber_x + chamber_width; x ++) {
 }
 </div>
 
-            <span class = gap>
-                You may notice that the largest side effects always come first in the array.
+                <p>You may notice that the largest side effects always come first in the array.
                 The reason for this is it means that when the map is being generated,
                 it can take the size of the biggest side effect into consideration.
                 It can thus make sure that its minimum chamber width and height is way larger
-                than the recorded enemy.
-            </span>
+                than the recorded enemy.</p>
 
 <div class = code>// get the biggest enemy sizes
 const EFFECT = EFFECT_TYPES[getLevelEffects()[0]]
@@ -242,20 +237,21 @@ const CHAMBER_W = {min: MIN_WIDTH + 1, max: MIN_WIDTH + 10}
 const CHAMBER_H = {min: MIN_HEIGHT + 3, max: MIN_HEIGHT + 5}
 </div>
 
-            <span class = gap>
-                You can learn more about the enemies of
+                <p>You can learn more about the enemies of
                 <a class = normal href = /content/snakes_and_ladders target = _blank>Snakes And Ladders</a>
                 in the <a class = normal href = /articles/snakes_and_ladders_talk_through_side_effects target = _blank>next article</a>
-                of this series.
+                of this series.</p>
 
-                That's it for this article, I hope it clarified things for you
-                and maybe it will come in handy for projects in the months to come!
-            </span>
+                <p>That's it for this article, I hope it clarified things for you
+                and maybe it will come in handy for projects in the months to come!</p>
+            </div>
         </section>
 
+        <button class = theme onclick = toggleTheme()>Change Theme</button>
         <span class = copyright>
-            © Copyright <span class = year></span>
-            Joachimford.uk — <a class = normal href = mailto:contact@joachimford.uk>contact@joachimford.uk</a>
+            © Copyright <span class = year></span> joachimford.uk
+            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
         </span>
     </body>
 </html>
