@@ -9,7 +9,7 @@ function toggleTheme() {
     localStorage.setItem(KEY, document.body.className)
 }
 
-onload = () => {
+window.onload = () => {
     const code = document.querySelectorAll('.code')
     const year = document.querySelector('.year')
     if (year) year.textContent = new Date().getFullYear()
