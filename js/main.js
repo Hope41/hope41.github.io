@@ -31,7 +31,7 @@ window.onload = () => {
                     .replace(/(\/\/.*)/g, '<span class = comment>$1</span>')
                     .replace(/(\'.*\')/g, '<span class = string>$1</span>')
                     .replace(/(\b\d+\b|\.)/g, '<span class = number>$1</span>')
-                    .replace(/((?<=function)(.*)(?=\())/g, '<span class = name>$1</span>')
+                    .replace(/(function)(.*)(\()/g, 'function<span class="name">$2</span>(')
 
                 lines[i] = lines[i]
                     .replace(/\b(if|else|return|function|const|let|for|in|of|break|continue)\b/g, '<span class = keyword>$1</span>')
