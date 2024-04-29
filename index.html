@@ -91,7 +91,7 @@
                         cvs.height / 2 - h / 2 + 60 * devicePixelRatio,
                         w, h)
 
-                    ctx.fillStyle = rgb(0,0,0,.8)
+                    ctx.fillStyle = rgb(0,0,0,.4)
                     ctx.fillRect(0, 0, cvs.width, cvs.height)
 
                     for (let j = 0; j < booms.length; j ++) {
@@ -100,7 +100,7 @@
                         if (sum > 0) {
                             const add = box * 3
                             const S = (add * item.size)
-                            const gap = S * .85
+                            const gap = S * .82
                             const size = item.name.length * gap
                             let summ = sum
                             const check = time - item.expire
@@ -154,14 +154,11 @@
                 }
 
                 const ctx = cvs.getContext('2d')
-                cvs.width = innerWidth * devicePixelRatio
-                cvs.height = innerHeight * devicePixelRatio + 1
                 let time = 0
                 let box = 0
 
                 const img = new Image()
                 img.src = 'images/bg.png'
-                document.body.appendChild(img)
 
                 const booms = [
                     {name: 'SQUIRTCOPTER', time: 70, x: 0, y: 0, size: .03, expire: 215},
