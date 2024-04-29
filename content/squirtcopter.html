@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = utf-8>
+        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
+        <meta name = keywords content = 'Joachim Ford, Squirtcopter, Gamedev.js Jam'>
+
+        <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
+        <script src = /js/analytics.js></script>
+        <script src = /js/main.js></script>
+        <title>Joachim Ford</title>
+        <link rel = stylesheet href = /main.css>
+        <link rel = icon type = image/x-icon  href = /favs/favicon.ico>
+
+        <style>
+            #a {
+                color: #edd;
+                background-color: #533;
+            }
+
+            #b {
+                color: #ffe;
+                background-color: #553;
+            }
+
+            #c {
+                color: #ded;
+                background-color: #353;
+            }
+
+            #a:hover {background-color: #755}
+            #b:hover {background-color: #775}
+            #c:hover {background-color: #575}
+            a.button {border: none}
+        </style>
+    </head>
+
+    <body>
+        <section class = topnav>
+            <div class = title>
+                <a class = brand href = '/'>Joachim Ford</a>
+                <a class = about href = /about>About</a>
+            </div>
+            <div class = nav>
+                <a href = /games>Games</a>
+                <a href = /experiments>Experiments</a>
+                <a href = /articles>Articles</a>
+                <a href = /news>News</a>
+            </div>
+        </section>
+
+        <section class = main>
+            <span class = date>28.04.2024</span>
+            <h1>Squirtcopter</h1>
+
+            <div class = big>
+                <a href = /squirtcopter target = _blank>
+                    <img class = img src = /images/squirtcopter_big.png>
+                    <div class = play><img src = /svg/play.svg></svg></div>
+                </a>
+            </div>
+
+            <div class = demo>
+                <p><b>As a courageous little copter, harness your power to squirt
+                relentless robots with particles. Upgrade your abilities and
+                strategise as you become the ultimate Squirtcopter in a battle
+                for the greater good. Can you get to the end in less than 20 minutes?
+                An entry to the Gamedev.js Jam 2024. Voting in progress.</b></p>
+                <p>Hope you like it!</p>
+            </div>
+            <div class = gap>
+                <a href = 'https://youtu.be/GvW1_X19Rr0' target = _blank class = button id = a><b>Watch the Trailer</b></a>
+                <a href = https://github.com/Hope41/squirtcopter target = _blank class = button id = b><b>Give it a Star</b></a>
+                <a href = mailto:feedback@joachimford.uk target = _blank class = button id = c><b>Send Feedback</b></a>
+            </div>
+            <div class = demo>
+                <p>At the moment I'm not planning to write any articles for this
+                game. However if have a specific question in mind, please let me know,
+                and I might do a write-up on it.
+
+                <div class = gap>
+                    <a href = https://github.com/Hope41/squirtcopter target = _blank class = button id = c><b>Check Out the Source Code</b></a>
+                </div>
+            </div>
+        </section>
+
+        <button class = theme onclick = toggleTheme()>Change Theme</button>
+        <span class = copyright>
+            © Copyright <span class = year></span> joachimford.uk
+            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+        </span>
+    </body>
+</html>

@@ -20,6 +20,11 @@
     src: url(/fonts/super.otf)
 }
 
+@font-face {
+    font-family: pixelMonospace;
+    src: url(/fonts/joystixMonospace.woff2)
+}
+
 :root {
     --bg: #111;
     --topnavbg: #222;
@@ -29,13 +34,13 @@
     --buttonnorm: #2da;
     --buttonhover: #4fc;
     --text: #eee;
-    --demo: #333;
+    --demo: #222;
     --squarebutton: #444;
     --squarebuttonhover: #222;
     --codebg: #111;
     --codeoutline: #555;
 
-    --fontsize: 19px;
+    --fontsize: 20px;
     --shadow: 1px 2px 6px #0009;
 
     --basic: #ddd;
@@ -403,5 +408,5 @@ iframe {
 
 * {
     box-sizing: border-box;
-    transition-duration: .2s;
+    transition-duration: .1s;
 }

@@ -51,23 +51,28 @@
         </section>
 
         <section class = main>
-            <a href = /content/ios_mission><canvas id = cvs></canvas></a>
+            <a href = /content/squirtcopter><canvas id = cvs></canvas></a>
             <script>
                 function resize() {
                     cvs.width = innerWidth * devicePixelRatio
                     cvs.height = innerHeight * devicePixelRatio + 1
-                    s = cvs.width / 15
-                    if (cvs.width > cvs.height) s = cvs.height / 15
+
+                    box = cvs.width
+                    if (cvs.width > cvs.height) box = cvs.height
                 }
-                function fillText(text, x, y, alpha) {
-                    ctx.fillStyle = 'rgb(0,0,0,'+alpha*2+')'
-                    ctx.fillText(text, x + s / 10, y + s / 10)
-                    ctx.fillStyle = 'rgb(255,255,255,'+alpha+')'
-                    ctx.fillText(text, x, y)
+
+                function rgb(r, g, b, a = 1) {
+                    return 'rgb('+(r*255)+','+(g*255)+','+(b*255)+','+a+')'
                 }
+
+                function quad(x) {
+                    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2
+                }
+
                 function update() {
                     ctx.clearRect(0, 0, cvs.width, cvs.height)
-                    time ++
+                    time += 1.2
+
                     const iRatio = img.width / img.height
                     const cRatio = cvs.width / cvs.height
                     let w = 0
@@ -85,25 +90,96 @@
                         cvs.width / 2 - w / 2,
                         cvs.height / 2 - h / 2 + 60 * devicePixelRatio,
                         w, h)
-                    ctx.fillStyle = '#f801'
+
+                    ctx.fillStyle = rgb(0,0,0,.7)
                     ctx.fillRect(0, 0, cvs.width, cvs.height)
-                    const a = 1 - time / 500
-                    let A = a
-                    if (A < .4) A = .4
-                    ctx.fillStyle = 'rgb(0,0,0,'+A+')'
-                    ctx.fillRect(0, 0, cvs.width, cvs.height)
-                    ctx.textAlign = 'center'
-                    ctx.font = s * 1.5 + 'px super'
-                    fillText('IO\'S MISSION', cvs.width / 2, cvs.height / 2 - 100 / time * 10, 1-a)
-                    ctx.font = s * .5 + 'px super'
-                    fillText('THE NEW ADVENTURE GAME', cvs.width / 2, cvs.height / 2 + s + 50 / time * 5, 1-a)
+
+                    for (let j = 0; j < booms.length; j ++) {
+                        const item = booms[j]
+                        const sum = time - item.time
+                        if (sum > 0) {
+                            const add = box * 3
+                            const S = (add * item.size)
+                            const gap = S * .85
+                            const size = item.name.length * gap
+                            let summ = sum
+                            const check = time - item.expire
+                            if (item.expire && check > item.time) {
+                                summ = 20 - (check - item.time)
+                                if (summ < 0) summ = 0
+                            }
+
+                            for (let i = 0; i < item.name.length; i ++) {
+                                ctx.font = 'bold '+ S + 'px pixelMonospace'
+                                const posX = item.x * (add * .7) + cvs.width / 2 - add / 6.5
+                                const posY = item.y * (add * .3) + cvs.height / 2 + 100 - add / 40
+                                const shake = 99 / (summ * summ * .5) * 5
+
+                                if (shake > 8) {
+                                    let r = Math.sin(i*i*9*j)
+                                    let g = Math.sin(i*i*i*i*j*j*9)
+                                    let b = Math.sin(i*i*i**j)
+
+                                    ctx.fillStyle = rgb(r,g,b,summ/5-(Math.sin(i*i)+1))
+
+                                    ctx.fillText(
+                                        item.name[i],
+                                        posX + i * gap - Math.cos(summ) * shake,
+                                        posY - Math.sin(summ) * shake)
+                                }
+
+                                ctx.fillStyle = rgb(1,1,1,summ/3-(Math.sin(i*i)+1))
+
+                                ctx.fillText(
+                                    item.name[i],
+                                    posX + i * gap + Math.cos(summ) * shake,
+                                    posY + Math.sin(summ) * shake)
+                            }
+                        }
+                    }
+
+                    ctx.fillStyle = rgb(1,1,.4,
+                        Math.sin(time / 240 +
+                        Math.cos(time / 130) * 2 +
+                        Math.sin(time / 10) * .1) * .05)
+
+                    ctx.fillRect(
+                        cvs.width / 2 + Math.sin(time / 300 + Math.cos(time / 500)) * cvs.width / 3,
+                        cvs.height / 2 + Math.cos(time / 230 + Math.sin(time / 550)) * cvs.height / 3,
+                        box * .03,
+                        box * .03
+                    )
+
                     requestAnimationFrame(update)
                 }
+
                 const ctx = cvs.getContext('2d')
-                const img = new Image()
-                img.src = 'images/bg.jpg'
+                cvs.width = innerWidth * devicePixelRatio
+                cvs.height = innerHeight * devicePixelRatio + 1
                 let time = 0
-                let s = 0
+                let box = 0
+
+                const img = new Image()
+                img.src = 'images/bg.png'
+                document.body.appendChild(img)
+
+                const booms = [
+                    {name: 'SQUIRTCOPTER', time: 70, x: 0, y: 0, size: .03, expire: 215},
+                    {name: 'By Joachim Ford', time: 75, x: 0, y: .1, size: .01, expire: 200},
+                    {name: 'EMBARK', time: 350, x: 0, y: -.2, size: .03, expire: 215},
+                    {name: 'ON', time: 370, x: .3, y: -.2, size: .03, expire: 200},
+                    {name: 'A', time: 380, x: .4, y: -.2, size: .03, expire: 195},
+                    {name: 'QUEST', time: 400, x: .1, y: .1, size: .04, expire: 180},
+                    {name: 'SQUIRT', time: 650, x: 0, y: -.2, size: .03, expire: 215},
+                    {name: 'YOUR', time: 670, x: .24, y: -.2, size: .03, expire: 200},
+                    {name: 'WAY', time: 680, x: .4, y: -.2, size: .03, expire: 190},
+                    {name: 'TO', time: 700, x: .05, y: 0, size: .04, expire: 185},
+                    {name: 'VICTORY', time: 710, x: .05, y: .2, size: .04, expire: 200},
+                    {name: 'PLAY NOW', time: 1010, x: .08, y: 0, size: .03, expire: 200},
+                    {name: 'SQUIRTCOPTER', time: 1300, x: 0, y: 0, size: .03, expire: 0},
+                    {name: 'By Joachim Ford', time: 1305, x: 0, y: .1, size: .01, expire: 0},
+                ]
+
                 addEventListener('resize', resize)
                 resize()
                 update()
