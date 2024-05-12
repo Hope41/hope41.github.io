@@ -91,7 +91,9 @@
                         cvs.height / 2 - h / 2 + 60 * devicePixelRatio,
                         w, h)
 
-                    ctx.fillStyle = rgb(0,0,0,.4)
+                    let a = (1.5e3-time)/500
+                    if (a < .3) a = .3
+                    ctx.fillStyle = rgb(0,0,0,a)
                     ctx.fillRect(0, 0, cvs.width, cvs.height)
 
                     for (let j = 0; j < booms.length; j ++) {
@@ -141,7 +143,7 @@
                     ctx.fillStyle = rgb(1,1,.4,
                         Math.sin(time / 240 +
                         Math.cos(time / 130) * 2 +
-                        Math.sin(time / 10) * .1) * .05)
+                        Math.sin(time / 10) * .1) * .1)
 
                     ctx.fillRect(
                         cvs.width / 2 + Math.sin(time / 300 + Math.cos(time / 500)) * cvs.width / 3,
