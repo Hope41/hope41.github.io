@@ -202,7 +202,7 @@ a.normal, .demo h3, .demo h2 {color: var(--buttonnorm)}
 a.normal:hover, .demo h3:hover, .demo h2:hover {color: var(--buttonhover)}
 
 .tiny {
-    width: 400px;
+    max-width: 400px;
     height: 200px;
     object-fit: cover;
     border-radius: 10px;
