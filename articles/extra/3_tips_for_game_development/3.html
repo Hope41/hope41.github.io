@@ -264,11 +264,18 @@
             addEventListener('keyup', e => press(e, 0))
             addEventListener('resize', resize)
             addEventListener('touchstart', e => {
-                if (touch.clientX * devicePixelRatio < cvs.width / 2) key.left = true
-                else key.right = true
+                e.preventDefault()
+                for (let i = 0; i < e.changedTouches.length; i ++) {
+                    const touch = e.changedTouches[i]
+                    const pos = touch.clientX * devicePixelRatio
+
+                    if (pos < cvs.width / 2) key.left = touch
+                    else key.right = touch
+                }
                 key.press = true
             })
             addEventListener('touchend', e => {
+                e.preventDefault()
                 for (let i = 0; i < e.changedTouches.length; i ++) {
                     const release = key => {
                         if (key && key.identifier == e.changedTouches[i].identifier) return false
