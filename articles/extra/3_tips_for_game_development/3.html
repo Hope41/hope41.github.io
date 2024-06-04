@@ -155,10 +155,7 @@
 
                 if (time <= 1) generateMap()
                 if (!coins.length) {
-                    if (man.restart) {
-                        man.y = -fake(0,screenh).y
-                        generateMap()
-                    }
+                    if (man.restart) generateMap()
                     else {
                         man.win = true
                         key.press = false
@@ -209,9 +206,9 @@
                 const pos = fillRect(man.x, man.y, man.w, man.h)
 
                 man.y += man.vy * dt
-                if ((man.win || man.dead) && man.y >= fake(0,screenh/2).y &&
-                    man.y <= fake(0,screenh/2).y + man.vy) {
-                    man.y = fake(0,screenh/2).y
+                if ((man.win || man.dead) && man.y >= fake(0,amty/2+screenh/2).y &&
+                    man.y <= fake(0,amty/2+screenh/2).y + man.vy) {
+                    man.y = fake(0,amty/2+screenh/2).y
                     if (key.press) {
                         man.win = false
                         man.dead = false
