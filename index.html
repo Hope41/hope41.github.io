@@ -51,7 +51,7 @@
         </section>
 
         <section class = main>
-            <a href = /content/squirtcopter><canvas id = cvs></canvas></a>
+            <a href = /content/squirtcopter id = link><canvas id = cvs></canvas></a>
             <script>
                 function resize() {
                     cvs.width = innerWidth * devicePixelRatio
@@ -66,12 +66,17 @@
                 }
 
                 function quad(x) {
-                    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2
+                    return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2
                 }
 
                 function update() {
                     ctx.clearRect(0, 0, cvs.width, cvs.height)
-                    time += 1.2
+                    let dt = (performance.now() - oldPerf) / 16
+                    oldPerf = performance.now()
+                    if (dt > 1) dt = 1
+                    time += speed * dt
+                    initTime += speed * dt
+                    const img = images[active]
 
                     const iRatio = img.width / img.height
                     const cRatio = cvs.width / cvs.height
@@ -85,21 +90,55 @@
                         w = iRatio * cvs.height
                         h = cvs.height
                     }
-                    ctx.drawImage(
-                        img,
-                        cvs.width / 2 - w / 2,
-                        cvs.height / 2 - h / 2 + 60 * devicePixelRatio,
-                        w, h)
 
-                    let a = (1.5e3-time)/500
-                    if (a < .3) a = .3
+                    if (changeImage > .5) link.href = images[active].url
+                    if (changeImage >= 1) changeImage = 0
+                    let imgPosX = cvs.width / 2 - w / 2
+                    const imgPosY = cvs.height / 2 - h / 2 + 60 * devicePixelRatio
+                    if (changeImage) {
+                        changeImage += speed * changeImageSpeed
+                        imgPosX -= quad(Math.sin(changeImage * Math.PI / 2)) * w
+                        ctx.drawImage(img, imgPosX + w, imgPosY, w, h)
+
+                        let last = active - 1
+                        if (last < 0) last = images.length - 1
+                        ctx.drawImage(images[last], imgPosX, imgPosY, w, h)
+                    }
+                    else ctx.drawImage(img, imgPosX, imgPosY, w, h)
+
+                    let a = (500-initTime)/500
+                    if (a < .4) a = .4
                     ctx.fillStyle = rgb(0,0,0,a)
                     ctx.fillRect(0, 0, cvs.width, cvs.height)
+
+                    ctx.fillStyle = rgb(0,0,0,.4)
+                    const boxW = cvs.width
+                    const boxH = h / 3
+                    const yPos = cvs.height / 2 + 100 - cvs.height / 4.5
+                    if (changeImage) {
+                        let posX = cvs.width / 2 - boxW / 2 - quad(Math.sin(changeImage * Math.PI / 2)) * w
+                        ctx.fillRect(posX, yPos, boxW, boxH)
+                        ctx.fillRect(posX + w, yPos, boxW, boxH)
+                    }
+                    else ctx.fillRect(cvs.width / 2 - boxW / 2, yPos, boxW, boxH)
+
 
                     for (let j = 0; j < booms.length; j ++) {
                         const item = booms[j]
                         const sum = time - item.time
                         if (sum > 0) {
+                            if (item.name == 'Switch') {
+                                if (sum <= speed) {
+                                    active ++
+                                    changeImage += speed * changeImageSpeed
+                                }
+                                if (active > images.length - 1) {
+                                    time = 0
+                                    active = 0
+                                }
+                                continue
+                            }
+
                             const add = box * 3
                             const S = (add * item.size)
                             const gap = S * .82
@@ -112,7 +151,7 @@
                             }
 
                             for (let i = 0; i < item.name.length; i ++) {
-                                ctx.font = S + 'px pixelMonospace, sans-serif'
+                                ctx.font = S + 'px pixelMonospace, impact, monospace, sans-serif'
                                 const posX = item.x * (add * .7) + cvs.width / 2 - add / 6.5
                                 const posY = item.y * (add * .3) + cvs.height / 2 + 100 - add / 40
                                 const shake = 99 / (summ * summ * .5) * 5
@@ -148,35 +187,56 @@
                     ctx.fillRect(
                         cvs.width / 2 + Math.sin(time / 300 + Math.cos(time / 500)) * cvs.width / 3,
                         cvs.height / 2 + Math.cos(time / 230 + Math.sin(time / 550)) * cvs.height / 3,
-                        box * .03,
-                        box * .03
-                    )
+                        box * .03, box * .03)
 
                     requestAnimationFrame(update)
                 }
 
                 const ctx = cvs.getContext('2d')
                 let time = 0
+                let initTime = 0
+                let active = 0
                 let box = 0
+                let changeImage = 0
+                let oldPerf = 0
+                const changeImageSpeed = .015
+                const speed = 1.2
 
-                const img = new Image()
-                img.src = 'images/bg.png'
+                const images = []
+                const makeNewImage = (name, url) => {
+                    const img = new Image()
+                    img.src = 'images/'+name+'.png'
+                    img.url = url
+                    images.push(img)
+                }
+                makeNewImage('squirtcopter_big', '/content/squirtcopter')
+                makeNewImage('ios_mission_big', '/content/ios_mission')
+                makeNewImage('bg2', '/content/canvas_craft')
 
                 const booms = [
-                    {name: 'SQUIRTCOPTER', time: 70, x: 0, y: 0, size: .03, expire: 215},
-                    {name: 'By Joachim Ford', time: 75, x: 0, y: .1, size: .01, expire: 200},
-                    {name: 'EMBARK', time: 350, x: 0, y: -.2, size: .03, expire: 215},
-                    {name: 'ON', time: 370, x: .3, y: -.2, size: .03, expire: 200},
-                    {name: 'A', time: 380, x: .4, y: -.2, size: .03, expire: 195},
-                    {name: 'QUEST', time: 400, x: .1, y: .1, size: .04, expire: 180},
-                    {name: 'SQUIRT', time: 650, x: 0, y: -.2, size: .03, expire: 215},
-                    {name: 'YOUR', time: 670, x: .24, y: -.2, size: .03, expire: 200},
-                    {name: 'WAY', time: 680, x: .35, y: -.05, size: .03, expire: 190},
-                    {name: 'TO', time: 700, x: .05, y: 0, size: .04, expire: 185},
-                    {name: 'VICTORY', time: 710, x: .05, y: .2, size: .04, expire: 200},
-                    {name: 'PLAY NOW', time: 1010, x: .08, y: 0, size: .03, expire: 200},
-                    {name: 'SQUIRTCOPTER', time: 1300, x: 0, y: 0, size: .03, expire: 0},
-                    {name: 'By Joachim Ford', time: 1305, x: 0, y: .1, size: .01, expire: 0},
+                    {name: 'SQUIRTCOPTER', time: 70, x: 0, y: 0, size: .03, expire: 35},
+                    {name: 'By Joachim Ford', time: 100, x: 0, y: .1, size: .01, expire: 100},
+                    {name: 'SQUIRTCOPTER', time: 100, x: 0, y: 0, size: .03, expire: 215},
+                    {name: 'Squirt Your Way To Victory!', time: 205, x: 0, y: .1, size: .01, expire: 100},
+
+                    {name: 'Switch', time: 350},
+
+                    {name: 'IO\'S MISSION', time: 370, x: 0, y: 0, size: .03, expire: 225},
+                    {name: '..', time: 425, x: 0, y: .1, size: .01, expire: 2},
+                    {name: '..........', time: 430, x: 0, y: .1, size: .01, expire: 2},
+                    {name: '........................', time: 435, x: 0, y: .1, size: .01, expire: 2},
+                    {name: 'The Online Adventure Game', time: 440, x: 0, y: .1, size: .01, expire: 140},
+
+                    {name: 'Switch', time: 650},
+
+                    {name: 'CANVASCRAFT', time: 700, x: 0, y: 0, size: .03, expire: 215},
+                    {name: '"Where Craft and Code Collide"', time: 705, x: 0, y: .08, size: .01, expire: 200},
+                    {name: 'canvas', time: 800, x: 0, y: .14, size: .01, expire: 2},
+                    {name: 'canvas-craft', time: 808, x: 0, y: .14, size: .01, expire: 2},
+                    {name: 'canvas-craft.github', time: 812, x: 0, y: .14, size: .01, expire: 2},
+                    {name: 'canvas-craft.github.io', time: 825, x: 0, y: .14, size: .01, expire: 100},
+
+                    {name: 'Switch', time: 950}
                 ]
 
                 addEventListener('resize', resize)

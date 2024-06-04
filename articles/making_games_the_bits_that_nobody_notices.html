@@ -4,6 +4,7 @@
         <meta charset = utf-8>
         <meta name = viewport content = 'width = device-width, initial-scale = 1'>
         <meta name = keywords content = 'Joachim Ford, Create enemies JavaScript, Platformer enemies'>
+        <meta name = description content = 'Adding details to the game of Ios Mission'>
 
         <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
         <script src = /js/analytics.js></script>
@@ -40,24 +41,34 @@
         </section>
 
         <section class = main>
-            <img class = bg src = /articles/extra/ios_mission_the_bits_that_nobody_notices/2.png>
+            <img class = bg src = /articles/extra/making_games_the_bits_that_nobody_notices/2.png>
 
             <span class = date>29.12.2023</span>
-            <h1>Io's Mission: The Bits That Nobody Notices</h1>
-            <div class = big><img class = img src = /articles/extra/ios_mission_the_bits_that_nobody_notices/1.png></div>
+            <h1>Making games: The Bits That Nobody Notices</h1>
+            <div class = big><img class = img src = /articles/extra/making_games_the_bits_that_nobody_notices/1.png></div>
 
             <div class = demo>
-                <p>Hello everyone! This article talks about some of the pointless
-                details I added to the game
-                <a class = normal href = /content/ios_mission>Io's Mission</a>.
+                <p>One of the most improtant parts of game development is having
+                an attention to detail. This - as with most things - has the potential
+                to go too far, and adding details may become an obsession.</p>
+
+                <p>It's always worth considering (and I'm not saying I did this, by the way)
+                the "focus" of your project from early on;
+                knowing what elements to prioritise will help you make the most
+                of the computer's processing power.
+                After all, even with today's technology, there are still limitations
+                to what a computer can handle.</p>
+
+                <p>This article talks about some of the (pointless?) details I
+                added to the game <a class = normal href = /content/ios_mission>Io's Mission</a>.
                 I've only picked the best ones, so it's not too long.
-                The subjects are listed in no particular order.</p>
+                The subjects that follow are listed in no particular order.
             </div>
             <div class = demo>
                 <h2>DETAIL 01</h2>
                 <p>For some reason, it seemed very important to make sure the crabs
                 (the ones in the beach level) walked properly. Did you notice that
-                they moved up and down slightly as the crawled along the sand?</p>
+                they moved up and down slightly as they crawled along the sand?</p>
 
                 <p>The difference is only a few pixels in the real game. I've scaled
                 the crab up a bit so you can see this "walking up and down" more clearly,
@@ -65,10 +76,10 @@
                 Note that in its normal state, the vertical movement is unnoticable.
                 Unless you have very good eyes.</p>
             </div>
-            <iframe src = /articles/extra/ios_mission_the_bits_that_nobody_notices/3.html></iframe>
+            <iframe src = /articles/extra/making_games_the_bits_that_nobody_notices/3.html></iframe>
             <div class = demo>
                 <h2>DETAIL 02</h2>
-                <p>Another pointless detail is the scanlines. If you want
+                <p>Another detail I thought I'd mention is the scanlines. If you want
                 a technical definition for them, go and look it up, but for the sake of
                 simplicity, scanlines are just horizontal transparent bars stretching
                 from one side of the screen to the other. Did you notice them?
@@ -79,27 +90,27 @@
                 In the image below, I've exaggerated these weights 100x to help you see
                 them better.</p>
             </div>
-            <div class = big><img class = img src = /articles/extra/ios_mission_the_bits_that_nobody_notices/4.png></div>
+            <div class = big><img class = img src = /articles/extra/making_games_the_bits_that_nobody_notices/4.png></div>
             <div class = demo>
                 <p>Pointless, if you ak me. However, we must also remember that - as my father
-                used to say - "it's all in the details." The invisible weights on
-                these scanlines are certainly crucial to the gameplay of Io's Mission.
-                I can't imagine what it would look like without them.</p>
+                used to say - "it's all in the details." When you think about it,
+                you realise that these invisible weights on the scanlines are
+                crucial - crucial! - to the gameplay of Io's Mission.</p>
             </div>
             <div class = demo>
                 <h2>DETAIL 03</h2>
                 <p>A whole week was spent on the crocodiles. The first day was taken
-                up with deciding on the main colours and shapes, another two days
+                up with deciding on the main colours and shapes, and another two days
                 were taken up with getting the movement right (like sinking and
                 attacking).</p>
 
                 <p>In the remaining four days I created the legs and the
                 tail. Trouble is, you hardly EVER see either of those things in
-                the real game. Perhaps an occasional flick from the swamp, or the
-                legs are revealed for an instant when he jumps, but aside from
-                that these parts are practically invisible.</p>
+                the real game. Perhaps you may see the tail for a fleeting moment as
+                ths crocodile splashes towards you, or the legs are revealed for an
+                instant when he jumps, but aside from that these parts are practically invisible.</p>
             </div>
-            <div class = big><img class = img src = /articles/extra/ios_mission_the_bits_that_nobody_notices/5.png></div>
+            <div class = big><img class = img src = /articles/extra/making_games_the_bits_that_nobody_notices/5.png></div>
             <div class = demo>
                 <p>Important note: for those who have exceptionally good eyes
                 you actually <i>will</i> be able to see the whole crocodile during the
@@ -110,12 +121,15 @@
             <div class = demo>
                 <h2>THE SMALLER DETAILS</h2>
                 <p>This article could be much longer, but thank goodness,
-                the rest has been conveniently bunched into a single paragraph.
-                You can skip it if you want to :)</p>
+                the rest has been conveniently bunched into a single paragraph.</p>
 
                 <p>Did you notice that Io breathed? Or that, when he transitioned,
-                he used a bezier movement instead
-                of linear? Did you notice that the grass and seaweed swayed in
+                he used a bezier movement instead of linear? (You probably did,
+                now I think of it. No doubt, as soon as your gaze fell upon him
+                you said to yourself:
+                "Ah, how glad I am he used bezier movement and not linear for his
+                inverse kinematics...")
+                Did you notice that the grass and seaweed swayed in
                 the breeze? Or did you even notice that the water was very, very,
                 slightly transparent? Did you notice the lights flashed on the
                 machines? Or that Drillo's friend was constantly walking?</p>
@@ -128,6 +142,27 @@
 
                 <p>See you next time!</p>
             </div>
+
+            <div class = demo>
+                <span id = commentContainer><form id = form action = https://api.web3forms.com/submit method = POST>
+                    Leave a comment
+                    <input type = hidden name = access_key value = 'bec85640-a8df-41e3-9112-826db534219c'>
+                    <input type = hidden name = subject value = 'Someone posted a comment!'>
+                    <input type = hidden name = address id = address>
+                    <input type = text name = name placeholder = 'Anonymous' required>
+                    <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                    <div class = h-captcha data-captcha = true id = captcha></div>
+                    <button type = submit class = button onmousedown = pressPost()>Post</button>
+                </form>
+
+                <script src = https://web3forms.com/client/script.js async defer></script>
+                <div id = thanks><h3>Thanks!</h3></div></span>
+            </div>
+
+            <!-- <div><div class = subDemo>
+                <span class = user><div class=userCanvas></div><h3>User</h3></span>
+                <p>Comment</p>
+            </div></div> -->
         </section>
 
         <button class = theme onclick = toggleTheme()>Change Theme</button>

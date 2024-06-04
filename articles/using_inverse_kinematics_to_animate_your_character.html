@@ -4,6 +4,7 @@
         <meta charset = utf-8>
         <meta name = viewport content = 'width = device-width, initial-scale = 1'>
         <meta name = keywords content = 'Joachim Ford, Create enemies JavaScript, Platformer enemies'>
+        <meta name = description content = 'How to implement smooth character animations'>
 
         <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
         <script src = /js/analytics.js></script>
@@ -29,20 +30,20 @@
 
         <section class = main>
             <span class = date>25.12.2023</span>
-            <h1>Io's Mission: The Hero</h1>
-            <div class = big><img class = img src = /articles/extra/ios_mission_the_hero/1.png></div>
+            <h1>Using Inverse Kinematics to Animate Your Character</h1>
+            <div class = big><img class = img src = /articles/extra/using_inverse_kinematics_to_animate_your_character/1.png></div>
 
             <div class = demo>
                 <span class = description>
                     <b>Table Of Contents</b>
                     <p></p>
-                    ∙ <a class = normal href = /articles/ios_mission_the_hero#intro>Introduction</a><br>
-                    ∙ <a class = normal href = /articles/ios_mission_the_hero#movement>The Transitioning Extravaganza</a><br>
-                    ∙ <a class = normal href = /articles/ios_mission_the_hero#code>Getting to the Code</a><br>
-                    &emsp;∙ <a class = normal href = /articles/ios_mission_the_hero#step1>Step 1</a><br>
-                    &emsp;∙ <a class = normal href = /articles/ios_mission_the_hero#step2>Step 2</a><br>
-                    &emsp;∙ <a class = normal href = /articles/ios_mission_the_hero#step3>Step 3</a><br>
-                    ∙ <a class = normal href = /articles/ios_mission_the_hero#conclusion>Conclusion</a>
+                    ∙ <a class = normal href = /articles/using_inverse_kinematics_to_animate_your_character#intro>Introduction</a><br>
+                    ∙ <a class = normal href = /articles/using_inverse_kinematics_to_animate_your_character#movement>The Transitioning Extravaganza</a><br>
+                    ∙ <a class = normal href = /articles/using_inverse_kinematics_to_animate_your_character#code>Getting to the Code</a><br>
+                    &emsp;∙ <a class = normal href = /articles/using_inverse_kinematics_to_animate_your_character#step1>Step 1</a><br>
+                    &emsp;∙ <a class = normal href = /articles/using_inverse_kinematics_to_animate_your_character#step2>Step 2</a><br>
+                    &emsp;∙ <a class = normal href = /articles/using_inverse_kinematics_to_animate_your_character#step3>Step 3</a><br>
+                    ∙ <a class = normal href = /articles/using_inverse_kinematics_to_animate_your_character#conclusion>Conclusion</a>
                 </span>
             </div>
             <div class = demo id = intro>
@@ -64,7 +65,7 @@
                 growth over time.</p>
             </div>
             <br>
-            <div class = big><img class = img src = /articles/extra/ios_mission_the_hero/2.png></div>
+            <div class = big><img class = img src = /articles/extra/using_inverse_kinematics_to_animate_your_character/2.png></div>
 
             <div class = demo id = movement>
                 <h3>The Transitioning Extravaganza</h3>
@@ -82,7 +83,7 @@
                 <p>Look closely at the example below to understand it better.</p>
             </div>
             <br>
-            <iframe src = /articles/extra/ios_mission_the_hero/3.html></iframe>
+            <iframe src = /articles/extra/using_inverse_kinematics_to_animate_your_character/3.html></iframe>
             <br>
             <div class = demo>
                 <p>In the first part of the example, Io "jolts" to the next position.
@@ -242,7 +243,7 @@ function update() {
                 a look at the comparison again.</p>
             </div>
 
-            <iframe src = /articles/extra/ios_mission_the_hero/4.html></iframe>
+            <iframe src = /articles/extra/using_inverse_kinematics_to_animate_your_character/4.html></iframe>
 
             <div class = demo>
                 <p>So, how do we make it smooth? The first stage is turn our <span class = snip>hero</span>
@@ -395,7 +396,7 @@ function update() {
                 in a "bezier" fashion. Take a look at the difference to see what I mean.</p>
             </div>
 
-            <iframe src = /articles/extra/ios_mission_the_hero/5.html></iframe>
+            <iframe src = /articles/extra/using_inverse_kinematics_to_animate_your_character/5.html></iframe>
 
             <div class = demo>
                 <p>It's a very, very small difference. It's all about the "feel" you get from it.
@@ -410,7 +411,7 @@ function update() {
 
                 <p>To discover more pointless details from
                 <a class = normal href = /content/ios_mission target = _blank>Io's Mission</a>,
-                check out my <a class = normal href = ios_mission_the_bits_that_nobody_notices.html>next article</a>.</p>
+                check out my <a class = normal href = making_games_the_bits_that_nobody_notices>next article</a>.</p>
             </div>
 
             <div class = demo id = conclusion>
@@ -616,6 +617,21 @@ function update() {
     &lt;/body>
 &lt;/html></pre>
 
+            </div>
+            <div class = demo>
+                <span id = commentContainer><form id = form action = https://api.web3forms.com/submit method = POST>
+                    Leave a comment
+                    <input type = hidden name = access_key value = 'bec85640-a8df-41e3-9112-826db534219c'>
+                    <input type = hidden name = subject value = 'Someone posted a comment!'>
+                    <input type = hidden name = address id = address>
+                    <input type = text name = name placeholder = 'Anonymous' required>
+                    <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                    <div class = h-captcha data-captcha = true id = captcha></div>
+                    <button type = submit class = button onmousedown = pressPost()>Post</button>
+                </form>
+
+                <script src = https://web3forms.com/client/script.js async defer></script>
+                <div id = thanks><h3>Thanks!</h3></div></span>
             </div>
         </section>
 

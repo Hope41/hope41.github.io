@@ -4,6 +4,7 @@
         <meta charset = utf-8>
         <meta name = viewport content = 'width = device-width, initial-scale = 1'>
         <meta name = keywords content = 'Joachim Ford, level generation'>
+        <meta name = description content = 'How to animate and display enemies using rectangles'>
 
         <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
         <script src = /js/analytics.js></script>
@@ -29,16 +30,15 @@
 
         <section class = main>
             <span class = date>23.08.2022</span>
-            <h1>Snakes And Ladders Talk Through: Level Generation</h1>
-            <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_level_generation/1.png></div>
+            <h1>Procedural Room Generation - Snakes and Ladders</h1>
+            <div class = big><img class = img src = /articles/extra/procedural_room_generation_snakes_and_ladders/1.png></div>
             <div class = demo>
-                <p>Each level in the game
-                <a class = normal href = /content/snakes_and_ladders target = _blank>Snakes And Ladders</a>
-                is completely different every time.
-                The code for this is - as you can imagine - very overwhelming.
-                In fact, it's the most complicated piece of code in the entire game.
-                Ironically, it also happens to be the most interesting part...
-                well, in my mind anyway. So let's plough on regardless.</p>
+                <p>Ever since I started coding some years ago, I always liked the idea
+                of games whose levels were different every time. Yes, the advantage
+                of using formulas to create levels is it gives players a different
+                experience each time they play the game. This article runs through the generation of
+                <a class = normal href = /articles/my_very_first_game target = _blank>pretty much</a>
+                my first attempt on generating levels with code. Hope you enjoy!</p>
             </div>
 
             <div class = demo>
@@ -82,7 +82,7 @@ for (let x = 0; x < this.width; x ++) {
                 <p>That's all you need to set up the map. Now we can start carving bits away!</p>
             </div>
 
-            <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_level_generation/2.png></div>
+            <div class = big><img class = img src = /articles/extra/procedural_room_generation_snakes_and_ladders/2.png></div>
 
             <div class = demo>
                 <h3>Chambers</h3>
@@ -109,7 +109,7 @@ for (let x = chamber_x; x < chamber_x + chamber_width; x ++) {
     }
 }</pre></div>
 
-            <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_level_generation/3.png></div>
+            <div class = big><img class = img src = /articles/extra/procedural_room_generation_snakes_and_ladders/3.png></div>
 
             <div class = demo>
                 <h3>Tunnels</h3>
@@ -119,21 +119,19 @@ for (let x = chamber_x; x < chamber_x + chamber_width; x ++) {
                 should be connected. I went for the Binary Tree maze algorithm,
                 which - in case you're wondering - is the simplest
                 procedural maze ever. This is how it works:</p>
-            </div>
 
-            <div class = demo>
-                ∙ Get your chambers set up<br>
-                ∙ Starting at the top left corner, connect your chamber to either:<br>
-                &emsp; ∙ The chamber on the right<br>
-                &emsp; ∙ The chamber underneath
-            </div>
+                <div class = subDemo>
+                    ∙ Get your chambers set up<br>
+                    ∙ Starting at the top left corner, connect your chamber to either:<br>
+                    &emsp; ∙ The chamber on the right<br>
+                    &emsp; ∙ The chamber underneath
+                </div>
 
-            <div class = demo>
                 <p>With these rules applied, the maze should start to be taking shape.
                 Note how the passages seem to point towards the bottom right corner:</p>
             </div>
 
-            <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_level_generation/4.png></div>
+            <div class = big><img class = img src = /articles/extra/procedural_room_generation_snakes_and_ladders/4.png></div>
 
             <div class = demo>
                 <p>You may notice a problem.
@@ -142,7 +140,7 @@ for (let x = chamber_x; x < chamber_x + chamber_width; x ++) {
                 bottom edge, and that solves the problem.</p>
             </div>
 
-            <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_level_generation/5.png></div>
+            <div class = big><img class = img src = /articles/extra/procedural_room_generation_snakes_and_ladders/5.png></div>
 
             <div class = demo>
                 <h3>Ladders</h3>
@@ -165,7 +163,7 @@ for (let x = chamber_x; x < chamber_x + chamber_width; x ++) {
                 able to get into rooms that he couldn't before.</p>
             </div>
 
-            <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_level_generation/6.png></div>
+            <div class = big><img class = img src = /articles/extra/procedural_room_generation_snakes_and_ladders/6.png></div>
 
             <div class = demo>
                 <h3>Reverse generation</h3>
@@ -174,21 +172,19 @@ for (let x = chamber_x; x < chamber_x + chamber_width; x ++) {
                 What we are missing is <b>reverse generation</b> - a final "filter"
                 that removes the pointless blocks. At the end of the generation code,
                 I run through every block in the level and do the following:</p>
-            </div>
 
-            <div class = demo>
-                ∙ If the current block is surrounded by other blocks:<br>
-                &emsp;∙ Turn the current block into thin air
-            </div>
+                <div class = subDemo>
+                    ∙ If the current block is surrounded by other blocks:<br>
+                    &emsp;∙ Turn the current block into thin air
+                </div>
 
-            <div class = demo>
                 <p>The advantage of this final filter is it speeds up in-game performance, it makes
                 the level look better (in my opinion), and it also gives the world a vast feeling
                 of nothingness - meaning the player is not able to see the sharp boundaries of the
                 map.</p>
             </div>
 
-            <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_level_generation/7.png></div>
+            <div class = big><img class = img src = /articles/extra/procedural_room_generation_snakes_and_ladders/7.png></div>
 
             <div class = demo>
                 <h3>Side effects</h3>
@@ -239,11 +235,27 @@ const CHAMBER_H = {min: MIN_HEIGHT + 3, max: MIN_HEIGHT + 5}
 
                 <p>You can learn more about the enemies of
                 <a class = normal href = /content/snakes_and_ladders target = _blank>Snakes And Ladders</a>
-                in the <a class = normal href = /articles/snakes_and_ladders_talk_through_side_effects target = _blank>next article</a>
+                in the <a class = normal href = /articles/create_and_animate_enemies_using_shapes target = _blank>next article</a>
                 of this series.</p>
 
                 <p>That's it for this article, I hope it clarified things for you
                 and maybe it will come in handy for projects in the months to come!</p>
+            </div>
+
+            <div class = demo>
+                <span id = commentContainer><form id = form action = https://api.web3forms.com/submit method = POST>
+                    Leave a comment
+                    <input type = hidden name = access_key value = 'bec85640-a8df-41e3-9112-826db534219c'>
+                    <input type = hidden name = subject value = 'Someone posted a comment!'>
+                    <input type = hidden name = address id = address>
+                    <input type = text name = name placeholder = 'Anonymous' required>
+                    <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                    <div class = h-captcha data-captcha = true id = captcha></div>
+                    <button type = submit class = button onmousedown = pressPost()>Post</button>
+                </form>
+
+                <script src = https://web3forms.com/client/script.js async defer></script>
+                <div id = thanks><h3>Thanks!</h3></div></span>
             </div>
         </section>
 

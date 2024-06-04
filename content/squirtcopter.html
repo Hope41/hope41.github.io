@@ -56,7 +56,7 @@
             <div class = big>
                 <a href = /squirtcopter target = _blank>
                     <img class = img src = /images/squirtcopter_big.png>
-                    <div class = play><img src = /svg/play.svg></svg></div>
+                    <div class = play><img src = /svg/play.svg></div>
                 </a>
             </div>
 
@@ -81,6 +81,21 @@
                 <div class = gap>
                     <a href = https://github.com/Hope41/squirtcopter target = _blank class = button id = c><b>Check Out the Source Code</b></a>
                 </div>
+            </div>
+            <div class = demo>
+                <span id = commentContainer><form id = form action = https://api.web3forms.com/submit method = POST>
+                    Leave a comment
+                    <input type = hidden name = access_key value = 'bec85640-a8df-41e3-9112-826db534219c'>
+                    <input type = hidden name = subject value = 'Someone posted a comment!'>
+                    <input type = hidden name = address id = address>
+                    <input type = text name = name placeholder = 'Anonymous' required>
+                    <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                    <div class = h-captcha data-captcha = true id = captcha></div>
+                    <button type = submit class = button onmousedown = pressPost()>Post</button>
+                </form>
+
+                <script src = https://web3forms.com/client/script.js async defer></script>
+                <div id = thanks><h3>Thanks!</h3></div></span>
             </div>
         </section>
 

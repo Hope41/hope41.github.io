@@ -4,6 +4,7 @@
         <meta charset = utf-8>
         <meta name = viewport content = 'width = device-width, initial-scale = 1'>
         <meta name = keywords content = 'Joachim Ford, Create enemies JavaScript, Platformer enemies'>
+        <meta name = description content = 'How to procedurally generate chamber-like levels'>
 
         <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
         <script src = /js/analytics.js></script>
@@ -29,16 +30,14 @@
 
         <section class = main>
             <span class = date>6.11.2022</span>
-            <h1>Snakes And Ladders Talk Through: Side Effects</h1>
-            <div class = big><img class = img src = /articles/extra/snakes_and_ladders_talk_through_side_effects/1.png></div>
+            <h1>Create and Animate Enemies Using Shapes</h1>
+            <div class = big><img class = img src = /articles/extra/create_and_animate_enemies_using_shapes/1.png></div>
 
             <div class = demo>
                 <p>This article runs through how the enemies of
                 <a class = normal href = /content/snakes_and_ladders.html target = _blank>Snakes And Ladders</a>
-                are animated and rendered. Each simplified example has its source code underneath, so please to have a look
-                if you need help.
-                Pay particular attention to the code inside the <span class = snip>enemy()</span> function, which handles
-                the drawing and animation.</p>
+                are animated and rendered. Each simplified example has the relevant code underneath, so please to have a look
+                if you need help.</p>
 
                 <p>Please keep in mind that not all the enemies are showcased on this page -
                 you'll have to play the game to find that out!
@@ -47,7 +46,7 @@
             </div>
 
             <div class = demo>
-                <p>Nearly every enemy uses a very similar walking pattern - one that you may recognise from
+                <p>Every enemy in the game uses a similar walking pattern - one that you may recognise from
                 <a class = normal href = /content/anthrophobia_fear_of_crowds.html target = _blank>Anthrophobia</a>.
                 In case you haven't already seen it, this "walking pattern" is based on a circle with
                 a limit at its base.</p>
@@ -59,7 +58,7 @@
                 but it's vital to achieve the illusion of moving forward.</p>
             </div>
 
-            <iframe src = /articles/extra/snakes_and_ladders_talk_through_side_effects/1.html></iframe>
+            <iframe src = /articles/extra/create_and_animate_enemies_using_shapes/1.html></iframe>
 
 <pre class = code>const FOOT_LIFT = .35
 const FOOT_SLIDE = .3
@@ -121,7 +120,7 @@ for (let i = 0; i < segments.length; i ++) {
                 <p>Take a look at the source code if you need to understand it better.</p>
             </div>
 
-            <iframe src = /articles/extra/snakes_and_ladders_talk_through_side_effects/6.html></iframe>
+            <iframe src = /articles/extra/create_and_animate_enemies_using_shapes/6.html></iframe>
 <pre class = code>time += .04
 const EYE_SIZE = .3 * (width + height) / 2
 const EYE = {
@@ -228,7 +227,7 @@ if (!dir) features()</pre>
                 visualise in your head.</p>
             </div>
 
-            <iframe src = /articles/extra/snakes_and_ladders_talk_through_side_effects/7.html></iframe>
+            <iframe src = /articles/extra/create_and_animate_enemies_using_shapes/7.html></iframe>
 
 <pre class = code>const offset = Math.sin(WALK * 2) * .1
 const fake_height = 1.2
@@ -360,6 +359,22 @@ eye(.3)</pre>
                 <p>Anyway, thanks for reading to the end, and feel free to
                 <a class = normal href = mailto:contact@joachimford.uk>let me know</a>
                 if you have any more questions!</p>
+            </div>
+
+            <div class = demo>
+                <span id = commentContainer><form id = form action = https://api.web3forms.com/submit method = POST>
+                    Leave a comment
+                    <input type = hidden name = access_key value = 'bec85640-a8df-41e3-9112-826db534219c'>
+                    <input type = hidden name = subject value = 'Someone posted a comment!'>
+                    <input type = hidden name = address id = address>
+                    <input type = text name = name placeholder = 'Anonymous' required>
+                    <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                    <div class = h-captcha data-captcha = true id = captcha></div>
+                    <button type = submit class = button onmousedown = pressPost()>Post</button>
+                </form>
+
+                <script src = https://web3forms.com/client/script.js async defer></script>
+                <div id = thanks><h3>Thanks!</h3></div></span>
             </div>
         </section>
 

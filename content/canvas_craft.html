@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = utf-8>
+        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
+        <meta name = keywords content = 'Joachim Ford, Crowd Simulation, JavaScript Demo'>
+
+        <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
+        <script src = /js/analytics.js></script>
+        <script src = /js/main.js></script>
+        <title>Joachim Ford</title>
+        <link rel = stylesheet href = /main.css>
+        <link rel = icon type = image/x-icon  href = /favs/favicon.ico>
+    </head>
+
+    <body>
+        <section class = topnav>
+            <div class = title>
+                <a class = brand href = '/'>Joachim Ford</a>
+                <a class = about href = /about>About</a>
+            </div>
+            <div class = nav>
+                <a href = /games>Games</a>
+                <a href = /experiments>Experiments</a>
+                <a href = /articles>Articles</a>
+                <a href = /news>News</a>
+            </div>
+        </section>
+
+        <section class = main>
+            <span class = date>15.01.2022</span>
+            <h1>CanvasCraft</h1>
+
+            <div class = big>
+                <a href = https://canvas-craft.github.io target = _blank>
+                    <img class = img src = /images/canvas_craft_big.png>
+                </a>
+            </div>
+
+            <div class = demo>
+                <p><b>CanvasCraft is a unique online tool designed to allow creators
+                to easily make images, game levels, and entire worlds within minutes.
+                It's very new, so please raise an issue on GitHub if you find any glitches.</b></p>
+                <p><a class = button href = https://github.com/canvas-craft/canvas-craft.github.io target = _blank>Check Out the Source Code</a>
+                <a class = button href = https://github.com/canvas-craft/canvas-craft.github.io/issues/new target = _blank>Raise an Issue</a></p>
+            </div>
+
+            <div class = demo>
+                <p>The following page is a very brief documentation of how to start using CanvasCraft.</p>
+            </div>
+
+            <div class = demo>
+                <h3>Getting Started</h3>
+                <p>When you first open Canvas Craft and click on the screen, it will take you to a page
+                that looks a bit like this.</p>
+                <div class = big><img class = img src = /content/extra/canvas_craft/1.png></div>
+                <p>You can create shapes using the "Block" tool (selected by default), or the "Line"
+                tool. To draw a shape on your canvas, simply drag your mouse across the white square.</p>
+                <div class = big><img class = img src = /content/extra/canvas_craft/2.png></div>
+                <p>After creating a few rectangles, you'll probably want to give them different textures.</p>
+                <p>Select one of them (by clicking on it) and take a look at the panel on the top-left of the
+                screen. This panel contains all the statistics for the selected shape. Scroll down untill you come
+                to the "Textures" heading and either press "Upload Image" to add an image from your device,
+                or choose a texture from the list of presets. Press "Run Code" to apply the preset to your shape.</p>
+                <p>At this point, you may notice a code box just below the list of presets. This allows you
+                to customise exactly what texture you wish your shape to have. If you have some knowledge on
+                how to write in JavaScript and on how RGB colours work, it should be quite simple. The two inputs
+                of the code box are the X and Y coordinates of a pixel. The code will take these coordinates, do
+                some fancy things to them, and finally "return" a colour made of Red, Green and Blue values.</p>
+                <div class = hint>
+                    <img src = /svg/bulb.svg>
+                    <p>Imagine the code box as simply a long algebra equation.
+                    Algebra is all about numbers represented
+                    by letters. Take the equation <span class = snip>X &times; X = A</span>
+                    for instance. If <span class = snip>X = 1</span>, it means
+                    <span class = snip>A = 1</span>.
+                    But if <span class = snip>X = 2</span>,
+                    it means <span class = snip>A = 4</span>.
+                    The code box works in a similar way. You can apply maths to the X and Y inputs
+                    and return an RGB colour based on that.</p>
+                </div>
+                <p>If you still don't understand, don't worry! I added the feature to CanvasCraft
+                because it makes game level design much quicker. For example, if I wanted to add
+                a simple brick to my image, I would first select an orangey-pink colour from the selector
+                on the topnav. Then, I would drag on the canvas with the "Block" tool to create a
+                brick shape on the screen. To make a brick <i>texture</i>, I would select
+                the "Noise" preset and press "Run Code." If I wanted the
+                noise to be more extreme, I could change the amount <span class = snip>Math.random()</span>
+                is multiplied.</p>
+                <div class = big><img class = img src = /content/extra/canvas_craft/3.png></div>
+
+                <p>Canvas Craft is still in early stages of development, but there are still many
+                other features that haven't been covered on this page. If you think CanvasCraft
+                might be helpful to you, make sure you check out its
+                <a class = normal href = https://github.com/canvas-craft/canvas-craft.github.io>GitHub</a>
+                for more information or ask for advice in the comments.</p>
+            </div>
+
+            <div class = demo>
+                <span id = commentContainer><form id = form action = https://api.web3forms.com/submit method = POST>
+                    Leave a comment
+                    <input type = hidden name = access_key value = 'bec85640-a8df-41e3-9112-826db534219c'>
+                    <input type = hidden name = subject value = 'Someone posted a comment!'>
+                    <input type = hidden name = address id = address>
+                    <input type = text name = name placeholder = 'Anonymous' required>
+                    <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                    <div class = h-captcha data-captcha = true id = captcha></div>
+                    <button type = submit class = button onmousedown = pressPost()>Post</button>
+                </form>
+
+                <script src = https://web3forms.com/client/script.js async defer></script>
+                <div id = thanks><h3>Thanks!</h3></div></span>
+            </div>
+        </section>
+
+        <button class = theme onclick = toggleTheme()>Change Theme</button>
+        <span class = copyright>
+            © Copyright <span class = year></span> joachimford.uk
+            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
+            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+        </span>
+    </body>
+</html>

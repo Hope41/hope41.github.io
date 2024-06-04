@@ -39,8 +39,13 @@
     --squarebuttonhover: #222;
     --codebg: #111;
     --codeoutline: #555;
+    --subDemo: #333;
+    --hint: #30393b;
+    --hintEdge: #393d3f;
+    --hintText: #ddd;
 
     --fontsize: 20px;
+    --smallerFont: 18px;
     --shadow: 1px 2px 6px #0009;
 
     --basic: #ddd;
@@ -56,7 +61,7 @@ body.light {
     --bg: #fff;
     --topnavbg: #ccc;
     --topnavbutton: #aaa;
-    --topnavbuttonhover: #586;
+    --topnavbuttonhover: #697;
     --topnavwhitehover: #bbb;
     --buttonnorm: #063;
     --buttonhover: #285;
@@ -66,6 +71,10 @@ body.light {
     --squarebuttonhover: #fff;
     --codebg: #fff;
     --codeoutline: #bbb;
+    --subDemo: #ddd;
+    --hint: #d5dfe5;
+    --hintEdge: #c5cfd5;
+    --hintText: #222;
 
     --basic: #100;
     --keyword: #90f;
@@ -113,6 +122,46 @@ button {
 button:hover {
     color: var(--buttonnorm);
     cursor: pointer
+}
+
+#form {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: start;
+    transition: .4s;
+}
+
+#commentContainer {
+    position: relative
+}
+
+#thanks {
+    position: absolute;
+    opacity: 0;
+    font-size: var(--fontsize);
+    transition-duration: 2s;
+    transition-delay: .8s;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: auto
+}
+
+input, textarea {
+    width: 100%;
+    border: none;
+    color: var(--text);
+    background-color: var(--subDemo);
+    padding: 15px;
+    outline: none;
+    font-family: font;
+    font-size: var(--fontsize);
+    border-radius: 10px;
+    resize: none
+}
+
+#captcha {
+    border-radius: 0
 }
 
 .topnav {
@@ -194,7 +243,7 @@ button:hover {
 }
 
 .subDemo {
-    background-color: var(--squarebutton);
+    background-color: var(--subDemo);
     padding: 20px;
 }
 
@@ -205,6 +254,11 @@ a.normal:hover, .demo h3:hover, .demo h2:hover {color: var(--buttonhover)}
     max-width: 400px;
     height: 200px;
     object-fit: cover;
+    border-radius: 10px;
+    box-shadow: var(--shadow)
+}
+
+.tinyRatio {
     border-radius: 10px;
     box-shadow: var(--shadow)
 }
@@ -227,8 +281,22 @@ a.normal:hover, .demo h3:hover, .demo h2:hover {color: var(--buttonhover)}
     box-shadow: var(--shadow)
 }
 
+button.button {
+    font-size: var(--fontsize);
+    font-family: font;
+    background-color: var(--subDemo);
+    border-radius: 5px;
+    padding: 10px;
+    color: var(--text)
+}
+
+button.button:hover {
+    background-color: var(--topnavbuttonhover);
+    cursor: pointer;
+}
+
 a.button {
-    background-color: var(--squarebutton);
+    background-color: var(--subDemo);
     border-radius: 5px;
     padding: 10px;
     border: 1.5px solid #999;
@@ -249,6 +317,27 @@ a.button:hover {
     font-family: boldFont;
     font-style: italic;
     color: #888
+}
+
+.hint {
+    background-color: var(--hint);
+    border-radius: 10px;
+    border: 2px solid var(--hintEdge);
+    padding: 14px;
+    color: var(--hintText);
+    font-size: var(--smallerFont);
+    display: flex
+}
+
+.hint img {
+    width: 12px;
+    margin-right: 15px;
+}
+
+.hint div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
 }
 
 .code, .codeBig {
@@ -345,6 +434,34 @@ iframe {
     box-shadow: var(--shadow)
 }
 
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.userCanvas {
+    border-radius: 100px;
+    width: 40px;
+    height: 40px;
+    background-color: #fa9;
+    box-shadow: 1px 1px 4px #000b;
+}
+
+.user h3 {
+    width: fit-content;
+    display: inline-block
+}
+
+#emoticon #num {
+    color: #777;
+    margin-left: 7px;
+}
+
+#emoticon img {
+    width: 20px;
+    transform: translateY(2px);
+}
 .copyright img {width: 10px}
 .copyright img:hover {opacity: .7}
 
