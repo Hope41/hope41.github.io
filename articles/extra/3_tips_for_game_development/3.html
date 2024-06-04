@@ -156,8 +156,8 @@
                 if (time <= 1) generateMap()
                 if (!coins.length) {
                     if (man.restart) {
-                        generateMap()
                         man.y = -fake(0,screenh).y
+                        generateMap()
                     }
                     else {
                         man.win = true
