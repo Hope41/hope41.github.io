@@ -155,7 +155,10 @@
 
                 if (time <= 1) generateMap()
                 if (!coins.length) {
-                    if (man.restart) generateMap()
+                    if (man.restart) {
+                        generateMap()
+                        man.y = -fake(0,screenh).y
+                    }
                     else {
                         man.win = true
                         key.press = false
@@ -223,7 +226,7 @@
                 if (pos.y > amty / 2 + screenh) man.y = fake(0,amty/2).y - man.h
 
                 ctx.fillStyle = '#fff'
-                ctx.font = 'bold ' + (scale * 18) + 'px sans-serif'
+                ctx.font = Math.floor(scale * 18) + 'px sans-serif, monospace'
                 ctx.fillText('level: ' + baddieAmt, amtx / 2 + scale * 20, scale * 32)
                 ctx.fillText('coins: ' + man.coins, amtx / 2 + scale * 20, scale * 62)
                 ctx.fillText('total: ' + man.total, amtx / 2 + scale * 20, scale * 93)
