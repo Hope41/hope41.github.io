@@ -68,7 +68,6 @@ window.onload = () => {
                 if (isGrayed) lines[i] = '<span class = gray>' + lines[i] + '</span>'
                 else {
                     lines[i] = lines[i]
-                        .replace(/(\<)([^\s].*)(\>)/g, '&lt;<span class = number>$2</span>>')
                         .replace(/(\/\/.*)/g, '<span class = comment>$1</span>')
                         .replace(/(\'.*\')/g, '<span class = string>$1</span>')
                         .replace(/(\b\d+\b|\.)/g, '<span class = number>$1</span>')
