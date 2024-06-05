@@ -27,7 +27,6 @@ function pressPost() {
 
 window.onload = () => {
     const code = document.querySelectorAll('.code')
-    const codeBig = document.querySelectorAll('.codeBig')
     const year = document.querySelector('.year')
     const form = document.getElementById('form')
 
@@ -58,32 +57,29 @@ window.onload = () => {
     if (localStorage.getItem(KEY) == 'light') toggleTheme()
 
     // Highlight code
-    const highlight = cde => {
-        for (let i = 0; i < cde.length; i ++) {
-            const box = cde[i]
-            const lines = box.textContent.split('¬')
-            let isGrayed = false
-    
-            for (let i = 0; i < lines.length; i ++) {
-                if (isGrayed) lines[i] = '<span class = gray>' + lines[i] + '</span>'
-                else {
-                    lines[i] = lines[i]
-                        .replace(/(\/\/.*)/g, '<span class = comment>$1</span>')
-                        .replace(/(\'.*\')/g, '<span class = string>$1</span>')
-                        .replace(/(\b\d+\b|\.)/g, '<span class = number>$1</span>')
-                        .replace(/(function)(.*)(\()/g, 'function<span class = name>$2</span>(')
-                        .replace(/(requestAnimationFrame|confirm|alert)/g, '<span class = name>$1</span>')
-    
-                    lines[i] = lines[i]
-                        .replace(/\b(if|else|return|function|const|let|for|in|of|break|continue)\b/g,
-                        '<span class = keyword>$1</span>')
-                }
-    
-                isGrayed = !isGrayed
+    for (let i = 0; i < code.length; i ++) {
+        const box = code[i]
+        const lines = box.textContent.split('¬')
+        let isGrayed = false
+
+        for (let i = 0; i < lines.length; i ++) {
+            if (isGrayed) lines[i] = '<span class = gray>' + lines[i] + '</span>'
+            else {
+                lines[i] = lines[i]
+                    .replace(/\</g, '&lt;')
+                    .replace(/(\/\/.*)/g, '<span class = comment>$1</span>')
+                    .replace(/(\'.*\')/g, '<span class = string>$1</span>')
+                    .replace(/(\b\d+\b|\.)/g, '<span class = number>$1</span>')
+                    .replace(/(function)(.*)(\()/g, 'function<span class = name>$2</span>(')
+                    .replace(/(requestAnimationFrame|confirm|alert)/g, '<span class = name>$1</span>')
+
+                lines[i] = lines[i]
+                    .replace(/\b(if|else|return|function|const|let|for|in|of|break|continue)\b/g,
+                    '<span class = keyword>$1</span>')
             }
-            box.innerHTML = lines.join('')
+
+            isGrayed = !isGrayed
         }
+        box.innerHTML = lines.join('')
     }
-    highlight(code)
-    highlight(codeBig)
 }
