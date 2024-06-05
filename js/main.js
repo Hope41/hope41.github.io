@@ -30,8 +30,6 @@ window.onload = () => {
     const codeBig = document.querySelectorAll('.codeBig')
     const year = document.querySelector('.year')
     const form = document.getElementById('form')
-    const address = document.getElementById('myAddress')
-    if (address) address.value = window.location.href
 
     if (form) {
         form.reset()
