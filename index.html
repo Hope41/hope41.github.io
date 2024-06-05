@@ -128,7 +128,8 @@
                         const sum = time - item.time
                         if (sum > 0) {
                             if (item.name == 'Switch') {
-                                if (sum > 1) continue
+                                if (progress >= j) continue
+                                progress = j
                                 active ++
                                 changeImage += speed * changeImageSpeed
                                 if (active > images.length - 1) {
@@ -180,12 +181,12 @@
                     }
 
                     ctx.fillStyle = rgb(1,1,.4,
-                        Math.sin(time / 240 +
-                        Math.cos(time / 130) * 2 +
-                        Math.sin(time / 10) * .1) * .1)
+                        Math.sin(time / 247 +
+                        Math.cos(time / 133) * 2 +
+                        Math.sin(time / 17) * .1) * .2)
 
                     ctx.fillRect(
-                        cvs.width / 2 + Math.sin(time / 300 + Math.cos(time / 500)) * cvs.width / 3,
+                        cvs.width / 2 + Math.sin(time / 330 + Math.cos(time / 500)) * cvs.width / 3,
                         cvs.height / 2 + Math.cos(time / 230 + Math.sin(time / 550)) * cvs.height / 3,
                         box * .03, box * .03)
 
@@ -199,7 +200,7 @@
                 let box = 0
                 let changeImage = 0
                 let oldPerf = 0
-                let progress = 0
+                let progress = -1
                 const changeImageSpeed = .012
                 const speed = 1.2
 
