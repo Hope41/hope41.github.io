@@ -451,7 +451,6 @@ iframe {
     border-radius: 5px;
     font-size: 12px;
     color: #888;
-    z-index: 1;
 }
 
 .userCanvas {
