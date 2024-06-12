@@ -29,6 +29,12 @@ window.onload = () => {
     const code = document.querySelectorAll('.code')
     const year = document.querySelector('.year')
     const form = document.getElementById('form')
+    const divs = document.getElementsByClassName('userCanvas')
+
+    const r = x => {return 100 + Math.random() * 50 * x}
+    for (let i = 0; i < divs.length; i ++) {
+        divs[i].style.backgroundColor = 'rgb('+r(1)+','+r(1.5)+','+r(2)+')'
+    }
 
     if (form) {
         form.reset()
