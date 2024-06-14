@@ -70,6 +70,12 @@
                     return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2
                 }
 
+                function drawImage(img, x, y, w, h) {
+                    ctx.fillStyle = img.color
+                    ctx.fillRect(x, y, w, h)
+                    ctx.drawImage(img, x, y, w, h)
+                }
+
                 function update() {
                     ctx.clearRect(0, 0, cvs.width, cvs.height)
                     let dt = (performance.now() - oldPerf) / 16
@@ -99,13 +105,13 @@
                     if (changeImage) {
                         changeImage += speed * changeImageSpeed
                         imgPosX -= quad(Math.sin(changeImage * Math.PI / 2)) * w
-                        ctx.drawImage(img, imgPosX + w, imgPosY, w, h)
+                        drawImage(img, imgPosX + w, imgPosY, w, h)
 
                         let last = active - 1
                         if (last < 0) last = images.length - 1
-                        ctx.drawImage(images[last], imgPosX, imgPosY, w, h)
+                        drawImage(images[last], imgPosX, imgPosY, w, h)
                     }
-                    else ctx.drawImage(img, imgPosX, imgPosY, w, h)
+                    else drawImage(img, imgPosX, imgPosY, w, h)
 
                     let a = (500-initTime)/500
                     if (a < .4) a = .4
@@ -122,7 +128,6 @@
                         ctx.fillRect(posX + w, yPos, boxW, boxH)
                     }
                     else ctx.fillRect(cvs.width / 2 - boxW / 2, yPos, boxW, boxH)
-
 
                     for (let j = 0; j < booms.length; j ++) {
                         const item = booms[j]
@@ -182,13 +187,13 @@
                     }
 
                     ctx.fillStyle = rgb(1,1,.4,
-                        Math.sin(time / 247 +
-                        Math.cos(time / 133) * 2 +
-                        Math.sin(time / 17) * .1) * .2)
+                        Math.sin(initTime / 247 +
+                        Math.cos(initTime / 133) * 2 +
+                        Math.sin(initTime / 17) * .1) * .15 + .03)
 
                     ctx.fillRect(
-                        cvs.width / 2 + Math.sin(time / 330 + Math.cos(time / 500)) * cvs.width / 3,
-                        cvs.height / 2 + Math.cos(time / 230 + Math.sin(time / 550)) * cvs.height / 3,
+                        cvs.width / 2 + Math.sin(initTime / 330 + Math.cos(initTime / 500)) * cvs.width / 3,
+                        cvs.height / 2 + Math.cos(initTime / 230 + Math.sin(initTime / 550)) * cvs.height / 3,
                         box * .03, box * .03)
 
                     requestAnimationFrame(update)
@@ -206,16 +211,17 @@
                 const speed = 1.2
 
                 const images = []
-                const makeNewImage = (name, url) => {
+                const makeNewImage = (name, url, color) => {
                     const img = new Image()
                     img.src = 'images/'+name+'.png'
                     img.url = url
+                    img.color = color
                     images.push(img)
                 }
-                makeNewImage('squirtcopter_big', '/content/squirtcopter')
-                makeNewImage('ios_mission_big', '/content/ios_mission')
-                makeNewImage('bg2', '/content/canvas_craft')
-                makeNewImage('snakes_and_ladders_big', '/content/snakes_and_ladders')
+                makeNewImage('squirtcopter_big', '/content/squirtcopter', '#756')
+                makeNewImage('ios_mission_big', '/content/ios_mission', '#69a')
+                makeNewImage('bg2', '/content/canvas_craft', '#500')
+                makeNewImage('snakes_and_ladders_big', '/content/snakes_and_ladders', '#8ca')
 
                 const booms = [
                     {name: 'SQUIRTCOPTER', time: 70, x: 0, y: 0, size: .03, expire: 35},
