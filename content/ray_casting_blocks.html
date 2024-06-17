@@ -31,8 +31,8 @@
             <span class = date>27.03.2022</span>
             <h1>Ray Casting Blocks</h1>
             <div class = big>
-                <a href = /ray-casting-city target = _blank>
-                    <img class = img src = /images/ray_casting_city_big.png>
+                <a href = /ray-casting-blocks target = _blank>
+                    <img class = img src = /images/ray_casting_blocks_big.png>
                     <div class = play><img src = /svg/play.svg></div>
                 </a>
             </div>
@@ -40,7 +40,7 @@
                 <p><b>A lively run through an infinite procedural city.
                 Initially developed throughout March 2022, but later updated in late 2023.</b></p>
 
-                <p><a class = button href = https://github.com/Hope41/ray-casting-city target = _blank>Check Out the Source Code</a></p>
+                <p><a class = button href = https://github.com/Hope41/ray-casting-blocks target = _blank>Check Out the Source Code</a></p>
             </div>
             <div class = demo>
                 <p>I must say, although this experiment was very fun to make,
@@ -62,7 +62,7 @@
                 each ray stops when it hits an obstacle, and that it has a maximum length</p>
             </div>
 
-            <iframe src = extra/ray_casting_city/1.html></iframe>
+            <iframe src = extra/ray_casting_blocks/1.html></iframe>
             <div class = code>// go through amount of iterations
 for (let j = 0; j < rayItr; j ++) {
     length = j * rayJmp
@@ -87,7 +87,7 @@ longer ray = shorter rectangle</div>
 
                 <p>This is what it looks like. Not the most amazing graphics, I admit.</p>
             </div>
-            <iframe src = extra/ray_casting_city/2.html></iframe>
+            <iframe src = extra/ray_casting_blocks/2.html></iframe>
             <div class = code>const w = cvs.width / rayAmt
 const h = 10 / length * scale
 const s = 100 / length
@@ -109,7 +109,7 @@ ctx.fillRect(i * w, cvs.height / 2 - h / 2, w, h)</div>
                 you get a better picture of what's happening.</p>
             </div>
 
-            <iframe src = extra/ray_casting_city/3.html></iframe>
+            <iframe src = extra/ray_casting_blocks/3.html></iframe>
 
             <div class = demo>
                 <p>This is the source code for the demo above. It's surprisingly short, actually.</p>
@@ -228,7 +228,7 @@ ctx.fillRect(i * w, cvs.height / 2 - h / 2, w, h)</div>
                 You can try getting it even smaller if you like!</p>
             </div>
 
-            <iframe src = extra/ray_casting_city/4.html></iframe>
+            <iframe src = extra/ray_casting_blocks/4.html></iframe>
 
             <div class = demo>
 <pre class = code>&lt;canvas id=c>&lt;body onload="u=_=>{W=c.width=innerWidth,H=c.height=innerHeight;for(r=i=99;i--;c.getContext`2d`.fillRect(i*W/r,H/2-h/2,h/40,h))for(j=0;++j&lt;r;~Math.tan(~(_/r+Math.cos(A=i/r-.5,h=9/j*(W+H)/2)*.1*j)*~(-1.5+Math.sin(A)*.1*j))?0:j=r);requestAnimationFrame(u)},u()">&lt;/body></pre>
@@ -244,7 +244,7 @@ ctx.fillRect(i * w, cvs.height / 2 - h / 2, w, h)</div>
                     <div class = tinyText>By posting, you consent to having your comment and optional name published here.</div>
                     <input type = hidden name = access_key value = 'bec85640-a8df-41e3-9112-826db534219c'>
                     <input type = hidden name = subject value = 'Someone posted a comment!'>
-                    <input type = hidden name = address value = "ray_casting_city">
+                    <input type = hidden name = address value = "ray_casting_blocks">
                     <input type = text name = name placeholder = 'Anonymous' required>
                     <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
                     <div class = h-captcha data-captcha = true id = captcha></div>
