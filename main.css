@@ -445,14 +445,6 @@ iframe {
     border: 2px solid var(--demo);
 }
 
-.tinyText {
-    pointer-events: none;
-    transition: .5s;
-    border-radius: 5px;
-    font-size: 12px;
-    color: #888;
-}
-
 .userCanvas {
     border-radius: 100px;
     width: 40px;
