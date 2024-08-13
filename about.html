@@ -27,6 +27,7 @@
                 min-width: 80px;
                 height: auto;
                 border: 7px solid var(--topnavbuttonhover);
+                box-shadow: var(--shadow);
             }
         </style>
     </head>
@@ -47,6 +48,7 @@
 
         <section class = main>
             <img class = me src = images/me.png>
+
             <div class = demo>
                 <span>
                     Hi there! I'm Joachim Ford, a solo developer
@@ -56,6 +58,39 @@
                     or get in touch at
                     <a class = normal href = mailto:hello@joachimford.uk target = _blank>hello@joachimford.uk</a>.
                 </span>
+
+                <div class = opts>
+                    <a href = mailto:hello@joachimford.uk target = _blank>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8">
+                            <path d="M1 0 0 1 0 2 4 4 8 2 8 1 7 0ZM0 3 4 5 8 3 8 7 7 8 1 8 0 7Z"/>
+                        </svg>
+                    </a>
+                    <a href = https://github.com/Hope41 target = _blank>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                            <path d="M 3 3 L 3 9 L 5 11 L 6 11 L 6 16 L 2 16 L 0 14 L 0 2 L 2 0 L 14 0 L 16 2 L 16 14 L 14 16 L 10 16 L 10 11 L 11 11 L 13 9 L 13 3 L 11 5 L 5 5 Z"/>
+                        </svg>
+                    </a>
+                    <a href = https://youtube.com/@joachimford target = _blank>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                            <path d="M 2 0 L 0 2 L 0 14 L 2 16 L 14 16 L 16 14 L 16 2 L 14 0 Z M 6 5 L 11 8 L 6 11 Z"/>
+                        </svg>
+                    </a>
+                    <a href = https://x.com/joachimford target = _blank>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                            <path d="M 2 0 L 0 2 L 0 14 L 2 16 L 14 16 L 16 14 L 16 2 L 14 0 Z M 2 5 L 5 2 L 9 6 L 13 2 L 14 3 L 10 7 L 14 11 L 11 14 L 7 10 L 3 14 L 2 13 L 6 9 Z M 11 12 L 12 11 L 5 4 L 4 5 Z"/>
+                        </svg>
+                    </a>
+                    <a href = https://joachimford.itch.io target = _blank>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1 18 19">
+                            <path d="M 2 -1 L 0 1 L 0 4 L 2 4 L 4 3 L 6 3 L 8 4 L 10 4 L 12 3 L 14 3 L 16 4 L 18 4 L 18 1 L 16 -1 Z M 0 6 L 0 16 L 2 18 L 16 18 L 18 16 L 18 6 L 16 6 L 14 5 L 12 5 L 10 6 L 8 6 L 6 5 L 4 5 L 2 6 Z Z M 8 13 L 7 14 L 5 15 L 3 15 L 3 13 L 4 11 L 5 8 L 13 8 L 14 11 L 15 13 L 15 15 L 13 15 L 11 14 L 10 13 Z M 8 12 L 8 11 L 7 11 L 9 9 L 11 11 L 10 11 L 10 12 Z"/>
+                        </svg>
+                    </a>
+                    <a href = https://dwitter.net/u/Joachim target = _blank>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                            <path d="M 2 0 L 0 2 L 0 14 L 2 16 L 14 16 L 16 14 L 16 2 L 14 0 Z M 3 4 L 5 4 L 5 12 L 3 12 Z M 7 4 L 9 4 L 9 12 L 7 12 Z M 11 4 L 13 4 L 13 12 L 11 12 Z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
 
             <div class = demo>
@@ -77,8 +112,8 @@
         <button class = theme onclick = toggleTheme()>Change Theme</button>
         <span class = copyright>
             © Copyright <span class = year></span> joachimford.uk
-            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
-            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+            <a href = https://github.com/Hope41 target = _blank><img src = /images/github.svg></img></a>
+            <a href = mailto:hello@joachimford.uk><img src = /images/mail.svg></img></a>
         </span>
     </body>
 </html>

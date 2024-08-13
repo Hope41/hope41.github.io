@@ -1,0 +1,28 @@
+<title>Character | Joachim Ford</title>
+<link rel = icon type = image/x-icon  href = /favs/favicon.ico>
+<canvas id=c></canvas>
+<script>
+l=_=>{
+W=c.width=innerWidth-16
+H=c.height=innerHeight-16
+
+// Get the average size of the webpage by adding the width and height together
+z=(W+H)/25
+
+// Make a function the draws rectangles
+r=(x,y,s)=>X.fillRect((x-d)*z+W/2,(y-e)*z+H/2,z*s,z*s)
+
+X.fillStyle='#034' // Body colour
+r(d,e,.4) // Body
+r(d,e+.4,.1) // Left foot
+r(d+.3,e+.4,.1) // Right foot
+
+requestAnimationFrame(l)
+}
+X=c.getContext`2d`
+
+// Define the X and Y coordinates of the player
+d=e=0
+
+l()
+</script>

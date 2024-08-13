@@ -81,7 +81,7 @@
                 <p>After messing around a bit with Pygame Zero, we decided to upgrade to Pygame,
                 as apparently it could handle more without slowing the computer down.</p>
 
-                <div class = hint><img src = /svg/bulb.svg><div>
+                <div class = hint><img src = /images/bulb.svg><div>
                     <p>When I was younger, I aspired to become like the "top game developers"
                     - people who (I imagined) coded their games in pure binary. Sadly, I
                     quickly learned that literally <i>no one</i> makes games in binary. In case you have thought
@@ -120,7 +120,7 @@
                     <div class = big style = 'max-width:500px'>
                         <a href = /articles/extra/3_tips_for_game_development/3 target = _blank>
                             <img class = tinyRatio style = 'max-width:500px' src = /articles/extra/3_tips_for_game_development/4.png>
-                            <div class = play><img src = /svg/play.svg></svg></div>
+                            <div class = play><img src = /images/play.svg></svg></div>
                         </a>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
                 As usual, I gave up quite quickly.</p>
 
                 <div class = hint>
-                    <img src = /svg/bulb.svg>
+                    <img src = /images/bulb.svg>
                     <p>"Well," you say, "what stopped you from continuing?"
                     Good question! The whole idea of coding is fixing glitches.
                     Trouble is, us newbies tend to unintentionally
@@ -274,7 +274,7 @@
                     <div class = big>
                         <a href = /articles/extra/3_tips_for_game_development/18 target = _blank>
                             <img class = img src = /articles/extra/3_tips_for_game_development/19.png>
-                            <div class = play><img src = /svg/play.svg></svg></div>
+                            <div class = play><img src = /images/play.svg></svg></div>
                         </a>
                     </div>
                 </div>
@@ -305,14 +305,29 @@
                 <p>The legacy continues!</p>
             </div>
 
+            <div id = pop>
+                <div id = popMain>
+                    <p>All comments are reviewed before being posted. No contact details
+                    or other personal information will be shared.</p>
+                    <p>If there's anything else you don't want published, please say
+                    so in the comment.</p>
+                    <p>Thanks for your feedback!</p>
+
+                    <button id = okay>Okay</button>
+                </div>
+            </div>
+
             <div class = demo>
                 <span id = commentContainer><form id = form action = https://api.web3forms.com/submit method = POST>
                     Leave a comment
                     <input type = hidden name = access_key value = 'bec85640-a8df-41e3-9112-826db534219c'>
                     <input type = hidden name = subject value = 'Someone posted a comment!'>
                     <input type = hidden name = address value = 3_tips_for_game_development>
-                    <input type = text name = name placeholder = 'Anonymous' required>
-                    <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                    <input type = text name = name placeholder = 'Anonymous'>
+                    <div class = cont>
+                        <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                        <button class = button id = info><img src = /images/info.svg></button>
+                    </div>
                     <div class = h-captcha data-captcha = true id = captcha></div>
                     <button type = submit class = button onmousedown = pressPost()>Post</button>
                 </form>
@@ -325,8 +340,8 @@
         <button class = theme onclick = toggleTheme()>Change Theme</button>
         <span class = copyright>
             © Copyright <span class = year></span> joachimford.uk
-            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
-            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+            <a href = https://github.com/Hope41 target = _blank><img src = /images/github.svg></a>
+            <a href = mailto:hello@joachimford.uk><img src = /images/mail.svg></a>
         </span>
     </body>
 </html>

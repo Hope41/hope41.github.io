@@ -34,7 +34,7 @@
             <div class = big>
                 <a href = /anthrophobia target = _blank>
                     <img class = img src = /images/anthrophobia_fear_of_crowds_big.png>
-                    <div class = play><img src = /svg/play.svg></div>
+                    <div class = play><img src = /images/play.svg></div>
                 </a>
             </div>
 
@@ -62,39 +62,40 @@
             <iframe src = extra/anthrophobia_fear_of_crowds/1.html></iframe>
 
             <div class = demo>
-<pre class = code>¬const yDrop = cvs.height / 5
+<pre class = code>#const yDrop = cvs.height / 5
 
-for (let i = 2; i --;) {¬
-    const x = cvs.width / 2 - Math.sin(time + i * Math.PI)¬ * cvs.height / 4 - 10
-    ¬let y = cvs.height / 2 + Math.cos(time + i * Math.PI)¬ * cvs.height / 4 - 10
+#for (let i = 2; i --;) {
+    const x = cvs.width / 2 - Math.sin(time + i * Math.PI) * cvs.height / 4 - 10
+    let y = cvs.height / 2 + Math.cos(time + i * Math.PI) * cvs.height / 4 - 10
 
-    if (y > cvs.height / 2) y = cvs.height / 2
-    y += yDrop
+    #if (y > cvs.height / 2) y = cvs.height / 2
+    #y += yDrop
 
-    ¬const swing = Math.sin(time + i * Math.PI)¬
-    let rise = swing
-    if (rise < 0) rise = 0
-    y -= rise * 40</pre>
+    const swing = Math.sin(time + i * Math.PI)
+    #let rise = swing
+    #if (rise < 0) rise = 0
+    #y -= rise * 40</pre>
 
                 <p>Of course, the manner of this walk can be changed by stretching its
                 movement or by giving it more characteristic bops and drags. The example
                 below really shows how loose you can be with the whole thing. For me,
-                this walk is much better.</p>
+                this walk is much better. Probably not so good for the heels,
+                but more realistic to look at, that is.</p>
             </div>
 
             <iframe src = extra/anthrophobia_fear_of_crowds/2.html></iframe>
 
             <div class = demo>
-<pre class = code>¬for (let i = 2; i --;) {
-    ¬const x = -Math.sin(time + i * Math.PI + Math.sin(time + i * Math.PI + 2) * .3)¬ * 100
-    ¬let y = Math.cos(time + i * Math.PI + Math.sin(time + i * Math.PI + 2))¬ * 100
+<pre class = code>#for (let i = 2; i --;) {
+    const x = -Math.sin(time + i * Math.PI + Math.sin(time + i * Math.PI + 2) * .3) * 100
+    let y = 30 + Math.cos(time + i * Math.PI + Math.sin(time + i * Math.PI + 2)) * 130
 
-    if (y > 0) y = 0
+    #if (y > 0) y = 0
 
-    ¬const swing = Math.sin(time + i * Math.PI + Math.sin(time + i * Math.PI + 3.1))¬
-    let rise = swing
-    if (rise < 0) rise = 0
-    y -= rise * 40</pre>
+    const swing = Math.sin(time + i * Math.PI + Math.sin(time + i * Math.PI + 3.1)) * 1.3
+    #let rise = swing
+    #if (rise < 0) rise = 0
+    #y -= rise * 40</pre>
 
                 <p>In the above example I tried to make the walk a bit comical,
                 so you'd probably want to tweak it based on
@@ -107,14 +108,29 @@ for (let i = 2; i --;) {¬
                 <a class = normal href = mailto:contactme@joachimford.uk>contact me</a>
                 if you have any more ideas for experiments!</p>
             </div>
+            <div id = pop>
+                <div id = popMain>
+                    <p>All comments are reviewed before being posted. No contact details
+                    or other personal information will be shared.</p>
+                    <p>If there's anything else you don't want published, please say
+                    so in the comment.</p>
+                    <p>Thanks for your feedback!</p>
+
+                    <button id = okay>Okay</button>
+                </div>
+            </div>
+
             <div class = demo>
                 <span id = commentContainer><form id = form action = https://api.web3forms.com/submit method = POST>
                     Leave a comment
                     <input type = hidden name = access_key value = 'bec85640-a8df-41e3-9112-826db534219c'>
                     <input type = hidden name = subject value = 'Someone posted a comment!'>
-                    <input type = hidden name = address value = anthrophobia_fear_of_crowds>
-                    <input type = text name = name placeholder = 'Anonymous' required>
-                    <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                    <input type = hidden name = address value = 3_tips_for_game_development>
+                    <input type = text name = name placeholder = 'Anonymous'>
+                    <div class = cont>
+                        <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                        <button class = button id = info><img src = /images/info.svg></button>
+                    </div>
                     <div class = h-captcha data-captcha = true id = captcha></div>
                     <button type = submit class = button onmousedown = pressPost()>Post</button>
                 </form>
@@ -127,8 +143,8 @@ for (let i = 2; i --;) {¬
         <button class = theme onclick = toggleTheme()>Change Theme</button>
         <span class = copyright>
             © Copyright <span class = year></span> joachimford.uk
-            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
-            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+            <a href = https://github.com/Hope41 target = _blank><img src = /images/github.svg></a>
+            <a href = mailto:hello@joachimford.uk><img src = /images/mail.svg></a>
         </span>
     </body>
 </html>

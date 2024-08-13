@@ -43,18 +43,27 @@
     --hint: #30393b;
     --hintEdge: #393d3f;
     --hintText: #ddd;
+    --mutebuttonhover: #354;
 
     --fontsize: 20px;
     --smallerFont: 18px;
     --shadow: 1px 2px 6px #0009;
 
     --basic: #ddd;
-    --keyword: #b5f;
-    --string: #3b7;
-    --comment: #9b9;
-    --gray: #999;
-    --name: #49f;
-    --number: #f95
+    --svg: #bbb;
+
+    --borderRadius: 10px;
+
+    /* Syntax highlight */
+    --keyword: #c8f;
+    --number: #fa6;
+    --builtin: #f80;
+    --operator: #0ff;
+    --function: #7bf;
+    --variable: #f88;
+    --string: #0f8;
+    --comment: #6a8;
+    --gray: saturate(10%) brightness(85%);
 }
 
 body.light {
@@ -75,23 +84,25 @@ body.light {
     --hint: #d5dfe5;
     --hintEdge: #c5cfd5;
     --hintText: #222;
+    --mutebuttonhover: #8b9;
 
     --basic: #100;
-    --keyword: #90f;
-    --string: #095;
-    --comment: #797;
-    --gray: #999;
-    --name: #25f;
-    --number: #b72
+    --svg: #666;
+
+    --keyword: #74d;
+    --number: #a72;
+    --builtin: #950;
+    --operator: #044;
+    --function: #058;
+    --variable: #b22;
+    --string: #074;
+    --comment: #575;
+    --gray: saturate(10%) opacity(50%);
 }
 
-.basic {color: var(--basic)}
-.keyword {color: var(--keyword)}
-.string {color: var(--string)}
-.comment {color: var(--comment)}
-.gray {color: var(--gray)}
-.name {color: var(--name)}
-.number {color: var(--number)}
+.c {
+    filter: var(--gray);
+}
 
 html {scroll-behavior: smooth}
 
@@ -107,6 +118,10 @@ body {
 
 a {text-decoration: none}
 p {margin: 0}
+b {
+    font-weight: normal;
+    font-family: boldFont;
+}
 h4, h3, h2, h1 {
     margin: 0;
     font-weight: normal;
@@ -156,7 +171,7 @@ input, textarea {
     outline: none;
     font-family: font;
     font-size: var(--fontsize);
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
     resize: none
 }
 
@@ -174,6 +189,7 @@ input, textarea {
     z-index: 1;
     align-items: center;
     border-bottom: var(--bg) 3px solid;
+    box-sizing: content-box;
 }
 
 .topnav .title {
@@ -183,7 +199,11 @@ input, textarea {
     align-items: center
 }
 
-.topnav .nav {display: flex}
+.topnav .nav {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
 
 .topnav .title .brand {
     padding-left: 30px;
@@ -198,7 +218,7 @@ input, textarea {
     font-size: var(--fontsize);
     border: 1.5px solid var(--topnavbuttonhover);
     background-color: var(--bg);
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
     padding: 6px;
     margin-left: 20px;
 }
@@ -212,7 +232,11 @@ input, textarea {
     color: var(--text);
     font-size: var(--fontsize);
     background-color: var(--topnavbutton);
-    padding: 16px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    text-align: center;
 }
 
 .topnav .nav a:hover {background-color: var(--topnavbuttonhover)}
@@ -236,7 +260,7 @@ input, textarea {
     gap: 20px;
     border: none;
     background-color: var(--demo);
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
     padding: 30px;
     flex-direction: column;
     color: var(--text);
@@ -254,12 +278,12 @@ a.normal:hover, .demo h3:hover, .demo h2:hover {color: var(--buttonhover)}
     max-width: 400px;
     height: 200px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
     box-shadow: var(--shadow)
 }
 
 .tinyRatio {
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
     box-shadow: var(--shadow)
 }
 
@@ -277,8 +301,37 @@ a.normal:hover, .demo h3:hover, .demo h2:hover {color: var(--buttonhover)}
 .big:hover .play {transform: translate(-50%, -50%) scale(1.05)}
 
 .big .img {
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
     box-shadow: var(--shadow)
+}
+
+.opts {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.opts a {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--subDemo);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.opts a:hover {
+    cursor: pointer;
+    background-color: var(--squarebutton);
+}
+
+.opts svg {
+    width: 100%;
+    height: 25px;
+    fill: var(--svg)
 }
 
 button.button {
@@ -321,7 +374,7 @@ a.button:hover {
 
 .hint {
     background-color: var(--hint);
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
     border: 2px solid var(--hintEdge);
     padding: 14px;
     color: var(--hintText);
@@ -340,20 +393,45 @@ a.button:hover {
     gap: 10px
 }
 
-.code, .codeBig {
+.code {
     background-color: var(--codebg);
     color: var(--basic);
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
     font-size: 17px;
     font-family: code;
     overflow-x: hidden;
     white-space: pre-wrap;
     width: 100%;
     padding: 20px;
-    border: 2px var(--codeoutline) solid
+    border: 2px var(--codeoutline) solid;
 }
 
-.codeBig {max-height: 300px}
+.code.big {max-height: 300px}
+
+.codeCont {
+    position: relative;
+    width: 100%;
+}
+
+.codeCont pre {
+    margin: 0
+}
+
+.codeCont a {
+    background-color: var(--subDemo);
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    right: 12.5px;
+    top: 12.5px;
+    font-size: 15px;
+    color: var(--basic)
+}
+
+.codeCont a:hover {
+    background-color: var(--codeoutline);
+    cursor: pointer;
+}
 
 .snip {
     border-radius: 3px;
@@ -372,7 +450,7 @@ a.button:hover {
 
 iframe {
     border: 0px;
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
     width: 100%;
     height: 400px;
     box-shadow: var(--shadow);
@@ -390,7 +468,7 @@ iframe {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
     box-shadow: var(--shadow)
 }
 
@@ -398,7 +476,7 @@ iframe {
     margin-left: auto;
     margin-right: 0;
     background-color: var(--demo);
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
     padding: 10px;
     user-select: none;
 }
@@ -432,6 +510,30 @@ iframe {
     border-right: 1.5px solid var(--topnavbuttonhover);
     border-top: 1.5px solid var(--topnavbuttonhover);
     box-shadow: var(--shadow)
+}
+
+.table {
+    margin-bottom: 5px;
+    padding: 5px 0
+}
+
+.cont {
+    display: flex;
+    gap: 10px;
+    width: 100%
+}
+
+.cont button {
+    border-radius: var(--borderRadius);
+}
+
+.cont button:hover {
+    background-color: var(--mutebuttonhover);
+}
+
+.cont button img {
+    width: 30px;
+    height: 100%
 }
 
 .user {
@@ -471,15 +573,85 @@ iframe {
     margin-right: 0;
 }
 
-#emoticon #num {
-    color: #777;
-    margin-left: 7px;
+#pop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0004;
+    z-index: -1;
+    opacity: 0;
+    transition: z-index .2s step-end, opacity .2s;
 }
 
-#emoticon img {
-    width: 20px;
-    transform: translateY(2px);
+#pop.open {
+    z-index: 1;
+    opacity: 1;
+    transition: z-index .2s step-start, opacity .2s;
 }
+
+#popMain {
+    position: fixed;
+    width: 50%;
+    height: 50%;
+    min-height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: var(--demo);
+    border-radius: 5px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: .2s;
+}
+
+#popMain button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--hintEdge);
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+#popMain button:hover {
+    background-color: var(--hint);
+    color: var(--hintText)
+}
+
+#back {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 1;
+    opacity: .8;
+}
+
+#back.invisible {
+    opacity: 0
+}
+
+#back img {
+    width: 100%;
+    height: 100%;
+    background-color: var(--subDemo);
+    padding: 17px;
+    border-radius: 10px;
+    box-shadow: 1px 2px 3px #0005;
+}
+
+#back:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+    cursor: pointer;
+}
+
 .copyright img {width: 10px}
 .copyright img:hover {opacity: .7}
 
@@ -500,6 +672,10 @@ iframe {
 }
 
 @media screen and (max-width: 700px) {
+    #pop {
+        width: 90%
+    }
+
     .topnav .title a {
         font-size: 30px;
         color: var(--text);
@@ -511,6 +687,8 @@ iframe {
     .topnav .nav a {
         padding: 5px;
         width: 100%;
+        justify-content: center;
+        height: 30px;
         text-align: center;
     }
 
@@ -525,20 +703,32 @@ iframe {
     .topnav .nav {flex-direction: column}
     .topnav .nav a {padding: 0}
 
+    #pop {
+        width: 90%
+    }
+
     .main {
         padding-left: 10px;
         padding-right: 10px;
         margin-top: 200px;
     }
+
+    .opts a {padding: 4px}
 }
 
 /* for unbelievably tiny screens */
 @media screen and (max-width: 275px) {
+    #pop {
+        width: 90%
+    }
+
     .title {
         padding-top: 5px;
         padding-bottom: 5px;
     }
     .title .brand {display: none}
+    .opts a {padding: 2px}
+    .opts {gap: 4px}
 }
 
 * {

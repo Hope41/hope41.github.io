@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = utf-8>
+        <meta name = viewport content = 'width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no'>
+        <title>Splash Dash | Joachim Ford</title>
+
+        <style>
+            body {
+                background: #fff;
+                margin: 0;
+                overflow: hidden
+            }
+
+            canvas {
+                width: 100%;
+                height: 100%;
+                user-select: none;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none
+            }
+        </style>
+
+        <link rel = icon type = image/x-icon  href = /favs/favicon.ico>
+    </head>
+    <body>
+        <canvas id=c>
+        <script>
+            X=c.getContext`2d`
+            l=T=>{
+            W=c.width=innerWidth
+            H=c.height=innerHeight
+
+            z=(W+H)/25
+            r=(x,y,s)=>X.fillRect((x-d)*z+W/2,(y-e)*z+H/2,z*s,z*s)
+            
+            // get current player pos
+            D=d
+            E=e
+            // Move
+            g&v?f=-.18:e+=f+=.007
+            h?d-=.1:j?d+=.1:0
+
+            X.fillStyle=t
+            r(0,0,W)
+            r(v=0,9,W)
+            
+            // Detect and resolve collision
+            A(d,e+.5)&!A(d,e)|A(d+.5,e+.5)&!A(d+.5,e)&&(e+.5)%1<f&&(e=E,v=1,f=0) // Ground
+            A(d,e)|A(d+.5,e)|A(d,e+.5)|A(d+.5,e+.5)|d<0|d+.5>70&&(d=D,A(d,e)|A(d+.5,e)&&(f=0,e=E)) // Wall and Ceiling
+            
+            // Coin collision
+            e<17&!A(d,e)&a(d,e)>-1&&(k[~~d*~~e]=1)
+            
+            // Koin Kount
+            K=0
+            // Iterate through blocks and coins
+            for(x=70;x--;){
+                for(y=30;y--;){
+                    X.fillStyle='#'+~(Math.sin(x)*5-543)
+                    A(x,y)?r(x,y,1):a(x,y)>-1&y<17&!k[x*y]&&(X.fillStyle='#ff0',r(x+.4,y+.4+Math.sin(_/50+x+K++)*.1,.3))
+                }
+            }
+            // Walls at the edge
+            r(-W,0,W)
+            r(70,0,W)
+            
+            // Draw player
+            X.fillStyle='#034'
+            X.fillRect(0,0,W-V*W/5e3,H/9)
+            r(d,e+f,.4)
+            r(d,e+.4,.1)
+            r(d+.3,e+.4,.1)
+            
+            // Waves
+            // "i" is position, "i+1" is speed
+            X.fillStyle='#0698'
+            for(i=634;i-=2;X.lineTo((i/9-d)*z+W/2,(J[i]+13-e)*z+H/2)){
+            if(!_)J.push(0,0)
+            else{
+            J[i]+=J[i+1]*(i>3)
+            J[i+1]+=(J[i-1]+Math.sin(_*J[i+1])*.02-J[i+1])/2
+            ~d==~(i/9)&e>12&e<14?J[i+1]+=f/4:J[i+1]*=.97*(i<630)
+            J[i+1]-=J[i]/25
+            }}
+            r(0,13,70)
+            X.fill()
+            
+            // Level
+            !K?Q>4?t='#ff0':k=[Q*=14,Q+=d=e=V=1]:++V>5e3?d=D:
+
+            _+=9
+            requestAnimationFrame(l)}
+            d=e=f=g=h=j=v=z=Q=V=_=0
+            k=[J=[]]
+            t='#3897'
+            P=(e,b)=>e.keyCode==38|e.keyCode==87?g=b:e.keyCode==39|e.keyCode==68?j=b:e.keyCode==37|e.keyCode==65?h=b:0
+            onkeydown=e=>P(e,1)
+            onkeyup=e=>P(e)
+            a=(x,y)=>{x=~~x+1,y=~~y;return (Math.sin(y*x*9+Q)*6)+y-15}
+            A=(x,y)=>a(x,y)>0
+            l()
+        </script>
+    </body>
+</html>

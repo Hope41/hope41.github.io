@@ -2,6 +2,11 @@
 <html>
     <head>
         <style>
+            @font-face {
+                font-family: font;
+                src: url(/fonts/ChakraPetch-Medium.ttf);
+            }
+
             body {
                 background: #fff;
                 margin: 0;
@@ -200,12 +205,12 @@
 
                 ctx.textAlign = 'center'
 
-                ctx.font = 'bold ' + (cvs.width + cvs.height) * .02 + 'px sans-serif'
+                ctx.font = 'bold ' + (cvs.width + cvs.height) * .02 + 'px font, sans-serif'
                 ctx.fillText('SWITCH', cvs.width / 4, s)
                 ctx.fillText('SMOOTH', cvs.width - cvs.width / 4, s)
 
                 ctx.fillStyle = '#0009'
-                ctx.font = 'bold ' + (cvs.width + cvs.height) * .015 + 'px monospace, sans-serif'
+                ctx.font = 'bold ' + (cvs.width + cvs.height) * .015 + 'px font, monospace, sans-serif'
                 ctx.fillText('- easy', cvs.width / 4, s * 1.5)
                 ctx.fillText('- hard', cvs.width - cvs.width / 4, s * 1.5)
 

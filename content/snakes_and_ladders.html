@@ -34,7 +34,7 @@
             <div class = big>
                 <a href = /snakes-and-ladders target = _blank>
                     <img class = img src = /images/snakes_and_ladders_big.png>
-                    <div class = play><img src = /svg/play.svg></div>
+                    <div class = play><img src = /images/play.svg></div>
                 </a>
             </div>
 
@@ -60,14 +60,30 @@
                     Check Out the Source Code</a>
                 </div>
             </div>
+
+            <div id = pop>
+                <div id = popMain>
+                    <p>All comments are reviewed before being posted. No contact details
+                    or other personal information will be shared.</p>
+                    <p>If there's anything else you don't want published, please say
+                    so in the comment.</p>
+                    <p>Thanks for your feedback!</p>
+
+                    <button id = okay>Okay</button>
+                </div>
+            </div>
+
             <div class = demo>
                 <span id = commentContainer><form id = form action = https://api.web3forms.com/submit method = POST>
                     Leave a comment
                     <input type = hidden name = access_key value = 'bec85640-a8df-41e3-9112-826db534219c'>
                     <input type = hidden name = subject value = 'Someone posted a comment!'>
-                    <input type = hidden name = address value = "snakes_and_ladders">
-                    <input type = text name = name placeholder = 'Anonymous' required>
-                    <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                    <input type = hidden name = address value = 3_tips_for_game_development>
+                    <input type = text name = name placeholder = 'Anonymous'>
+                    <div class = cont>
+                        <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                        <button class = button id = info><img src = /images/info.svg></button>
+                    </div>
                     <div class = h-captcha data-captcha = true id = captcha></div>
                     <button type = submit class = button onmousedown = pressPost()>Post</button>
                 </form>
@@ -97,8 +113,8 @@
         <button class = theme onclick = toggleTheme()>Change Theme</button>
         <span class = copyright>
             © Copyright <span class = year></span> joachimford.uk
-            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
-            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+            <a href = https://github.com/Hope41 target = _blank><img src = /images/github.svg></a>
+            <a href = mailto:hello@joachimford.uk><img src = /images/mail.svg></a>
         </span>
     </body>
 </html>

@@ -92,10 +92,10 @@ for (let x = 0; x < this.width; x ++) {
                 Store the chambers in an array, so that the computer can know
                 where to place the tunnels and actors later on.</p>
 
-<pre class = code>¬this.array = []¬
+<pre class = code>#this.array = []
 this.chambers = [] // make an array that stores the chambers
-¬this.width = 100
-this.height = 100¬</pre>
+#this.width = 100
+#this.height = 100</pre>
 
 
                 <p>In the code below, <span class = snip>0</span> refers to plain air.</p>
@@ -242,14 +242,29 @@ const CHAMBER_H = {min: MIN_HEIGHT + 3, max: MIN_HEIGHT + 5}
                 and maybe it will come in handy for projects in the months to come!</p>
             </div>
 
+            <div id = pop>
+                <div id = popMain>
+                    <p>All comments are reviewed before being posted. No contact details
+                    or other personal information will be shared.</p>
+                    <p>If there's anything else you don't want published, please say
+                    so in the comment.</p>
+                    <p>Thanks for your feedback!</p>
+
+                    <button id = okay>Okay</button>
+                </div>
+            </div>
+
             <div class = demo>
                 <span id = commentContainer><form id = form action = https://api.web3forms.com/submit method = POST>
                     Leave a comment
                     <input type = hidden name = access_key value = 'bec85640-a8df-41e3-9112-826db534219c'>
                     <input type = hidden name = subject value = 'Someone posted a comment!'>
-                    <input type = hidden name = address value = create_and_animate_enemies_using_shapes>
-                    <input type = text name = name placeholder = 'Anonymous' required>
-                    <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                    <input type = hidden name = address value = 3_tips_for_game_development>
+                    <input type = text name = name placeholder = 'Anonymous'>
+                    <div class = cont>
+                        <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                        <button class = button id = info><img src = /images/info.svg></button>
+                    </div>
                     <div class = h-captcha data-captcha = true id = captcha></div>
                     <button type = submit class = button onmousedown = pressPost()>Post</button>
                 </form>
@@ -262,8 +277,8 @@ const CHAMBER_H = {min: MIN_HEIGHT + 3, max: MIN_HEIGHT + 5}
         <button class = theme onclick = toggleTheme()>Change Theme</button>
         <span class = copyright>
             © Copyright <span class = year></span> joachimford.uk
-            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
-            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+            <a href = https://github.com/Hope41 target = _blank><img src = /images/github.svg></a>
+            <a href = mailto:hello@joachimford.uk><img src = /images/mail.svg></a>
         </span>
     </body>
 </html>

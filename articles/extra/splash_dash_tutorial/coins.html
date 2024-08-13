@@ -1,0 +1,62 @@
+<title>Coins | Joachim Ford</title>
+<link rel = icon type = image/x-icon  href = /favs/favicon.ico>
+<canvas id=c></canvas>
+<script>
+l=_=>{
+W=c.width=innerWidth-16
+H=c.height=innerHeight-16
+
+// Get current player pos
+D=d
+E=e
+
+// Move player
+g&v?f=-.18:e+=f+=.007
+h?d-=.1:j?d+=.1:0
+
+// Get the average size of the webpage by adding the width and height together
+z=(W+H)/25
+
+// Make a function the draws rectangles
+r=(x,y,s)=>X.fillRect((x-d)*z+W/2,(y-e)*z+H/2,z*s,z*s)
+
+// Before the check, say the player is in the air
+v=0
+
+// Detect and resolve collision
+A(d,e+.5)&!A(d,e)|A(d+.5,e+.5)&!A(d+.5,e)&&(e+.5)%1<f&&(e=E,v=1,f=0) // Ground
+A(d,e)|A(d+.5,e)|A(d,e+.5)|A(d+.5,e+.5)|d<0|d+.5>70&&(d=D,A(d,e)|A(d+.5,e)&&(f=0,e=E)) // Wall and Ceiling
+
+// Make some ground
+for(x=70;x--;){ // Start at 70 and count down
+    for(y=30;y--;){ // Start at 30 and count down
+        X.fillStyle='#'+~(Math.sin(x)*5-543)
+        A(x,y)?r(x,y,.9):a(x,y)>-1&y<17&&(X.fillStyle='#bb0',r(x+.4,y+.4,.3)) // Draw blocks
+    }
+}
+
+X.fillStyle='#034' // Body colour
+r(d,e+f,.4) // Body
+r(d,e+.4,.1) // Left foot
+r(d+.3,e+.4,.1) // Right foot
+
+requestAnimationFrame(l)
+}
+X=c.getContext`2d`
+
+// Add a new number "v"
+d=e=g=h=j=f=v=0
+
+// Detect key presses
+P=(e,b)=>e.keyCode==38|e.keyCode==87?g=b:e.keyCode==39|e.keyCode==68?j=b:e.keyCode==37|e.keyCode==65?h=b:0
+onkeydown=e=>P(e,1)
+onkeyup=e=>P(e)
+
+// Create two new functions
+// a(x, y) gives you a decimal based on the given block coordinates
+// A(x, y) gives you a boolean based on the given block coordinates
+a=(x,y)=>{x=~~x+1,y=~~y;return (Math.sin(y*x*9)*6)+y-15}
+A=(x,y)=>a(x,y)>0
+
+l()
+</script>

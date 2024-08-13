@@ -37,7 +37,7 @@
                 }
                 else camX = camY = 0
 
-                const speed = (time * 53 + Math.cos(time * 2 - 1) * 20) * scale
+                const speed = (time * 53 + Math.cos(time * 2 - .94) * 21) * scale
 
                 for (let i = 0; i < 3; i ++) {
                     const xPos = Math.sin(i * i * 4) * cvs.width
@@ -64,11 +64,11 @@
                 ctx.translate(cvs.width / 2, cvs.height / 2 + yDrop)
                 for (let i = 2; i --;) {
                     const x = -Math.sin(time + i * Math.PI + Math.sin(time + i * Math.PI + 2) * .3) * 100
-                    let y = Math.cos(time + i * Math.PI + Math.sin(time + i * Math.PI + 2)) * 100
+                    let y = 30 + Math.cos(time + i * Math.PI + Math.sin(time + i * Math.PI + 2)) * 130
 
                     if (y > 0) y = 0
 
-                    const swing = Math.sin(time + i * Math.PI + Math.sin(time + i * Math.PI + 3.1))
+                    const swing = Math.sin(time + i * Math.PI + Math.sin(time + i * Math.PI + 3.1)) * 1.3
                     let rise = swing
                     if (rise < 0) rise = 0
                     y -= rise * 40

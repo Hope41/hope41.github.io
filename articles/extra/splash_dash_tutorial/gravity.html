@@ -1,0 +1,47 @@
+<title>Gravity | Joachim Ford</title>
+<link rel = icon type = image/x-icon  href = /favs/favicon.ico>
+<canvas id=c></canvas>
+<script>
+l=_=>{
+W=c.width=innerWidth-16
+H=c.height=innerHeight-16
+
+// Moved player based on gravity
+e+=f+=.007
+
+// Move player
+h?d-=.1:j?d+=.1:0
+
+// Get the average size of the webpage by adding the width and height together
+z=(W+H)/25
+
+// Make a function the draws rectangles
+r=(x,y,s)=>X.fillRect((x-d)*z+W/2,(y-e)*z+H/2,z*s,z*s)
+
+// Make some orange ground
+X.fillStyle='#f80'
+for(x=70;x--;){ // Start at 70 and count down
+    for(y=30;y--;){ // Start at 30 and count down
+        if (y)r(x,y,.9) // Draw blocks
+    }
+}
+
+X.fillStyle='#034' // Body colour
+r(d,e,.4) // Body
+r(d,e+.4,.1) // Left foot
+r(d+.3,e+.4,.1) // Right foot
+
+requestAnimationFrame(l)
+}
+X=c.getContext`2d`
+
+// Add a new number "f"
+d=e=g=h=j=f=0
+
+// Detect key presses
+P=(e,b)=>e.keyCode==38|e.keyCode==87?g=b:e.keyCode==39|e.keyCode==68?j=b:e.keyCode==37|e.keyCode==65?h=b:0
+onkeydown=e=>P(e,1)
+onkeyup=e=>P(e)
+
+l()
+</script>

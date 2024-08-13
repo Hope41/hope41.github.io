@@ -110,12 +110,12 @@ for (let i = 0; i < segments.length; i ++) {
                 Overall, this enemy has to go through four main procedures to give
                 you the final result.</p>
 
-                <div class = subDemo>
-                    <p>∙ Rotate in the direction it's moving <b>(easy)</b></p>
-                    <p>∙ Close and open its eyes before and after rolling <b>(not so easy)</b></p>
-                    <p>∙ Bump up and down so that it looks like its rolling along the ground <b>(rather tricky)</b></p>
-                    <p>∙ Make sure it only stops rolling when resting on an edge <b>(tricky)</b></p>
-                </div>
+                <div class = subDemo><span>
+                    ∙ Rotate in the direction it's moving <b>(easy)</b><br>
+                    ∙ Close and open its eyes before and after rolling <b>(not so easy)</b><br>
+                    ∙ Bump up and down so that it looks like its rolling along the ground <b>(rather tricky)</b><br>
+                    ∙ Make sure it only stops rolling when resting on an edge <b>(tricky)</b><br>
+                </span></div>
 
                 <p>Take a look at the source code if you need to understand it better.</p>
             </div>
@@ -361,14 +361,29 @@ eye(.3)</pre>
                 if you have any more questions!</p>
             </div>
 
+            <div id = pop>
+                <div id = popMain>
+                    <p>All comments are reviewed before being posted. No contact details
+                    or other personal information will be shared.</p>
+                    <p>If there's anything else you don't want published, please say
+                    so in the comment.</p>
+                    <p>Thanks for your feedback!</p>
+
+                    <button id = okay>Okay</button>
+                </div>
+            </div>
+
             <div class = demo>
                 <span id = commentContainer><form id = form action = https://api.web3forms.com/submit method = POST>
                     Leave a comment
                     <input type = hidden name = access_key value = 'bec85640-a8df-41e3-9112-826db534219c'>
                     <input type = hidden name = subject value = 'Someone posted a comment!'>
-                    <input type = hidden name = address value = create_and_animate_enemies_using_shapes>
-                    <input type = text name = name placeholder = 'Anonymous' required>
-                    <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                    <input type = hidden name = address value = 3_tips_for_game_development>
+                    <input type = text name = name placeholder = 'Anonymous'>
+                    <div class = cont>
+                        <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                        <button class = button id = info><img src = /images/info.svg></button>
+                    </div>
                     <div class = h-captcha data-captcha = true id = captcha></div>
                     <button type = submit class = button onmousedown = pressPost()>Post</button>
                 </form>
@@ -381,8 +396,8 @@ eye(.3)</pre>
         <button class = theme onclick = toggleTheme()>Change Theme</button>
         <span class = copyright>
             © Copyright <span class = year></span> joachimford.uk
-            <a href = https://github.com/Hope41 target = _blank><img src = /svg/github.svg></img></a>
-            <a href = mailto:hello@joachimford.uk><img src = /svg/mail.svg></img></a>
+            <a href = https://github.com/Hope41 target = _blank><img src = /images/github.svg></a>
+            <a href = mailto:hello@joachimford.uk><img src = /images/mail.svg></a>
         </span>
     </body>
 </html>
