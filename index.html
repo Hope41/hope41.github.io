@@ -54,7 +54,7 @@
             </div>
         </section>
 
-        <a href = /content/ios_mission id = link><canvas id = cvs></canvas></a>
+        <a href = /content/squirtcopter id = link><canvas id = cvs></canvas></a>
 
         <section class = main>
             <script>
@@ -258,41 +258,41 @@
                     img.init = true
                     images.push(img)
                 }
+                makeNewImage('squirtcopter_big', '/content/squirtcopter', '#756')
                 makeNewImage('ios_mission_big', '/content/ios_mission', '#69a')
                 makeNewImage('bg2', '/content/canvas_craft', '#400')
                 makeNewImage('snakes_and_ladders_big', '/content/snakes_and_ladders', '#8ca')
-                makeNewImage('squirtcopter_big', '/content/squirtcopter', '#756')
 
                 const booms = [
-                    {name: 'IO\'S MISSION', time: 70, x: 0, y: 0, size: .03, expire: 255},
-                    {name: '..', time: 125, x: 0, y: .1, size: .01, expire: 2},
-                    {name: '..........', time: 130, x: 0, y: .1, size: .01, expire: 2},
-                    {name: '........................', time: 135, x: 0, y: .1, size: .01, expire: 2},
-                    {name: 'The New Adventure Game', time: 140, x: 0, y: .1, size: .01, expire: 170},
+                    {name: 'SQUIRTCOPTER', time: 70, x: 0, y: 0, size: .03, expire: 30},
+                    {name: 'SQUIRTCOPTER', time: 100, x: 0, y: 0, size: .03, expire: 220},
+                    {name: 'Squirt Your Way To Victory!', time: 115, x: 0, y: .1, size: .01, expire: 195},
 
                     {name: 'Switch', time: 350},
 
-                    {name: 'CANVASCRAFT', time: 440, x: 0, y: -.01, size: .03, expire: 300},
-                    {name: '"Where Craft and Code Collide"', time: 445, x: 0, y: .07, size: .01, expire: 285},
-                    {name: 'canvas', time: 500, x: 0, y: .13, size: .01, expire: 2},
-                    {name: 'canvas-craft', time: 505, x: 0, y: .13, size: .01, expire: 10},
-                    {name: 'canvas-craft.github', time: 512, x: 0, y: .13, size: .01, expire: 2},
-                    {name: 'canvas-craft.github.io', time: 525, x: 0, y: .13, size: .01, expire: 185},
+                    {name: 'IO\'S MISSION', time: 450, x: 0, y: 0, size: .03, expire: 280},
+                    {name: '..', time: 500, x: 0, y: .1, size: .01, expire: 2},
+                    {name: '..........', time: 505, x: 0, y: .1, size: .01, expire: 2},
+                    {name: '........................', time: 510, x: 0, y: .1, size: .01, expire: 2},
+                    {name: 'The New Adventure Game', time: 515, x: 0, y: .1, size: .01, expire: 220},
 
                     {name: 'Switch', time: 750},
 
-                    {name: 'SNAKES', time: 800, x: 0, y: -.01, size: .025, expire: 2},
-                    {name: 'SNAKES AND', time: 805, x: 0, y: -.01, size: .025, expire: 320},
-                    {name: 'LADDERS', time: 810, x: .2, y: .07, size: .025, expire: 320},
-                    {name: 'Defeat the X-Ray Orb!', time: 880, x: 0, y: .13, size: .01, expire: 240},
+                    {name: 'CANVASCRAFT', time: 840, x: 0, y: -.01, size: .03, expire: 300},
+                    {name: '"Where Craft and Code Collide"', time: 845, x: 0, y: .07, size: .01, expire: 285},
+                    {name: 'canvas', time: 900, x: 0, y: .13, size: .01, expire: 2},
+                    {name: 'canvas-craft', time: 905, x: 0, y: .13, size: .01, expire: 10},
+                    {name: 'canvas-craft.github', time: 912, x: 0, y: .13, size: .01, expire: 2},
+                    {name: 'canvas-craft.github.io', time: 925, x: 0, y: .13, size: .01, expire: 185},
 
                     {name: 'Switch', time: 1150},
 
-                    {name: 'SQUIRTCOPTER', time: 1200, x: 0, y: 0, size: .03, expire: 35},
-                    {name: 'SQUIRTCOPTER', time: 1230, x: 0, y: 0, size: .03, expire: 215},
-                    {name: 'Squirt Your Way To Victory!', time: 1250, x: 0, y: .1, size: .01, expire: 200},
+                    {name: 'SNAKES', time: 1250, x: 0, y: -.01, size: .025, expire: 2},
+                    {name: 'SNAKES AND', time: 1255, x: 0, y: -.01, size: .025, expire: 320},
+                    {name: 'LADDERS', time: 1260, x: .2, y: .07, size: .025, expire: 320},
+                    {name: 'Defeat the X-Ray Orb!', time: 1330, x: 0, y: .13, size: .01, expire: 240},
 
-                    {name: 'Switch', time: 1480}
+                    {name: 'Switch', time: 1600}
                 ]
 
                 addEventListener('resize', resize)
