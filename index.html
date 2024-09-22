@@ -260,7 +260,7 @@
                 }
                 makeNewImage('squirtcopter_big', '/content/squirtcopter', '#756')
                 makeNewImage('ios_mission_big', '/content/ios_mission', '#69a')
-                makeNewImage('bg2', '/content/canvas_craft', '#400')
+                // makeNewImage('bg2', '/content/canvas_craft', '#400')
                 makeNewImage('snakes_and_ladders_big', '/content/snakes_and_ladders', '#8ca')
 
                 const booms = [
@@ -278,22 +278,21 @@
 
                     {name: 'Switch', time: 750},
 
-                    {name: 'CANVASCRAFT', time: 840, x: 0, y: -.01, size: .03, expire: 300},
-                    {name: '"Where Craft and Code Collide"', time: 845, x: 0, y: .07, size: .01, expire: 285},
-                    {name: 'canvas', time: 900, x: 0, y: .13, size: .01, expire: 2},
-                    {name: 'canvas-craft', time: 905, x: 0, y: .13, size: .01, expire: 10},
-                    {name: 'canvas-craft.github', time: 912, x: 0, y: .13, size: .01, expire: 2},
-                    {name: 'canvas-craft.github.io', time: 925, x: 0, y: .13, size: .01, expire: 185},
+                    {name: 'SNAKES', time: 850, x: 0, y: -.01, size: .025, expire: 2},
+                    {name: 'SNAKES AND', time: 855, x: 0, y: -.01, size: .025, expire: 320},
+                    {name: 'LADDERS', time: 860, x: .2, y: .07, size: .025, expire: 320},
+                    {name: 'Defeat the X-Ray Orb!', time: 930, x: 0, y: .13, size: .01, expire: 240},
 
-                    {name: 'Switch', time: 1150},
-
-                    {name: 'SNAKES', time: 1250, x: 0, y: -.01, size: .025, expire: 2},
-                    {name: 'SNAKES AND', time: 1255, x: 0, y: -.01, size: .025, expire: 320},
-                    {name: 'LADDERS', time: 1260, x: .2, y: .07, size: .025, expire: 320},
-                    {name: 'Defeat the X-Ray Orb!', time: 1330, x: 0, y: .13, size: .01, expire: 240},
-
-                    {name: 'Switch', time: 1600}
+                    {name: 'Switch', time: 1200}
                 ]
+
+
+                // {name: 'CANVASCRAFT', time: 840, x: 0, y: -.01, size: .03, expire: 300},
+                // {name: '"Where Craft and Code Collide"', time: 845, x: 0, y: .07, size: .01, expire: 285},
+                // {name: 'canvas', time: 900, x: 0, y: .13, size: .01, expire: 2},
+                // {name: 'canvas-craft', time: 905, x: 0, y: .13, size: .01, expire: 10},
+                // {name: 'canvas-craft.github', time: 912, x: 0, y: .13, size: .01, expire: 2},
+                // {name: 'canvas-craft.github.io', time: 925, x: 0, y: .13, size: .01, expire: 185},
 
                 addEventListener('resize', resize)
                 resize()
