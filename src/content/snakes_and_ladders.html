@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang = en-gb>
+    <head>
+        <meta charset = utf-8>
+        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
+        <meta name = description content = 'Free online coding blogs and open source games'>
+
+        <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
+        <script src = /src/js/analytics.js></script>
+        <script src = /src/js/main.js></script>
+        <title>Snakes and Ladders &bull; Defeat the X-Ray Orb! | Joachim Ford</title>
+        <link rel = stylesheet href = /src/main.css>
+        <link rel = icon type = image/x-icon  href = /src/favs/favicon.ico>
+    </head>
+
+    <body>
+        <section class = topnav>
+            <div class = title>
+                <a class = brand href = '/'>Joachim Ford</a>
+                <a class = about href = /about>About</a>
+            </div>
+            <div class = nav>
+                <a href = /games>Games</a>
+                <a href = /projects>Projects</a>
+                <a href = /blogs>Blogs</a>
+                <a href = /news>News</a>
+            </div>
+        </section>
+
+        <section class = main>
+            <span class = date>19.08.2022</span>
+            <h1>Snakes And Ladders &bull; Defeat the X-Ray Orb!</h1>
+
+            <div class = big>
+                <a href = /snakes-and-ladders target = _blank>
+                    <img class = img src = /src/images/snakes_and_ladders_big.png>
+                    <div class = play><img src = /src/images/play.svg></div>
+                </a>
+            </div>
+
+            <div class = demo>
+                <b><p>Help Drillo get through 12 levels on his mission to destroy the X-Ray Orb.
+                Collect upgrades for new abilities but be careful of the enemy side effects!</p></b>
+
+                <p>Use the arrow keys, WASD or ZQSD to move.
+                Further controls are explained during gameplay.</p>
+            </div>
+            <div class = demo>
+                <p>This six-month project was a huge learning curve for me! I've written a
+                couple of blogs for it, but let me know if you'd like me to
+                do a write-up for another part.</p>
+
+                <div class = subDemo>
+                    <span>∙ <a class = normal href = /src/blogs/procedural_room_generation_snakes_and_ladders>Procedural Room Generation - Snakes and Ladders</a><br>
+                    ∙ <a class = normal href = /src/blogs/create_and_animate_enemies_using_shapes>Create and Animate Enemies Using Shapes</a></span>
+                </div>
+
+                <div class = gap>
+                    <a class = button href = https://github.com/Hope41/snakes-and-ladders target = _blank>
+                    Check Out the Source Code</a>
+                </div>
+            </div>
+
+            <div id = pop>
+                <div id = popMain>
+                    <p>All comments are reviewed before being posted. No contact details
+                    or other personal information will be shared.</p>
+                    <p>If there's anything else you don't want published, please say
+                    so in the comment.</p>
+                    <p>Thanks for your feedback!</p>
+
+                    <button id = okay>Okay</button>
+                </div>
+            </div>
+
+            <div class = demo>
+                <span id = commentContainer><form id = form action = https://api.web3forms.com/submit method = POST>
+                    Leave a comment
+                    <input type = hidden name = access_key value = 'bec85640-a8df-41e3-9112-826db534219c'>
+                    <input type = hidden name = subject value = 'Someone posted a comment!'>
+                    <input type = hidden name = address value = snakes_and_ladders>
+                    <input type = text name = name placeholder = 'Anonymous'>
+                    <div class = cont>
+                        <textarea type = text name = message placeholder = 'Enter a message' required></textarea>
+                        <button class = button id = info><img src = /src/images/info.svg></button>
+                    </div>
+                    <div class = h-captcha data-captcha = true id = captcha></div>
+                    <button type = submit class = button onmousedown = pressPost()>Post</button>
+                </form>
+                <script src = https://web3forms.com/client/script.js async defer></script>
+                <div id = thanks><h3>Thanks!</h3></div></span>
+
+                <div><div class = 'subDemo user'>
+                    <span class = user>
+                        <div class = userCanvas></div>
+                        <h3>Anonymous</h3>
+                        <div class = userDate>11.06.2024</div>
+                    </span>
+                    <p>This is an amazing game. I love the style and the movement</p>
+
+                    <div class = 'subDemo user'>
+                        <span class = user>
+                            <div class = userCanvas><img src = /src/images/me.png></div>
+                            <h3>Hope41</h3>
+                            <div class = userDate>12.06.2024</div>
+                        </span>
+                        <p>Thanks for the kind words! Glad you like it 👍</p>
+                    </div>
+                </div></div>
+            </div>
+        </section>
+
+        <button class = theme onclick = toggleTheme()>Change Theme</button>
+        <span class = copyright>
+            &copy; <span class = year></span> Joachim Ford. All rights reserved.
+            <a href = https://github.com/Hope41 target = _blank><img src = /src/images/github.svg></img></a>
+            <a href = mailto:hello@joachimford.uk><img src = /src/images/mail.svg></img></a>
+        </span>
+    </body>
+</html>

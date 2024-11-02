@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang = en-gb>
     <head>
         <meta charset = utf-8>
         <meta name = viewport content = 'width = device-width, initial-scale = 1'>
-        <meta name = keywords content = 'Joachim Ford, JavaScript games, Indie game dev'>
-        <meta name = description content = 'A base of fully-featued indie games and experiments'>
+        <meta name = description content = 'Free online coding blogs and open source games'>
 
         <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
-        <script src = /js/analytics.js></script>
-        <script src = /js/main.js></script>
-        <title>Home | Joachim Ford</title>
-        <link rel = stylesheet href = /main.css>
-        <link rel = icon type = image/x-icon  href = /favs/favicon.ico>
+        <script src = /src/js/analytics.js></script>
+        <script src = /src/js/main.js></script>
+        <title>Coding Blogs and Indie Games | Joachim Ford</title>
+        <link rel = stylesheet href = /src/main.css>
+        <link rel = icon type = image/x-icon  href = /src/favs/favicon.ico>
         <style>
             html {height: 100%}
 
@@ -48,13 +47,13 @@
             </div>
             <div class = nav>
                 <a href = /games>Games</a>
-                <a href = /experiments>Experiments</a>
-                <a href = /articles>Articles</a>
+                <a href = /projects>Projects</a>
+                <a href = /blogs>Blogs</a>
                 <a href = /news>News</a>
             </div>
         </section>
 
-        <a href = /content/squirtcopter id = link><canvas id = cvs></canvas></a>
+        <a href = /src/content/squirtcopter id = link><canvas id = cvs></canvas></a>
 
         <section class = main>
             <script>
@@ -214,7 +213,7 @@
                                 ctx.fillStyle = rgb(1,1,1,summ/3-(Math.sin(i*i)+1)-rot)
                                 ctx.save()
                                 ctx.translate(tx + gap / 2, ty - gap / 2)
-                                ctx.rotate(Math.sin(i*i)*.1*rot)
+                                ctx.rotate(Math.sin(i*i*i)*.2*rot)
                                 ctx.fillText(item.name[i], -gap / 2, gap / 2)
                                 ctx.restore()
                             }
@@ -251,17 +250,16 @@
                 const images = []
                 const makeNewImage = (name, url, color) => {
                     const img = new Image()
-                    img.src = 'images/'+name+'.png'
+                    img.src = '/src/images/'+name+'.png'
                     img.url = url
                     img.color = color
                     img.alpha = 0
                     img.init = true
                     images.push(img)
                 }
-                makeNewImage('squirtcopter_big', '/content/squirtcopter', '#756')
-                makeNewImage('ios_mission_big', '/content/ios_mission', '#69a')
-                // makeNewImage('bg2', '/content/canvas_craft', '#400')
-                makeNewImage('snakes_and_ladders_big', '/content/snakes_and_ladders', '#8ca')
+                makeNewImage('squirtcopter_big', '/src/content/squirtcopter', '#756')
+                makeNewImage('ios_mission_big', '/src/content/ios_mission', '#79b')
+                makeNewImage('snakes_and_ladders_big', '/src/content/snakes_and_ladders', '#8ca')
 
                 const booms = [
                     {name: 'SQUIRTCOPTER', time: 70, x: 0, y: 0, size: .03, expire: 30},
@@ -286,13 +284,6 @@
                     {name: 'Switch', time: 1200}
                 ]
 
-                // {name: 'CANVASCRAFT', time: 840, x: 0, y: -.01, size: .03, expire: 300},
-                // {name: '"Where Craft and Code Collide"', time: 845, x: 0, y: .07, size: .01, expire: 285},
-                // {name: 'canvas', time: 900, x: 0, y: .13, size: .01, expire: 2},
-                // {name: 'canvas-craft', time: 905, x: 0, y: .13, size: .01, expire: 10},
-                // {name: 'canvas-craft.github', time: 912, x: 0, y: .13, size: .01, expire: 2},
-                // {name: 'canvas-craft.github.io', time: 925, x: 0, y: .13, size: .01, expire: 185},
-
                 addEventListener('resize', resize)
                 resize()
                 update()
@@ -301,9 +292,9 @@
 
         <button class = theme onclick = toggleTheme()>Change Theme</button>
         <span class = copyright>
-            © Copyright <span class = year></span> joachimford.uk
-            <a href = https://github.com/Hope41 target = _blank><img src = /images/github.svg></img></a>
-            <a href = mailto:hello@joachimford.uk><img src = /images/mail.svg></img></a>
+            &copy; <span class = year></span> Joachim Ford. All rights reserved.
+            <a href = https://github.com/Hope41 target = _blank><img src = /src/images/github.svg></img></a>
+            <a href = mailto:hello@joachimford.uk><img src = /src/images/mail.svg></img></a>
         </span>
     </body>
 </html>
