@@ -1,5 +1,3 @@
-![interpolate-procedural-animation-3](https://github.com/user-attachments/assets/674ad176-8aef-4030-b026-b98a0d66426f)
-
 # Welcome to joachimford.uk!
 
 Hello, and welcome to joachimford.uk! This is a personal website designed to help coders and game devs with their projects, as well as sharing some of my own games and tools.
