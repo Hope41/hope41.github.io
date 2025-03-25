@@ -1,85 +1,233 @@
 <!DOCTYPE html>
-<html lang = en-gb>
+<html lang = en-GB>
     <head>
-        <meta charset = utf-8>
-        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
-        <meta name = description content = 'Free online coding blogs and open source games'>
+        <meta charset = UTF-8>
+        <meta name = viewport content = 'width=device-width, initial-scale=1.0'>
+        <meta name = description content = 'Play free HTML5 indie games at JoachimFord.uk! Online adventure games, 2D platform games and more!'>
+        <meta name = author content = 'Joachim Ford'>
 
-        <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
-        <script src = /src/js/analytics.js></script>
-        <script src = /src/js/main.js></script>
-        <title>Games | Joachim Ford</title>
-        <link rel = stylesheet href = /src/main.css>
-        <link rel = icon type = image/x-icon  href = /src/favs/favicon.ico>
+        <meta property = og:title content = 'Games - Joachim Ford'>
+        <meta property = og:description content = 'Play free HTML5 indie games at JoachimFord.uk! Online adventure games, 2D platform games, and more!'>
+        <meta property = og:image content = https://joachimford.uk/assets/ios-mission-2.png>
+
+        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Joachim" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <title>Play Online Indie Games: 2D Platformers & Adventure - Joachim Ford</title>
+        <link rel = stylesheet href = /assets/styles.css>
+        <link rel = stylesheet href = /assets/topnav.css>
+        <link rel = stylesheet href = /assets/main.css>
+        <link rel = stylesheet href = /assets/hero.css>
+        <link rel = stylesheet href = /assets/infinite-carousel.css>
+        <link rel = stylesheet href = /assets/forms.css>
+        <link rel = stylesheet href = /assets/footer.css>
+        <link rel = stylesheet href = /assets/a.css>
+        <link rel = stylesheet href = /assets/demo.css>
+
+        <link rel = stylesheet href = /assets/controls.css>
     </head>
+    <body class = dark>
+        <div class = over-hold>
+            <section class = topnav>
+                <div class = topnav-container>
+                    <a class = topnav-home href = /index#>
+                        <div class = topnav-logo>
+                            <img src = /assets/logo.png alt = logo>
+                        </div>
+                        <div class = topnav-title>
+                            <h2>Joachim</h2>
+                            <h2>Ford.uk</h2>
+                        </div>
+                    </a>
+                    <div class = topnav-menu>
+                        <div class = topnav-menu-wide>
+                            <a href = /games# class = active>Games</a>
+                            <a href = /projects#>Projects</a>
+                            <a href = /blog#>Blog</a>
+                        </div>
 
-    <body>
-        <section class = topnav>
-            <div class = title>
-                <a class = brand href = '/'>Joachim Ford</a>
-                <a class = about href = /about>About</a>
-            </div>
-            <div class = nav>
-                <a href = /games>Games</a>
-                <a href = /projects>Projects</a>
-                <a href = /blogs>Blogs</a>
-                <a href = /news>News</a>
-            </div>
-        </section>
+                        <div class = topnav-separator></div>
 
-        <section class = main>
-            <a class = demo href = /src/content/squirtcopter>
-                <img class = tiny src = /src/images/squirtcopter.png>
-                <h3>Squirtcopter</h3>
-                <span class = description>
-                    <p><b>Squirt your way to victory!</b> Squirtcopter is a fully-featured
-                    game created in 13 days for the Gamedev.js Jam 2024.
-                    Rated within the top 17% of all entries.</p>
-                    <p>This game is <span class = mobile>mobile friendly</span>.</p>
-                </span>
-            </a>
+                        <div id = color-theme>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.5 0 13 13">
+                                <path d="M 0 0 A 2.25 2.25 90 0 0 0 13 A 2.25 2.25 90 0 0 0 0 Z M 0 2 A 2.25 2.25 90 0 1 0 11 Z"/>
+                            </svg>
+                        </div>
 
-            <a class = demo href = /src/content/ios_mission>
-                <img class = tiny src = /src/images/ios_mission.png>
-                <h3>Io's Mission</h3>
-                <span class = description>
-                    <p>Drillo has been captured by The Great Ominous!
-                    Io's Mission is a fully-featured platform adventure where Io quests to
-                    rescue his friends.</p>
+                        <div class = topnav-separator></div>
 
-                    <p>This game has full <span class = mobile>mobile support</span>.</p>
-                </span>
-            </a>
+                        <div class = topnav-vertical-menu>
+                            <a href = /news#>News</a>
+                            <a href = /about#>About</a>
+                            <a href = /contact#>Contact</a>
+                        </div>
+                    </div>
 
-            <a class = demo href = /src/content/snakes_and_ladders>
-                <img class = tiny src = /src/images/snakes_and_ladders.png>
-                <h3>Snakes And Ladders</h3>
-                <span class = description>
-                    <p>On a mission to destroy the X-Ray Orb, help Drillo make his way through
-                    the levels, avoiding side effects and getting powers along the way.</p>
+                    <div id = nav-bars>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 4 3">
+                            <path stroke-width=".5" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 0 0 L 3 0 M 0 1 L 3 1 M 0 2 L 2 2"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
 
-                    <p>This platform game is <span class = mobile>mobile friendly.</span></p>
-                </span>
-            </a>
+            <section class = hero-section>
+                <canvas id = hero-canvas></canvas>
+                <div id = hero>
+                    <div class = hero-target></div>
+                    <h1 id = hero-text>
+                        <div>
+                            <span>G</span><span>a</span><span>m</span><span>e</span><span>s</span>
+                        </div>
+                    </h1>
+                </div>
+            </section>
 
-            <a class = demo href = /src/content/the_mitigator>
-                <img class = tiny src = /src/images/the_mitigator.png>
-                <h3>The Mitigator</h3>
-                <span class = description>
-                    <p>Save the planet by collecting litter, planting seeds and
-                    overwhelming enemy robots with flowers.</p>
-                    <p>This game was shortlisted for the
-                    2022 Technocamps Game of Codes
-                    competition under the theme Combatting Climate Change.</p>
-                </span>
-            </a>
-        </section>
+            <section class = main>
+                <div class = 'content top-huge-pad bottom-huge-pad'>
+                    <div class = demo-gallery>
+                        <a href = /games/squirtcopter# class = demo-box>
+                            <div class = demo-img-container>
+                                <h2 class = 'demo-title'>
+                                    Squirtcopter
+                                </h2>
+                                <img class = demo-img src = /assets/squirtcopter-1-thumbnail.png>
+                            </div>
+                            <div class = demo-text>
+                                <div class = demo-highlight>
+                                    Squirt your way to victory!
+                                </div>
+                                <div class = demo-body-text>
+                                    <p class = bottom-small-pad>
+                                        Upgrade your copter to fight evil robots
+                                        in this fast-paced action game.
+                                    </p>
+                                    <span class = 'smallish'>
+                                        Top 17% for Gamedev.js 2024
+                                    </span>
+                                </div>
 
-        <button class = theme onclick = toggleTheme()>Change Theme</button>
-        <span class = copyright>
-            &copy; <span class = year></span> Joachim Ford. All rights reserved.
-            <a href = https://github.com/Hope41 target = _blank><img src = /src/images/github.svg></img></a>
-            <a href = mailto:hello@joachimford.uk><img src = /src/images/mail.svg></img></a>
-        </span>
+                                <div class = demo-icons>
+                                    <img src = /assets/phone.svg data-tip = 'Mobile friendly'>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href = /games/ios-mission# class = demo-box>
+                            <div class = demo-img-container>
+                                <h2 class = 'demo-title'>
+                                    Io's Mission
+                                </h2>
+                                <img class = demo-img src = /assets/ios-mission-1-thumbnail.png alt = "Io's Mission - play the free online 2D indie platform adventure game with epic boss battles, procedurally generated worlds, and a story-based progressive design">
+                            </div>
+                            <div class = demo-text>
+                                <div class = demo-highlight>
+                                    Drillo has been captured by The Great Ominous!
+                                </div>
+                                <div class = demo-body-text>
+                                    <p>
+                                        Scale a tower and rescue your friends in
+                                        a fully-featured platform adventure.
+                                    </p>
+                                </div>
+
+                                <div class = demo-icons>
+                                    <img src = /assets/phone.svg data-tip = 'Mobile friendly'>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href = /games/snakes-and-ladders# class = demo-box>
+                            <div class = demo-img-container>
+                                <h2 class = 'demo-title'>
+                                    Snakes and Ladders
+                                </h2>
+                                <img class = demo-img src = /assets/snakes-and-ladders-15.png alt = "Io's Mission - play the free online 2D indie platform adventure game with epic boss battles, procedurally generated worlds, and a story-based progressive design">
+                            </div>
+                            <div class = demo-text>
+                                <div class = demo-highlight>
+                                    The X-ray Orb Must Fall!
+                                </div>
+                                <div class = demo-body-text>
+                                    <p>
+                                        Navigate through a strange realm of Side
+                                        Effects, get stronger and upgrade your
+                                        powers on a quest to destroy the X-ray Orb!
+                                    </p>
+                                </div>
+
+                                <div class = demo-icons>
+                                    <img src = /assets/phone.svg data-tip = 'Mobile friendly'>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href = /games/the-mitigator# class = demo-box>
+                            <div class = demo-img-container>
+                                <h2 class = 'demo-title'>
+                                    The Mitigator
+                                </h2>
+                                <img class = demo-img src = /assets/the-mitigator-1-thumbnail.png alt = "Io's Mission - play the free online 2D indie platform adventure game with epic boss battles, procedurally generated worlds, and a story-based progressive design">
+                            </div>
+                            <div class = demo-text>
+                                <div class = demo-highlight>
+                                    Save the planet and defeat robots!
+                                </div>
+                                <div class = demo-body-text>
+                                    <p class = bottom-small-pad>
+                                        Power your way through an apocalyptic
+                                        world of robots and waste.
+                                    </p>
+                                    <span class = 'smallish'>
+                                        Shortlisted for Technocamps Game of Codes 2022
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class = footer>
+                <div class = footer-left>
+                    <span>&copy; Joachim Ford <span id = year>2025</span></span>
+                    <span>All rights reserved</span>
+                    <span class = top-small>
+                        <form class = 'subscribe-form-tiny'>
+                            <div class = flex-x>
+                                <input type = email class = form placeholder = 'email' required>
+                                <button class = send-form-button type = submit>
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </span>
+                    <div class = 'footer-socials top-small'>
+                        <a href = mailto:contact@joachimford.uk target = _blank><img src = /assets/mail.svg alt = 'email icon'></a>
+                        <a href = https://github.com/Hope41 target = _blank><img src = /assets/github.svg alt = 'github icon'></a>
+                        <a href = https://youtube.com/@JoachimFord target = _blank><img src = /assets/youtube.svg alt = 'youtube icon'></a>
+                        <a href = https://joachimford.itch.io target = _blank><img src = /assets/itch.svg alt = 'itch.io icon'></a>
+                        <a href = https://x.com/JoachimFord target = _blank><img src = /assets/x.svg alt = 'x logo'></a>
+                    </div>
+                </div>
+                <div class = footer-right>
+                    <a href = /index# class = basic-link>Home</a>
+                    <a href = /games# class = basic-link>Games</a>
+                    <a href = /projects# class = basic-link>Projects</a>
+                    <a href = /blog# class = basic-link>Blog</a>
+                    <a href = /news# class = basic-link>News</a>
+                    <a href = /about# class = basic-link>About</a>
+                    <a href = /contact# class = basic-link>Contact</a>
+                </div>
+            </section>
+        </div>
+
+        <script src = /assets/main.js></script>
+        <script src = /assets/hero.js></script>
+        <script src = /assets/drillo.js></script>
     </body>
 </html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang = en-gb>
+    <head>
+        <meta charset = utf-8>
+        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
+        <meta name = description content = 'Free online coding blogs and open source games'>
+        <title>Build a Ray Casting World in JavaScript Example 2</title>
+        <style>
+            body {
+                background: #000;
+                margin: 0;
+                overflow: hidden
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id = cvs></canvas>
+        <script>
+            'use strict'
+            function resize() {
+                cvs.width = innerWidth
+                cvs.height = innerHeight
+
+                scale = (cvs.width + cvs.height) / map.w / 1.3
+            }
+
+            function generate() {
+                for (let x = 0; x < map.w; x ++) {
+                    for (let y = 0; y < map.h; y ++) {
+                        const X = x - map.w / 2
+                        const Y = y - map.h / 2
+                        map.a.push(-Math.floor(Math.sin(X * X * Y * Y)))
+                    }
+                }
+            }
+
+            function fillRect(x, y, w, h) {
+                x = cvs.width / 2 + (x - cX) * scale
+                y = cvs.height / 2 + (y - cY) * scale
+                w = w * scale
+                h = h * scale
+
+                ctx.fillRect(x, y, w, h)
+                ctx.strokeRect(x, y, w, h)
+            }
+
+            function update() {
+                ctx.clearRect(0, 0, cvs.width, cvs.height)
+                dt = (performance.now() - perf) / 16
+                perf = performance.now()
+                if (dt > 1) dt = 1
+                cA += .01 * dt
+
+                for (let i = 0; i < rayAmt; i ++) {
+                    let length = 0
+                    let x = cX
+                    let y = cY
+
+                    const ang = i * fov / rayAmt + cA
+
+                    for (let j = 0; j < rayItr; j ++) {
+                        length = j * rayJmp
+
+                        x += Math.cos(ang) * rayJmp
+                        y += Math.sin(ang) * rayJmp
+
+                        if (map.a[Math.floor(x) + Math.floor(y) * map.w] > 0)
+                            break
+                    }
+
+                    const w = cvs.width / rayAmt
+                    const h = 10 / length * scale
+                    const s = Math.pow(1.2 / length, 3)
+
+                    ctx.fillStyle = 'rgb(150,255,50,'+s+')'
+                    ctx.fillRect(i * w, cvs.height / 2 - h / 2, w, h)
+                }
+
+                requestAnimationFrame(update)
+            }
+            const ctx = cvs.getContext('2d')
+
+            const rayJmp = .07
+            const rayAmt = 100
+            const rayItr = 50
+            const fov = 1.5
+
+            const map = {w: 30, h: 30, a: []}
+            generate()
+
+            let scale = 0
+            let cX = map.w / 2
+            let cY = map.h / 2
+            let cA = 0
+            let dt = 0
+            let perf = 0
+
+            addEventListener('resize', resize)
+            resize()
+
+            update()
+        </script>
+    </body>
+</html>

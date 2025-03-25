@@ -1,0 +1,73 @@
+:root {
+    --infinite-carousel-gap: 25px
+}
+
+.infinite-carousel-filter-holder {
+    position: relative;
+    overflow: hidden;
+}
+
+.infinite-carousel-filter-holder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+body.dark .infinite-carousel-filter-holder::before {
+    background: linear-gradient(90deg, var(--background-color) 0, transparent 35%, transparent 65%, var(--background-color) 100%);
+}
+
+body.light .infinite-carousel-filter-holder::before {
+    background: linear-gradient(90deg, var(--background-color) 0, transparent 35%, transparent 65%, var(--background-color) 100%);
+}
+
+.infinite-carousel-holder {
+    height: 200px;
+    position: relative;
+    display: flex;
+    gap: var(--infinite-carousel-gap);
+}
+
+.infinite-carousel {
+    height: 100%;
+    display: flex;
+    gap: var(--infinite-carousel-gap);
+}
+
+.infinite-carousel img {
+    width: auto;
+    height: 100%;
+    border-radius: 17px;
+}
+
+@media screen and (max-width: 750px) {
+    :root {
+        --infinite-carousel-gap: 20px
+    }
+
+    .infinite-carousel-holder {
+        height: 150px;
+    }
+
+    .infinite-carousel img {
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    :root {
+        --infinite-carousel-gap: 20px
+    }
+
+    .infinite-carousel-holder {
+        height: 100px;
+    }
+
+    .infinite-carousel img {
+        border-radius: 10px;
+    }
+}

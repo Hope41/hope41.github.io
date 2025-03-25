@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang = en-GB id = html>
+    <head>
+        <meta charset = UTF-8>
+        <meta name = viewport content = 'width=device-width, initial-scale=1.0'>
+        <meta name = description content = "Game development tips, a personal post of my personal journey through game development and the lessons I've learned">
+        <meta name = author content = 'Joachim Ford'>
+
+        <meta property = og:title content = 'Game Development Tips - Joachim Ford'>
+        <meta property = og:description content = "Game development tips, a personal post of my personal journey through game development and the lessons I've learned">
+        <meta property = og:image content = https://joachimford.uk/assets/logo.png>
+
+        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Joachim" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <title>Game Development Tips - Joachim Ford</title>
+        <link rel = stylesheet href = /assets/styles.css>
+        <link rel = stylesheet href = /assets/topnav.css>
+        <link rel = stylesheet href = /assets/main.css>
+        <link rel = stylesheet href = /assets/hero.css>
+        <link rel = stylesheet href = /assets/infinite-carousel.css>
+        <link rel = stylesheet href = /assets/forms.css>
+        <link rel = stylesheet href = /assets/footer.css>
+        <link rel = stylesheet href = /assets/a.css>
+        <link rel = stylesheet href = /assets/demo.css>
+        <link rel = stylesheet href = /assets/cool-text.css>
+        <link rel = stylesheet href = /assets/deco.css>
+        <link rel = stylesheet href = /assets/comment.css>
+        <link rel = stylesheet href = /assets/checkbox.css>
+        <link rel = stylesheet href = /assets/popup.css>
+        <link rel = stylesheet href = /assets/lightbox.css>
+        <link rel = stylesheet href = /assets/code.css>
+
+        <link rel = stylesheet href = /assets/controls.css>
+    </head>
+    <body class = dark>
+        <div class = over-hold>
+            <section class = topnav>
+                <div class = topnav-container>
+                    <a class = topnav-home href = /index#>
+                        <div class = topnav-logo>
+                            <img src = /assets/logo.png alt = 'Pixel art of a young boy with black hair'>
+                        </div>
+                        <div class = topnav-title>
+                            <h2>Joachim</h2>
+                            <h2>Ford.uk</h2>
+                        </div>
+                    </a>
+                    <div class = topnav-menu>
+                        <div class = topnav-menu-wide>
+                            <a href = /games#>Games</a>
+                            <a href = /projects#>Projects</a>
+                            <a href = /blog# class = active>Blog</a>
+                        </div>
+
+                        <div class = topnav-separator></div>
+
+                        <div id = color-theme>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.5 0 13 13">
+                                <path d="M 0 0 A 2.25 2.25 90 0 0 0 13 A 2.25 2.25 90 0 0 0 0 Z M 0 2 A 2.25 2.25 90 0 1 0 11 Z"/>
+                            </svg>
+                        </div>
+
+                        <div class = topnav-separator></div>
+
+                        <div class = topnav-vertical-menu>
+                            <a href = /news#>News</a>
+                            <a href = /about#>About</a>
+                            <a href = /contact#>Contact</a>
+                        </div>
+                    </div>
+
+                    <div id = nav-bars>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 4 3">
+                            <path stroke-width=".5" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 0 0 L 3 0 M 0 1 L 3 1 M 0 2 L 2 2"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <section class = hero-section>
+                <div class = hero-background>
+                    <img src = /assets/tips-for-game-development-2.png>
+                </div>
+                <div id = hero class = transparent-bg>
+                </div>
+            </section>
+
+            <section class = main>
+                <div class = main-date>4 Jun. 2024</div>
+                <div class = 'content top-big-pad bottom'>
+                    <h1 class = 'h1 top-big center bottom-big'>Tips for Game Development</h1>
+
+                    <div class = 'demo-img-container padded-side top-pad bottom-pad'>
+                        <div>
+                            <div class = view-image>
+                                <img class = demo-img src = /assets/tips-for-game-development-2.png>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = 'text shift top-big bottom-big'>
+                        <p class = spaced>
+                            Generally speaking, code looks confusing. After all,
+                            why wouldn't it? It's not called "code" for nothing.
+                            You know, Morse code, Enigma code, and... coding code!
+                            It's not meant to be easy to understand!
+                        </p>
+
+                        <p class = spaced>
+                            This blog post discusses how my coding journey began.
+                            Through it, we will realise that code isn't as complicated as it
+                            appears to be at first. However, even if you're
+                            "fluent" at a coding language, it doesn't nessecarily
+                            mean you know what it says at first glance. Programming
+                            code, like a normal code, needs to be broken down into
+                            smaller pieces.
+                        </p>
+
+                        <p class = spaced>
+                            Without further ado, let's get stuck in to the personal
+                            biography of how to make games. But first, let's go
+                            back to where it all started.
+                        </p>
+                    </div>
+
+                    <h2 class = 'h3 top-huge bottom-small'>Step 1 - Free Up Your Imagination</h2>
+
+                    <div class = 'text shift'>
+                        <p class = spaced>
+                            It all began with a library book called "Computer Coding:
+                            Python Games For Kids," which used Pygame Zero. My
+                            bro and I went through the entire book together
+                            and even though the games themselves were simple, it
+                            was very interesting to look at by the "side" pictures -
+                            the images of potential games that never have and never
+                            will exist.
+                        </p>
+
+                        <p class = spaced>
+                            As you can imagine, seeing exciting pictures of a
+                            game that doesn't exist caused some frustration.
+                            On the other hand, I think - I may be wrong though -
+                            that these illustrations actually provided more
+                            motivation to make games. It was the drive
+                            to make these images a reality.
+                        </p>
+
+                        <p class = spaced>
+                            I vaguely remember a picture that was particularly
+                            inspiring for me at the time. It looked a little like this.
+                        </p>
+                    </div>
+
+                    <div class = 'demo-img-container padded-side top-pad bottom-pad'>
+                        <div class = small-img>
+                            <div class = view-image>
+                                <img class = 'demo-img small-img' src = /assets/tips-for-game-development-3.png>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = 'text shift'>
+                        <p class = spaced>
+                            I don't know why, the picture was so simple, but it
+                            really made an impact on me. It made me think about
+                            all these really cool games... but games that only
+                            existed in my own imagination.
+                        </p>
+
+                        <p class = spaced>
+                            One of the most important stages in game development
+                            is just letting your imagination run free. Trust me,
+                            getting excited about your game will make a big
+                            difference to the final product. If you need
+                            inspiration, a library book is a good place to
+                            start. Once you have an idea, try to grow it in
+                            your mind or write it down on a piece of paper.
+                        </p>
+                    </div>
+
+                    <h2 class = 'h3 top-huge bottom-small'>Step 2 - Start Small</h2>
+
+                    <div class = 'text shift'>
+                        <p class = spaced>
+                            Like learning a language, learning to code takes a
+                            lot of time and effort. Slowly you get a better
+                            understanding of how and why code is a certain way,
+                            and things get easier. You should not expect your
+                            first games to be very good. "Don't run before you
+                            can walk," they say, and it's very true.
+                        </p>
+
+                        <p class = spaced>
+                            After messing around a bit with Pygame Zero, we
+                            decided to upgrade to Pygame, as apparently it could
+                            handle more without slowing the computer down.
+                        </p>
+                    </div>
+
+                    <div class = 'demo-hint top-big bottom-big'>
+                        <div class = demo-hint-icon>
+                            <img src = /assets/bulb.svg>
+                        </div>
+                        <div class = 'text'>
+                            <p class = spaced>
+                                When I was younger, I aspired to become like the
+                                "top game developers" - people who (I imagined)
+                                coded their games in pure binary. Sadly, I quickly
+                                learned that literally no one makes games in binary.
+                                In case you have thought along similar lines, let me
+                                take a minute to explain how binary and code actually
+                                work.
+                            </p>
+
+                            <p class = spaced>
+                                All of us speak a language of some kind. Languages
+                                allow us to communicate. Some people who are particularly
+                                interested in language may decide to learn "lower level"
+                                languages like, say, Latin. Coding is very similar. Some
+                                people are content to use easier languages like Python
+                                or JavaScript, while others enjoy learning things like C,
+                                Rust, or even Assembly. The bottom line is - no matter
+                                what language you choose to code in - coding in binary
+                                is like trying to talk to each other via Morse code.
+                                Of course it's possible, but what's the point?
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class = 'text shift'>
+                        <p class = spaced>
+                            Being an extremely new coder at the time, (and to
+                            think I'm a new coder even now) I quickly realised
+                            something very important. When my game idea was too
+                            big for my current skill level, it never got very far
+                            through development. Instead, I found it was much
+                            easier to get better at coding when I made smaller
+                            projects.
+                        </p>
+
+                        <p class = spaced>
+                            The first "game" my brother and I made was a blue
+                            rectangle falling from the sky. I've completely
+                            re-written the final version in JavaScript code
+                            so you can play it online.
+                        </p>
+                    </div>
+
+                    <div class = 'boxed top-big bottom-big'>
+                        <h3 class = 'h3'>Coin Game</h3>
+                        <div class = 'text shift'>
+                            <p class = spaced>
+                                Move the falling rectangle by pressing the left
+                                or right arrow keys (A or D). For mobile devices
+                                you can just on tap either side of the window.
+                                Try to collect all the coins but be careful to
+                                avoid the baddies. Press any key to go to the 
+                                next level.
+                            </p>
+                        </div>
+
+                        <div class = 'demo-img-container padded-side top-pad bottom-pad'>
+                            <div class = 'small-img demo-play'>
+                                <a href = /assets/coin-collector target = _blank>
+                                    <img class = 'demo-img small-img' src = /assets/tips-for-game-development-4.png>
+                                    <img class = demo-play-button src = /assets/fat-play.svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = 'text shift'>
+                        <p class = spaced>
+                            After celebrating our first game, my brother and I
+                            parted ways. I took up the hobby of game development,
+                            while he - who has a brain more like a computer than
+                            I do - went off to make JoBase, and other Complicated
+                            Things like that. (But seriously, who wants complicated
+                            when you can have games?)
+                        </p>
+
+                        <p class = spaced>
+                            After creating a few more demos in Pygame - which I
+                            don't think I'll show you, as they're all quite
+                            basic - I suddenly had the desire to learn
+                            JavaScript. I think the main reason for this was
+                            because JavaScript runs online. And making games
+                            is no fun when only you can play them afterwards,
+                            right?
+                        </p>
+
+                        <p class = spaced>
+                            The first JavaScript game I attempted to make was a
+                            full-length platformer with realistic plant simulations,
+                            various dynamic forms of weather, and a complete physics
+                            engine created entirely from scratch. (I confess, I still
+                            haven't lost that abhorrence to using JavaScript libraries.)
+                            As usual, I gave up quite quickly.
+                        </p>
+                    </div>
+
+                    <div class = 'demo-hint top-big bottom-big'>
+                        <div class = demo-hint-icon>
+                            <img src = /assets/bulb.svg>
+                        </div>
+                        <div class = 'text'>
+                            <p class = spaced>
+                                "Well," you say, "what stopped you from continuing?"
+                                Good question! The whole idea of coding is fixing
+                                glitches. Trouble is, us newbies tend to
+                                unintentionally make more glitches than the
+                                experienced coders do. However, as I think I've
+                                mentioned before, glitches can generally be kept
+                                at bay by keeping our projects small to begin with.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h2 class = 'h3 top-huge bottom-small'>Step 3 - Keep Going</h2>
+
+                    <div class = 'text shift'>
+                        <p class = spaced>
+                            As you start creating larger games, you will at some
+                            point face the Boring Part. There is at least one in
+                            the development of every game. Remember, this doesn't
+                            mean there's a boring part to every actual game, but
+                            coding is different.
+                        </p>
+
+                        <p class = spaced>
+                            Some independent developers like to save all the
+                            boring parts till last. Others like to get it over
+                            and done with at the start. Personally, I like to
+                            alternate Boring with Interesting because it helps
+                            me stay awake.
+                        </p>
+
+                        <p class = spaced>
+                            After giving up on my platformer idea, I decided to
+                            cut things right back and just get familiar with how
+                            JavaScript works. This lead to the creation of about
+                            24 "tunnel experiments," which simply consisted of
+                            putting lots of squares on the screen and moving
+                            them in different ways. I've displayed one of these
+                            demos for you below. Please excuse the dreadful code
+                            practices I used.
+                        </p>
+                    </div>
+
+                    <h3 class = 'h3 center top-big bottom-small'><span class = white>Demo #20</span></h2>
+
+                    <iframe src = /assets/tips-for-game-development-2 class = demo-frame></iframe>
+
+                    <div class = 'code-holder top bottom'>
+                        <div class = code-buttons>
+                            <a target = _blank href = /assets/tips-for-game-development-2>
+                                <div data-tip = 'run' class = 'code-run code-button-icon'>
+                                    <img src = /assets/run.svg alt = 'play icon'>
+                                </div>
+                            </a>
+                            <div data-tip = 'copy' class = 'code-copy code-button-icon'>
+                                <img src = /assets/copy.svg alt = 'copy icon'>
+                            </div>
+                        </div>
+                        <pre class = code><span style="color:var(--operator)">&lt;</span><span style="color:var(--variable)">body</span><span style="color:var(--operator)">></span>
+    <span style="color:var(--operator)">&lt;</span><span style="color:var(--variable)">canvas</span> <span style="color:var(--variable)">id</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">canvas</span><span style="color:var(--operator)">></span>
+    <span style="color:var(--operator)">&lt;</span><span style="color:var(--variable)">script</span><span style="color:var(--operator)">></span>
+
+        <span style="color:var(--comment)">// SETUP</span>
+
+        <span style="color:var(--variable)">document</span>.<span style="color:var(--variable)">body</span>.<span style="color:var(--variable)">style</span>.<span style="color:var(--variable)">margin</span>          <span style="color:var(--operator)">=</span> <span style="color:var(--number)">0</span>
+        <span style="color:var(--variable)">document</span>.<span style="color:var(--variable)">body</span>.<span style="color:var(--variable)">style</span>.<span style="color:var(--variable)">overflow</span>        <span style="color:var(--operator)">=</span> <span style="color:var(--string)">'hidden'</span>
+        <span style="color:var(--variable)">document</span>.<span style="color:var(--variable)">body</span>.<span style="color:var(--variable)">style</span>.<span style="color:var(--variable)">backgroundColor</span> <span style="color:var(--operator)">=</span> <span style="color:var(--string)">"#000"</span>
+        <span style="color:var(--variable)">document</span>.<span style="color:var(--variable)">fullscreenEnabled</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">true</span>
+
+        <span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">context</span>   <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">canvas</span>.<span style="color:var(--function)">getContext</span>(<span style="color:var(--string)">"2d"</span><span style="color:var(--operator)">)</span>
+        <span style="color:var(--variable)">canvas</span>.<span style="color:var(--variable)">width</span>  <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">innerWidth</span>
+        <span style="color:var(--variable)">canvas</span>.<span style="color:var(--variable)">height</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">innerHeight</span>
+
+        <span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">particles</span> <span style="color:var(--operator)">=</span> []
+        <span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">number</span>    <span style="color:var(--operator)">=</span> <span style="color:var(--number)">250</span>
+        <span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">point</span> <span style="color:var(--operator)">=</span> <span style="color:var(--operator)">{</span><span style="color:var(--variable)">x</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">canvas</span>.<span style="color:var(--variable)">width</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>, <span style="color:var(--variable)">y</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">canvas</span>.<span style="color:var(--variable)">height</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span><span style="color:var(--operator)">}</span>
+
+        <span style="color:var(--keyword)">for</span><span style="color:var(--operator)">(</span><span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">0</span>; <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">&lt;</span> <span style="color:var(--variable)">number</span>; <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">++)</span> <span style="color:var(--operator)">{</span>
+            <span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">x</span>     <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">floor</span>(<span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">random</span>(<span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">canvas</span>.<span style="color:var(--variable)">width</span><span style="color:var(--operator)">)</span>
+            <span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">y</span>     <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">floor</span>(<span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">random</span>(<span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">canvas</span>.<span style="color:var(--variable)">height</span><span style="color:var(--operator)">)</span>
+            <span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">size</span>  <span style="color:var(--operator)">=</span> <span style="color:var(--number)">10</span>
+            <span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">touch</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">floor</span>(<span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">random</span>(<span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--number)">20</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">+</span> <span style="color:var(--number)">50</span> <span style="color:var(--comment)">// distance from particle to screen (gives it depth)</span>
+
+            <span style="color:var(--variable)">particles</span>.<span style="color:var(--function)">push</span>(<span style="color:var(--operator)">{</span><span style="color:var(--variable)">x</span>, <span style="color:var(--variable)">y</span>, <span style="color:var(--variable)">size</span>, <span style="color:var(--variable)">touch</span><span style="color:var(--operator)">})</span>
+        <span style="color:var(--operator)">}</span>
+
+        <span style="color:var(--keyword)">function</span> <span style="color:var(--function)">loop</span>(<span style="color:var(--operator)">)</span> <span style="color:var(--operator)">{</span>
+            <span style="color:var(--variable)">canvas</span>.<span style="color:var(--variable)">width</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">canvas</span>.<span style="color:var(--variable)">width</span> <span style="color:var(--comment)">// clear screen</span>
+
+            <span style="color:var(--keyword)">for</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">particle</span> <span style="color:var(--variable)">of</span> <span style="color:var(--variable)">particles</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">{</span>
+
+                <span style="color:var(--comment)">// FIND DISTANCE FROM CENTRE TO PARTICLES</span>
+                <span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">distx</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">point</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--comment)">// find distance between points on the x</span>
+                <span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">disty</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">y</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">point</span>.<span style="color:var(--variable)">y</span>
+                <span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">distance</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sqrt</span>(<span style="color:var(--variable)">distx</span> <span style="color:var(--operator)">**</span> <span style="color:var(--number)">2</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">disty</span> <span style="color:var(--operator)">**</span> <span style="color:var(--number)">2</span><span style="color:var(--operator)">)</span> <span style="color:var(--comment)">// find the square root</span>
+                <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">size</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">distance</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">20</span>
+
+                <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+=</span> <span style="color:var(--variable)">distx</span> <span style="color:var(--operator)">/</span> <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">touch</span>
+                <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+=</span> <span style="color:var(--variable)">disty</span> <span style="color:var(--operator)">/</span> <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">touch</span>
+
+                <span style="color:var(--variable)">context</span>.<span style="color:var(--variable)">fillStyle</span> <span style="color:var(--operator)">=</span> <span style="color:var(--string)">'#f80'</span>
+                <span style="color:var(--variable)">context</span>.<span style="color:var(--function)">fillRect</span>(<span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">x</span>, <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">y</span>, <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">size</span>, <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">size</span><span style="color:var(--operator)">)</span>
+
+                <span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">></span> <span style="color:var(--variable)">canvas</span>.<span style="color:var(--variable)">width</span> || <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">size</span> <span style="color:var(--operator)">&lt;</span> <span style="color:var(--number)">0</span> ||
+                    <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">size</span> <span style="color:var(--operator)">&lt;</span> <span style="color:var(--number)">0</span> || <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">y</span> <span style="color:var(--operator)">></span> <span style="color:var(--variable)">canvas</span>.<span style="color:var(--variable)">height</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">{</span>
+                    <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">-=</span> <span style="color:var(--variable)">distx</span>
+                    <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">y</span> <span style="color:var(--operator)">-=</span> <span style="color:var(--variable)">disty</span>
+                    <span style="color:var(--variable)">particle</span>.<span style="color:var(--variable)">touch</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">floor</span>(<span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">random</span>(<span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--number)">20</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">+</span> <span style="color:var(--number)">50</span>
+                <span style="color:var(--operator)">}</span>
+            <span style="color:var(--operator)">}</span>
+
+
+            <span style="color:var(--function)">requestAnimationFrame</span>(<span style="color:var(--variable)">loop</span><span style="color:var(--operator)">)</span>
+        <span style="color:var(--operator)">}</span>
+
+        <span style="color:var(--function)">requestAnimationFrame</span>(<span style="color:var(--variable)">loop</span><span style="color:var(--operator)">)</span>
+
+    <span style="color:var(--operator)">&lt;/</span><span style="color:var(--variable)">script</span><span style="color:var(--operator)">></span>
+<span style="color:var(--operator)">&lt;/</span><span style="color:var(--variable)">body</span><span style="color:var(--operator)">></span></pre>
+                    </div>
+
+                    <div class = 'text shift'>
+                        <p class = spaced>
+                            Everything got a bit easier after this stage. And as
+                            I went on to create more "games" - none of them any
+                            good of course - I was slowly getting a better
+                            understanding of how code works.
+                        </p>
+                    </div>
+
+                    <div class = demo-carousel-hold>
+                        <div class = demo-carousel>
+                            <div class = demo-carousel-images>
+                                <div class = 'demo-carousel-img view-image'><img src = /assets/tips-for-game-development-5.png alt = '2D indie game inspiration. Procedural level generation'></div>
+                                <div class = 'demo-carousel-img view-image'><img src = /assets/tips-for-game-development-6.png alt = '2D indie game inspiration. Racing game.'></div>
+                                <div class = 'demo-carousel-img view-image'><img src = /assets/tips-for-game-development-7.png alt = 'Online 3D tunnel tutorial JavaScript'></div>
+                                <div class = 'demo-carousel-img view-image'><img src = /assets/tips-for-game-development-8.png alt = 'Top-down medieval indie game inspiration'></div>
+                                <div class = 'demo-carousel-img view-image'><img src = /assets/tips-for-game-development-9.png alt = 'Online 3D tunnel tutorial JavaScript'></div>
+                                <div class = 'demo-carousel-img view-image'><img src = /assets/tips-for-game-development-10.png alt = 'Pseudo 3D road JavaScript'></div>
+                                <div class = 'demo-carousel-img view-image'><img src = /assets/tips-for-game-development-11.png alt = '2D tower stacking game inspiration game dev'></div>
+                                <div class = 'demo-carousel-img view-image'><img src = /assets/tips-for-game-development-12.png alt = 'Pseudo 3D road in city JavaScript'></div>
+                                <div class = 'demo-carousel-img view-image'><img src = /assets/tips-for-game-development-13.png alt = '3D forest at night indie game demo'></div>
+                            </div>
+                        </div>
+                        <div class = demo-carousel-left><img src = /assets/arrow-left.svg></div>
+                        <div class = demo-carousel-right><img src = /assets/arrow-right.svg></div>
+                    </div>
+
+                    <div class = 'text shift top-big'>
+                        <p class = spaced>
+                            The best project I made during this period was
+                            definitely the simplified platform game. It was
+                            created just before
+                            <a class = link href = /games/the-mitigator target = _blank>
+                                The Mitigator</a>,
+                            and was a real  milestone for me. All the levels are
+                            "Procedurally  Generated," which simply means that
+                            they're created using randomisation, so they're
+                            different every time.
+                        </p>
+                    </div>
+
+                    <div class = 'boxed top-big bottom-big' id = sub>
+                        <h3 class = 'h3'>First Platformer</h3>
+                        <div class = 'text shift'>
+                            <p class = spaced>
+                                Use the arrows or WASD to jump on the platforms
+                                and collect the coins. Press R to restart each
+                                level. Space to throw shells. Avoid the red squares!
+                                You cannot play this game on a mobile device.
+                            </p>
+                        </div>
+                        <div class = 'demo-img-container padded-side top-pad bottom-pad'>
+                            <div class = 'demo-play'>
+                                <a href = /assets/first-platformer target = _blank>
+                                    <img class = 'demo-img' src = /assets/tips-for-game-development-17.png>
+                                    <img class = demo-play-button src = /assets/fat-play.svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class = 'h3 top-huge bottom-small'>Conclusion</h2>
+                    <div class = 'text shift'>
+                        <p class = spaced>
+                            <span class = 'bullet-point'>
+                                <b>Free up your imagination.</b> You can't make games
+                                if you have no ideas, so really think about the
+                                games you love already, or pictures that inspire
+                                you, and try to build from there.
+                            </span>
+                        </p>
+
+                        <p class = spaced>
+                            <span class = bullet-point>
+                                <b>Start Small.</b> Don't take on big projects
+                                too early. Even the most experienced coders can
+                                get out of their depth, so try to tailor your
+                                projects to fit your current skill level.
+                            </span>
+                        </p>
+
+                        <p class = spaced>
+                            <span class = bullet-point>
+                                <b>Keep Going.</b> Every game has a boring part to its
+                                development. Don't give up! Try to think of the
+                                end result and keep things varied.
+                            </span>
+                        </p>
+
+                        <p class = spaced>
+                            That's pretty much everything! All the games from
+                            this point have been published on the
+                            <a class = link target = _blank href = /games>Games</a>
+                            tab of this website. I hope this blog post gave you a bit of
+                            insight into my journey through game development.
+                            If you're new to coding and are interested in using
+                            pure JavaScript to make your own games, please get
+                            in touch I'll try to help you as best I can.
+                        </p>
+
+                        <p class = spaced>
+                            The legacy continues!
+                        </p>
+                    </div>
+                </div>
+
+                <div class = 'content top bottom-huge'>
+                    <form class = 'comment bottom-big-pad' data-url = TipsForGameDevelopment>
+                        <h3 class = 'h3 top-small bottom-small center'>
+                            <span class = slightly-dim>
+                                Please leave a comment!
+                            </span>
+                        </h3>
+
+                        <input class = form placeholder = 'name'>
+                        <label for = notify class = checkbox-label>
+                            <div class = checkbox-hold>
+                                <input id = notify class = checkbox data-checked type = checkbox>
+                            </div>
+                            <span class = 'smallish slightly-dim'>Make this comment public</span>
+                        </label>
+
+                        <div class = comment-box-hold>
+                            <textarea class = comment-box required contenteditable placeholder = 'Write your message here'></textarea>
+                        </div>
+
+                        <input class = form type = email placeholder = 'email (optional)'>
+                        <button class = comment-send>Post Comment</button>
+                        <span class = 'dim small-font shift-right right'>(Your email will never be shared or sold. <button class = popup-link data-id = terms type = button>Terms</button>)</span>
+                    </form>
+                </div>
+            </section>
+
+            <section class = footer>
+                <div class = footer-left>
+                    <span>&copy; Joachim Ford <span id = year>2025</span></span>
+                    <span>All rights reserved</span>
+                    <span class = top-small>
+                        <form class = 'subscribe-form-tiny'>
+                            <div class = flex-x>
+                                <input type = email class = form placeholder = 'email' required>
+                                <button class = send-form-button type = submit>
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </span>
+                    <div class = 'footer-socials top-small'>
+                        <a href = mailto:hi@joachimford.uk target = _blank><img src = /assets/mail.svg alt = 'email icon'></a>
+                        <a href = https://github.com/Hope41 target = _blank><img src = /assets/github.svg alt = 'github icon'></a>
+                        <a href = https://youtube.com/@JoachimFord target = _blank><img src = /assets/youtube.svg alt = 'youtube icon'></a>
+                        <a href = https://joachimford.itch.io target = _blank><img src = /assets/itch.svg alt = 'itch.io icon'></a>
+                        <a href = https://x.com/JoachimFord target = _blank><img src = /assets/x.svg alt = 'x logo'></a>
+                    </div>
+                </div>
+                <div class = footer-right>
+                    <a href = /index# class = basic-link>Home</a>
+                    <a href = /games# class = basic-link>Games</a>
+                    <a href = /projects# class = basic-link>Projects</a>
+                    <a href = /blog# class = basic-link>Blog</a>
+                    <a href = /news# class = basic-link>News</a>
+                    <a href = /about# class = basic-link>About</a>
+                    <a href = /contact# class = basic-link>Contact</a>
+                </div>
+            </section>
+        </div>
+
+        <div class = popup id = terms>
+            <div class = popup-text-hold>
+                <div class = popup-close data-id = terms>
+                    <img src = /assets/close.svg>
+                </div>
+                <div class = popup-text>
+                    <h2 class = h4><span class = gray-green>Posting a Comment</span></h2>
+                    <h2 class = h2>Terms</h2>
+                    <div class = 'text shift-right'>
+                        <p class = spaced>
+                            <span class = 'bullet-point big-pad'>
+                                If you post your comment publicly, you agree to
+                                have your <b>name</b> and <b>message</b> posted
+                                on this website. Your comment may also appear in
+                                advertisements for this site.
+                            </span>
+                        </p>
+                        <p class = spaced>
+                            <span class = 'bullet-point big-pad'>
+                                By providing an email address, you will be notified
+                                of any replies. I may also respond to you directly
+                                via the email address provided.
+                            </span>
+                        </p>
+                        <p class = spaced>
+                            Your email will only be used for these purposes
+                            and will never be published, shared or sold.
+                        </p>
+                        <p class = 'spaced smallish'>
+                            The only catch is I get to make you a profile picture
+                            based on your name
+                            <img class = emoji src = /assets/Microsoft-Fluentui-Emoji-3d-Smirking-Face-3d.svg>
+                        </p>
+                        <button class = popup-close data-id = terms>
+                            I Understand
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id = lightbox-overlay>
+            <div id = lightbox-topnav>
+                <div id = lightbox-copy class = lightbox-button>
+                    <img src = /assets/copy.svg>
+                </div>
+                <div id = lightbox-download class = lightbox-button>
+                    <img src = /assets/download.svg>
+                </div>
+                <div id = lightbox-close class = lightbox-button>
+                    <img src = /assets/close.svg>
+                </div>
+            </div>
+            <img src = /assets/ios-mission-1-thumbnail.png id = lightbox-img>
+            <div id = lightbox-prev><img src = /assets/arrow-left.svg></div>
+            <div id = lightbox-next><img src = /assets/arrow-right.svg></div>
+        </div>
+
+        <script src = /assets/main.js></script>
+        <script src = /assets/infinite-carousel.js></script>
+        <script src = /assets/hero.js></script>
+        <script src = /assets/cool-text.js></script>
+        <script src = /assets/popup.js></script>
+        <script src = /assets/profile-interact.js></script>
+        <script src = /assets/demo-carousel.js></script>
+        <script src = /assets/lightbox.js></script>
+        <script src = /assets/code.js></script>
+    </body>
+</html>

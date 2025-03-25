@@ -1,0 +1,19 @@
+.deco.stars, .deco.squiggles {
+    width: 100px;
+    display: block;
+}
+
+.deco.right {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.deco.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.light .deco {
+    /* opacity: .5; */
+    filter: contrast(.5) brightness(1.5);
+}

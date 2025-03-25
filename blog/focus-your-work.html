@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang = en-GB id = html>
+    <head>
+        <meta charset = UTF-8>
+        <meta name = viewport content = 'width=device-width, initial-scale=1.0'>
+        <meta name = description content = "Game development tips: focus your work, how not to do it">
+        <meta name = author content = 'Joachim Ford'>
+
+        <meta property = og:title content = 'Focus Your Work: How Not to Do It - Joachim Ford'>
+        <meta property = og:description content = "Game development tips: focus your work, how not to do it">
+        <meta property = og:image content = https://joachimford.uk/assets/logo.png>
+
+        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Joachim" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <title>Focus Your Work: How Not to Do It - Joachim Ford</title>
+        <link rel = stylesheet href = /assets/styles.css>
+        <link rel = stylesheet href = /assets/topnav.css>
+        <link rel = stylesheet href = /assets/main.css>
+        <link rel = stylesheet href = /assets/hero.css>
+        <link rel = stylesheet href = /assets/infinite-carousel.css>
+        <link rel = stylesheet href = /assets/forms.css>
+        <link rel = stylesheet href = /assets/footer.css>
+        <link rel = stylesheet href = /assets/a.css>
+        <link rel = stylesheet href = /assets/demo.css>
+        <link rel = stylesheet href = /assets/cool-text.css>
+        <link rel = stylesheet href = /assets/deco.css>
+        <link rel = stylesheet href = /assets/comment.css>
+        <link rel = stylesheet href = /assets/checkbox.css>
+        <link rel = stylesheet href = /assets/popup.css>
+        <link rel = stylesheet href = /assets/lightbox.css>
+        <link rel = stylesheet href = /assets/code.css>
+
+        <link rel = stylesheet href = /assets/controls.css>
+    </head>
+    <body class = dark>
+        <div class = over-hold>
+            <section class = topnav>
+                <div class = topnav-container>
+                    <a class = topnav-home href = /index#>
+                        <div class = topnav-logo>
+                            <img src = /assets/logo.png alt = 'Pixel art of a young boy with black hair'>
+                        </div>
+                        <div class = topnav-title>
+                            <h2>Joachim</h2>
+                            <h2>Ford.uk</h2>
+                        </div>
+                    </a>
+                    <div class = topnav-menu>
+                        <div class = topnav-menu-wide>
+                            <a href = /games#>Games</a>
+                            <a href = /projects#>Projects</a>
+                            <a href = /blog# class = active>Blog</a>
+                        </div>
+
+                        <div class = topnav-separator></div>
+
+                        <div id = color-theme>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.5 0 13 13">
+                                <path d="M 0 0 A 2.25 2.25 90 0 0 0 13 A 2.25 2.25 90 0 0 0 0 Z M 0 2 A 2.25 2.25 90 0 1 0 11 Z"/>
+                            </svg>
+                        </div>
+
+                        <div class = topnav-separator></div>
+
+                        <div class = topnav-vertical-menu>
+                            <a href = /news#>News</a>
+                            <a href = /about#>About</a>
+                            <a href = /contact#>Contact</a>
+                        </div>
+                    </div>
+
+                    <div id = nav-bars>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 4 3">
+                            <path stroke-width=".5" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 0 0 L 3 0 M 0 1 L 3 1 M 0 2 L 2 2"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <section class = hero-section>
+                <div class = hero-background>
+                    <img src = /assets/focus-your-work-2.png>
+                </div>
+                <div id = hero class = transparent-bg>
+                </div>
+            </section>
+
+            <section class = main>
+                <div class = main-date>29 Dec. 2023</div>
+                <div class = 'content top-big-pad bottom'>
+                    <h1 class = 'h1 top-big center bottom-big'>Focus Your Work: How Not to Do It</h1>
+
+                    <div class = 'demo-img-container padded-side top-pad bottom-pad'>
+                        <div>
+                            <div class = view-image>
+                                <img class = demo-img src = /assets/focus-your-work-2.png>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = 'text shift top-big bottom-huge'>
+                        <p class = spaced>
+                            One of the most important parts of game development
+                            is having an attention to detail. This - as with most
+                            things - has the potential to go too far, and adding
+                            details may become an obsession.
+                        </p>
+                        <p class = spaced>
+                            It's always worth considering (and I'm not saying I
+                            did this, by the way) the "focus" of your project from
+                            early on; knowing what elements to prioritise will
+                            help you make the most of the computer's processing
+                            power. After all, even with today's technology, there
+                            are still limitations to what a computer can handle.
+                        </p>
+
+                        <p class = spaced>
+                            This post talks about some of the (pointless?) details
+                            I added to the game
+                            <a class = link target = _black href = /games/ios-mission>Io's Mission</a>.
+                            I've only picked the best ones, so it's not too long.
+                            The subjects that follow are listed in no particular
+                            order.
+                        </p>
+                    </div>
+
+                    <h2 class = 'h3 top bottom'>Detail 01. Extremely Accurate Vertical Movement</h2>
+
+                    <div class = 'text shift bottom-huge'>
+                        <p class = spaced>
+                            For some reason, it was very important to make sure
+                            the crabs (the ones in the beach level) walked
+                            properly. Did you notice that they moved up and down
+                            slightly as they crawled along the sand?
+                        </p>
+
+                        <p class = spaced>
+                            The difference is only one or two pixels in the real
+                            game. I've scaled the crab up a bit so you can see
+                            this "walking up and down" more clearly, but I've
+                            also put a normal one next to it so you can see the
+                            comparison. Note that in its normal state, the
+                            vertical movement is unnoticeable. Unless you have
+                            very good eyes.
+                        </p>
+
+                        <iframe class = 'demo-frame top bottom' src = /assets/focus-your-work-1></iframe>
+                    </div>
+
+                    <h2 class = 'h3 top bottom'>Detail 02. 100&times; Faint Scanline Weights</h2>
+
+                    <div class = 'text shift bottom-huge'>
+                        <p class = spaced>
+                            Another detail I'll mention is the scanlines.
+                            If you want a technical definition for them, go and
+                            look it up, but for the sake of simplicity, scanlines
+                            are just horizontal transparent bars stretching from
+                            one side of the screen to the other. Did you notice
+                            them? You probably did.
+                        </p>
+
+                        <p class = spaced>
+                            The part I don't expect you to have noticed was the
+                            fact that these "scanlines" change strength in different
+                            parts of the screen. In the image below, I've exaggerated
+                            these weights 100x to help you see them better.
+                        </p>
+
+                        <div class = 'demo-img-container top-small-pad bottom-small-pad'>
+                            <div class = view-image>
+                                <img class = demo-img src = /assets/focus-your-work-3.png>
+                            </div>
+                        </div>
+
+                        <p class = spaced>
+                            Pointless, if you ask me. However, we must also remember
+                            that - as my father used to say - "it's all in the
+                            details." When you think about it, you realise that
+                            these invisible weights on the scanlines are crucial
+                            - crucial! - to the  of Io's Mission. I mean think about it,
+                            without these invisible changes to the scanlines, the visual
+                            experience of the game would be flat, and uninteresting.
+                        </p>
+                    </div>
+
+                    <h2 class = 'h3 top bottom'>Detail 03. Invisible Crocodile Feet</h2>
+
+                    <div class = 'text shift bottom-huge'>
+                        <p class = spaced>
+                            A whole week was spent on the crocodiles. The first
+                            day was taken up with deciding on the main colours
+                            and shapes, and another two days were taken up with
+                            getting the movement right (like sinking and attacking).
+                        </p>
+
+                        <p class = spaced>
+                            In the remaining four days was left to create the legs and
+                            the tail. Trouble is, you hardly EVER see either of
+                            those things in the real game. Perhaps you may see
+                            the tail for a fleeting moment as ths crocodile
+                            splashes towards you, or the legs are revealed for
+                            an instant when he jumps, but aside from that
+                            these parts are practically invisible.
+                        </p>
+
+                        <div class = 'demo-img-container top-small-pad bottom-small-pad'>
+                            <div class = view-image>
+                                <img class = demo-img src = /assets/focus-your-work-4.png>
+                            </div>
+                        </div>
+
+                        <p class = spaced>
+                            Important note: for those who have exceptionally good
+                            eyes you actually will be able to see the whole
+                            crocodile during the game. The swamp is set to only
+                            96% opacity, so you can see through in theory. I can't,
+                            by the way.
+                        </p>
+                    </div>
+
+                    <h2 class = 'h3 top bottom'>Even More Pointless...</h2>
+
+                    <div class = 'text shift bottom-huge'>
+                        <p class = spaced>
+                            This post could be much longer, but thank goodness,
+                            the rest has been conveniently bunched into a single
+                            paragraph.
+                        </p>
+
+                        <p class = spaced>
+                            Did you notice that Io breathed? Or that, when he
+                            transitioned, he used a bezier movement instead of
+                            linear? (You probably did, now I think of it. No
+                            doubt, as soon as your gaze fell upon him you said
+                            to yourself: "Ah, how glad I am he used bezier
+                            movement and not linear for his proportional
+                            interpolation...") Did you notice that the grass
+                            and seaweed swayed in the breeze? Or did you even
+                            notice that the water was very, very, slightly
+                            transparent? Did you notice the lights flashed
+                            on the machines? Or that Drillo's friend was
+                            constantly walking?
+                        </p>
+
+                        <p class = spaced>
+                            I've officially spent far too much time on pointless
+                            details. Does it really add anything to Io's Mission?
+                            That's up to you. But for now I'm tired of writing
+                            blog posts and making games.
+                        </p>
+
+                        <p class = spaced>
+                            See you next time!
+                        </p>
+                    </div>
+                </div>
+
+                <div class = 'content top bottom-huge'>
+                    <form class = 'comment bottom-big-pad' data-url = FocusYourWork>
+                        <h3 class = 'h3 top-small bottom-small center'>
+                            <span class = slightly-dim>
+                                Please leave a comment!
+                            </span>
+                        </h3>
+
+                        <input class = form placeholder = 'name'>
+                        <label for = notify class = checkbox-label>
+                            <div class = checkbox-hold>
+                                <input id = notify class = checkbox data-checked type = checkbox>
+                            </div>
+                            <span class = 'smallish slightly-dim'>Make this comment public</span>
+                        </label>
+
+                        <div class = comment-box-hold>
+                            <textarea class = comment-box required contenteditable placeholder = 'Write your message here'></textarea>
+                        </div>
+
+                        <input class = form type = email placeholder = 'email (optional)'>
+                        <button class = comment-send>Post Comment</button>
+                        <span class = 'dim small-font shift-right right'>(Your email will never be shared or sold. <button class = popup-link data-id = terms type = button>Terms</button>)</span>
+                    </form>
+                </div>
+            </section>
+
+            <section class = footer>
+                <div class = footer-left>
+                    <span>&copy; Joachim Ford <span id = year>2025</span></span>
+                    <span>All rights reserved</span>
+                    <span class = top-small>
+                        <form class = 'subscribe-form-tiny'>
+                            <div class = flex-x>
+                                <input type = email class = form placeholder = 'email' required>
+                                <button class = send-form-button type = submit>
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </span>
+                    <div class = 'footer-socials top-small'>
+                        <a href = mailto:hi@joachimford.uk target = _blank><img src = /assets/mail.svg alt = 'email icon'></a>
+                        <a href = https://github.com/Hope41 target = _blank><img src = /assets/github.svg alt = 'github icon'></a>
+                        <a href = https://youtube.com/@JoachimFord target = _blank><img src = /assets/youtube.svg alt = 'youtube icon'></a>
+                        <a href = https://joachimford.itch.io target = _blank><img src = /assets/itch.svg alt = 'itch.io icon'></a>
+                        <a href = https://x.com/JoachimFord target = _blank><img src = /assets/x.svg alt = 'x logo'></a>
+                    </div>
+                </div>
+                <div class = footer-right>
+                    <a href = /index# class = basic-link>Home</a>
+                    <a href = /games# class = basic-link>Games</a>
+                    <a href = /projects# class = basic-link>Projects</a>
+                    <a href = /blog# class = basic-link>Blog</a>
+                    <a href = /news# class = basic-link>News</a>
+                    <a href = /about# class = basic-link>About</a>
+                    <a href = /contact# class = basic-link>Contact</a>
+                </div>
+            </section>
+        </div>
+
+        <div class = popup id = terms>
+            <div class = popup-text-hold>
+                <div class = popup-close data-id = terms>
+                    <img src = /assets/close.svg>
+                </div>
+                <div class = popup-text>
+                    <h2 class = h4><span class = gray-green>Posting a Comment</span></h2>
+                    <h2 class = h2>Terms</h2>
+                    <div class = 'text shift-right'>
+                        <p class = spaced>
+                            <span class = 'bullet-point big-pad'>
+                                If you post your comment publicly, you agree to
+                                have your <b>name</b> and <b>message</b> posted
+                                on this website. Your comment may also appear in
+                                advertisements for this site.
+                            </span>
+                        </p>
+                        <p class = spaced>
+                            <span class = 'bullet-point big-pad'>
+                                By providing an email address, you will be notified
+                                of any replies. I may also respond to you directly
+                                via the email address provided.
+                            </span>
+                        </p>
+                        <p class = spaced>
+                            Your email will only be used for these purposes
+                            and will never be published, shared or sold.
+                        </p>
+                        <p class = 'spaced smallish'>
+                            The only catch is I get to make you a profile picture
+                            based on your name
+                            <img class = emoji src = /assets/Microsoft-Fluentui-Emoji-3d-Smirking-Face-3d.svg>
+                        </p>
+                        <button class = popup-close data-id = terms>
+                            I Understand
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id = lightbox-overlay>
+            <div id = lightbox-topnav>
+                <div id = lightbox-copy class = lightbox-button>
+                    <img src = /assets/copy.svg>
+                </div>
+                <div id = lightbox-download class = lightbox-button>
+                    <img src = /assets/download.svg>
+                </div>
+                <div id = lightbox-close class = lightbox-button>
+                    <img src = /assets/close.svg>
+                </div>
+            </div>
+            <img src = /assets/ios-mission-1-thumbnail.png id = lightbox-img>
+            <div id = lightbox-prev><img src = /assets/arrow-left.svg></div>
+            <div id = lightbox-next><img src = /assets/arrow-right.svg></div>
+        </div>
+
+        <script src = /assets/main.js></script>
+        <script src = /assets/infinite-carousel.js></script>
+        <script src = /assets/hero.js></script>
+        <script src = /assets/cool-text.js></script>
+        <script src = /assets/popup.js></script>
+        <script src = /assets/profile-interact.js></script>
+        <script src = /assets/demo-carousel.js></script>
+        <script src = /assets/lightbox.js></script>
+    </body>
+</html>

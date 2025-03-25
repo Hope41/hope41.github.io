@@ -1,187 +1,227 @@
 <!DOCTYPE html>
-<html lang = en-gb>
+<html lang = en-GB>
     <head>
-        <meta charset = utf-8>
-        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
-        <meta name = description content = 'Free online coding blogs and open source games'>
+        <meta charset = UTF-8>
+        <meta name = viewport content = 'width=device-width, initial-scale=1.0'>
+        <meta name = description content = 'Free HTML5 game dev updates, blog posts, and news! Discover indie games at JoachimFord.uk'>
+        <meta name = author content = 'Joachim Ford'>
 
-        <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
-        <script src = /src/js/analytics.js></script>
-        <script src = /src/js/main.js></script>
-        <title>News | Joachim Ford</title>
-        <link rel = stylesheet href = /src/main.css>
-        <link rel = icon type = image/x-icon  href = /src/favs/favicon.ico>
+        <meta property = og:title content = 'News - Joachim Ford'>
+        <meta property = og:description content = 'Free HTML5 game dev updates, blog posts, and news! Discover indie games at JoachimFord.uk'>
+        <meta property = og:image content = https://joachimford.uk/assets/leap-lava.png>
+
+        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Joachim" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <title>Indie Game Updates & News - Joachim Ford</title>
+        <link rel = stylesheet href = /assets/styles.css>
+        <link rel = stylesheet href = /assets/topnav.css>
+        <link rel = stylesheet href = /assets/main.css>
+        <link rel = stylesheet href = /assets/hero.css>
+        <link rel = stylesheet href = /assets/infinite-carousel.css>
+        <link rel = stylesheet href = /assets/forms.css>
+        <link rel = stylesheet href = /assets/footer.css>
+        <link rel = stylesheet href = /assets/a.css>
+        <link rel = stylesheet href = /assets/demo.css>
+        <link rel = stylesheet href = /assets/code.css>
+
+        <link rel = stylesheet href = /assets/controls.css>
     </head>
-
-    <body>
-        <section class = topnav>
-            <div class = title>
-                <a class = brand href = '/'>Joachim Ford</a>
-                <a class = about href = /about>About</a>
-            </div>
-            <div class = nav>
-                <a href = /games>Games</a>
-                <a href = /projects>Projects</a>
-                <a href = /blogs>Blogs</a>
-                <a href = /news>News</a>
-            </div>
-        </section>
-
-        <section class = main>
-            <span class = date>01.08.2024</span>
-            <div class = demo>
-                <div>
-                    <h2>Splash Dash ~ js1024 winner 2024</h2>
-                    <span class = bio>Can you survive the cold?</span>
-                </div>
-
-                <div class = big>
-                    <a href = /src/news/splashDash target = _blank>
-                        <img class = img src = /src/news/splash_dash.png>
-                        <div class = play><img src = /src/images/play.svg></svg></div>
+    <body class = dark>
+        <div class = over-hold>
+            <section class = topnav>
+                <div class = topnav-container>
+                    <a class = topnav-home href = /index#>
+                        <div class = topnav-logo>
+                            <img src = /assets/logo.png alt = logo>
+                        </div>
+                        <div class = topnav-title>
+                            <h2>Joachim</h2>
+                            <h2>Ford.uk</h2>
+                        </div>
                     </a>
-                </div>
+                    <div class = topnav-menu>
+                        <div class = topnav-menu-wide>
+                            <a href = /games#>Games</a>
+                            <a href = /projects#>Projects</a>
+                            <a href = /blog#>Blog</a>
+                        </div>
 
-                <p>Hello! I've recently released a new <b>1024 byte</b> game for a competition!
-                <b>Splash Dash</b> ranked #1 in the end (my first victory!) and
-                can be played on any modern browser.</p>
+                        <div class = topnav-separator></div>
 
-                <span class = subDemo>
-                    <p>Use the <b>Arrow Keys</b> or <b>WASD</b> to move the player. Make your way
-                    through three unique beaches and grab all the coins to reach
-                    the <b>Golden Paradise</b> at the end.
-                    The bar at the top of the screen represents your temperature.
-                    Complete each level before it runs out!</p>
-                </span>
+                        <div id = color-theme>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.5 0 13 13">
+                                <path d="M 0 0 A 2.25 2.25 90 0 0 0 13 A 2.25 2.25 90 0 0 0 0 Z M 0 2 A 2.25 2.25 90 0 1 0 11 Z"/>
+                            </svg>
+                        </div>
 
-                <p>Ever wondered how these 1k games are made? Check out the blog
-                <a class = normal href = /src/blogs/splash_dash_tutorial>
-                The Splash Dash Tutorial</a> to learn more about it.</p>
-                <span>Here is the entire source code.
+                        <div class = topnav-separator></div>
 
-                <pre class = code>&lt;canvas id=c>&lt;script>for(p='(e,d)Q&lt;17&!PeightO0,NNNWLr(KfoKJ=d:Ikey x,y=c./2o.fillRect(+.),4,.1e==>S(e=innerd=(i-1Styl"#+=-e)*u+HA(d5,e(d,eA)|	5)M[i-d)*u+W,(&&(=Q=>*Math.sin(+1]==e. Codel=n=>{JWwidthWidth6,HhOHO6,ogetContext`2d`,u=(W+H)5,r=,l,f)=>l,u*f,u*fC=d,F=e,g&s?f=-.18:ef.007,h?d-=.1:qd.1t,KLKs=N9,WA&!	&!)e%1&lt;fF,s=1,f=0	)|A||d&lt;0|d5>70C,	)f=NF)ePA)&a)>k[~~d*~~e]=1R=Nx=70;x--;)Jy=30;y--;)"+~(5x)-543A()?K,1):a()>&yPk[x*y]ff0",Kx4,y41p/50+x+R++.3));JK-W,NWK7L034",L-m*W/5e3,H/9r+f,.4rKd3,e0698",i=634;i-=2;o.lineTo(/9]+13))p?(]*>3(]02p*)-),~=~/9)&e>12&e&lt;14?f/4:*=.97*&lt;630-=]5):M.push(N0);KN13,70(R?++m>5e3?C:p9:T>4?t="#ff0":k=[T*=14,Tm=1],requestAnimationFrame(l)},f=g=h=q=s=u=T=m=p=Nk=[M=[]],t="#3897",S38|87?gI39|68?qI37|65?hINon down,1on upa(1+~~e,~~d,6d*e*9+T)+d5AaQ>Nl()';G=/[^!-HMR-~]/.exec(p);)with(p.split(G))p=join(shift());eval(p)&lt;/script></pre></span>
-            </div>
+                        <div class = topnav-vertical-menu>
+                            <a href = /news# class = active>News</a>
+                            <a href = /about#>About</a>
+                            <a href = /contact#>Contact</a>
+                        </div>
+                    </div>
 
-            <span class = date>18.04.2024</span>
-            <div class = demo>
-                <div>
-                    <h2>Squirtcopter</h2>
-                    <span class = bio>Squirt your way to victory!</span>
-                </div>
-
-                <div class = big>
-                    <div class = youtube>
-                        <iframe src = "https://www.youtube.com/embed/WdBWAVmWlqE?si=4msp0U8225HGPq54" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                    <div id = nav-bars>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 4 3">
+                            <path stroke-width=".5" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 0 0 L 3 0 M 0 1 L 3 1 M 0 2 L 2 2"/>
+                        </svg>
                     </div>
                 </div>
+            </section>
 
-                <span>
-                    Hello everyone! I've just submitted a new JavaScript game for a competition.
-                    If you scroll down a little way, you'll notice this is a
-                    remake of a smaller version I made for JoBase about a year ago. Hope you enjoy!
-                </span>
-
-                <span><a class = button href = /src/content/squirtcopter><b>PLAY NOW</b></a></span>
-            </div>
-
-            <span class = date>30.12.2023</span>
-            <div class = demo>
-                <div>
-                    <h2>Io's Mission</h2>
-                    <span class = bio>The New Online Adventure Game</span>
+            <section class = hero-section>
+                <div id = hero>
+                    <div class = hero-target></div>
+                    <h1 id = hero-text>
+                        <div>
+                            <span>N</span><span>e</span><span>w</span><span>s</span>
+                        </div>
+                    </h1>
                 </div>
+            </section>
 
-                <div class = big>
-                    <div class = youtube>
-                        <iframe src = "https://www.youtube.com/embed/MUapUWdwDU8?si=3BvLh4n_qQR_z3un" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+            <section class = main>
+                <div class = 'content top-huge-pad bottom-huge-pad'>
+                    <div class = demo-gallery>
+                        <div class = 'demo-box wide no-hover'>
+                            <div class = demo-head>
+                                <h2 class = h3>
+                                    Splash Dash
+                                </h2>
+                                <h3 class = h4>js1024 winner 2024</h3>
+                            </div>
+                            <a href = /blog/platform-game-in-1k class = 'demo-img-container'>
+                                <img class = demo-img src = /assets/platform-game-in-1k.png alt = 'Make a 1 Kilobyte JavaScript platform game with code golfing'>
+
+                                <div class = 'demo-button-in-image'>
+                                    Play now
+                                    <img class = demo-button-in-image-icon src = /assets/run.svg>
+                                </div>
+                            </a>
+                            <div class = demo-text>
+                                <div class = 'demo-body-text'>
+                                    <p>
+                                        Hello! Check out Splash Dash, the new platform
+                                        game that's only <b>one kilobyte</b> in size.
+                                        Winner of js1024 2024!
+                                        Due to the low byte size, this game cannot
+                                        be played on mobile.
+                                    </p>
+                                    <p>
+                                        Move with the Arrow Keys, navigate through
+                                        three unique beaches and grab all the coins
+                                        to reach the Golden Paradise.
+                                        Each level is time restricted, so keep an eye
+                                        on the temperature bar.
+                                    </p>
+                                    <p>
+                                        The entire game code is displayed below!
+                                    </p>
+
+                                    <div class = 'code-holder top bottom'>
+                                        <div class = code-buttons>
+                                            <a href = /games/splash-dash>
+                                                <div data-tip = 'run' class = 'code-run code-button-icon'>
+                                                    <img src = /assets/run.svg alt = 'play icon'>
+                                                </div>
+                                            </a>
+                                            <div data-tip = 'copy' class = 'code-copy code-button-icon'>
+                                                <img src = /assets/copy.svg alt = 'copy icon'>
+                                            </div>
+                                        </div>
+                                        <pre class = code><span style="color:var(--operator)">&lt;</span><span style="color:var(--variable)">canvas</span> <span style="color:var(--variable)">id</span><span style="color:var(--operator)">=</span><span style="color:var(--variable)">c</span><span style="color:var(--operator)">>&lt;</span><span style="color:var(--variable)">script</span><span style="color:var(--operator)">></span><span style="color:var(--keyword)">for</span><span style="color:var(--operator)">(</span><span style="color:var(--variable)">p</span><span style="color:var(--operator)">=</span><span style="color:var(--string)">'(e,d)Q&lt;17&amp;!PeightO0,NNNWLr(KfoKJ=d:Ikey x,y=c./2o.fillRect(+.),4,.1e==>S(e=innerd=(i-1Styl"#+=-e)*u+HA(d5,e(d,eA)|	5)M[i-d)*u+W,(&amp;&amp;(=Q=>*Math.sin(+1]==e. Codel=n=>{JWwidthWidth6,HhOHO6,ogetContext`2d`,u=(W+H)5,r=,l,f)=>l,u*f,u*fC=d,F=e,g&amp;s?f=-.18:ef.007,h?d-=.1:qd.1t,KLKs=N9,WA&amp;!	&amp;!)e%1&lt;fF,s=1,f=0	)|A||d&lt;0|d5>70C,	)f=NF)ePA)&amp;a)>k[~~d*~~e]=1R=Nx=70;x--;)Jy=30;y--;)"+~(5x)-543A()?K,1):a()>&amp;yPk[x*y]ff0",Kx4,y41p/50+x+R++.3));JK-W,NWK7L034",L-m*W/5e3,H/9r+f,.4rKd3,e0698",i=634;i-=2;o.lineTo(/9]+13))p?(]*>3(]02p*)-),~=~/9)&amp;e>12&amp;e&lt;14?f/4:*=.97*&lt;630-=]5):M.push(N0);KN13,70(R?++m>5e3?C:p9:T>4?t="#ff0":k=[T*=14,Tm=1],requestAnimationFrame(l)},f=g=h=q=s=u=T=m=p=Nk=[M=[]],t="#3897",S38|87?gI39|68?qI37|65?hINon down,1on upa(1+~~e,~~d,6d*e*9+T)+d5AaQ>Nl()'</span>;<span style="color:var(--variable)">G</span><span style="color:var(--operator)">=/</span>[^!<span style="color:var(--operator)">-</span><span style="color:var(--variable)">HMR</span><span style="color:var(--operator)">-</span>~]<span style="color:var(--operator)">/</span>.<span style="color:var(--function)">exec</span>(<span style="color:var(--variable)">p</span><span style="color:var(--operator)">)</span>;<span style="color:var(--operator)">)</span><span style="color:var(--keyword)">with</span><span style="color:var(--operator)">(</span><span style="color:var(--variable)">p</span>.<span style="color:var(--function)">split</span>(<span style="color:var(--variable)">G</span><span style="color:var(--operator)">))</span><span style="color:var(--variable)">p</span><span style="color:var(--operator)">=</span><span style="color:var(--function)">join</span>(<span style="color:var(--function)">shift</span>(<span style="color:var(--operator)">))</span>;<span style="color:var(--keyword)">eval</span><span style="color:var(--operator)">(</span><span style="color:var(--variable)">p</span><span style="color:var(--operator)">)&lt;/</span><span style="color:var(--variable)">script</span><span style="color:var(--operator)">></span></pre>
+                                    </div>
+
+                                    <p>
+                                        Ever wondered how these 1k games are made?
+                                        Check out my blog post
+                                        <a href = /blog/platform-game-in-1k class = link>
+                                            "Make a Platform Game in 1K of JavaScript"
+                                        </a>
+                                        to learn more about it!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class = 'demo-box wide no-hover'>
+                            <div class = demo-head>
+                                <h2 class = h3>
+                                    Squirtcopter
+                                </h2>
+                                <h3 class = h4>The Fast-Paced Helicopter Game</h3>
+                            </div>
+                            <a href = /games/squirtcopter class = 'demo-img-container'>
+                                <img class = demo-img src = /assets/squirtcopter-3.png alt = 'A fast-paced 2D helicopter indie game with retro inspired graphics'>
+
+                                <div class = 'demo-button-in-image'>
+                                    Play now
+                                    <img class = demo-button-in-image-icon src = /assets/run.svg>
+                                </div>
+                            </a>
+                            <div class = demo-highlight>
+                                Defeat the bosses and save humanity in a fast-paced
+                                action adventure.
+                            </div>
+                            <div class = demo-text>
+                                <div class = 'demo-body-text'>
+                                    <p>
+                                        Hello everyone! Check out my new action
+                                        helicopter game for Gamedev.js 2024.
+                                        This game is a complete upgrade and rewrite of
+                                        an earlier version I made a couple of years
+                                        ago. Hope you enjoy!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <span>
-                    Hello! Check out my new game! You can play it for free at
-                    the link below. Tell me what you think!
-                </span>
-
-                <span><a class = button href = /src/content/ios_mission><b>PLAY NOW</b></a></span>
-            </div>
-
-            <span class = date>10.07.2023</span>
-            <div class = demo>
-                <div>
-                    <h2 class = news>Leap Lava</h2>
-                    <span class = bio>An (almost) 1 kilobyte platform game</span>
+            <section class = footer>
+                <div class = footer-left>
+                    <span>&copy; Joachim Ford <span id = year>2025</span></span>
+                    <span>All rights reserved</span>
+                    <span class = top-small>
+                        <form class = 'subscribe-form-tiny'>
+                            <div class = flex-x>
+                                <input type = email class = form placeholder = 'email' required>
+                                <button class = send-form-button type = submit>
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </span>
+                    <div class = 'footer-socials top-small'>
+                        <a href = mailto:contact@joachimford.uk target = _blank><img src = /assets/mail.svg alt = 'email icon'></a>
+                        <a href = https://github.com/Hope41 target = _blank><img src = /assets/github.svg alt = 'github icon'></a>
+                        <a href = https://youtube.com/@JoachimFord target = _blank><img src = /assets/youtube.svg alt = 'youtube icon'></a>
+                        <a href = https://joachimford.itch.io target = _blank><img src = /assets/itch.svg alt = 'itch.io icon'></a>
+                        <a href = https://x.com/JoachimFord target = _blank><img src = /assets/x.svg alt = 'x logo'></a>
+                    </div>
                 </div>
-
-                <div class = big>
-                    <a href = /src/news/leapLava target = _blank>
-                        <img class = img src = /src/news/leap_lava.png>
-                        <div class = play><img src = /src/images/play.svg></svg></div>
-                    </a>
+                <div class = footer-right>
+                    <a href = /index# class = basic-link>Home</a>
+                    <a href = /games# class = basic-link>Games</a>
+                    <a href = /projects# class = basic-link>Projects</a>
+                    <a href = /blog# class = basic-link>Blog</a>
+                    <a href = /news# class = basic-link>News</a>
+                    <a href = /about# class = basic-link>About</a>
+                    <a href = /contact# class = basic-link>Contact</a>
                 </div>
+            </section>
+        </div>
 
-                <p>Hello everyone! Recently, I entered a competition for projects
-                under 1024 bytes of code.
-                It was a great challenge to compress a complete platform game
-                into this tight size limitation.</p>
-
-                <p>Use the arrow keys to leap from the lava! Can you get to 2048 points in time?</p>
-
-                <p>Here is the entire 1042 byte source code: (It was originally 1024 bytes
-                but it's a little longer due to performance and response fixes)</p>
-
-                <pre class = code>for(_='=iZ(iYZ=>LYX~~((A key=0:,c[forf](p+=->0k.*i+=0)w)/6;i=0;++i<${i}fill/2h-=(&&),	g]=)"#fff"`rgb(,q+14,5,5),q+9,14,14)99==q0,S=Math.sin,R=l=>{(w=a.width,h=a.height,T>m+?(k=F++):(A-A-N)5,t.2	$-$-T+)/15,i;)c[g="Style"]=${*SY},`f="Rect"](5,w,h);Y60;)sZ/12,o=SY)*w/s,M=w+s,r(w-s+o*s-A/300*s)%M+M)%M-sr,$/400*s,s,-h+$)i<59?,,)`:"#000";(Ty,T|I?u?y12:T?Tyy.4p=N+h-A,q=T+-$,5829,r?N4:l(N-=4	I=i= -< +++)d=h-A+60,eS((OZ%9)*O)<.6|(bZ%30==)&i20*(SY)+i)-~Y/3*2-(bi+SY+t/Y/15))/.7	E$+e,p>d-50&p<d+60&q>E-(Cq+(E-	C<-9-5*y?Np-d?4:-4:(TC-y,I=1)	c[f](d,E,6e);c.font=`3em"`"#f40c"-$+h,w,m?mm-W=.2+.3*S(t/3+t4<2.4?W:2.4	c[f](p+1637,9,${.6-(m-$)/3e3})`w,h,c.Text(t<2048k?~~t:(F++,0==k?"LOSE":(m="WIN!")	9,45	requestAnimationFrame(R)},t=y=N=I=F=m=1,T1A=$50k={},Li,f)=>{38=qZ.Code)|90|87(u=f	39|68?r=f:37|65|81(l=f)},ondownX,1	onupX	R()';G=/[- X-Z]/.exec(_);)with(_.split(G))_=join(shift());eval(_)</pre>
-            </div>
-
-            <span class = date>03.05.2023</span>
-            <div class = demo>
-                <div>
-                    <h2 class = news>Squirtcopter</h2>
-                    <span class = bio>An Infinite JoBase Shooter</span>
-                </div>
-
-                <div class = big><img class = img src = /src/news/squirtcopter.png></div>
-
-                <p>I've just finished another <a class = normal href = https://jobase.org target = _blank>JoBase</a> game!
-                Use your helicopter to explore a procedural world of procedural enemies with procedural powers!
-                The game can go on forever, but my current record is 8581m
-                (I could have carried on, but I'd already spent some hours on it and was getting bored.)</p>
-                <p>You can play the game by typing
-                <span class = snip>python -m JoBase.examples.squirtcopter</span> into the terminal.
-                Hope you enjoy it!
-                <p>Source code available
-                <a class = normal href = https://github.com/JoBase/JoBase/tree/main/JoBase/examples/squirtcopter target = blank>here</a>.</p>
-                <span><a class = button href = https://jobase.org/squirtcopter target = _blank>
-                <b>TRY IT ONLINE</b></a></span>
-            </div>
-
-            <span class = date>10.12.2022</span>
-            <div class = demo>
-                <div>
-                    <h2 class = news>Blue Hue</h2>
-                    <span class = bio>A JoBase Platform Game</span>
-                </div>
-
-                <div class = big><img class = img src = /src/news/blue_hue.png></div>
-
-                <p>Hello! I've just finished making a platform game for
-                <a class = normal href = https://jobase.org target = _blank>JoBase</a>
-                - a new python library for beginner coders.</p>
-
-                <p>You can play <b>Blue Hue</b> by installing JoBase (and Python, if you haven't already) and typing
-                <span class = snip>python -m JoBase.examples.blue_hue</span> into the terminal.
-                Check out its code on
-                <a class = normal href = https://github.com/JoBase/JoBase/tree/main/JoBase/examples/blue_hue target = blank>Github</a>!</p>
-
-                <span><a class = button href = https://jobase.org/blue-hue target = _blank>
-                <b>TRY IT ONLINE</b></a></span>
-            </div>
-        </section>
-
-        <button class = theme onclick = toggleTheme()>Change Theme</button>
-        <span class = copyright>
-            &copy; <span class = year></span> Joachim Ford. All rights reserved.
-            <a href = https://github.com/Hope41 target = _blank><img src = /src/images/github.svg></img></a>
-            <a href = mailto:hello@joachimford.uk><img src = /src/images/mail.svg></img></a>
-        </span>
+        <script src = /assets/main.js></script>
+        <script src = /assets/hero.js></script>
+        <script src = /assets/code.js></script>
     </body>
 </html>

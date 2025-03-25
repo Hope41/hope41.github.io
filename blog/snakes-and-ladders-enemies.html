@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang = en-GB id = html>
+    <head>
+        <meta charset = UTF-8>
+        <meta name = viewport content = 'width=device-width, initial-scale=1.0'>
+        <meta name = description content = "A beginner's guide to creating procedural enemies for game development">
+        <meta name = author content = 'Joachim Ford'>
+
+        <meta property = og:title content = 'Making the Enemies of Snakes and Ladders - Joachim Ford'>
+        <meta property = og:description content = "A beginner's guide to creating procedural enemies for game development">
+        <meta property = og:image content = https://joachimford.uk/assets/logo.png>
+
+        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Joachim" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <title>Making the Enemies of Snakes and Ladders - Joachim Ford</title>
+        <link rel = stylesheet href = /assets/styles.css>
+        <link rel = stylesheet href = /assets/topnav.css>
+        <link rel = stylesheet href = /assets/main.css>
+        <link rel = stylesheet href = /assets/hero.css>
+        <link rel = stylesheet href = /assets/infinite-carousel.css>
+        <link rel = stylesheet href = /assets/forms.css>
+        <link rel = stylesheet href = /assets/footer.css>
+        <link rel = stylesheet href = /assets/a.css>
+        <link rel = stylesheet href = /assets/demo.css>
+        <link rel = stylesheet href = /assets/cool-text.css>
+        <link rel = stylesheet href = /assets/deco.css>
+        <link rel = stylesheet href = /assets/comment.css>
+        <link rel = stylesheet href = /assets/checkbox.css>
+        <link rel = stylesheet href = /assets/popup.css>
+        <link rel = stylesheet href = /assets/lightbox.css>
+        <link rel = stylesheet href = /assets/code.css>
+
+        <link rel = stylesheet href = /assets/controls.css>
+    </head>
+    <body class = dark>
+        <div class = over-hold>
+            <section class = topnav>
+                <div class = topnav-container>
+                    <a class = topnav-home href = /index#>
+                        <div class = topnav-logo>
+                            <img src = /assets/logo.png alt = 'Pixel art of a young boy with black hair'>
+                        </div>
+                        <div class = topnav-title>
+                            <h2>Joachim</h2>
+                            <h2>Ford.uk</h2>
+                        </div>
+                    </a>
+                    <div class = topnav-menu>
+                        <div class = topnav-menu-wide>
+                            <a href = /games#>Games</a>
+                            <a href = /projects#>Projects</a>
+                            <a href = /blog# class = active>Blog</a>
+                        </div>
+
+                        <div class = topnav-separator></div>
+
+                        <div id = color-theme>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.5 0 13 13">
+                                <path d="M 0 0 A 2.25 2.25 90 0 0 0 13 A 2.25 2.25 90 0 0 0 0 Z M 0 2 A 2.25 2.25 90 0 1 0 11 Z"/>
+                            </svg>
+                        </div>
+
+                        <div class = topnav-separator></div>
+
+                        <div class = topnav-vertical-menu>
+                            <a href = /news#>News</a>
+                            <a href = /about#>About</a>
+                            <a href = /contact#>Contact</a>
+                        </div>
+                    </div>
+
+                    <div id = nav-bars>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 4 3">
+                            <path stroke-width=".5" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 0 0 L 3 0 M 0 1 L 3 1 M 0 2 L 2 2"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <section class = hero-section>
+                <div class = hero-background>
+                    <img src = /assets/snakes-and-ladders-enemies-2.png>
+                </div>
+                <div id = hero class = transparent-bg>
+                </div>
+            </section>
+
+            <section class = main>
+                <div class = main-date>6 Nov. 2022</div>
+                <div class = 'content top-big-pad bottom'>
+                    <h1 class = 'h1 top-big center bottom-big'>
+                        Making the Enemies of Snakes and Ladders
+                    </h1>
+
+                    <div class = 'demo-img-container padded-side top-pad bottom-pad'>
+                        <div>
+                            <div class = view-image>
+                                <img class = demo-img src = /assets/snakes-and-ladders-enemies-2.png>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = 'text shift bottom-big-pad top-big'>
+                        <p class = spaced>
+                            This post runs through how the enemies of
+                            <a class = link target = _blank href = /games/snakes-and-ladders>
+                                Snakes and Ladders</a>
+                            are animated and rendered. Each simplified
+                            example has the relevant code underneath, so please
+                            to have a look if you need help.
+                        </p>
+
+                        <p class = spaced>
+                            Please keep in mind that not all the enemies are
+                            showcased on this page - you'll have to play the
+                            game to find that out! The main purpose for this
+                            blog is to help people understand the logic behind
+                            the creatures.
+                        </p>
+
+                        <p class = spaced>
+                            Every enemy in the game uses a similar walking pattern
+                            - one that you may recognise from Anthrophobia. In
+                            case you haven't already seen it, this "walking
+                            pattern" is based on a circle with a limit at its base.
+                        </p>
+
+                        <iframe class = 'demo-frame top bottom' src = /assets/fear-of-crowds-2></iframe>
+                    </div>
+
+                    <h2 class = 'h3 top bottom'>Weird Worm Creature (Name Needed)</h2>
+
+                    <div class = 'text shift top bottom-big-pad'>
+                        <p class = spaced>
+                            It's quite hard to see, but even the first enemy uses
+                            this circular walking pattern. Notice how the joints
+                            move. It's a small change, but it's vital to get
+                            the illusion of forward movement.
+                        </p>
+
+                        <p class = spaced>
+                            If you happen to think of a good name for this
+                            creature, please let me know in the comments below!
+                        </p>
+
+                        <iframe class = 'demo-frame top bottom' src = /assets/snakes-and-ladders-enemies-1></iframe>
+
+                        <div class = 'code-holder top bottom'>
+                            <div class = code-buttons>
+                                <div data-tip = 'copy' class = 'code-copy code-button-icon'>
+                                    <img src = /assets/copy.svg alt = 'copy icon'>
+                                </div>
+                            </div>
+                            <pre class = code><span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">FOOT_LIFT</span> <span style="color:var(--operator)">=</span> .<span style="color:var(--number)">35</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">FOOT_SLIDE</span> <span style="color:var(--operator)">=</span> .<span style="color:var(--number)">3</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">segments</span> <span style="color:var(--operator)">=</span> []
+
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">generate</span> <span style="color:var(--operator)">=</span> <span style="color:var(--operator)">()</span> <span style="color:var(--operator)">=></span> <span style="color:var(--operator)">{</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">parts</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">6</span>
+    <span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">number</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">0</span>
+
+    <span style="color:var(--keyword)">for</span> <span style="color:var(--operator)">(</span><span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">0</span>; <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">&lt;</span> <span style="color:var(--variable)">parts</span>; <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">++)</span> <span style="color:var(--operator)">{</span>
+        <span style="color:var(--variable)">number</span> <span style="color:var(--operator)">+=</span> <span style="color:var(--variable)">parts</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">i</span>
+        <span style="color:var(--variable)">segments</span>.<span style="color:var(--function)">push</span>(<span style="color:var(--variable)">number</span><span style="color:var(--operator)">)</span>
+    <span style="color:var(--operator)">}</span>
+<span style="color:var(--operator)">}</span>
+<span style="color:var(--function)">generate</span>(<span style="color:var(--operator)">)</span>
+
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">step</span> <span style="color:var(--operator)">=</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">i</span>, <span style="color:var(--variable)">str</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">=></span> <span style="color:var(--operator)">{</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">range</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">1</span> <span style="color:var(--operator)">/</span> <span style="color:var(--variable)">segments</span>.<span style="color:var(--variable)">length</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">FOOT_SLIDE</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">length</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">range</span> <span style="color:var(--operator)">></span> .<span style="color:var(--number)">1</span> <span style="color:var(--operator)">?</span> <span style="color:var(--variable)">range</span> <span style="color:var(--operator)">:</span> .<span style="color:var(--number)">1</span>
+
+    <span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">X</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">0</span>
+    <span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">Y</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">0</span>
+
+    <span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">str</span> <span style="color:var(--operator)">==</span> <span style="color:var(--string)">'x'</span><span style="color:var(--operator)">)</span>
+        <span style="color:var(--variable)">X</span> <span style="color:var(--operator)">=</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">i</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">width</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">/</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">segments</span>.<span style="color:var(--variable)">length</span> <span style="color:var(--operator)">-</span> <span style="color:var(--number)">1</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">cos</span>(<span style="color:var(--variable)">WALK</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">segments</span>[<span style="color:var(--variable)">i</span>]<span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">length</span>
+    <span style="color:var(--keyword)">else</span>
+        <span style="color:var(--variable)">Y</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">WALK</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">segments</span>[<span style="color:var(--variable)">i</span>]<span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">FOOT_LIFT</span>
+
+    <span style="color:var(--variable)">Y</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Y</span> <span style="color:var(--operator)">></span> <span style="color:var(--number)">0</span> <span style="color:var(--operator)">?</span> <span style="color:var(--variable)">height</span> <span style="color:var(--operator)">:</span> <span style="color:var(--variable)">height</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">Y</span>
+
+    <span style="color:var(--keyword)">return</span> <span style="color:var(--variable)">X</span> <span style="color:var(--operator)">?</span> <span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">X</span> <span style="color:var(--operator)">:</span> <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">Y</span>
+<span style="color:var(--operator)">}</span>
+
+<span style="color:var(--variable)">ctx</span>.<span style="color:var(--variable)">fillStyle</span> <span style="color:var(--operator)">=</span> <span style="color:var(--string)">'rgb(50, 0, 0)'</span>
+<span style="color:var(--keyword)">for</span> <span style="color:var(--operator)">(</span><span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">0</span>; <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">&lt;</span> <span style="color:var(--variable)">segments</span>.<span style="color:var(--variable)">length</span>; <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">++)</span> <span style="color:var(--operator)">{</span>
+    <span style="color:var(--function)">line</span>([
+        <span style="color:var(--function)">step</span>(<span style="color:var(--variable)">i</span> <span style="color:var(--operator)">-</span> <span style="color:var(--number)">1</span>, <span style="color:var(--string)">'x'</span><span style="color:var(--operator)">)</span>,
+        <span style="color:var(--function)">step</span>(<span style="color:var(--variable)">i</span> <span style="color:var(--operator)">-</span> <span style="color:var(--number)">1</span>, <span style="color:var(--string)">'y'</span><span style="color:var(--operator)">)</span>,
+        <span style="color:var(--function)">step</span>(<span style="color:var(--variable)">i</span>, <span style="color:var(--string)">'x'</span><span style="color:var(--operator)">)</span>,
+        <span style="color:var(--function)">step</span>(<span style="color:var(--variable)">i</span>, <span style="color:var(--string)">'y'</span><span style="color:var(--operator)">)</span>
+    ], .<span style="color:var(--number)">06</span><span style="color:var(--operator)">)</span>
+<span style="color:var(--operator)">}</span></pre>
+                        </div>
+                    </div>
+
+                    <h2 class = 'h3 top bottom'>The Cube</h2>
+
+                    <div class = 'text shift top bottom-big-pad'>
+                        <p class = spaced>
+                            I agree that this enemy looks a little basic, but
+                            surprisingly it turned out to be the hardest one to
+                            get working. Overall, this enemy has to go through
+                            four main procedures to give you the final result.
+                        </p>
+
+                        <p class = spaced>
+                            <span class = bullet-point>Rotate in the direction it's moving (easy)</span>
+                            <span class = bullet-point>Close and open its eyes before and after rolling (not so easy)</span>
+                            <span class = bullet-point>Bump up and down so that it looks like its rolling along the ground (rather tricky)</span>
+                            <span class = bullet-point>Make sure it only stops rolling when resting on an edge (tricky)</span>
+                        </p>
+
+                        <p class = spaced>
+                            Take a look at the source code if you need to understand it better.
+                        </p>
+
+                        <iframe class = 'demo-frame top bottom' src = /assets/snakes-and-ladders-enemies-2></iframe>
+
+                        <div class = 'code-holder top bottom'>
+                            <div class = code-buttons>
+                                <div data-tip = 'copy' class = 'code-copy code-button-icon'>
+                                    <img src = /assets/copy.svg alt = 'copy icon'>
+                                </div>
+                            </div>
+                            <pre class = code><span style="color:var(--variable)">time</span> <span style="color:var(--operator)">+=</span> .<span style="color:var(--number)">04</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">EYE_SIZE</span> <span style="color:var(--operator)">=</span> .<span style="color:var(--number)">3</span> <span style="color:var(--operator)">*</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">width</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">height</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">EYE</span> <span style="color:var(--operator)">=</span> <span style="color:var(--operator)">{</span>
+    <span style="color:var(--variable)">from_center</span><span style="color:var(--operator)">:</span> .<span style="color:var(--number)">03</span>,
+    <span style="color:var(--variable)">from_top</span><span style="color:var(--operator)">:</span> .<span style="color:var(--number)">14</span>
+<span style="color:var(--operator)">}</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">PUPIL_SIZE</span> <span style="color:var(--operator)">=</span> .<span style="color:var(--number)">05</span>
+
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">COLOR</span> <span style="color:var(--operator)">=</span> <span style="color:var(--string)">'rgb(160, 50, 0)'</span>
+
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">dist_x</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">width</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">dist_y</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">height</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">diagonal_dist</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sqrt</span>(<span style="color:var(--operator)">(</span><span style="color:var(--variable)">dist_x</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">dist_x</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">+</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">dist_y</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">dist_y</span><span style="color:var(--operator)">))</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">bump_dist</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">diagonal_dist</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>
+
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">bump</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">abs</span>(<span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">WALK</span> <span style="color:var(--operator)">*</span> <span style="color:var(--number)">2</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">bump_dist</span><span style="color:var(--operator)">)</span>
+
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">Y</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">WALK</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">dist_y</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">X</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">cos</span>(<span style="color:var(--variable)">WALK</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">dist_x</span>
+
+<span style="color:var(--variable)">ctx</span>.<span style="color:var(--variable)">fillStyle</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">COLOR</span>
+<span style="color:var(--function)">line</span>([<span style="color:var(--operator)">-</span><span style="color:var(--variable)">X</span>, <span style="color:var(--operator)">-</span><span style="color:var(--variable)">Y</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">bump</span>, <span style="color:var(--variable)">X</span>, <span style="color:var(--variable)">Y</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">bump</span>], <span style="color:var(--variable)">width</span><span style="color:var(--operator)">)</span>
+
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">features</span> <span style="color:var(--operator)">=</span> <span style="color:var(--operator)">()</span> <span style="color:var(--operator)">=></span> <span style="color:var(--operator)">{</span>
+    <span style="color:var(--comment)">// EYES</span>
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--variable)">fillStyle</span> <span style="color:var(--operator)">=</span> <span style="color:var(--string)">'#eef'</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">eye1</span> <span style="color:var(--operator)">=</span> <span style="color:var(--operator)">{</span>
+        <span style="color:var(--variable)">x</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">width</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">EYE</span>.<span style="color:var(--variable)">from_center</span>,
+        <span style="color:var(--variable)">y</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">EYE</span>.<span style="color:var(--variable)">from_top</span>
+    <span style="color:var(--operator)">}</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">eye2</span> <span style="color:var(--operator)">=</span> <span style="color:var(--operator)">{</span>
+        <span style="color:var(--variable)">x</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">width</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">EYE</span>.<span style="color:var(--variable)">from_center</span>,
+        <span style="color:var(--variable)">y</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">EYE</span>.<span style="color:var(--variable)">from_top</span>
+    <span style="color:var(--operator)">}</span>
+
+    <span style="color:var(--function)">fillRect</span>(<span style="color:var(--variable)">eye1</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">EYE_SIZE</span>, <span style="color:var(--variable)">eye1</span>.<span style="color:var(--variable)">y</span>, <span style="color:var(--variable)">EYE_SIZE</span>, <span style="color:var(--variable)">EYE_SIZE</span><span style="color:var(--operator)">)</span>
+    <span style="color:var(--function)">fillRect</span>(<span style="color:var(--variable)">eye2</span>.<span style="color:var(--variable)">x</span>, <span style="color:var(--variable)">eye2</span>.<span style="color:var(--variable)">y</span>, <span style="color:var(--variable)">EYE_SIZE</span>, <span style="color:var(--variable)">EYE_SIZE</span><span style="color:var(--operator)">)</span>
+    
+    <span style="color:var(--comment)">// PUPILS</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">LIMIT</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">EYE_SIZE</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">PUPIL_SIZE</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">center</span> <span style="color:var(--operator)">=</span> <span style="color:var(--operator)">{</span>
+        <span style="color:var(--variable)">x_1</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">eye1</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">EYE_SIZE</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">PUPIL_SIZE</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>,
+        <span style="color:var(--variable)">y_1</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">eye1</span>.<span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">EYE_SIZE</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">PUPIL_SIZE</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>,
+        <span style="color:var(--variable)">x_2</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">eye2</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">EYE_SIZE</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">PUPIL_SIZE</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>,
+        <span style="color:var(--variable)">y_2</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">eye2</span>.<span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">EYE_SIZE</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">PUPIL_SIZE</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>
+    <span style="color:var(--operator)">}</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">rot</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">time</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> .<span style="color:var(--number)">1</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">random</span>(<span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> .<span style="color:var(--number)">2</span> <span style="color:var(--operator)">-</span> .<span style="color:var(--number)">4</span>
+
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--variable)">fillStyle</span> <span style="color:var(--operator)">=</span> <span style="color:var(--string)">'#900'</span>
+    <span style="color:var(--function)">fillRect</span>(
+        <span style="color:var(--variable)">center</span>.<span style="color:var(--variable)">x_1</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">cos</span>(<span style="color:var(--variable)">rot</span> <span style="color:var(--operator)">+</span> .<span style="color:var(--number)">1</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">LIMIT</span>,
+        <span style="color:var(--variable)">center</span>.<span style="color:var(--variable)">y_1</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">rot</span> <span style="color:var(--operator)">+</span> .<span style="color:var(--number)">1</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">LIMIT</span>,
+        <span style="color:var(--variable)">PUPIL_SIZE</span>, <span style="color:var(--variable)">PUPIL_SIZE</span>
+    <span style="color:var(--operator)">)</span>
+    <span style="color:var(--function)">fillRect</span>(
+        <span style="color:var(--variable)">center</span>.<span style="color:var(--variable)">x_2</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">cos</span>(<span style="color:var(--variable)">rot</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">LIMIT</span>,
+        <span style="color:var(--variable)">center</span>.<span style="color:var(--variable)">y_2</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">rot</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">LIMIT</span>,
+        <span style="color:var(--variable)">PUPIL_SIZE</span>, <span style="color:var(--variable)">PUPIL_SIZE</span>
+    <span style="color:var(--operator)">)</span>
+
+    <span style="color:var(--comment)">// BROWS</span>
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--variable)">fillStyle</span> <span style="color:var(--operator)">=</span> <span style="color:var(--string)">'#000'</span>
+    <span style="color:var(--function)">line</span>([
+        <span style="color:var(--variable)">eye1</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">EYE_SIZE</span>,
+        <span style="color:var(--variable)">eye1</span>.<span style="color:var(--variable)">y</span>,
+        <span style="color:var(--variable)">eye1</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">eye2</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">EYE_SIZE</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">eye1</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">EYE_SIZE</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>,
+        <span style="color:var(--variable)">eye1</span>.<span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">EYE_SIZE</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">4</span>,
+        <span style="color:var(--variable)">eye2</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">EYE_SIZE</span>,
+        <span style="color:var(--variable)">eye2</span>.<span style="color:var(--variable)">y</span>,
+    ], .<span style="color:var(--number)">04</span><span style="color:var(--operator)">)</span>
+
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">speed</span> <span style="color:var(--operator)">=</span> .<span style="color:var(--number)">05</span>
+
+    <span style="color:var(--comment)">// open eyes after rolling</span>
+    <span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">closed</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">{</span>
+        <span style="color:var(--variable)">eyelid</span> <span style="color:var(--operator)">-=</span> <span style="color:var(--variable)">speed</span>
+
+        <span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">eyelid</span> <span style="color:var(--operator)">&lt;=</span> <span style="color:var(--number)">0</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">{</span>
+            <span style="color:var(--variable)">eyelid</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">0</span>
+            <span style="color:var(--variable)">closed</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">false</span>
+        <span style="color:var(--operator)">}</span>
+    <span style="color:var(--operator)">}</span>
+
+    <span style="color:var(--comment)">// close eyes before rolling</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">shrink</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">roll_timer</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">speed</span>
+    <span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">shrink</span> <span style="color:var(--operator)">&lt;</span> <span style="color:var(--variable)">EYE_SIZE</span><span style="color:var(--operator)">)</span> <span style="color:var(--variable)">eyelid</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">EYE_SIZE</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">shrink</span>
+
+    <span style="color:var(--comment)">// Draw eyelid</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">pad</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">1</span> <span style="color:var(--operator)">/</span> <span style="color:var(--variable)">scale</span>
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--variable)">fillStyle</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">COLOR</span>
+    <span style="color:var(--function)">fillRect</span>(<span style="color:var(--variable)">x</span>, <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">EYE</span>.<span style="color:var(--variable)">from_top</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">pad</span>, <span style="color:var(--variable)">width</span>, <span style="color:var(--variable)">eyelid</span><span style="color:var(--operator)">)</span>
+<span style="color:var(--operator)">}</span>
+
+<span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span>!<span style="color:var(--variable)">dir</span><span style="color:var(--operator)">)</span> <span style="color:var(--function)">features</span>(<span style="color:var(--operator)">)</span></pre>
+                        </div>
+                    </div>
+
+                    <h2 class = 'h3 top bottom'>The Crab</h2>
+
+                    <div class = 'text shift top bottom-big-pad'>
+                        <p class = spaced>
+                            Getting the legs to move like this was really hard.
+                            In the end, it turned out to be helpful to make a
+                            small drawing animation of it first before writing
+                            it as code. I know, creating "drawing animations"
+                            of your creatures might sound a bit pointless, but
+                            it can actually save a lot of time if your creature
+                            is already difficult to visualise in your head.
+                        </p>
+
+                        <iframe class = 'demo-frame top bottom' src = /assets/snakes-and-ladders-enemies-3></iframe>
+
+                        <div class = 'code-holder top bottom'>
+                            <div class = code-buttons>
+                                <div data-tip = 'copy' class = 'code-copy code-button-icon'>
+                                    <img src = /assets/copy.svg alt = 'copy icon'>
+                                </div>
+                            </div>
+                            <pre class = code><span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">offset</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">WALK</span> <span style="color:var(--operator)">*</span> <span style="color:var(--number)">2</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> .<span style="color:var(--number)">1</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">fake_height</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">1</span>.<span style="color:var(--number)">2</span>
+
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">LEG_WIDTH</span> <span style="color:var(--operator)">=</span> .<span style="color:var(--number)">2</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">LEG_PIVOT</span> <span style="color:var(--operator)">=</span> .<span style="color:var(--number)">4</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">FOOT_MOVE</span> <span style="color:var(--operator)">=</span> .<span style="color:var(--number)">4</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">FOOT_LIFT</span> <span style="color:var(--operator)">=</span> .<span style="color:var(--number)">3</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">KNEE_HEIGHT</span> <span style="color:var(--operator)">=</span> .<span style="color:var(--number)">5</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">ARM_WIDTH</span> <span style="color:var(--operator)">=</span> .<span style="color:var(--number)">2</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">EYE_DOWN</span> <span style="color:var(--operator)">=</span> .<span style="color:var(--number)">3</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">EYE_SIZE</span> <span style="color:var(--operator)">=</span> .<span style="color:var(--number)">6</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">PUPIL_SIZE</span> <span style="color:var(--operator)">=</span> .<span style="color:var(--number)">15</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">ARM_LENGTH</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">1</span>.<span style="color:var(--number)">4</span>
+
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">half</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">width</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">center</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">half</span>
+<span style="color:var(--comment)">// LEG</span>
+<span style="color:var(--variable)">ctx</span>.<span style="color:var(--variable)">fillStyle</span> <span style="color:var(--operator)">=</span> <span style="color:var(--string)">'rgb(34,170,136)'</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">leg</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">val</span> <span style="color:var(--operator)">=></span> <span style="color:var(--operator)">{</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">dir</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sign</span>(<span style="color:var(--variable)">val</span><span style="color:var(--operator)">)</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">walk</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">WALK</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">val</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">val</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">dir</span> <span style="color:var(--operator)">*</span> <span style="color:var(--number)">9</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--number)">5</span>
+
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">step</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">cos</span>(<span style="color:var(--variable)">walk</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">&lt;</span> <span style="color:var(--number)">0</span> && <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">cos</span>(<span style="color:var(--variable)">walk</span><span style="color:var(--operator)">)</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">foot</span> <span style="color:var(--operator)">=</span> <span style="color:var(--operator)">{</span>
+        <span style="color:var(--variable)">x</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--operator)">-</span><span style="color:var(--variable)">walk</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">FOOT_MOVE</span>,
+        <span style="color:var(--variable)">y</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">step</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">FOOT_LIFT</span>
+    <span style="color:var(--operator)">}</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">knee</span> <span style="color:var(--operator)">=</span> <span style="color:var(--operator)">{</span>
+        <span style="color:var(--variable)">x</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--operator)">-</span><span style="color:var(--variable)">walk</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">FOOT_MOVE</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>,
+        <span style="color:var(--variable)">y</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">step</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">FOOT_LIFT</span>
+    <span style="color:var(--operator)">}</span>
+
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">x</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">center</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">val</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">half</span>
+    <span style="color:var(--function)">line</span>([
+        <span style="color:var(--variable)">x</span>,
+        <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">offset</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">fake_height</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">LEG_WIDTH</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>,
+        <span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">knee</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">LEG_PIVOT</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">dir</span>,
+        <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">height</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">KNEE_HEIGHT</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">knee</span>.<span style="color:var(--variable)">y</span>,
+        <span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">foot</span>.<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">LEG_PIVOT</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">dir</span>,
+        <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">height</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">foot</span>.<span style="color:var(--variable)">y</span>
+    ], <span style="color:var(--variable)">LEG_WIDTH</span><span style="color:var(--operator)">)</span>
+<span style="color:var(--operator)">}</span>
+
+<span style="color:var(--function)">leg</span>(<span style="color:var(--operator)">-</span>.<span style="color:var(--number)">9</span><span style="color:var(--operator)">)</span>
+<span style="color:var(--function)">leg</span>(<span style="color:var(--operator)">-</span>.<span style="color:var(--number)">6</span><span style="color:var(--operator)">)</span>
+<span style="color:var(--function)">leg</span>(<span style="color:var(--operator)">-</span>.<span style="color:var(--number)">3</span><span style="color:var(--operator)">)</span>
+<span style="color:var(--function)">leg</span>(.<span style="color:var(--number)">3</span><span style="color:var(--operator)">)</span>
+<span style="color:var(--function)">leg</span>(.<span style="color:var(--number)">6</span><span style="color:var(--operator)">)</span>
+<span style="color:var(--function)">leg</span>(.<span style="color:var(--number)">9</span><span style="color:var(--operator)">)</span>
+
+<span style="color:var(--comment)">// ARM</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">wobble</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">abs</span>(<span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">WALK</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">5</span><span style="color:var(--operator)">))</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">10</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">_arm_ang</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">WALK</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> .<span style="color:var(--number)">5</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--variable)">PI</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">clw_ang</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">WALK</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> .<span style="color:var(--number)">2</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--variable)">PI</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>
+
+<span style="color:var(--keyword)">for</span> <span style="color:var(--operator)">(</span><span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">0</span>; <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">&lt;</span> <span style="color:var(--number)">2</span>; <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">++)</span> <span style="color:var(--operator)">{</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">val</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">?</span> <span style="color:var(--number)">1</span> <span style="color:var(--operator)">:</span> <span style="color:var(--operator)">-</span><span style="color:var(--number)">1</span>
+
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">__arm_ang</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--variable)">PI</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">7</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">val</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">arm_ang</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">_arm_ang</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">__arm_ang</span> <span style="color:var(--operator)">*</span> <span style="color:var(--number)">1</span>.<span style="color:var(--number)">5</span>
+
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">x1</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">center</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">val</span> <span style="color:var(--operator)">*</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">half</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">ARM_WIDTH</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span><span style="color:var(--operator)">)</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">y1</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">offset</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">fake_height</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">x2</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">x1</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">cos</span>(<span style="color:var(--variable)">arm_ang</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">ARM_LENGTH</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">y2</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">y1</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">arm_ang</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">ARM_LENGTH</span>
+
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">snap</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">WALK</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">6</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">cos</span>(<span style="color:var(--variable)">WALK</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">val</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--number)">2</span> <span style="color:var(--operator)">+</span> <span style="color:var(--number)">1</span>.<span style="color:var(--number)">8</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">snap_rot</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">snap</span> <span style="color:var(--operator)">></span> .<span style="color:var(--number)">5</span> <span style="color:var(--operator)">?</span> .<span style="color:var(--number)">5</span> <span style="color:var(--operator)">:</span> <span style="color:var(--variable)">snap</span> <span style="color:var(--operator)">></span> <span style="color:var(--number)">0</span> && <span style="color:var(--variable)">snap</span>
+
+    <span style="color:var(--comment)">// ARMS</span>
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--variable)">fillStyle</span> <span style="color:var(--operator)">=</span> <span style="color:var(--string)">'rgb(34,170,136)'</span>
+    <span style="color:var(--function)">line</span>([<span style="color:var(--variable)">x1</span>, <span style="color:var(--variable)">y1</span>, <span style="color:var(--variable)">x2</span>, <span style="color:var(--variable)">y2</span>], <span style="color:var(--variable)">ARM_WIDTH</span><span style="color:var(--operator)">)</span>
+
+    <span style="color:var(--comment)">// CLAWS</span>
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--variable)">fillStyle</span> <span style="color:var(--operator)">=</span> <span style="color:var(--string)">'rgb(221,85,34)'</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">real</span> <span style="color:var(--operator)">=</span> <span style="color:var(--function)">realPos</span>(<span style="color:var(--variable)">x2</span>, <span style="color:var(--variable)">y2</span><span style="color:var(--operator)">)</span>
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--function)">save</span>(<span style="color:var(--operator)">)</span>
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--function)">translate</span>(<span style="color:var(--variable)">real</span>.<span style="color:var(--variable)">x</span>, <span style="color:var(--variable)">real</span>.<span style="color:var(--variable)">y</span><span style="color:var(--operator)">)</span>
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--function)">save</span>(<span style="color:var(--operator)">)</span>
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--function)">rotate</span>(<span style="color:var(--variable)">clw_ang</span><span style="color:var(--operator)">)</span>
+    <span style="color:var(--function)">rotFillRect</span>(<span style="color:var(--number)">0</span>, <span style="color:var(--number)">0</span>, .<span style="color:var(--number)">9</span>, .<span style="color:var(--number)">5</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">val</span><span style="color:var(--operator)">)</span>
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--function)">restore</span>(<span style="color:var(--operator)">)</span>
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--function)">save</span>(<span style="color:var(--operator)">)</span>
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--function)">rotate</span>(<span style="color:var(--variable)">clw_ang</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">snap_rot</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">val</span><span style="color:var(--operator)">)</span>
+    <span style="color:var(--function)">rotFillRect</span>(<span style="color:var(--number)">0</span>, <span style="color:var(--number)">0</span>, .<span style="color:var(--number)">8</span>, <span style="color:var(--operator)">-</span>.<span style="color:var(--number)">2</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">val</span><span style="color:var(--operator)">)</span>
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--function)">restore</span>(<span style="color:var(--operator)">)</span>
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--function)">restore</span>(<span style="color:var(--operator)">)</span>
+<span style="color:var(--operator)">}</span>
+
+<span style="color:var(--comment)">// BODY</span>
+<span style="color:var(--variable)">ctx</span>.<span style="color:var(--variable)">fillStyle</span> <span style="color:var(--operator)">=</span> <span style="color:var(--string)">'rgb(34,153,119)'</span>
+<span style="color:var(--function)">fillRect</span>(<span style="color:var(--variable)">x</span>, <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">offset</span>, <span style="color:var(--variable)">width</span>, <span style="color:var(--variable)">fake_height</span><span style="color:var(--operator)">)</span>
+
+<span style="color:var(--comment)">// EYES</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">eye</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">val</span> <span style="color:var(--operator)">=></span> <span style="color:var(--operator)">{</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">dir</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sign</span>(<span style="color:var(--variable)">val</span><span style="color:var(--operator)">)</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">eye_x</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">center</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">half</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">val</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">eye_y</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">EYE_DOWN</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">offset</span>
+
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--variable)">fillStyle</span> <span style="color:var(--operator)">=</span> <span style="color:var(--string)">'rgb(255,255,255)'</span>
+    <span style="color:var(--function)">fillRect</span>(<span style="color:var(--variable)">eye_x</span>, <span style="color:var(--variable)">eye_y</span>, <span style="color:var(--variable)">EYE_SIZE</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">dir</span>, <span style="color:var(--variable)">EYE_SIZE</span><span style="color:var(--operator)">)</span>
+
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">ang</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">WALK</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> .<span style="color:var(--number)">3</span>
+
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">sum</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">EYE_SIZE</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span> <span style="color:var(--operator)">-</span> <span style="color:var(--variable)">PUPIL_SIZE</span> <span style="color:var(--operator)">/</span> <span style="color:var(--number)">2</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">X</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">cos</span>(<span style="color:var(--variable)">ang</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">sum</span>
+    <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">Y</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">sin</span>(<span style="color:var(--variable)">ang</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">sum</span>
+
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--variable)">fillStyle</span> <span style="color:var(--operator)">=</span> <span style="color:var(--string)">'rgb(0,0,0)'</span>
+    <span style="color:var(--function)">fillRect</span>(<span style="color:var(--variable)">eye_x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">sum</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">dir</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">X</span>, <span style="color:var(--variable)">eye_y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">sum</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">Y</span>, <span style="color:var(--variable)">PUPIL_SIZE</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">dir</span>, <span style="color:var(--variable)">PUPIL_SIZE</span><span style="color:var(--operator)">)</span>
+
+    <span style="color:var(--variable)">ctx</span>.<span style="color:var(--variable)">fillStyle</span> <span style="color:var(--operator)">=</span> <span style="color:var(--string)">'rgb(51,0,0)'</span>
+    <span style="color:var(--function)">line</span>([
+        <span style="color:var(--variable)">eye_x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">EYE_SIZE</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">dir</span>, <span style="color:var(--variable)">eye_y</span>,
+        <span style="color:var(--variable)">eye_x</span>, <span style="color:var(--variable)">eye_y</span> <span style="color:var(--operator)">+</span> .<span style="color:var(--number)">1</span>
+    ], .<span style="color:var(--number)">1</span><span style="color:var(--operator)">)</span>
+<span style="color:var(--operator)">}</span>
+<span style="color:var(--function)">eye</span>(<span style="color:var(--operator)">-</span>.<span style="color:var(--number)">3</span><span style="color:var(--operator)">)</span>
+<span style="color:var(--function)">eye</span>(.<span style="color:var(--number)">3</span><span style="color:var(--operator)">)</span></pre>
+                        </div>
+                    </div>
+
+                    <h2 class = 'h3 top bottom'>The ...?</h2>
+
+                    <div class = 'text shift top bottom-big-pad'>
+                        <p class = spaced>
+                            Well, I <i>was</i> planning on putting the X-Ray Orb here...
+                            but I decided to leave it out so as not to spoil the
+                            game for you. You'll just have to find out when you
+                            get there!
+                        </p>
+
+                        <p class = spaced>
+                            Thanks for reading to the end, and feel free to let
+                            me know if you have any enquiries!
+                        </p>
+                    </div>
+                </div>
+
+                <div class = 'content top bottom-huge'>
+                    <form class = 'comment bottom-big-pad' data-url = SnakesAndLaddersEnemies>
+                        <h3 class = 'h3 top-small bottom-small center'>
+                            <span class = slightly-dim>
+                                Please leave a comment!
+                            </span>
+                        </h3>
+
+                        <input class = form placeholder = 'name'>
+                        <label for = notify class = checkbox-label>
+                            <div class = checkbox-hold>
+                                <input id = notify class = checkbox data-checked type = checkbox>
+                            </div>
+                            <span class = 'smallish slightly-dim'>Make this comment public</span>
+                        </label>
+
+                        <div class = comment-box-hold>
+                            <textarea class = comment-box required contenteditable placeholder = 'Write your message here'></textarea>
+                        </div>
+
+                        <input class = form type = email placeholder = 'email (optional)'>
+                        <button class = comment-send>Post Comment</button>
+                        <span class = 'dim small-font shift-right right'>(Your email will never be shared or sold. <button class = popup-link data-id = terms type = button>Terms</button>)</span>
+                    </form>
+                </div>
+            </section>
+
+            <section class = footer>
+                <div class = footer-left>
+                    <span>&copy; Joachim Ford <span id = year>2025</span></span>
+                    <span>All rights reserved</span>
+                    <span class = top-small>
+                        <form class = 'subscribe-form-tiny'>
+                            <div class = flex-x>
+                                <input type = email class = form placeholder = 'email' required>
+                                <button class = send-form-button type = submit>
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </span>
+                    <div class = 'footer-socials top-small'>
+                        <a href = mailto:hi@joachimford.uk target = _blank><img src = /assets/mail.svg alt = 'email icon'></a>
+                        <a href = https://github.com/Hope41 target = _blank><img src = /assets/github.svg alt = 'github icon'></a>
+                        <a href = https://youtube.com/@JoachimFord target = _blank><img src = /assets/youtube.svg alt = 'youtube icon'></a>
+                        <a href = https://joachimford.itch.io target = _blank><img src = /assets/itch.svg alt = 'itch.io icon'></a>
+                        <a href = https://x.com/JoachimFord target = _blank><img src = /assets/x.svg alt = 'x logo'></a>
+                    </div>
+                </div>
+                <div class = footer-right>
+                    <a href = /index# class = basic-link>Home</a>
+                    <a href = /games# class = basic-link>Games</a>
+                    <a href = /projects# class = basic-link>Projects</a>
+                    <a href = /blog# class = basic-link>Blog</a>
+                    <a href = /news# class = basic-link>News</a>
+                    <a href = /about# class = basic-link>About</a>
+                    <a href = /contact# class = basic-link>Contact</a>
+                </div>
+            </section>
+        </div>
+
+        <div class = popup id = terms>
+            <div class = popup-text-hold>
+                <div class = popup-close data-id = terms>
+                    <img src = /assets/close.svg>
+                </div>
+                <div class = popup-text>
+                    <h2 class = h4><span class = gray-green>Posting a Comment</span></h2>
+                    <h2 class = h2>Terms</h2>
+                    <div class = 'text shift-right'>
+                        <p class = spaced>
+                            <span class = 'bullet-point big-pad'>
+                                If you post your comment publicly, you agree to
+                                have your <b>name</b> and <b>message</b> posted
+                                on this website. Your comment may also appear in
+                                advertisements for this site.
+                            </span>
+                        </p>
+                        <p class = spaced>
+                            <span class = 'bullet-point big-pad'>
+                                By providing an email address, you will be notified
+                                of any replies. I may also respond to you directly
+                                via the email address provided.
+                            </span>
+                        </p>
+                        <p class = spaced>
+                            Your email will only be used for these purposes
+                            and will never be published, shared or sold.
+                        </p>
+                        <p class = 'spaced smallish'>
+                            The only catch is I get to make you a profile picture
+                            based on your name
+                            <img class = emoji src = /assets/Microsoft-Fluentui-Emoji-3d-Smirking-Face-3d.svg>
+                        </p>
+                        <button class = popup-close data-id = terms>
+                            I Understand
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id = lightbox-overlay>
+            <div id = lightbox-topnav>
+                <div id = lightbox-copy class = lightbox-button>
+                    <img src = /assets/copy.svg>
+                </div>
+                <div id = lightbox-download class = lightbox-button>
+                    <img src = /assets/download.svg>
+                </div>
+                <div id = lightbox-close class = lightbox-button>
+                    <img src = /assets/close.svg>
+                </div>
+            </div>
+            <img src = /assets/ios-mission-1-thumbnail.png id = lightbox-img>
+            <div id = lightbox-prev><img src = /assets/arrow-left.svg></div>
+            <div id = lightbox-next><img src = /assets/arrow-right.svg></div>
+        </div>
+
+        <script src = /assets/main.js></script>
+        <script src = /assets/infinite-carousel.js></script>
+        <script src = /assets/hero.js></script>
+        <script src = /assets/cool-text.js></script>
+        <script src = /assets/popup.js></script>
+        <script src = /assets/profile-interact.js></script>
+        <script src = /assets/demo-carousel.js></script>
+        <script src = /assets/lightbox.js></script>
+        <script src = /assets/code.js></script>
+    </body>
+</html>

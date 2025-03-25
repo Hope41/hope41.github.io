@@ -1,0 +1,25 @@
+.cool-text {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.cool-text div {
+    display: flex;
+    width: fit-content;
+    overflow: hidden;
+}
+
+.cool-text span {
+    display: inline-block;
+    transition: .2s;
+    transform: scale(1);
+}
+
+.cool-text span.hidden {
+    transition-duration: 0s;
+    transform: scale(0);
+}

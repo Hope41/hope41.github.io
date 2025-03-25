@@ -1,300 +1,308 @@
 <!DOCTYPE html>
-<html lang = en-gb>
+<html lang = en-GB>
     <head>
-        <meta charset = utf-8>
-        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
-        <meta name = description content = 'Free online coding blogs and open source games'>
+        <meta charset = UTF-8>
+        <meta name = viewport content = 'width=device-width, initial-scale=1.0'>
+        <meta name = description content = 'Your hub of HTML5 indie games, coding tutorials, and creative tech projects at JoachimFord.uk. Play games online and learn to code in JavaScript!'>
+        <meta name = author content = 'Joachim Ford'>
 
-        <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
-        <script src = /src/js/analytics.js></script>
-        <script src = /src/js/main.js></script>
-        <title>Coding Blogs and Indie Games | Joachim Ford</title>
-        <link rel = stylesheet href = /src/main.css>
-        <link rel = icon type = image/x-icon  href = /src/favs/favicon.ico>
+        <meta property = og:title content = 'Home - Joachim Ford'>
+        <meta property = og:description content = 'A personal hub of HTML5 indie games, coding tutorials, and creative tech projects'>
+        <meta property = og:image content = https://joachimford.uk/assets/ios-mission-1.png>
+
+        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Joachim" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <title>Indie Games, Dev Blog & Free Tools - Joachim Ford</title>
+        <link rel = stylesheet href = /assets/styles.css>
+        <link rel = stylesheet href = /assets/topnav.css>
+        <link rel = stylesheet href = /assets/main.css>
+        <link rel = stylesheet href = /assets/hero.css>
+        <link rel = stylesheet href = /assets/infinite-carousel.css>
+        <link rel = stylesheet href = /assets/forms.css>
+        <link rel = stylesheet href = /assets/footer.css>
+        <link rel = stylesheet href = /assets/a.css>
+        <link rel = stylesheet href = /assets/demo.css>
+        <link rel = stylesheet href = /assets/cool-text.css>
+        <link rel = stylesheet href = /assets/deco.css>
+        <link rel = stylesheet href = /assets/comment.css>
+        <link rel = stylesheet href = /assets/popup.css>
+        <link rel = stylesheet href = /assets/survey.css>
+
+        <link rel = stylesheet href = /assets/controls.css>
+
         <style>
-            html {height: 100%}
-
-            body {
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-                width: 100%;
-                height: 100%;
-                max-width: none;
-            }
-
             canvas {
-                display: inline-block;
+                position: absolute;
+                top: 0;
+                left: 0;
                 width: 100%;
-                position: fixed;
-                top: 60px;
-                background-color: #000;
-            }
-
-            .main {
-                margin: 0;
-                padding: 0;
-                max-width: none;
+                height: 100%
             }
         </style>
     </head>
-
-    <body>
-        <section class = topnav>
-            <div class = title>
-                <a class = brand href = '/'>Joachim Ford</a>
-                <a class = about href = /about>About</a>
+    <body class = dark>
+        <div class = over-hold>
+            <div id = survey>
+                <label>
+                    <div>Try the </div><span>Complete the </span>2025 Visitor
+                    Survey<div>!</div><span> for the chance to get a shout-out!</span>
+                </label>
+                <a href = https://forms.gle/aPjD4oWB24MzEpb16 target = _blank class = survey-button>Survey</a>
+                <button id = survey-close class = survey-button>Dismiss</button>
             </div>
-            <div class = nav>
-                <a href = /games>Games</a>
-                <a href = /projects>Projects</a>
-                <a href = /blogs>Blogs</a>
-                <a href = /news>News</a>
+
+            <section class = topnav>
+                <div class = topnav-container>
+                    <a class = topnav-home href = /index#>
+                        <div class = topnav-logo>
+                            <img src = /assets/logo.png alt = logo>
+                        </div>
+                        <div class = topnav-title>
+                            <h2>Joachim</h2>
+                            <h2>Ford.uk</h2>
+                        </div>
+                    </a>
+                    <div class = topnav-menu>
+                        <div class = topnav-menu-wide>
+                            <a href = /games#>Games</a>
+                            <a href = /projects#>Projects</a>
+                            <a href = /blog#>Blog</a>
+                        </div>
+
+                        <div class = topnav-separator></div>
+
+                        <div id = color-theme>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.5 0 13 13">
+                                <path d="M 0 0 A 2.25 2.25 90 0 0 0 13 A 2.25 2.25 90 0 0 0 0 Z M 0 2 A 2.25 2.25 90 0 1 0 11 Z"/>
+                            </svg>
+                        </div>
+
+                        <div class = topnav-separator></div>
+
+                        <div class = topnav-vertical-menu>
+                            <a href = /news#>News</a>
+                            <a href = /about#>About</a>
+                            <a href = /contact#>Contact</a>
+                        </div>
+                    </div>
+
+                    <div id = nav-bars>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 4 3">
+                            <path stroke-width=".5" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 0 0 L 3 0 M 0 1 L 3 1 M 0 2 L 2 2"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <section class = hero-section>
+                <canvas id = hero-canvas></canvas>
+                <div id = hero>
+                    <h1 id = hero-text>
+                        <div>
+                            <span>J</span><span>o</span><span>a</span><span>c</span><span>h</span><span>i</span><span>m</span>
+                        </div>
+                        <div>
+                            <span>F</span><span>o</span><span>r</span><span>d</span><span>.</span><span>u</span><span>k</span>
+                        </div>
+                    </h1>
+                    <div id = hero-sub-text>
+                        <div class = hero-small-line></div>
+                        <h2 class = hero-sub-tag>Coding Blog</h2>
+                        <div class = hero-small-line></div>
+                        <h2 class = 'hero-sub-tag bright'>Indie Game Dev</h2>
+                        <div class = hero-small-line></div>
+                        <h2 class = hero-sub-tag>Web Development</h2>
+                        <div class = hero-small-line></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class = main>
+                <div class = 'content top-huge-pad'>
+                    <h2 class = 'h1 cool-text'>HTML5 Indie Games & Projects</h2>
+                    <div class = 'text shift'>
+                        <p class = spaced>
+                            Well hello there! I'm Joachim, an (overenthusiastic) HTML5 programmer
+                            who likes making free indie games in pure JavaScript. Check them out!
+                        </p>
+                    </div>
+                    <img class = 'deco stars shift' src = /assets/stars.svg>
+                </div>
+
+                <a href = /games>
+                    <div class = 'infinite-carousel-filter-holder top-huge bottom-huge'>
+                        <div class = infinite-carousel-holder>
+                            <div class = infinite-carousel>
+                                <img src = assets/squirtcopter-1-thumbnail.png alt = 'Squirtcopter - the fast-paced online 2D adventure shooter game about upgrading, strategy, and power'>
+                                <img src = assets/ios-mission-1-thumbnail.png alt = "Io's Mission - play the free online 2D indie platform adventure game with epic boss battles, procedurally generated worlds, and a captivating storyline">
+                                <img src = assets/snakes-and-ladders-1-thumbnail.png alt = 'Snakes and Ladders - an exciting online action platform adventure game with boss battles, upgrades, and the quest to defeat the X-ray Orb'>
+                                <img src = assets/the-mitigator-1-thumbnail.png alt = 'The Mitigator - an exciting online 2D action adventure game focused on fighting climate change, upgrading abilities, and purifying the planet'>
+                                <img src = assets/ios-mission-2-thumbnail.png alt = "Io's Mission - play the free online 2D indie platform adventure game with epic boss battles, procedurally generated worlds, and a captivating storyline">
+                                <img src = assets/squirtcopter-2-thumbnail.png alt = 'Squirtcopter - the fast-paced online 2D adventure shooter game about upgrading, strategy, and power'>
+                                <img src = assets/the-mitigator-2-thumbnail.png alt = 'The Mitigator - an exciting online 2D action adventure game focused on fighting climate change, upgrading abilities, and purifying the planet'>
+                            </div>
+
+                            <div aria-hidden = true class = infinite-carousel>
+                                <img src = assets/squirtcopter-1-thumbnail.png>
+                                <img src = assets/ios-mission-1-thumbnail.png>
+                                <img src = assets/snakes-and-ladders-1-thumbnail.png>
+                                <img src = assets/the-mitigator-1-thumbnail.png>
+                                <img src = assets/ios-mission-2-thumbnail.png>
+                                <img src = assets/squirtcopter-2-thumbnail.png>
+                                <img src = assets/the-mitigator-2-thumbnail.png>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <div class = 'content bottom-big-pad right'>
+                    <h2 class = 'right h1 cool-text'>Game Development</h2>
+                    <h3 class = 'h5 right'><span class = 'dim heading-thin'>(The best way to combine all your life skills)</span></h3>
+                    <div class = 'text shift-right top'>
+                        <a class = 'button right top-small' href = /games#>
+                            Play Games Now
+                            <svg class = button-arrow xmlns="http://www.w3.org/2000/svg" viewBox="-1.5 -1.5 5 7">
+                                <path d="M 0 0 L 2 2 L 0 4"/>
+                            </svg>
+                        </a>
+                        <p class = 'spaced top-big'>
+                            My fascination for coding my own games started right back in
+                            early 2020... and I've been addicted to coding ever since.
+                            Oops.
+                        </p>
+                        <img class = 'deco squiggles right bottom' src = /assets/squiggles.svg>
+                        <p class = spaced>
+                            Game feedback is always appreciated! Feel free to say hi
+                            or share some of your own thoughts at
+                            <a class = small-link href = mailto:hello@joachimford.uk>hello@joachimford.uk</a>!
+                        </p>
+                    </div>
+                </div>
+
+                <div class = 'top-huge-pad bottom-big-pad'>
+                    <div class = profile-image-hold>
+                        <a href = /about# class = profile-image>
+                            <img src = /assets/logo-white.png>
+                        </a>
+                    </div>
+                </div>
+
+                <img class = 'deco stars center top-big-pad bottom-big' src = /assets/stars.svg>
+
+                <div class = 'content top-big-pad bottom-huge' id = subscribe>
+                    <div class = boxed>
+                        <h1><span class = 'h2 cool-text'>Subscribe to the newsletter!</span></h1>
+                        <div class = 'text shift'>
+                            <p class = spaced>
+                                Drop your email below to hear about cool releases and game updates!
+                            </p>
+                        </div>
+                        <div class = restrict>
+                            <form class = 'subscribe-form top'>
+                                <div class = flex-x>
+                                    <input type = email class = form placeholder = 'email address' required>
+                                    <button class = send-form-button type = submit>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1.5 -1.5 5 7">
+                                            <path d="M 0 0 L 2 2 L 0 4"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div><span class = 'dim small-font shift'>(No info will be shared. <button class = popup-link data-id = terms type = button>Terms</button>)</span></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = 'content bottom-huge'>
+                    <div class = 'box right'>
+                        <h2 class = 'center h3 cool-text'>
+                            Website Development
+                        </h2>
+                        <div class = 'text shift'>
+                            <p class = spaced>
+                                I also make websites. If you'd like one yourself
+                                or are curious to find out more, please visit
+                                <a class = link target = _blank href = https://sites.joachimford.uk>sites.joachimford.uk</a>!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class = footer>
+                <div class = footer-left>
+                    <span>&copy; Joachim Ford <span id = year>2025</span></span>
+                    <span>All rights reserved</span>
+                    <span class = top-small>
+                        <form class = 'subscribe-form-tiny'>
+                            <div class = flex-x>
+                                <input type = email class = form placeholder = 'email' required>
+                                <button class = send-form-button type = submit>
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </span>
+                    <div class = 'footer-socials top-small'>
+                        <a href = mailto:hi@joachimford.uk target = _blank><img src = /assets/mail.svg alt = 'email icon'></a>
+                        <a href = https://github.com/Hope41 target = _blank><img src = /assets/github.svg alt = 'github icon'></a>
+                        <a href = https://youtube.com/@JoachimFord target = _blank><img src = /assets/youtube.svg alt = 'youtube icon'></a>
+                        <a href = https://joachimford.itch.io target = _blank><img src = /assets/itch.svg alt = 'itch.io icon'></a>
+                        <a href = https://x.com/JoachimFord target = _blank><img src = /assets/x.svg alt = 'x logo'></a>
+                    </div>
+                </div>
+                <div class = footer-right>
+                    <a href = /index# class = basic-link>Home</a>
+                    <a href = /games# class = basic-link>Games</a>
+                    <a href = /projects# class = basic-link>Projects</a>
+                    <a href = /blog# class = basic-link>Blog</a>
+                    <a href = /news# class = basic-link>News</a>
+                    <a href = /about# class = basic-link>About</a>
+                    <a href = /contact# class = basic-link>Contact</a>
+                </div>
+            </section>
+        </div>
+
+        <div class = popup id = terms>
+            <div class = popup-text-hold>
+                <div class = popup-close data-id = terms>
+                    <img src = /assets/close.svg>
+                </div>
+                <div class = popup-text>
+                    <h2 class = h4><span class = gray-green>Newsletter Subscription</span></h2>
+                    <h2 class = h2>Terms</h2>
+                    <div class = 'text shift-right'>
+                        <p class = spaced>
+                            By subscribing to the newsletter, you consent to receive
+                            updates related to coding, game development, and projects.
+                            Your email address will be used for this purpose
+                            only and will never be shared or sold.
+                        </p>
+                        <p class = spaced>
+                            Emails will typically be sent once a month, though
+                            occasional updates may be more frequent (up to once
+                            per week). You can unsubscribe at any time using the
+                            link provided in each email.
+                        </p>
+                        <button class = popup-close data-id = terms>
+                            I Understand
+                        </button>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
 
-        <a href = /src/content/squirtcopter id = link><canvas id = cvs></canvas></a>
-
-        <section class = main>
-            <script>
-                const topnav = document.getElementsByClassName('topnav')[0]
-                let toph = 0
-                function resize() {
-                    toph = topnav.getBoundingClientRect().height
-
-                    cvs.width = innerWidth * devicePixelRatio
-                    cvs.height = (innerHeight - toph + 1) * devicePixelRatio
-                    cvs.style.top = toph + 'px'
-                }
-
-                function rgb(r, g, b, a = 1) {
-                    return 'rgb('+(r*255)+','+(g*255)+','+(b*255)+','+a+')'
-                }
-
-                function quad(x) {
-                    return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2
-                }
-
-                function drawImage(img, x, y, w, h) {
-                    ctx.fillStyle = img.color
-                    ctx.fillRect(x - w / 2, 0, w, cvs.height)
-
-                    if (img.complete) {
-                        if (img.init) img.alpha = 1
-                        else if (img.complete && img.alpha < 1) img.alpha += .01 * dt
-                    }
-
-                    ctx.globalAlpha = img.alpha
-                    ctx.drawImage(img, x - w / 2, y - h / 2, w, h)
-                    ctx.globalAlpha = 1
-
-                    img.init = false
-                }
-
-                function update() {
-                    ctx.clearRect(0, 0, cvs.width, cvs.height)
-                    dt = (performance.now() - oldPerf) / 16
-                    oldPerf = performance.now()
-                    if (dt > 1) dt = 1
-                    time += speed * dt
-                    initTime += speed * dt
-                    const img = images[active]
-
-                    box = cvs.width
-                    if (cvs.width > cvs.height) box = cvs.height
-
-                    const iRatio = img.width / img.height
-                    const cRatio = cvs.width / cvs.height
-                    let w = 0
-                    let h = 0
-                    if (iRatio < cRatio) {
-                        w = cvs.width
-                        h = (img.height / img.width) * cvs.width
-                    }
-                    else {
-                        w = iRatio * cvs.height
-                        h = cvs.height
-                    }
-
-                    const amt = quad(Math.sin(changeImage * Math.PI)) / 6
-                    box *= 1 - amt * bannerZ
-                    w *= 1 - amt * bgZ
-                    h *= 1 - amt * bgZ
-
-                    if (changeImage > .5) link.href = images[active].url
-                    if (changeImage >= 1) changeImage = 0
-                    let imgPosX = cvs.width / 2
-                    const imgPosY = cvs.height / 2
-                    if (changeImage) {
-                        changeImage += speed * changeImageSpeed * dt
-                        imgPosX -= quad(Math.sin(changeImage * Math.PI / 2)) * w
-                        drawImage(img, imgPosX + w, imgPosY, w, h)
-                        ctx.fillStyle = img.color
-                        ctx.fillRect(imgPosX + w * 1.5, 0, w, cvs.height)
-
-                        let last = active - 1
-                        if (last < 0) last = images.length - 1
-                        drawImage(images[last], imgPosX, imgPosY, w, h)
-                    }
-                    else drawImage(img, imgPosX, imgPosY, w, h)
-
-                    let a = (400-initTime)/400
-                    if (a < .4) a = .4
-                    ctx.fillStyle = rgb(0,0,0,a)
-                    ctx.fillRect(0, 0, cvs.width, cvs.height)
-
-                    ctx.fillStyle = rgb(0,0,0,.6)
-                    const boxW = cvs.width * (1 - amt)
-                    const boxH = box / 3
-                    const midY = cvs.height / 2
-                    const yPos = midY - boxH / 2
-                    if (changeImage) {
-                        let posX = cvs.width / 2 - boxW / 2 - quad(Math.sin(changeImage * Math.PI / 2)) * w * bannerZ
-                        ctx.fillRect(posX, yPos, boxW, boxH)
-                        ctx.fillRect(posX + w * bannerZ, yPos, boxW, boxH)
-                    }
-                    else ctx.fillRect(cvs.width / 2 - boxW / 2, yPos, boxW, boxH)
-
-                    for (let j = 0; j < booms.length; j ++) {
-                        const item = booms[j]
-                        const sum = time - item.time
-                        if (sum > 0) {
-                            if (item.name == 'Switch') {
-                                if (progress >= j) continue
-                                progress = j
-                                active ++
-                                changeImage += speed * changeImageSpeed * dt
-                                if (active > images.length - 1) {
-                                    time = 0
-                                    active = 0
-                                    progress = 0
-                                }
-                                continue
-                            }
-
-                            const add = box * 3
-                            const S = (add * item.size)
-                            const gap = S * .82
-                            const size = item.name.length * gap
-                            let summ = sum
-                            const check = time - item.expire
-                            const calc = check - item.time
-                            if (item.expire && check > item.time) {
-                                summ = 20 - calc
-                                if (summ < 0) summ = 0
-                            }
-
-                            for (let i = 0; i < item.name.length; i ++) {
-                                ctx.font = S + 'px pixelMonospace, monospace, sans-serif'
-                                const bobX = Math.cos(i * i * i) * S * .03
-                                const bobY = Math.sin(i * i) * S * .03
-                                const posX = item.x * (add * .7) + cvs.width / 2 - add / 6.5 + bobX
-                                const posY = item.y * (add * .3) + midY - add / 200 + bobY
-                                const shake = 99 / (summ * summ * .5) * 5
-
-                                if (shake > 8) {
-                                    let r = Math.sin(i*i*9*j)
-                                    let g = Math.sin(i*i*i*i*j*j*9)
-                                    let b = Math.sin(i*i*i**j)
-
-                                    ctx.fillStyle = rgb(r,g,b,summ/5-(Math.sin(i*i)+1))
-                                    ctx.fillText(
-                                        item.name[i],
-                                        posX + i * gap - Math.cos(summ) * shake,
-                                        posY - Math.sin(summ) * shake)
-                                }
-
-                                const tx = posX + i * gap + Math.cos(summ) * shake
-                                const ty = posY + Math.sin(summ) * shake
-                                ctx.fillStyle = rgb(0,0,0,1-calc/10)
-                                ctx.fillText(item.name[i], tx + S * .05, ty + S * .1)
-
-                                const rot = calc / 5 / (summ * summ * Math.sin(i * i * i * i + 1))
-                                ctx.fillStyle = rgb(1,1,1,summ/3-(Math.sin(i*i)+1)-rot)
-                                ctx.save()
-                                ctx.translate(tx + gap / 2, ty - gap / 2)
-                                ctx.rotate(Math.sin(i*i*i)*.2*rot)
-                                ctx.fillText(item.name[i], -gap / 2, gap / 2)
-                                ctx.restore()
-                            }
-                        }
-                    }
-
-                    ctx.fillStyle = rgb(1,1,.4,
-                        Math.sin(initTime / 247 +
-                        Math.cos(initTime / 133) * 2 +
-                        Math.sin(initTime / 17) * .1) * .15 + .1)
-
-                    ctx.fillRect(
-                        cvs.width / 2 + Math.sin(initTime / 330 + Math.cos(initTime / 500)) * cvs.width / 3,
-                        cvs.height / 2 + Math.cos(initTime / 230 + Math.sin(initTime / 550)) * cvs.height / 3,
-                        box * .03, box * .03)
-
-                    requestAnimationFrame(update)
-                }
-
-                const ctx = cvs.getContext('2d')
-                let dt = 0
-                let time = 0
-                let initTime = 0
-                let active = 0
-                let box = 0
-                let changeImage = 0
-                let oldPerf = 0
-                let progress = -1
-                const changeImageSpeed = .012
-                const speed = 1.2
-                const bgZ = 1
-                const bannerZ = 2
-
-                const images = []
-                const makeNewImage = (name, url, color) => {
-                    const img = new Image()
-                    img.src = '/src/images/'+name+'.png'
-                    img.url = url
-                    img.color = color
-                    img.alpha = 0
-                    img.init = true
-                    images.push(img)
-                }
-                makeNewImage('squirtcopter_big', '/src/content/squirtcopter', '#756')
-                makeNewImage('ios_mission_big', '/src/content/ios_mission', '#79b')
-                makeNewImage('snakes_and_ladders_big', '/src/content/snakes_and_ladders', '#8ca')
-
-                const booms = [
-                    {name: 'SQUIRTCOPTER', time: 70, x: 0, y: 0, size: .03, expire: 30},
-                    {name: 'SQUIRTCOPTER', time: 100, x: 0, y: 0, size: .03, expire: 220},
-                    {name: 'Squirt Your Way To Victory!', time: 115, x: 0, y: .1, size: .01, expire: 195},
-
-                    {name: 'Switch', time: 350},
-
-                    {name: 'IO\'S MISSION', time: 450, x: 0, y: 0, size: .03, expire: 280},
-                    {name: '..', time: 500, x: 0, y: .1, size: .01, expire: 2},
-                    {name: '..........', time: 505, x: 0, y: .1, size: .01, expire: 2},
-                    {name: '........................', time: 510, x: 0, y: .1, size: .01, expire: 2},
-                    {name: 'The New Adventure Game', time: 515, x: 0, y: .1, size: .01, expire: 220},
-
-                    {name: 'Switch', time: 750},
-
-                    {name: 'SNAKES', time: 850, x: 0, y: -.01, size: .025, expire: 2},
-                    {name: 'SNAKES AND', time: 855, x: 0, y: -.01, size: .025, expire: 320},
-                    {name: 'LADDERS', time: 860, x: .2, y: .07, size: .025, expire: 320},
-                    {name: 'Defeat the X-Ray Orb!', time: 930, x: 0, y: .13, size: .01, expire: 240},
-
-                    {name: 'Switch', time: 1200}
-                ]
-
-                addEventListener('resize', resize)
-                resize()
-                update()
-            </script>
-        </section>
-
-        <button class = theme onclick = toggleTheme()>Change Theme</button>
-        <span class = copyright>
-            &copy; <span class = year></span> Joachim Ford. All rights reserved.
-            <a href = https://github.com/Hope41 target = _blank><img src = /src/images/github.svg></img></a>
-            <a href = mailto:hello@joachimford.uk><img src = /src/images/mail.svg></img></a>
-        </span>
+        <script src = /assets/main.js></script>
+        <script src = /assets/infinite-carousel.js></script>
+        <script src = /assets/hero.js></script>
+        <script src = /assets/cool-text.js></script>
+        <script src = /assets/popup.js></script>
+        <script src = /assets/profile-interact.js></script>
+        <script src = /assets/drillo.js></script>
     </body>
 </html>

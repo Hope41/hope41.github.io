@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang = en-GB>
+    <head>
+        <meta charset = UTF-8>
+        <meta name = viewport content = 'width=device-width, initial-scale=1.0'>
+        <meta name = description content = 'Embed and syntax highlight raw HTML code onto webpage in seconds - Joachim Ford'>
+        <meta name = author content = 'Joachim Ford'>
+        <meta name = application-name content = 'HTML Embed Formatter'>
+
+        <title>Embed & Syntax Highlight Raw HTML Code on Webpage - Joachim Ford</title>
+
+        <style>
+            @font-face {
+                font-family: main;
+                src: url(/assets/ProFontWindows.ttf);
+            }
+
+            h1, h2, h3, h4 {margin: 0; font-weight: normal; color: #ddd; text-align: center;}
+            h1 {
+                color: #bf5
+            }
+            h2 {
+                color: #fb5;
+                margin-top: 30px;
+            }
+
+            .title {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+
+            html {
+                overflow-x: hidden;
+                display: flex;
+                justify-content: center;
+            }
+
+            body {
+                overflow-x: hidden;
+                position: relative;
+                margin: 0;
+                width: 600px;
+                max-width: 100%;
+                display: flex;
+                justify-content: center;
+                background-color: #11191f;
+                font-family: main, monospace, sans-serif;
+                font-size: 18px;
+                color: #fff;
+                padding: 50px 20px;
+            }
+
+            .main {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-top: 50px;
+            }
+
+            .box {
+                width: 100%;
+                background-color: #22292f;
+                border-radius: 2px;
+                border: 1px #333 solid;
+                outline: none;
+                color: #fff;
+                font-family: main, monospace, sans-serif;
+                font-size: 12px;
+                resize: none;
+                min-height: 100px;
+                padding: 20px;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                max-height: 300px;
+                overflow: scroll;
+            }
+
+            .box.light {
+                background-color: #eee;
+                color: #000;
+            }
+
+            .box.tall {
+                max-height: none;
+            }
+
+            p {
+                margin: 0;
+                margin-top: 10px;
+                color: #fff;
+                font-size: 17px;
+            }
+
+            b {
+                font-weight: normal;
+                color: #fb5
+            }
+
+            .button {
+                width: 100%;
+                border: 1px #bf5 solid;
+                background-color: #33393f;
+                font-family: main, monospace, sans-serif;
+                padding: 10px 20px;
+                font-size: 20px;
+                border-radius: 50px;
+                cursor: pointer;
+                position: relative;
+                transition: .1s;
+                margin-top: 10px;
+            }
+
+            .button:active {
+                transform: scale(.95);
+            }
+
+            .button span {
+                transition: .3s;
+                position: relative;
+                z-index: 1;
+                color: #bf5;
+            }
+
+            .button:hover span {
+                color: #000
+            }
+
+            .button::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 100%;
+                height: 0;
+                transition: .2s;
+                background-color: #bf0;
+                border-radius: 100px;
+                transform: translate(-50%, -50%);
+            }
+
+            .button:hover::before {
+                height: 100%;
+            }
+
+            .hider {
+                display: flex;
+                gap: 10px;
+                width: 100%;
+                transform: scaleY(0);
+                transform-origin: top;
+                transition: .2s;
+                flex-direction: column;
+            }
+
+            .hider.open {
+                transform: scaleY(1);
+            }
+
+            .hider.small, .hider.restrict {
+                max-height: 0;
+                overflow: hidden;
+            }
+
+            .hider.small.open {
+                max-height: 100px;
+            }
+
+            .hider.restrict.open {
+                max-height: 1000px;
+            }
+
+            .option svg {
+                width: 50px;
+                stroke: #bf0;
+                stroke-width: 1;
+                fill: none;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+
+            .opts {
+                display: flex;
+                width: 100%;
+                gap: 5px
+            }
+
+            .option {
+                background-color: #00090f;
+                border: 1px #333 solid;
+                color: #bf5;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                font-size: 15px;
+                font-family: main, monospace, sans-serif;
+                align-items: center;
+                padding: 10px;
+                border-radius: 2px;
+                width: 100%;
+                transition: .2s;
+                cursor: pointer;
+            }
+
+            .option.selected {
+                background-color: #bf0;
+                color: #000;
+            }
+
+            .option.selected svg {
+                stroke: #000;
+            }
+
+            .thanks {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                text-align: center;
+                position: fixed;
+                top: 0;
+                left: 50%;
+                width: 550px;
+                max-width: calc(100% - 10px);
+                transform: translateX(-50%);
+                padding: 10px;
+                font-size: 18px;
+                background-color: #222;
+                border: 1px #555 solid;
+                border-bottom-right-radius: 10px;
+                border-bottom-left-radius: 10px;
+                z-index: 1;
+            }
+
+            .thanks svg {
+                height: 50px;
+                padding: 5px 0;
+                margin-right: 20px;
+                flex: 1 0 auto;
+                fill: #bf5;
+            }
+
+            #edit-box {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            #edit-box label {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                text-shadow: 1px 1px 0 #000;
+                font-size: 15px;
+                width: fit-content;
+            }
+
+            #edit-box.light label {
+                text-shadow: 1px 1px 0 #bbb;
+            }
+
+            #edit-box label span {
+                flex: 1 0 auto;
+            }
+
+            #edit-box input {
+                padding: 0;
+                background-color: #222;
+                color: #fff;
+                font-family: main, monospace, sans-serif;
+                font-size: 15px;
+                border: 1px #333 solid;
+                overflow: hidden;
+                border-radius: 2px;
+                width: 100px;
+                outline: none;
+                padding: 5px;
+            }
+
+            #edit-box.light input {
+                background-color: #ddd;
+                color: #000;
+                border-color: #bbb;
+            }
+
+            .hold {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                color: #5bf;
+                font-size: 15px;
+            }
+
+            .light .hold {
+                color: #269;
+            }
+
+            .pad {
+                padding-left: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .overlay-hold, .relative {
+                position: relative;
+            }
+
+            .overlay-hold .code, .overlay-hold .overlay {
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .overlay-hold .code {
+                background-color: transparent;
+                color: transparent;
+                caret-color: #bf5;
+                overscroll-behavior-y: none;
+                border: none;
+            }
+
+            .overlay-hold .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                pointer-events: none;
+                z-index: -1;
+            }
+
+            .option span.small {
+                font-size: 12px;
+                color: #593;
+            }
+
+            .option.selected span.small {
+                color: #350;
+            }
+
+            .side {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .small-button {
+                margin-left: auto;
+                margin-right: 0;
+                width: fit-content;
+                background-color: #bf0;
+                color: #000;
+                font-size: 17px;
+                font-family: main, monospace, sans-serif;
+                border: 1px #000 solid;
+                padding: 10px;
+                border-radius: 10px;
+                box-shadow: 1px 1px 0 #000;
+                cursor: pointer;
+                transition: .1s;
+            }
+
+            .small-button.hidden {
+                display: none;
+            }
+
+            .small-button.faint {
+                background-color: #444;
+                color: #fff;
+                border-color: #888;
+            }
+
+            .small-button:active {
+                transform: scale(.95)
+            }
+
+            .small-button:hover {
+                background-color: #00090f;
+                color: #bf5;
+                border-color: #bf0;
+            }
+
+            * {box-sizing: border-box}
+        </style>
+    </head>
+    <body class = dark>
+        <section class = main>
+            <div class = thanks>
+                <div>
+                    Thanks for visiting! Feel free to star, contribute or
+                    share ideas on GitHub!
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 96"><path d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/></svg>
+            </div>
+            <div class = title>
+                <h1>Embed & Syntax Highlight HTML Online</h1>
+            </div>
+            <p>Welcome to the ultimate web code formatting tool.</p>
+            <p>Proudly using <b>CyberSyntax.js</b>.</p>
+            <div class = 'hider open'>
+                <p>1. Paste your code into the box to begin</p>
+                <div class = overlay-hold>
+                    <div class = 'box overlay' id = original-code-highlight></div>
+                    <textarea class = 'box code' id = original-code></textarea>
+                </div>
+
+                <div class = hider id = step-1-complete>
+                    <p>2. Choose your color mode</p>
+                    <div class = opts>
+                        <button class = 'option selected' id = root>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-7.5 -8 15 15">
+                                <path d="M 0 -3 A 1 1 0 0 0 0 -7 A 1 1 0 0 0 0 -3 C 0 -1 -3 -2 -4 -1 S -5 1 -5 2 A 1 1 0 0 0 -5 5 A 1 1 0 0 0 -5 2 M 0 -3 C 0 -1 3 -2 4 -1 S 5 1 5 2 A 1 1 0 0 0 5 5 A 1 1 0 0 0 5 2 M 0 -3 L 0 3 A 1 1 0 0 0 0 6 A 1 1 0 0 0 0 3"/>
+                            </svg>
+                            Root Variables <span class = small>(recommended)</span>
+                        </button>
+                        <button class = option id = colors>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1.075 -1 11.9 12.02">
+                                <path d="M -0.075 0.525 Q -0.075 0 0.75 0 L 9.225 0 Q 9.825 0 9.825 0.375 Q 9.825 0.9 9.75 1.05 L 6.75 5.25 L 6.75 7.875 Q 6.75 8.175 6.525 8.325 L 3.9 9.975 C 3.675 10.125 3.225 9.9 3.225 9.6 L 3.225 5.325 L 0.225 1.2 Q -0.075 0.825 -0.075 0.525 Z"/>
+                            </svg>
+                            Inline CSS
+                        </button>
+                        <button class = option id = disable-highlight>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 10 10">
+                                <path d="M -3 -3 L 3 3 M -3 3 L 3 -3"/>
+                            </svg>
+                            Don't Syntax Highlight
+                        </button>
+                    </div>
+                    <button class = button id = format-button><span>Format</span></button>
+                    <div class = hider id = step-2-complete>
+                        <p>3. Copy this into your <b>HTML</b> document</p>
+                        <div class = box id = result></div>
+                        <button class = button id = copy-button><span>Copy</span></button>
+
+                        <div>
+                            <div class = 'hider small' id = true-colors-mode>
+                                <button class = button id = color-theme><span>Edit Color Theme</span></button>
+                            </div>
+
+                            <div class = 'hider small' id = root-vars-mode>
+                                <button class = button id = color-theme><span>Get CSS Color Theme</span></button>
+                            </div>
+                        </div>
+
+                        <div class = 'hider restrict' id = edit-colors>
+                            <p class = 'hider small' id = step-4><span>4. Copy and paste this into your <b>CSS</b> file!</span></p>
+                            <div class = relative>
+                                <div class = side>
+                                    <button class = 'small-button faint' id = copy-css>Copy</button>
+                                    <button class = 'small-button faint dark' id = theme>Theme</button>
+                                </div>
+                                <div class = 'box tall' id = edit-box></div>
+                            </div>
+
+                            <p>Preview</p>
+                            <div class = 'box tall' id = preview></div>
+                        </div>
+
+                        <h2>Like the tool? Please drop us a star!</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            const original = document.getElementById('original-code')
+            const originalHighlight = document.getElementById('original-code-highlight')
+            const formatted = document.getElementById('result')
+            const goButton = document.getElementById('format-button')
+            const copyButton = document.getElementById('copy-button')
+            const rootVarsMode = document.getElementById('root-vars-mode')
+            const trueColorsMode = document.getElementById('true-colors-mode')
+            const editBox = document.getElementById('edit-box')
+            const editColors = document.getElementById('edit-colors')
+            const preview = document.getElementById('preview')
+            const step4 = document.getElementById('step-4')
+            const copyCSS = document.getElementById('copy-css')
+            const theme = document.getElementById('theme')
+            const boxes = document.getElementsByClassName('box')
+
+            theme.addEventListener('click', () => {
+                const state = !theme.classList.toggle('dark')
+
+                for (let i = 0; i < boxes.length; i ++)
+                    boxes[i].classList.toggle('light', state)
+
+                let i = 0
+                const arr = (state ? lightThemeArr : darkThemeArr)
+                for (let key in colorTheme) {
+                    colorTheme[key] = arr[i][1]
+                    i ++
+                }
+
+                editColorBox()
+                formatCode(false, false)
+            })
+
+            const lightThemeArr = [
+                ['keyword', '#737'],
+                ['number', '#970'],
+                ['builtin', '#d35400'],
+                ['operator', '#079'],
+                ['function', '#0984e3'],
+                ['variable', '#944'],
+                ['string', '#385'],
+                ['comment', '#777']
+            ]
+
+            const darkThemeArr = [
+                ['keyword', '#c8f'],
+                ['number', '#fa6'],
+                ['builtin', '#f80'],
+                ['operator', '#0ff'],
+                ['function', '#7bf'],
+                ['variable', '#f88'],
+                ['string', '#0f8'],
+                ['comment', '#95a5a6']
+            ]
+
+            const colorTheme = {
+                keyword: '',
+                number: '',
+                builtin: '',
+                operator: '',
+                function: '',
+                variable: '',
+                string: '',
+                comment: ''
+            }
+
+            let I = 0
+            for (let key in colorTheme) {
+                colorTheme[key] = darkThemeArr[I][1]
+                I ++
+            }
+
+            copyCSS.addEventListener('click', () => {
+                let str = ':root {\n'
+                const labels = editBox.getElementsByTagName('label')
+                for (let i = 0; i < labels.length; i ++) {
+                    const span = labels[i].getElementsByTagName('span')[0]
+                    const input = labels[i].getElementsByTagName('input')[0]
+                    str += '    ' + span.textContent + ' '
+                    str += input.value
+                    str += ';'
+                    str += '\n'
+                }
+
+                navigator.clipboard.writeText(str + '}')
+                copyCSS.textContent = 'Copied!'
+                setTimeout(() => copyCSS.textContent = 'Copy', 1500)
+            })
+
+            copyButton.addEventListener('click', () => {
+                navigator.clipboard.writeText(formatted.textContent)
+                copyButton.firstChild.textContent = 'Copied!'
+                setTimeout(() => copyButton.firstChild.textContent = 'Copy', 1500)
+            })
+
+            // Iterate through all option holders
+            let selectedMode = 'root'
+            const optionHolders = document.getElementsByClassName('opts')
+            for (let i = 0; i < optionHolders.length; i ++) {
+
+                // Iterate through the children of each option holder
+                const holderChildren = optionHolders[i].children
+                for (let j = 0; j < holderChildren.length; j ++) {
+
+                    // Select the clicked option
+                    holderChildren[j].addEventListener('click', () => {
+                        for (let k = 0; k < holderChildren.length; k ++)
+                            holderChildren[k].classList.remove('selected')
+
+                        holderChildren[j].classList.add('selected')
+                        selectedMode = holderChildren[j].id
+                        formatCode()
+                        editColors.classList.remove('open')
+                    })
+                }
+            }
+
+            function updatePreview() {
+                preview.innerHTML = syntaxHighlightCode(`// This is a comment
+const variable = await
+const number = 123
+const builtin = eval('builtin')
+function helloWorld() {}
+const operator = 1 + 1
+const string = 'string'`, false)
+            }
+
+            function editColorBox() {
+                editColors.classList.add('open')
+                editBox.innerHTML = ''
+                step4.classList.remove('open')
+
+                if (selectedMode == 'root') {
+                    step4.classList.add('open')
+
+                    const hold = document.createElement('div')
+                    const pad = document.createElement('div')
+                    hold.textContent = ':root {'
+                    hold.className = 'hold'
+                    pad.className = 'pad'
+
+                    for (let key in colorTheme) {
+                        const input = document.createElement('input')
+
+                        const label = document.createElement('label')
+                        const span = document.createElement('span')
+                        const semicolon = document.createTextNode(';')
+
+                        input.value = colorTheme[key]
+                        label.style.color = colorTheme[key]
+
+                        input.oninput = () => {
+                            colorTheme[key] = input.value
+                            label.style.color = colorTheme[key]
+                            formatCode(false, false)
+                        }
+
+                        span.textContent = '--' + key + ':'
+                        label.appendChild(span)
+                        label.appendChild(input)
+                        label.appendChild(semicolon)
+                        pad.appendChild(label)
+                    }
+
+                    hold.appendChild(pad)
+                    hold.appendChild(document.createTextNode('}'))
+                    editBox.appendChild(hold)
+                }
+
+                else {
+                    for (let key in colorTheme) {
+                        const color = colorTheme[key]
+                        const input = document.createElement('input')
+                        const label = document.createElement('label')
+
+                        input.value = color
+                        label.style.color = color
+
+                        input.oninput = () => {
+                            colorTheme[key] = input.value
+                            label.style.color = color
+
+                            formatCode(false, false)
+                        }
+
+                        label.textContent = key
+                        label.appendChild(input)
+                        editBox.appendChild(label)
+                    }
+                }
+
+                // Update preview box
+                updatePreview()
+            }
+
+            rootVarsMode.addEventListener('click', () => {
+                rootVarsMode.classList.toggle('open')
+                editColorBox()
+            })
+
+            trueColorsMode.addEventListener('click', () => {
+                trueColorsMode.classList.toggle('open')
+                editColorBox()
+            })
+
+            function formatCode(open = false, openPanel = true) {
+                const code = original.value
+                formatted.textContent = syntaxHighlightCode(code)
+                // if (code.length < 10000) {
+                    formatted.innerHTML = syntaxHighlightCode(formatted.textContent, false)
+                    originalHighlight.innerHTML = syntaxHighlightCode(code, false)
+                // }
+
+                if (open) document.getElementById('step-2-complete').classList.add('open')
+
+                rootVarsMode.classList.remove('open')
+                trueColorsMode.classList.remove('open')
+
+                if (selectedMode == 'root') copyCSS.classList.remove('hidden')
+                else copyCSS.classList.add('hidden')
+
+                if (openPanel) {
+                    if (selectedMode == 'root') rootVarsMode.classList.add('open')
+                    if (selectedMode == 'colors') trueColorsMode.classList.add('open')
+                }
+
+                updatePreview()
+            }
+
+            function syntaxHighlightCode(code, listenToMode = true) {
+                const span = (c, e) => {
+                    let str = ''
+                    let after = '</span>'
+
+                    // Go with true colors
+                    if (selectedMode == 'colors' || !listenToMode)
+                        str = '<span style="color:' + colorTheme[c] + '">'
+
+                    // Go with root vars
+                    else if (selectedMode == 'root')
+                        str = '<span style="color:var(--' + c + ')">'
+
+                    else if (selectedMode == 'disable-highlight') {
+                        str = ''
+                        after = ''
+                    }
+
+                    return str + e.replace(/&/g, '&amp;').replace(/</g, '&lt;') + after
+                }
+
+                const main = code => {
+                    const data = {
+                        multi: /`[\s\S]*?`/,
+                        comment: /\/\*[\s\S]*?\*\/|\/\/.*/,
+                        string: /".*?"|'.*?'/}
+                    const total = new RegExp('(' + data.multi.source + '|' + data.string.source + '|' + data.comment.source + ')')
+
+                    return code.split(total).map((item, idx) => {
+                        // If the item is a string, comment or multi-line string
+                        if (idx % 2) {
+                            // If the item is a multi-line string
+                            if (data.multi.test(item)) {
+                                return item.split(/(\${.*?})/).map((item, idx) => {
+                                    if (idx % 2) {
+                                        return loop(item)
+                                    }
+
+                                    else {
+                                        return span('string', item)
+                                    }
+                                }).join('')
+                            }
+
+                            // If the item is a comment
+                            else if (data.comment.test(item))
+                                return span('comment', item)
+
+                            // If the item is a string
+                            else return span('string', item)
+                        }
+                        
+                        else return loop(item)
+                    }).join('')
+                }
+
+                const loop = (code, index = 0) => {
+                    const list = [
+                        {class: 'keyword', regex: /\b(arguments|await|case|catch|class|const|continue|debugger|default|delete|do|double|else|enum|eval|export|extends|finally|for|function|if|implements|import|in|instanceof|interface|let|new|package|private|protected|public|return|static|switch|throw|try|typeof|var|void|while|with|yield)\b/},
+                        {class: 'number', regex: /\b(true|false|null|undefined|NaN|Infinity|\d+|\d+e\d+)\b/},
+                        {class: 'builtin', regex: /\b(eval|isFinite|isNaN|parseFloat|parseInt|decodeURI|decodeURIComponent|encodeURI|encodeURIComponent|escape|unescape)\b/},
+                        {class: 'function', regex: /\b(\w+\()/, item: /\w+/},
+                        {class: 'variable', regex: /\b(\w+)\b/},
+                        {class: 'operator', regex: /([\/\\*+<>%=?:\{\}\(\)\-]+)/}
+                    ]
+
+                    return code.split(list[index].regex).map((e, i) => i % 2 ? list[index].item ? e.replace(
+                        list[index].item, e => span(list[index].class, e)) : span(list[index].class, e) :
+                        index + 1 == list.length ? e : loop(e, index + 1)).join('')
+                }
+
+                return main(code)
+            }
+
+            const codeOverlays = document.getElementsByClassName('overlay-hold')
+
+            for (let i = 0; i < codeOverlays.length; i ++) {
+                const code = codeOverlays[i].getElementsByClassName('code')[0]
+                const overlay = codeOverlays[i].getElementsByClassName('overlay')[0]
+
+                code.value = ''
+
+                code.addEventListener('input', () => {
+                    code.style.height = ''
+                    code.style.height = code.scrollHeight + 3 + 'px'
+
+                    overlay.textContent = code.value
+                    overlay.scrollTop = code.scrollTop
+                    overlay.scrollLeft = code.scrollLeft
+                })
+
+                code.addEventListener('scroll', () => {
+                    overlay.scrollTop = code.scrollTop
+                    overlay.scrollLeft = code.scrollLeft
+                })
+            }
+
+            original.addEventListener('input', () => {
+                document.getElementById('step-1-complete').classList.add('open')
+                formatCode()
+            })
+
+            goButton.addEventListener('click', () => {
+                formatCode(true)
+            })
+        </script>
+    </body>
+</html>

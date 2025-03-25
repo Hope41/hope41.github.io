@@ -1,0 +1,45 @@
+.footer {
+    background-color: var(--hero-background);
+    color: var(--text-color);
+    font-size: var(--footer-size);
+    font-family: main, monospace, sans-serif;
+    padding: 60px 50px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-left {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px
+}
+
+.footer-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: right;
+}
+
+.footer-right a {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.footer-socials img {
+    width: 24px;
+    opacity: .9
+}
+
+.footer-socials img:hover {
+    opacity: 1;
+}

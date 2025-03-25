@@ -1,118 +1,276 @@
 <!DOCTYPE html>
-<html lang = en-gb>
+<html lang = en-GB>
     <head>
-        <meta charset = utf-8>
-        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
-        <meta name = description content = 'Free online coding blogs and open source indie games'>
+        <meta charset = UTF-8>
+        <meta name = viewport content = 'width=device-width, initial-scale=1.0'>
+        <meta name = description content = "Joachim Ford creates free online indie games, coding tutorials, and game dev tools! Check out my blog for the newest game dev updates and tips!">
+        <meta name = author content = 'Joachim Ford'>
 
-        <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
-        <script src = /src/js/analytics.js></script>
-        <script src = /src/js/main.js></script>
-        <title>About | Joachim Ford</title>
-        <link rel = stylesheet href = /src/main.css>
-        <link rel = icon type = image/x-icon  href = /src/favs/favicon.ico>
-        <style>
-            h1 {
-                margin-left: auto;
-                margin-right: auto;
-                color: var(--buttonnorm);
-            }
+        <meta property = og:title content = 'About - Joachim Ford'>
+        <meta property = og:description content = 'Joachim Ford is a JavaScript indie developer who makes free online games'>
+        <meta property = og:image content = https://joachimford.uk/assets/logo.png>
 
-            .me {
-                margin-left: auto;
-                margin-right: auto;
-                border-radius: 50%;
-                width: 40%;
-                max-width: 250px;
-                min-width: 80px;
-                height: auto;
-                border: 7px solid var(--topnavbuttonhover);
-            }
-        </style>
+        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Joachim" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <title>About Me - Joachim Ford</title>
+        <link rel = stylesheet href = /assets/styles.css>
+        <link rel = stylesheet href = /assets/topnav.css>
+        <link rel = stylesheet href = /assets/main.css>
+        <link rel = stylesheet href = /assets/hero.css>
+        <link rel = stylesheet href = /assets/infinite-carousel.css>
+        <link rel = stylesheet href = /assets/forms.css>
+        <link rel = stylesheet href = /assets/footer.css>
+        <link rel = stylesheet href = /assets/a.css>
+        <link rel = stylesheet href = /assets/demo.css>
+        <link rel = stylesheet href = /assets/cool-text.css>
+        <link rel = stylesheet href = /assets/deco.css>
+        <link rel = stylesheet href = /assets/comment.css>
+        <link rel = stylesheet href = /assets/popup.css>
+
+        <link rel = stylesheet href = /assets/controls.css>
     </head>
+    <body class = dark>
+        <div class = over-hold>
+            <section class = topnav>
+                <div class = topnav-container>
+                    <a class = topnav-home href = /index#>
+                        <div class = topnav-logo>
+                            <img src = /assets/logo.png alt = logo>
+                        </div>
+                        <div class = topnav-title>
+                            <h2>Joachim</h2>
+                            <h2>Ford.uk</h2>
+                        </div>
+                    </a>
+                    <div class = topnav-menu>
+                        <div class = topnav-menu-wide>
+                            <a href = /games#>Games</a>
+                            <a href = /projects#>Projects</a>
+                            <a href = /blog#>Blog</a>
+                        </div>
 
-    <body>
-        <section class = topnav>
-            <div class = title>
-                <a class = brand href = '/'>Joachim Ford</a>
-                <a class = about href = /about>About</a>
-            </div>
-            <div class = nav>
-                <a href = /games>Games</a>
-                <a href = /projects>Projects</a>
-                <a href = /blogs>Blogs</a>
-                <a href = /news>News</a>
-            </div>
-        </section>
+                        <div class = topnav-separator></div>
 
-        <section class = main>
-            <img class = me src = /src/images/me.png>
+                        <div id = color-theme>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.5 0 13 13">
+                                <path d="M 0 0 A 2.25 2.25 90 0 0 0 13 A 2.25 2.25 90 0 0 0 0 Z M 0 2 A 2.25 2.25 90 0 1 0 11 Z"/>
+                            </svg>
+                        </div>
 
-            <div class = demo>
-                <span>
-                    Hi there! I'm Joachim Ford, a solo developer
-                    who likes to create unique indie games in pure JavaScript.
-                    I'm always open to suggestions and feedback, so feel free to
-                    check out my <a class = normal href = https://github.com/Hope41 target = _blank>GitHub</a>
-                    or get in touch at
-                    <a class = normal href = mailto:hello@joachimford.uk target = _blank>hello@joachimford.uk</a>.
-                </span>
+                        <div class = topnav-separator></div>
 
-                <div class = opts>
-                    <a href = mailto:hello@joachimford.uk target = _blank>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8">
-                            <path d="M1 0 0 1 0 2 4 4 8 2 8 1 7 0ZM0 3 4 5 8 3 8 7 7 8 1 8 0 7Z"/>
+                        <div class = topnav-vertical-menu>
+                            <a href = /news#>News</a>
+                            <a href = /about# class = active>About</a>
+                            <a href = /contact#>Contact</a>
+                        </div>
+                    </div>
+
+                    <div id = nav-bars>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 4 3">
+                            <path stroke-width=".5" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 0 0 L 3 0 M 0 1 L 3 1 M 0 2 L 2 2"/>
                         </svg>
-                    </a>
-                    <a href = https://github.com/Hope41 target = _blank>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                            <path d="M 3 3 L 3 9 L 5 11 L 6 11 L 6 16 L 2 16 L 0 14 L 0 2 L 2 0 L 14 0 L 16 2 L 16 14 L 14 16 L 10 16 L 10 11 L 11 11 L 13 9 L 13 3 L 11 5 L 5 5 Z"/>
-                        </svg>
-                    </a>
-                    <a href = https://youtube.com/@joachimford target = _blank>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                            <path d="M 2 0 L 0 2 L 0 14 L 2 16 L 14 16 L 16 14 L 16 2 L 14 0 Z M 6 5 L 11 8 L 6 11 Z"/>
-                        </svg>
-                    </a>
-                    <a href = https://x.com/joachimford target = _blank>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                            <path d="M 2 0 L 0 2 L 0 14 L 2 16 L 14 16 L 16 14 L 16 2 L 14 0 Z M 2 5 L 5 2 L 9 6 L 13 2 L 14 3 L 10 7 L 14 11 L 11 14 L 7 10 L 3 14 L 2 13 L 6 9 Z M 11 12 L 12 11 L 5 4 L 4 5 Z"/>
-                        </svg>
-                    </a>
-                    <a href = https://joachimford.itch.io target = _blank>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1 18 19">
-                            <path d="M 2 -1 L 0 1 L 0 4 L 2 4 L 4 3 L 6 3 L 8 4 L 10 4 L 12 3 L 14 3 L 16 4 L 18 4 L 18 1 L 16 -1 Z M 0 6 L 0 16 L 2 18 L 16 18 L 18 16 L 18 6 L 16 6 L 14 5 L 12 5 L 10 6 L 8 6 L 6 5 L 4 5 L 2 6 Z Z M 8 13 L 7 14 L 5 15 L 3 15 L 3 13 L 4 11 L 5 8 L 13 8 L 14 11 L 15 13 L 15 15 L 13 15 L 11 14 L 10 13 Z M 8 12 L 8 11 L 7 11 L 9 9 L 11 11 L 10 11 L 10 12 Z"/>
-                        </svg>
-                    </a>
-                    <a href = https://dwitter.net/u/Joachim target = _blank>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                            <path d="M 2 0 L 0 2 L 0 14 L 2 16 L 14 16 L 16 14 L 16 2 L 14 0 Z M 3 4 L 5 4 L 5 12 L 3 12 Z M 7 4 L 9 4 L 9 12 L 7 12 Z M 11 4 L 13 4 L 13 12 L 11 12 Z"/>
-                        </svg>
-                    </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class = hero-section>
+                <div id = hero>
+                    <div class = hero-target></div>
+                    <h1 id = hero-text>
+                        <div>
+                            <span>A</span><span>b</span><span>o</span><span>u</span><span>t</span>
+                        </div>
+                    </h1>
+                </div>
+            </section>
+
+            <section class = main>
+                <div class = 'content top-huge-pad bottom-big'>
+                    <h2 class = 'h3 center'><span class = gray-green>Welcome to</span></h2>
+                    <h2 class = 'h1 center'>joachimford.uk!</h2>
+                    <div class = 'text shift'>
+                        <p class = spaced>
+                            Hello, and welcome to joachimford.uk! This is a
+                            personal website designed to help coders and game
+                            devs with their projects, as well as sharing
+                            some of my own games and tools.
+                        </p>
+                        <p class = spaced>
+                            Constructive criticism goes a long way! Please feel
+                            free to share your thoughts on the website in a comment or
+                            via email.
+                        </p>
+
+                        <a class = 'button center top-small bottom-big' href = /games#>
+                            Play Games Now
+                            <svg class = button-arrow xmlns="http://www.w3.org/2000/svg" viewBox="-1.5 -1.5 5 7">
+                                <path d="M 0 0 L 2 2 L 0 4"/>
+                            </svg>
+                        </a>
+                        <img class = 'basic-image top' src = /assets/ios-mission-4-narrow.png alt = "Io's Mission - play the free online 2D indie platform adventure game with epic boss battles, procedurally generated worlds, and a captivating storyline">
+                    </div>
+                </div>
+
+                <div class = 'content top-big-pad bottom-pad'>
+                    <h2 class = h2>Stuff I've Worked On</h2>
+                    <div class = 'text shift bottom-pad'>
+                        <p class = spaced>
+                            <span class = bullet-point>
+                                Game development
+                            </span>
+                            <span class = bullet-point>
+                                Something called "generative art"
+                                (which lets you make cool pictures just using maths)
+                            </span>
+                            <span class = bullet-point>Websites, coding tools, a bit of piano, etc. etc.</span>
+                        </p>
+                    </div>
+                    <img class = 'deco stars shift' src = /assets/stars.svg>
+                </div>
+
+                <div class = 'content bottom-huge top-pad'>
+                    <div class = 'box right'>
+                        <div class = 'text shift'>
+                            <p class = spaced>
+                                Current Project: A tool to help game
+                                developers make 2D game levels, utilising procedural
+                                generation and generative art to simplify asset
+                                creation and level design.
+                            </p>
+                            <p class = spaced>
+                                <a class = small-link href = /#subscribe>Subscribe</a>
+                                to get notified when it's released!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = 'content bottom-huge'>
+                    <h2 class = 'h1 cool-text'>Socials</h2>
+                    <div class = 'text shift top'>
+                        <p class = 'spaced bottom-pad'>
+                            Want to get in touch? Reach out on social media!
+                        </p>
+                        <div class = 'socials top-big'>
+                            <a href = mailto:hi@joachimford.uk target = _blank><img src = /assets/mail.svg alt = 'email icon'></a>
+                            <a href = https://github.com/Hope41 target = _blank><img src = /assets/github.svg alt = 'github icon'></a>
+                            <a href = https://youtube.com/@JoachimFord target = _blank><img src = /assets/youtube.svg alt = 'youtube icon'></a>
+                            <a href = https://joachimford.itch.io target = _blank><img src = /assets/itch.svg alt = 'itch.io icon'></a>
+                            <a href = https://x.com/JoachimFord target = _blank><img src = /assets/x.svg alt = 'x logo'></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = 'content bottom-huge right'>
+                    <h2 class = 'right h1 cool-text'>Achievements</h2>
+                    <div class = 'text shift-right top'>
+                        <p class = spaced>
+                            Here are some highlights!
+                        </p>
+                        <p class = 'spaced top-big bottom-big'>
+                            <span class = 'bullet-point right'>#1 for <b>js1024</b> <span class = smallish>(2024)</span></span>
+                            <span class = 'bullet-point right'>Top 17% in <b>Gamedev.js</b> <span class = smallish>(2024)</span></span>
+                            <span class = 'bullet-point right'>#6 <b>js1024</b> <span class = smallish>(2023)</span></span>
+                            <span class = 'bullet-point right'>Made <b>SquirtCopter 1</b> and <b>Blue Hue</b> for JoBase</span>
+                        </p>
+                    </div>
+                </div>
+
+                <img class = 'deco stars center top-big bottom-big' src = /assets/stars.svg>
+
+                <div class = 'content top-big-pad bottom-huge' id = subscribe>
+                    <div class = boxed>
+                        <h1><span class = 'h2 cool-text'>Subscribe to the newsletter!</span></h1>
+                        <div class = restrict>
+                            <form class = 'subscribe-form top'>
+                                <div class = flex-x>
+                                    <input type = email class = form placeholder = 'Email' required>
+                                    <button class = send-form-button type = submit>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1.5 -1.5 5 7">
+                                            <path d="M 0 0 L 2 2 L 0 4"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div><span class = 'dim small-font shift'>(No info will be shared. <button class = popup-link data-id = terms type = button>Terms</button>)</span></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class = footer>
+                <div class = footer-left>
+                    <span>&copy; Joachim Ford <span id = year>2025</span></span>
+                    <span>All rights reserved</span>
+                    <span class = top-small>
+                        <form class = 'subscribe-form-tiny'>
+                            <div class = flex-x>
+                                <input type = email class = form placeholder = 'email' required>
+                                <button class = send-form-button type = submit>
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </span>
+                    <div class = 'footer-socials top-small'>
+                        <a href = mailto:hi@joachimford.uk target = _blank><img src = /assets/mail.svg alt = 'email icon'></a>
+                        <a href = https://github.com/Hope41 target = _blank><img src = /assets/github.svg alt = 'github icon'></a>
+                        <a href = https://youtube.com/@JoachimFord target = _blank><img src = /assets/youtube.svg alt = 'youtube icon'></a>
+                        <a href = https://joachimford.itch.io target = _blank><img src = /assets/itch.svg alt = 'itch.io icon'></a>
+                        <a href = https://x.com/JoachimFord target = _blank><img src = /assets/x.svg alt = 'x logo'></a>
+                    </div>
+                </div>
+                <div class = footer-right>
+                    <a href = /index# class = basic-link>Home</a>
+                    <a href = /games# class = basic-link>Games</a>
+                    <a href = /projects# class = basic-link>Projects</a>
+                    <a href = /blog# class = basic-link>Blog</a>
+                    <a href = /news# class = basic-link>News</a>
+                    <a href = /about# class = basic-link>About</a>
+                    <a href = /contact# class = basic-link>Contact</a>
+                </div>
+            </section>
+        </div>
+
+        <div class = popup id = terms>
+            <div class = popup-text-hold>
+                <div class = popup-close data-id = terms>
+                    <img src = assets/close.svg>
+                </div>
+                <div class = popup-text>
+                    <h2 class = h4><span class = gray-green>Newsletter Subscription</span></h2>
+                    <h2 class = h2>Terms</h2>
+                    <div class = 'text shift-right'>
+                        <p class = spaced>
+                            By subscribing to the newsletter, you consent to receive
+                            updates related to coding, game development, and projects.
+                            Your email address will be used for this purpose
+                            only and will never be shared or sold.
+                        </p>
+                        <p class = spaced>
+                            Emails will typically be sent once a month, though
+                            occasional updates may be more frequent (up to once
+                            per week). You can unsubscribe at any time using the
+                            link provided in each email.
+                        </p>
+                        <button class = popup-close data-id = terms>
+                            I Understand
+                        </button>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class = demo>
-                <h3>Things I've worked on...</h3>
-                <p>&bull; I've spent some time working for
-                <a class = normal href = https://jobase.org target = _blank>JoBase</a>,
-                and games such as
-                <b>SquirtCopter</b> and <b>Blue Hue</b> have been recently
-                featured on their website.</p>
-                <p>&bull; The developer of
-                <a class = normal href = https://canvas-craft.github.io target = _blank>CanvasCraft</a>,
-                which was created for the purpose of making game world design easier.</p>
-                <div class = big>
-                    <img class = img src = /src/images/canvas_craft_bio.png>
-                </div>
-            </div>
-        </section>
-
-        <button class = theme onclick = toggleTheme()>Change Theme</button>
-        <span class = copyright>
-            &copy; <span class = year></span> Joachim Ford. All rights reserved.
-            <a href = https://github.com/Hope41 target = _blank><img src = /src/images/github.svg></img></a>
-            <a href = mailto:hello@joachimford.uk><img src = /src/images/mail.svg></img></a>
-        </span>
+        <script src = /assets/main.js></script>
+        <script src = /assets/infinite-carousel.js></script>
+        <script src = /assets/hero.js></script>
+        <script src = /assets/cool-text.js></script>
+        <script src = /assets/popup.js></script>
     </body>
 </html>

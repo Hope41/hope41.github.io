@@ -1,0 +1,76 @@
+#survey {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--survey-h);
+    background-color: rgb(133, 64, 110);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    font-family: main, monospace, sans-serif;
+    font-size: var(--font-size-smaller);
+    padding: 0 30px;
+    transform: translateY(-100%);
+    transition: var(--survey-transition);
+    gap: 10px;
+    color: #fff
+}
+
+#survey div {
+    display: none;
+}
+
+#survey span {
+    display: inline;
+}
+
+.survey-button {
+    width: fit-content;
+    background-color: #ffdbfb;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-family: main, monospace, sans-serif;
+    font-size: var(--font-size-smaller);
+    border: none;
+    cursor: pointer;
+    color: #403;
+}
+
+body.survey-open #survey {
+    transform: translateY(0);
+}
+
+@media screen and (max-width: 900px) {
+    #survey {
+        font-size: var(--font-size-small);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    :root {
+        --survey-h: 50px;
+    }
+
+    #survey div {
+        display: inline;
+    }
+
+    #survey span {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    :root {
+        --survey-h: 50px;
+    }
+
+    #survey div {
+        display: none;
+    }
+
+    #survey span {
+        display: none;
+    }
+}

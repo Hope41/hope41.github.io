@@ -1,0 +1,113 @@
+:root {
+    --lightbox-topnav-height: 50px
+}
+
+.view-image {
+    cursor: pointer;
+}
+
+#lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--black-transparent);
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    transition: .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: none;
+    transform: scale(.5);
+}
+
+#lightbox-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+}
+
+#lightbox-img {
+    transform: translateY(calc(var(--lightbox-topnav-height) / 2));
+    max-width: calc(100% - 100px);
+    max-height: calc(80% - var(--lightbox-topnav-height));
+    border-radius: 5px;
+    z-index: -1;
+    pointer-events: none;
+    user-select: none;
+    image-rendering: crisp-edges;
+}
+
+#lightbox-topnav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--lightbox-topnav-height);
+    background-color: var(--black);
+    border-bottom: 1px var(--c222) solid;
+    display: flex;
+    justify-content: flex-end;
+    user-select: none;
+}
+
+#lightbox-close img {
+    height: 100%;
+}
+
+.lightbox-button {
+    width: var(--lightbox-topnav-height);
+    height: var(--lightbox-topnav-height);
+    background-color: transparent;
+    padding: 13px;
+    cursor: pointer;
+}
+
+.lightbox-button:hover {
+    background-color: var(--c111);
+}
+
+#lightbox-prev, #lightbox-next {
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 100%;
+    filter: brightness(.5);
+    user-select: none;
+    transform: scale(1);
+    transition: .2s;
+    opacity: 1;
+}
+
+#lightbox-overlay.open #lightbox-prev, #lightbox-overlay.open #lightbox-next {
+    pointer-events: all;
+    cursor: pointer;
+}
+
+#lightbox-prev img, #lightbox-next img {
+    width: 100%;
+    height: 50px;
+    transform: translateY((-50% + var(--lightbox-topnav-height) / 2))
+}
+
+#lightbox-prev.hide, #lightbox-next.hide {
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#lightbox-prev:hover, #lightbox-next:hover {
+    filter: brightness(.8);
+}
+
+#lightbox-prev {
+    left: 0;
+    transform: translateX(50%);
+}
+
+#lightbox-next {
+    right: 0;
+    transform: translateX(-50%);
+}

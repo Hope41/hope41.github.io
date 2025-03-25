@@ -1,0 +1,243 @@
+:root {
+    --send-form-height: 50px;
+    --send-form-small-height: 40px;
+    --send-form-tiny-height: 30px;
+    --send-form-width: 100px;
+    --send-form-button-transition: .15s cubic-bezier(.44,0,.35,1);
+    --send-slide-size: 13px;
+    --send-slide-oft: 3px
+}
+
+form {
+    position: relative;
+}
+
+form.submitted {
+    pointer-events: none;
+}
+
+form::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--black);
+    transition: .5s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+form.submitted::after {
+    opacity: 1;
+}
+
+form::before {
+    content: 'Thanks!';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: var(--font-size);
+    color: var(--white);
+    z-index: 2;
+    opacity: 0;
+    transition: .5s;
+    pointer-events: none;
+}
+
+form.submitted::before {
+    opacity: 1;
+}
+
+.subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.subscribe-form-small {
+    width: 500px;
+    max-width: 100%;
+}
+
+.subscribe-form-tiny {
+    width: 300px;
+    max-width: 100%;
+}
+
+.send-form-button svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    stroke: var(--caaa);
+    stroke-width: .8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    transition: var(--send-form-button-transition);
+    transform: translate(-50%, -50%);
+}
+
+.send-form-button:hover svg {
+    stroke: var(--bright-green);
+    transform: translate(calc(-50% + var(--send-slide-size) + var(--send-slide-oft)), -50%) scale(.8);
+}
+
+/* Main subscribe form */
+input.form {
+    width: 100%;
+    height: var(--send-form-height);
+    font-family: main, monospace, sans-serif;
+    font-size: var(--font-size-smallish);
+    padding: 0 15px;
+    background-color: var(--black);
+    color: var(--line-text-color);
+    border: 1px var(--c333) solid;
+    border-radius: 10px;
+    outline: 0 transparent solid;
+    transition: .05s;
+}
+
+input.form:hover {
+    background-color: var(--c090909);
+}
+
+input.form:focus {
+    border: 1px var(--bright-green) solid;
+}
+
+.send-form-button {
+    flex: 1 0 auto;
+    width: var(--send-form-width);
+    height: var(--send-form-height);
+    background-color: var(--black);
+    border: none;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--send-form-button-transition);
+    border: 1px var(--c333) solid;
+}
+
+.send-form-button:hover {
+    cursor: pointer;
+    background-color: var(--very-dark-green);
+}
+
+.subscribe-form .send-form-button::before {
+    content: 'GO!';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100%, -50%);
+    color: var(--green);
+    font-family: main, monospace, sans-serif;
+    font-size: var(--font-size-smallish);
+    opacity: 0;
+    transition: .1s;
+    transition-delay: 0s;
+}
+
+.subscribe-form .send-form-button:hover::before {
+    opacity: 1;
+    transform: translate(calc(-50% - var(--send-slide-size) + var(--send-slide-oft)), -50%);
+    transition-delay: .05s;
+}
+
+/* Small subscribe form */
+.subscribe-form-small input.form {
+    height: var(--send-form-small-height);
+    background-color: var(--c222-c191919);
+}
+
+.subscribe-form-small input.form:hover {
+    background-color: var(--c222-c191919);
+}
+
+.subscribe-form-small .send-form-button {
+    height: var(--send-form-small-height);
+    background-color: var(--c222-c191919);
+}
+
+.subscribe-form-small .send-form-button:hover {
+    background-color: var(--c333);
+}
+
+/* Tiny subscribe form */
+.subscribe-form-tiny input.form {
+    height: var(--send-form-tiny-height);
+    background-color: var(--c222-c191919);
+    font-family: main, monospace, sans-serif;
+    font-size: var(--font-size-small);
+    border-radius: 2px;
+}
+
+.subscribe-form-tiny input.form:hover {
+    background-color: var(--c222-c191919);
+}
+
+.subscribe-form-tiny .send-form-button {
+    width: fit-content;
+    height: var(--send-form-tiny-height);
+    background-color: var(--c222-c191919);
+    color: var(--text-color);
+    font-family: main, monospace, sans-serif;
+    padding: 0 10px;
+    border-radius: 2px;
+}
+
+.subscribe-form-tiny .send-form-button:hover {
+    background-color: var(--c333);
+}
+
+.terms {
+    background-color: transparent;
+    border: none;
+    color: var(--green);
+    font-size: var(--font-size-small);
+    font-family: main, monospace, sans-serif;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+}
+
+.terms::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: var(--mid-green);
+    transition: .1s;
+    border-radius: 2px;
+}
+
+.terms:hover::before {
+    left: 0;
+    right: auto;
+    width: 100%;
+}
+
+@media screen and (max-width: 500px) {
+    .subscribe-form-tiny {
+        width: 100%;
+    }
+
+    .subscribe-form-tiny .flex-x {
+        flex-direction: column;
+    }
+
+    .subscribe-form-tiny input.form {
+        width: 100%;
+    }
+
+    .subscribe-form-tiny .send-form-button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-gb"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1">
+        <meta name="description" content="Free online coding blogs and open source games">
+        <title>Basic Walking Simulation</title>
+        <style>
+            body {
+                background: #fff;
+                margin: 0;
+                overflow: hidden
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            let box = 0
+            function resize() {
+                cvs.width = innerWidth
+                cvs.height = innerHeight
+                box = Math.min(cvs.width, cvs.height)
+            }
+
+            function update() {
+                ctx.fillStyle = 'rgb(150,230,255)'
+                ctx.fillRect(0, 0, cvs.width, cvs.height)
+                dt = (performance.now() - perf) / 16
+                perf = performance.now()
+                if (dt > 1) dt = 1
+                time += dt * .08
+
+                const b = box / 300
+
+                const footW = 50 * b
+                const footH = 30 * b
+                const grassH = 30 * b
+                const grass = 10 * b
+                const laceW = 6 * b
+                const laceH = 15 * b
+
+                // Clouds
+                for (let i = 0; i < 3; i ++) {
+                    const xPos = Math.sin(i * i * 4) * box
+                    const w = box
+                    const max = cvs.width + w
+
+                    ctx.fillStyle = '#fff4'
+                    ctx.fillRect(
+                        (((xPos - time * 45) % max) + max) % max - w,
+                        cvs.height / 4 + Math.sin(i * i * i) * cvs.height / 2 - box / 1.5,
+                        w, box / 2)
+                }
+
+                const yDrop = cvs.height / 5
+
+                for (let i = 2; i --;) {
+                    const x = cvs.width / 2 - Math.sin(time + i * Math.PI) * box / 2.5 - 10
+                    let y = cvs.height / 2 + Math.cos(time + i * Math.PI) * box / 2.5 - 10
+
+                    if (y > cvs.height / 2) y = cvs.height / 2
+                    y += yDrop
+
+                    const swing = Math.sin(time + i * Math.PI)
+                    let rise = swing
+                    if (rise < 0) rise = 0
+                    y -= rise * 40 * b
+
+                    ctx.save()
+                    ctx.translate(x, y)
+                    ctx.rotate(swing)
+
+                    // back lace
+                    ctx.save()
+                    ctx.translate(footW * .3, -footH + laceW)
+                    ctx.rotate(Math.sin(time + i * Math.PI - Math.PI / 4) * .7 - 1.5)
+
+                    ctx.fillStyle = '#c44'
+                    ctx.fillRect(0, 0, laceW, laceH * 1.5)
+                    ctx.restore()
+
+                    // laces
+                    ctx.fillStyle = '#036'
+                    ctx.fillRect(0, -footH, footW, footH)
+
+                    ctx.fillStyle = '#b33'
+                    ctx.fillRect(footW * .3, -footH, laceW, laceH)
+                    ctx.fillRect(footW * .5, -footH, laceW, laceH)
+                    ctx.fillRect(footW * .7, -footH, laceW, laceH)
+
+                    // font lace
+                    ctx.save()
+                    ctx.translate(footW * .3, -footH + laceW / 2)
+                    ctx.rotate(Math.cos(time + i * Math.PI - Math.PI * 2) * .4 - 1.5)
+                    ctx.fillRect(0, 0, laceW, laceH)
+                    ctx.restore()
+
+                    ctx.restore()
+                }
+
+                for (let i = 0; i < grass; i ++) {
+                    ctx.fillStyle = '#050'
+                    ctx.fillRect(
+                        (((i * cvs.width / grass - time * 45) % cvs.width) + cvs.width) % cvs.width,
+                        cvs.height / 2 + yDrop, 10, -grassH - Math.sin(i * i) * grassH + Math.sin(time / 4 + i * 9) * 10)
+                }
+
+                ctx.fillStyle = '#270'
+                ctx.fillRect(0, cvs.height / 2 + yDrop - 4, cvs.width, cvs.height)
+
+                requestAnimationFrame(update)
+            }
+
+            const cvs = document.createElement('canvas')
+            const ctx = cvs.getContext('2d')
+            let time = 0
+
+            let dt = 0
+            let perf = 0
+
+            document.body.appendChild(cvs)
+            addEventListener('resize', resize)
+            resize()
+            update()
+        </script><canvas width="1280" height="587"></canvas>
+    
+</body></html>

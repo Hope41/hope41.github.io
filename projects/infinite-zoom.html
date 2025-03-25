@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang = en-GB id = html>
+    <head>
+        <meta charset = UTF-8>
+        <meta name = viewport content = 'width=device-width, initial-scale=1.0'>
+        <meta name = description content = "Infinite Zoom - a web app with an infinite zoom example and a break-down of how it works">
+        <meta name = author content = 'Joachim Ford'>
+
+        <meta property = og:title content = 'Infinite Zoom - Joachim Ford'>
+        <meta property = og:description content = "Infinite Zoom - a web app with an infinite zoom example and a break-down of how it works">
+        <meta property = og:image content = https://joachimford.uk/assets/logo.png>
+
+        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Joachim" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <title>Infinite Zoom - Joachim Ford</title>
+        <link rel = stylesheet href = /assets/styles.css>
+        <link rel = stylesheet href = /assets/topnav.css>
+        <link rel = stylesheet href = /assets/main.css>
+        <link rel = stylesheet href = /assets/hero.css>
+        <link rel = stylesheet href = /assets/infinite-carousel.css>
+        <link rel = stylesheet href = /assets/forms.css>
+        <link rel = stylesheet href = /assets/footer.css>
+        <link rel = stylesheet href = /assets/a.css>
+        <link rel = stylesheet href = /assets/demo.css>
+        <link rel = stylesheet href = /assets/cool-text.css>
+        <link rel = stylesheet href = /assets/deco.css>
+        <link rel = stylesheet href = /assets/comment.css>
+        <link rel = stylesheet href = /assets/checkbox.css>
+        <link rel = stylesheet href = /assets/popup.css>
+        <link rel = stylesheet href = /assets/lightbox.css>
+
+        <link rel = stylesheet href = /assets/controls.css>
+    </head>
+    <body class = dark>
+        <div class = over-hold>
+            <section class = topnav>
+                <div class = topnav-container>
+                    <a class = topnav-home href = /index#>
+                        <div class = topnav-logo>
+                            <img src = /assets/logo.png alt = 'Pixel art of a young boy with black hair'>
+                        </div>
+                        <div class = topnav-title>
+                            <h2>Joachim</h2>
+                            <h2>Ford.uk</h2>
+                        </div>
+                    </a>
+                    <div class = topnav-menu>
+                        <div class = topnav-menu-wide>
+                            <a href = /games#>Games</a>
+                            <a href = /projects# class = active>Projects</a>
+                            <a href = /blog#>Blog</a>
+                        </div>
+
+                        <div class = topnav-separator></div>
+
+                        <div id = color-theme>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.5 0 13 13">
+                                <path d="M 0 0 A 2.25 2.25 90 0 0 0 13 A 2.25 2.25 90 0 0 0 0 Z M 0 2 A 2.25 2.25 90 0 1 0 11 Z"/>
+                            </svg>
+                        </div>
+
+                        <div class = topnav-separator></div>
+
+                        <div class = topnav-vertical-menu>
+                            <a href = /news#>News</a>
+                            <a href = /about#>About</a>
+                            <a href = /contact#>Contact</a>
+                        </div>
+                    </div>
+
+                    <div id = nav-bars>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 4 3">
+                            <path stroke-width=".5" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 0 0 L 3 0 M 0 1 L 3 1 M 0 2 L 2 2"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <section class = hero-section>
+                <div class = hero-background>
+                    <img src = /assets/infinite-zoom-4.png>
+                </div>
+                <div id = hero class = transparent-bg>
+                    <h1 id = hero-text>
+                        <div>
+                            <span>I</span><span>n</span><span>f</span><span>i</span><span>n</span><span>i</span><span>t</span><span>e</span>&nbsp;<span>Z</span><span>o</span><span>o</span><span>M</span>
+                        </div>
+                    </h1>
+                </div>
+            </section>
+
+            <section class = main>
+                <div class = main-date>29 Mar. 2022</div>
+                <div class = 'content top-huge bottom'>
+                    <div class = 'demo-preview-hold bottom-big-pad'>
+                        <a href = /infinite-zoom target = _blank>
+                            <div class = 'demo-preview demo-play bottom-small'>
+                                <img src = /assets/infinite-zoom-3.png alt = "Modern infinite zoom into a green matrix grid of icons">
+                                <div class = demo-play-button>PLAY</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <h2 class = 'h3 top-big'>How it Works</h2>
+                    <div class = 'text shift'>
+                        <p class = 'spaced'>
+                            <span class = 'bullet-point'>
+                                Create a low resolution image (in my example, 6 &times; 6)
+                            </span>
+                            <span class = 'bullet-point'>
+                                Draw it on the screen
+                            </span>
+                            <span class = 'bullet-point'>
+                                Zoom in
+                            </span>
+                            <span class = 'bullet-point'>
+                                Once the image pixels get bigger than a certain size:
+                            </span>
+                            <span class = 'bullet-point indent-1'>
+                                Duplicate the image inside each of its pixels
+                            </span>
+                            <span class = 'bullet-point indent-1'>
+                                Fade out the old image
+                            </span>
+                            <span class = 'bullet-point indent-1'>
+                                Keep zooming in
+                            </span>
+                        </p>
+                    </div>
+
+                    <h2 class = 'h3 top-big'>A Deeply Unnecessary Appreciation of Infinity</h2>
+                    <div class = 'text shift bottom-big'>
+                        <p class = spaced>
+                            It's probably weird, but I've always loved the concept
+                            of infinity.
+                        </p>
+                        <p class = spaced>
+                            Honestly, even an empty infinite <i>grid</i> is enough to keep
+                            me entertained for hours. Sadly, after trying in vain
+                            to explain my feelings to some friends, I quickly discovered that
+                            enthusiasm for limitless nothingness is... well, not universal.
+                        </p>
+                    </div>
+
+                    <div class = 'demo-img-container padded-side'>
+                        <div class = small-img>
+                            <div class = 'view-image'>
+                                <img class = 'demo-img' src = /assets/infinite-zoom-5.png alt = "Booing in online chat discord">
+                            </div>
+                            <div class = demo-img-desc>The public's response to infinity</div>
+                        </div>
+                    </div>
+
+                    <div class = 'text shift top-big bottom-big'>
+                        <p class = spaced>
+                            So, after a few days of contemplation, I decided to make
+                            a simple web app to share the joy of infinity in a
+                            way that would (hopefully) make more sense to normal people.
+                        </p>
+
+                        <img class = 'deco stars center top-big-pad bottom-big' src = /assets/squiggles.svg>
+                    </div>
+
+                    <div class = 'box top-big bottom-big'>
+                        <div class = 'text shift'>
+                            <p class = spaced>
+                                Strangely enough, despite being one of the easiest things
+                                I've made, this page now gets more clicks than anything
+                                else on my website. Look at this:
+                            </p>
+                        </div>
+
+                        <div class = 'demo-img-container padded-side'>
+                            <div class = small-img>
+                                <div class = 'view-image'>
+                                    <img class = 'demo-img' src = /assets/infinite-zoom-6.png alt = "A list of top pages with Google Search Console SEO">
+                                </div>
+                                <div class = demo-img-desc>Some Startling Statistics</div>
+                            </div>
+                        </div>
+
+                        <div class = 'text shift bottom-small'>
+                            <p class = spaced>
+                                I'm telling you, when I first saw that, I was indignant.
+                                I've literally spent <i>years</i> on some of
+                                the games on this site - yet the project I threw together
+                                in a single day is getting three times more views than my
+                                actual homepage.
+                            </p>
+                            <p class = spaced>
+                                Outrageous. Simply outrageous.
+                            </p>
+                        </div>
+                    </div>
+
+                    <img class = 'deco stars center top-big bottom-big' src = /assets/stars.svg>
+
+                    <div class = 'text shift top-big bottom-big'>
+                        <p class = spaced>
+                            Anyway, back to infinite zooms. The inspiration for
+                            making the example above came from a cool demo I saw
+                            called "Pixel Words," by Frank Force.
+                            It's an infinite zoom and a crossword puzzle all in one.
+                            You should check it out!
+                        </p>
+
+                        <p class = 'spaced'>
+                            It was an awesome concept, so I thought that making
+                            an overly-simplified online version of it would be
+                            a fun experiment.
+                        </p>
+                        <p class = 'spaced'>
+                            Although being extremely easy to code, the technique
+                            mentioned in the outset is the absolutely not the
+                            most efficient way to
+                            create an infinite zoom, although I hope it gave you
+                            an small insight into the untold joys of infinity.
+                        </p>
+                        <p class = spaced>
+                            I also hope that this page
+                            will continue to inspire future generations to
+                            ponder once more upon the marvelous eternity of
+                            nothingness, and to find enlightenment from it,
+                            forever and ever.
+                        </p>
+                        <p class = 'spaced'>
+                            See you next time!
+                        </p>
+                    </div>
+                </div>
+
+                <div class = 'content top-big bottom-big-pad'>
+                    <div class = 'text shift top-small-pad bottom-big-pad'>
+                        <div class = 'socials top-big'>
+                            <a href = https://github.com/Hope41/infinite-zoom target = _blank>
+                                <span>Star on GitHub</span>
+                                <img src = /assets/star.svg alt = 'star icon'>
+                            </a>
+                            <a href = /games#>
+                                <span>Play some games</span>
+                                <img src = /assets/clock.svg alt = 'star icon'>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class = 'box top-big'>
+                        <div class = 'text shift'>
+                            <p class = spaced>
+                                Please give my game
+                                <a class = 'link' target = _blank href = /games/ios-mission#>Io's Mission</a>
+                                a try!
+                                Did you know that each level in it goes on forever
+                                in both directions?
+                                Let me know if you like it!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = 'content bottom-huge top-pad'>
+                    <h2 class = 'h3 top-big'>Free and Open Source!</h2>
+                    <div class = 'text shift bottom-big'>
+                        <p class = spaced>
+                            As a rule, all my projects are free and have their source
+                            code disclosed. Feel free to make your own versions
+                            of Infinite Zoom on GitHub! Licensed under
+                            <a class = 'link block' target = _blank href = https://creativecommons.org/licenses/by-sa/4.0>
+                                CC-BY-SA-4.0</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class = 'content top bottom-huge'>
+                    <form class = 'comment bottom-big-pad' data-url = InfiniteZoom>
+                        <h3 class = 'h3 top-small bottom-small center'>
+                            <span class = slightly-dim>
+                                Please leave a comment!
+                            </span>
+                        </h3>
+
+                        <input class = form placeholder = 'name'>
+                        <label for = notify class = checkbox-label>
+                            <div class = checkbox-hold>
+                                <input id = notify class = checkbox data-checked type = checkbox>
+                            </div>
+                            <span class = 'smallish slightly-dim'>Make this comment public</span>
+                        </label>
+
+                        <div class = comment-box-hold>
+                            <textarea class = comment-box required contenteditable placeholder = 'Write your message here'></textarea>
+                        </div>
+
+                        <input class = form type = email placeholder = 'email (optional)'>
+                        <button class = comment-send>Post Comment</button>
+                        <span class = 'dim small-font shift-right right'>(Your email will never be shared or sold. <button class = popup-link data-id = terms type = button>Terms</button>)</span>
+                    </form>
+                </div>
+            </section>
+
+            <section class = footer>
+                <div class = footer-left>
+                    <span>&copy; Joachim Ford <span id = year>2025</span></span>
+                    <span>All rights reserved</span>
+                    <span class = top-small>
+                        <form class = 'subscribe-form-tiny'>
+                            <div class = flex-x>
+                                <input type = email class = form placeholder = 'email' required>
+                                <button class = send-form-button type = submit>
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </span>
+                    <div class = 'footer-socials top-small'>
+                        <a href = mailto:hi@joachimford.uk target = _blank><img src = /assets/mail.svg alt = 'email icon'></a>
+                        <a href = https://github.com/Hope41 target = _blank><img src = /assets/github.svg alt = 'github icon'></a>
+                        <a href = https://youtube.com/@JoachimFord target = _blank><img src = /assets/youtube.svg alt = 'youtube icon'></a>
+                        <a href = https://joachimford.itch.io target = _blank><img src = /assets/itch.svg alt = 'itch.io icon'></a>
+                        <a href = https://x.com/JoachimFord target = _blank><img src = /assets/x.svg alt = 'x logo'></a>
+                    </div>
+                </div>
+                <div class = footer-right>
+                    <a href = /index# class = basic-link>Home</a>
+                    <a href = /games# class = basic-link>Games</a>
+                    <a href = /projects# class = basic-link>Projects</a>
+                    <a href = /blog# class = basic-link>Blog</a>
+                    <a href = /news# class = basic-link>News</a>
+                    <a href = /about# class = basic-link>About</a>
+                    <a href = /contact# class = basic-link>Contact</a>
+                </div>
+            </section>
+        </div>
+
+        <div class = popup id = terms>
+            <div class = popup-text-hold>
+                <div class = popup-close data-id = terms>
+                    <img src = /assets/close.svg>
+                </div>
+                <div class = popup-text>
+                    <h2 class = h4><span class = gray-green>Posting a Comment</span></h2>
+                    <h2 class = h2>Terms</h2>
+                    <div class = 'text shift-right'>
+                        <p class = spaced>
+                            <span class = 'bullet-point big-pad'>
+                                If you post your comment publicly, you agree to
+                                have your <b>name</b> and <b>message</b> posted
+                                on this website. Your comment may also appear in
+                                advertisements for this site.
+                            </span>
+                        </p>
+                        <p class = spaced>
+                            <span class = 'bullet-point big-pad'>
+                                By providing an email address, you will be notified
+                                of any replies. I may also respond to you directly
+                                via the email address provided.
+                            </span>
+                        </p>
+                        <p class = spaced>
+                            Your email will only be used for these purposes
+                            and will never be published, shared or sold.
+                        </p>
+                        <p class = 'spaced smallish'>
+                            The only catch is I get to make you a profile picture
+                            based on your name
+                            <img class = emoji src = /assets/Microsoft-Fluentui-Emoji-3d-Smirking-Face-3d.svg>
+                        </p>
+                        <button class = popup-close data-id = terms>
+                            I Understand
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id = lightbox-overlay>
+            <div id = lightbox-topnav>
+                <div id = lightbox-copy class = lightbox-button>
+                    <img src = /assets/copy.svg>
+                </div>
+                <div id = lightbox-download class = lightbox-button>
+                    <img src = /assets/download.svg>
+                </div>
+                <div id = lightbox-close class = lightbox-button>
+                    <img src = /assets/close.svg>
+                </div>
+            </div>
+            <img src = /assets/ios-mission-1-thumbnail.png id = lightbox-img>
+            <div id = lightbox-prev><img src = /assets/arrow-left.svg></div>
+            <div id = lightbox-next><img src = /assets/arrow-right.svg></div>
+        </div>
+
+        <script src = /assets/main.js></script>
+        <script src = /assets/infinite-carousel.js></script>
+        <script src = /assets/hero.js></script>
+        <script src = /assets/cool-text.js></script>
+        <script src = /assets/popup.js></script>
+        <script src = /assets/profile-interact.js></script>
+        <script src = /assets/demo-carousel.js></script>
+        <script src = /assets/lightbox.js></script>
+    </body>
+</html>

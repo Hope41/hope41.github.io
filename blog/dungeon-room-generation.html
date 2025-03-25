@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang = en-GB id = html>
+    <head>
+        <meta charset = UTF-8>
+        <meta name = viewport content = 'width=device-width, initial-scale=1.0'>
+        <meta name = description content = "Procedurally generate dungeon levels tutorial for game development">
+        <meta name = author content = 'Joachim Ford'>
+
+        <meta property = og:title content = 'Procedurally Generate Dungeon-Like Rooms - Joachim Ford'>
+        <meta property = og:description content = "Procedurally generate dungeon levels tutorial for game development">
+        <meta property = og:image content = https://joachimford.uk/assets/logo.png>
+
+        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Joachim" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <title>Procedurally Generate Dungeon-Like Rooms - Joachim Ford</title>
+        <link rel = stylesheet href = /assets/styles.css>
+        <link rel = stylesheet href = /assets/topnav.css>
+        <link rel = stylesheet href = /assets/main.css>
+        <link rel = stylesheet href = /assets/hero.css>
+        <link rel = stylesheet href = /assets/infinite-carousel.css>
+        <link rel = stylesheet href = /assets/forms.css>
+        <link rel = stylesheet href = /assets/footer.css>
+        <link rel = stylesheet href = /assets/a.css>
+        <link rel = stylesheet href = /assets/demo.css>
+        <link rel = stylesheet href = /assets/cool-text.css>
+        <link rel = stylesheet href = /assets/deco.css>
+        <link rel = stylesheet href = /assets/comment.css>
+        <link rel = stylesheet href = /assets/checkbox.css>
+        <link rel = stylesheet href = /assets/popup.css>
+        <link rel = stylesheet href = /assets/lightbox.css>
+        <link rel = stylesheet href = /assets/code.css>
+
+        <link rel = stylesheet href = /assets/controls.css>
+    </head>
+    <body class = dark>
+        <div class = over-hold>
+            <section class = topnav>
+                <div class = topnav-container>
+                    <a class = topnav-home href = /index#>
+                        <div class = topnav-logo>
+                            <img src = /assets/logo.png alt = 'Pixel art of a young boy with black hair'>
+                        </div>
+                        <div class = topnav-title>
+                            <h2>Joachim</h2>
+                            <h2>Ford.uk</h2>
+                        </div>
+                    </a>
+                    <div class = topnav-menu>
+                        <div class = topnav-menu-wide>
+                            <a href = /games#>Games</a>
+                            <a href = /projects#>Projects</a>
+                            <a href = /blog# class = active>Blog</a>
+                        </div>
+
+                        <div class = topnav-separator></div>
+
+                        <div id = color-theme>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.5 0 13 13">
+                                <path d="M 0 0 A 2.25 2.25 90 0 0 0 13 A 2.25 2.25 90 0 0 0 0 Z M 0 2 A 2.25 2.25 90 0 1 0 11 Z"/>
+                            </svg>
+                        </div>
+
+                        <div class = topnav-separator></div>
+
+                        <div class = topnav-vertical-menu>
+                            <a href = /news#>News</a>
+                            <a href = /about#>About</a>
+                            <a href = /contact#>Contact</a>
+                        </div>
+                    </div>
+
+                    <div id = nav-bars>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 4 3">
+                            <path stroke-width=".5" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 0 0 L 3 0 M 0 1 L 3 1 M 0 2 L 2 2"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <section class = hero-section>
+                <div class = hero-background>
+                    <img src = /assets/dungeon-room-generation-2.png>
+                </div>
+                <div id = hero class = transparent-bg>
+                </div>
+            </section>
+
+            <section class = main>
+                <div class = main-date>28 Oct. 2022</div>
+                <div class = 'content top-big-pad bottom'>
+                    <h1 class = 'h1 top-big center bottom-big'>
+                        Procedurally Generate Dungeon-Like Rooms
+                    </h1>
+
+                    <div class = 'demo-img-container padded-side top-pad bottom-pad'>
+                        <div>
+                            <div class = view-image>
+                                <img class = demo-img src = /assets/dungeon-room-generation-2.png>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = 'text shift top-big bottom-big-pad'>
+                        <p class = spaced>
+                            Ever since I started coding some years ago, I always
+                            liked the idea of games whose levels were different
+                            every time. Yes, the advantage of using formulas to
+                            create levels is it gives players a different
+                            experience each time they play the game. This blog
+                            runs through the generation of
+                            <a class = link target = _blank href = /blog/tips-for-game-development#sub>
+                                pretty much</a>
+                            my first attempt on generating levels with code.
+                            Hope you enjoy!
+                        </p>
+                    </div>
+
+                    <h2 class = 'h3 top bottom'>Create the Level Map</h2>
+
+                    <div class = 'text shift top bottom-big-pad'>
+                        <p class = spaced>
+                            To begin the level generation, we need to start by
+                            making a list that stores the current level. We can
+                            do this by constructing an array.
+                        </p>
+
+                        <div class = 'code-holder top bottom'>
+                            <div class = code-buttons>
+                                <div data-tip = 'copy' class = 'code-copy code-button-icon'>
+                                    <img src = /assets/copy.svg alt = 'copy icon'>
+                                </div>
+                            </div>
+                            <pre class = code><span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">array</span> <span style="color:var(--operator)">=</span> [] <span style="color:var(--comment)">// an array that stores the level</span>
+<span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">width</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">100</span> <span style="color:var(--comment)">// the amount of columns</span>
+<span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">height</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">100</span> <span style="color:var(--comment)">// the amount of rows</span></pre>
+                        </div>
+
+                        <p class = spaced>
+                            The first thing to do to our array is to completely
+                            fill it with blocks, which we can mine out later. In
+                            the code snippet below, a "block" is represented by 1.
+                        </p>
+
+                        <div class = 'code-holder top bottom'>
+                            <div class = code-buttons>
+                                <div data-tip = 'copy' class = 'code-copy code-button-icon'>
+                                    <img src = /assets/copy.svg alt = 'copy icon'>
+                                </div>
+                            </div>
+                            <pre class = code><span style="color:var(--comment)">// iterate through the amount of blocks in the world</span>
+<span style="color:var(--keyword)">for</span> <span style="color:var(--operator)">(</span><span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">0</span>; <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">&lt;</span> <span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">width</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">height</span>; <span style="color:var(--variable)">i</span> <span style="color:var(--operator)">++)</span> <span style="color:var(--operator)">{</span>
+    <span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">array</span>.<span style="color:var(--function)">push</span>(<span style="color:var(--number)">1</span><span style="color:var(--operator)">)</span> <span style="color:var(--comment)">// fill the level with blocks</span>
+<span style="color:var(--operator)">}</span></pre>
+                        </div>
+
+                        <p class = spaced>
+                            To draw the blocks, you can write code similar to this:
+                        </p>
+
+                        <div class = 'code-holder top bottom'>
+                            <div class = code-buttons>
+                                <div data-tip = 'copy' class = 'code-copy code-button-icon'>
+                                    <img src = /assets/copy.svg alt = 'copy icon'>
+                                </div>
+                            </div>
+                            <pre class = code><span style="color:var(--comment)">// set the scale</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">block_size</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">50</span>
+
+<span style="color:var(--comment)">// iterate through every square in the level</span>
+<span style="color:var(--keyword)">for</span> <span style="color:var(--operator)">(</span><span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">x</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">0</span>; <span style="color:var(--variable)">x</span> <span style="color:var(--operator)">&lt;</span> <span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">width</span>; <span style="color:var(--variable)">x</span> <span style="color:var(--operator)">++)</span> <span style="color:var(--operator)">{</span>
+    <span style="color:var(--keyword)">for</span> <span style="color:var(--operator)">(</span><span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">0</span>; <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">&lt;</span> <span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">height</span>; <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">++)</span> <span style="color:var(--operator)">{</span>
+        <span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">block</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">array</span>[<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">width</span>]
+
+        <span style="color:var(--comment)">// draw it if the current square is a block</span>
+        <span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">block</span> <span style="color:var(--operator)">==</span> <span style="color:var(--number)">1</span><span style="color:var(--operator)">)</span>
+            <span style="color:var(--variable)">ctx</span>.<span style="color:var(--function)">fillRect</span>(<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">block_size</span>, <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">block_size</span>, <span style="color:var(--variable)">block_size</span>, <span style="color:var(--variable)">block_size</span><span style="color:var(--operator)">)</span>
+    <span style="color:var(--operator)">}</span>
+<span style="color:var(--operator)">}</span></pre>
+                        </div>
+
+                        <p class = spaced>
+                            That's all you need to set up the map. Now we can
+                            start carving bits away!
+                        </p>
+
+                        <div class = 'demo-img-container top-small-pad bottom-small-pad'>
+                            <div class = view-image>
+                                <img class = demo-img src = /assets/dungeon-room-generation-3.png>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class = 'h3 top bottom'>Chambers</h2>
+
+                    <div class = 'text shift top bottom-big-pad'>
+                        <p class = spaced>
+                            The next stage is to start mining rooms. Each chamber
+                            has a random width and height, and is positioned in a
+                            grid. Store the chambers in an array, so that the
+                            computer can know where to place the tunnels and
+                            actors later on.
+                        </p>
+
+                        <div class = 'code-holder top bottom'>
+                            <div class = code-buttons>
+                                <div data-tip = 'copy' class = 'code-copy code-button-icon'>
+                                    <img src = /assets/copy.svg alt = 'copy icon'>
+                                </div>
+                            </div>
+                            <pre class = code><span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">array</span> <span style="color:var(--operator)">=</span> []
+<span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">chambers</span> <span style="color:var(--operator)">=</span> [] <span style="color:var(--comment)">// make an array that stores the chambers</span>
+<span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">width</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">100</span>
+<span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">height</span> <span style="color:var(--operator)">=</span> <span style="color:var(--number)">100</span></pre>
+                        </div>
+
+                        <p class = spaced>
+                            In the code below, 0 refers to plain air.
+                        </p>
+
+                        <div class = 'code-holder top bottom'>
+                            <div class = code-buttons>
+                                <div data-tip = 'copy' class = 'code-copy code-button-icon'>
+                                    <img src = /assets/copy.svg alt = 'copy icon'>
+                                </div>
+                            </div>
+                            <pre class = code><span style="color:var(--comment)">// this code makes a single chamber.</span>
+<span style="color:var(--comment)">// note that chamber x, y, width and height have already been defined.</span>
+
+<span style="color:var(--keyword)">for</span> <span style="color:var(--operator)">(</span><span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">x</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">chamber_x</span>; <span style="color:var(--variable)">x</span> <span style="color:var(--operator)">&lt;</span> <span style="color:var(--variable)">chamber_x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">chamber_width</span>; <span style="color:var(--variable)">x</span> <span style="color:var(--operator)">++)</span> <span style="color:var(--operator)">{</span>
+    <span style="color:var(--keyword)">for</span> <span style="color:var(--operator)">(</span><span style="color:var(--keyword)">let</span> <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">chamber_y</span>; <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">&lt;</span> <span style="color:var(--variable)">chamber_y</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">chamber_height</span>; <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">++)</span> <span style="color:var(--operator)">{</span>
+        <span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">array</span>[<span style="color:var(--variable)">x</span> <span style="color:var(--operator)">+</span> <span style="color:var(--variable)">y</span> <span style="color:var(--operator)">*</span> <span style="color:var(--variable)">this</span>.<span style="color:var(--variable)">width</span>] <span style="color:var(--operator)">=</span> <span style="color:var(--number)">0</span>
+    <span style="color:var(--operator)">}</span>
+<span style="color:var(--operator)">}</span></pre>
+                        </div>
+
+                        <div class = 'demo-img-container top-small-pad bottom-small-pad'>
+                            <div class = view-image>
+                                <img class = demo-img src = /assets/dungeon-room-generation-4.png>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class = 'h3 top bottom'>Tunnels</h2>
+
+                    <div class = 'text shift top bottom-big-pad'>
+                        <p class = spaced>
+                            Making the tunnels is a tricky part, so I will just
+                            give you a simplified overview. To begin, we need to
+                            know how each chamber should be connected. I went for
+                            the Binary Tree maze algorithm, which - in case you're
+                            wondering - is the simplest procedural maze ever.
+                            This is how it works:
+                        </p>
+
+                        <p class = spaced>
+                            <span class = bullet-point>Get your chambers set up</span>
+                            <span class = bullet-point>Starting at the top left corner, connect your chamber to either:</span>
+                            <span class = 'bullet-point indent-1'>The chamber on the right</span>
+                            <span class = 'bullet-point indent-1'>The chamber underneath</span>
+                        </p>
+
+                        <p class = spaced>
+                            With these rules applied, the maze should start to be
+                            taking shape. Note how the passages seem to point
+                            towards the bottom right corner:
+                        </p>
+
+                        <div class = 'demo-img-container top-small-pad bottom-small-pad'>
+                            <div class = view-image>
+                                <img class = demo-img src = /assets/dungeon-room-generation-5.png>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class = 'h3 top bottom'>Ladders</h2>
+
+                    <div class = 'text shift top bottom-big-pad'>
+                        <p class = spaced>
+                            Ladders took a very long time to get right, but
+                            in the end the solution turned out to be really simple:
+                            Let's say a chamber decides to connect itself to the
+                            one beneath it. To help me explain, let's call the
+                            first chamber Jeff and the second chamber Andrew.
+                        </p>
+
+                        <p class = spaced>
+                            A tunnel emerges from the base of Jeff and snakes
+                            its way down. At the moment, the tunnel stops as
+                            soon as it touches Andrew's head, but let's change
+                            that rule. Let's make it so that the tunnel has to
+                            proceed through Andrew's body untill it reaches the
+                            ground. This may sound pointless, as the tunnel
+                            would just be mining through plain air, but it means
+                            that we are able to start building a ladder.
+                        </p>
+
+                        <p class = spaced>
+                            Let's add a new rule: If the tunnel finds itself
+                            mining though Andrew's body, add a ladder block
+                            behind it. This new rule means that ladders will
+                            only be generated inside chambers and it also means
+                            that Drillo will be able to get into rooms that he
+                            couldn't before.
+                        </p>
+
+                        <div class = 'demo-img-container top-small-pad bottom-small-pad'>
+                            <div class = view-image>
+                                <img class = demo-img src = /assets/dungeon-room-generation-6.png>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class = 'h3 top bottom'>Ladders</h2>
+
+                    <div class = 'text shift top bottom-big-pad'>
+                        <p class = spaced>
+                            As you can see, the world still looks very different
+                            from the real game. What we are missing is reverse
+                            generation - a final "filter" that removes the
+                            pointless blocks. At the end of the generation
+                            code, I run through every block in the level and do
+                            the following:
+                        </p>
+
+                        <p class = spaced>
+                            <span class = bullet-point>If the current block is surrounded by other blocks:</span>
+                            <span class = 'bullet-point indent-1'> Turn the current block into thin air</span>
+                        </p>
+
+                        <p class = spaced>
+                            The advantage of this final filter is it speeds up in-game performance, it makes the level look better (in my opinion), and it also gives the world a vast feeling of nothingness - meaning the player is not able to see the sharp boundaries of the map.
+                        </p>
+
+                        <div class = 'demo-img-container top-small-pad bottom-small-pad'>
+                            <div class = view-image>
+                                <img class = demo-img src = /assets/dungeon-room-generation-7.png>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <h2 class = 'h3 top bottom'>Side Effects</h2>
+
+                    <div class = 'text shift top bottom-big-pad'>
+                        <p class = spaced>
+                            This final section briefly discusses how each side
+                            effect is placed in the level and how the level adapts
+                            to them. To set everything up, put a side effect in
+                            each chamber, making sure that it does't get dropped
+                            above a tunnel hole.
+                        </p>
+
+                        <p class = spaced>
+                            If you played the game, you may have noticed the
+                            average size of each chamber grew as the game went
+                            on. This is because the size for each side effect
+                            is stored from the start. It means that the computer
+                            can know exactly how big its chambers should be for
+                            the current level.
+                        </p>
+
+                        <p class = spaced>
+                            In the game, there's a function called
+                            <span class = inline-code>getLevelEffects()</span>,
+                            which returns an array of all the enemy types for
+                            the level.
+                        </p>
+
+                        <div class = 'code-holder top bottom'>
+                            <div class = code-buttons>
+                                <div data-tip = 'copy' class = 'code-copy code-button-icon'>
+                                    <img src = /assets/copy.svg alt = 'copy icon'>
+                                </div>
+                            </div>
+                            <pre class = code><span style="color:var(--keyword)">function</span> <span style="color:var(--function)">getLevelEffects</span>(<span style="color:var(--operator)">)</span> <span style="color:var(--operator)">{</span>
+    <span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">game</span>.<span style="color:var(--variable)">level</span> <span style="color:var(--operator)">&lt;=</span> <span style="color:var(--number)">2</span><span style="color:var(--operator)">)</span> <span style="color:var(--keyword)">return</span> [<span style="color:var(--number)">0</span>]
+    <span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">game</span>.<span style="color:var(--variable)">level</span> <span style="color:var(--operator)">&lt;=</span> <span style="color:var(--number)">3</span><span style="color:var(--operator)">)</span> <span style="color:var(--keyword)">return</span> [<span style="color:var(--number)">1</span>, <span style="color:var(--number)">1</span>, <span style="color:var(--number)">0</span>]
+    <span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">game</span>.<span style="color:var(--variable)">level</span> <span style="color:var(--operator)">&lt;=</span> <span style="color:var(--number)">6</span><span style="color:var(--operator)">)</span> <span style="color:var(--keyword)">return</span> [<span style="color:var(--number)">2</span>, <span style="color:var(--number)">2</span>, <span style="color:var(--number)">1</span>, <span style="color:var(--number)">0</span>]
+    <span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">game</span>.<span style="color:var(--variable)">level</span> <span style="color:var(--operator)">&lt;=</span> <span style="color:var(--number)">7</span><span style="color:var(--operator)">)</span> <span style="color:var(--keyword)">return</span> [<span style="color:var(--number)">3</span>, <span style="color:var(--number)">2</span>, <span style="color:var(--number)">1</span>]
+    <span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">game</span>.<span style="color:var(--variable)">level</span> <span style="color:var(--operator)">&lt;=</span> <span style="color:var(--number)">8</span><span style="color:var(--operator)">)</span> <span style="color:var(--keyword)">return</span> [<span style="color:var(--number)">4</span>, <span style="color:var(--number)">2</span>, <span style="color:var(--number)">0</span>]
+    <span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">game</span>.<span style="color:var(--variable)">level</span> <span style="color:var(--operator)">&lt;=</span> <span style="color:var(--number)">9</span><span style="color:var(--operator)">)</span> <span style="color:var(--keyword)">return</span> [<span style="color:var(--number)">6</span>, <span style="color:var(--number)">4</span>, <span style="color:var(--number)">1</span>]
+    <span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">game</span>.<span style="color:var(--variable)">level</span> <span style="color:var(--operator)">&lt;=</span> <span style="color:var(--number)">10</span><span style="color:var(--operator)">)</span> <span style="color:var(--keyword)">return</span> [<span style="color:var(--number)">7</span>, <span style="color:var(--number)">6</span>, <span style="color:var(--number)">2</span>]
+    <span style="color:var(--keyword)">if</span> <span style="color:var(--operator)">(</span><span style="color:var(--variable)">game</span>.<span style="color:var(--variable)">level</span> <span style="color:var(--operator)">&lt;=</span> <span style="color:var(--number)">11</span><span style="color:var(--operator)">)</span> <span style="color:var(--keyword)">return</span> [<span style="color:var(--number)">7</span>, <span style="color:var(--number)">6</span>, <span style="color:var(--number)">4</span>]
+<span style="color:var(--operator)">}</span></pre>
+                        </div>
+
+                        <p class = spaced>
+                            You may notice that the largest side effects always
+                            come first in the array. The reason for this is it
+                            means that when the map is being generated, it can
+                            take the size of the biggest side effect into
+                            consideration. It can thus make sure that its
+                            minimum chamber width and height is way larger
+                            than the recorded enemy.
+                        </p>
+
+                        <div class = 'code-holder top bottom'>
+                            <div class = code-buttons>
+                                <div data-tip = 'copy' class = 'code-copy code-button-icon'>
+                                    <img src = /assets/copy.svg alt = 'copy icon'>
+                                </div>
+                            </div>
+                            <pre class = code><span style="color:var(--comment)">// get the biggest enemy sizes</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">EFFECT</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">EFFECT_TYPES</span>[<span style="color:var(--function)">getLevelEffects</span>(<span style="color:var(--operator)">)</span>[<span style="color:var(--number)">0</span>]]
+
+<span style="color:var(--comment)">// minimum chamber width</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">MIN_WIDTH</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">ceil</span>(<span style="color:var(--variable)">EFFECT</span>.<span style="color:var(--variable)">width</span>.<span style="color:var(--variable)">max</span><span style="color:var(--operator)">)</span> <span style="color:var(--operator)">*</span> <span style="color:var(--number)">2</span>
+
+<span style="color:var(--comment)">// minimum chamber height</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">MIN_HEIGHT</span> <span style="color:var(--operator)">=</span> <span style="color:var(--variable)">Math</span>.<span style="color:var(--function)">ceil</span>(<span style="color:var(--variable)">EFFECT</span>.<span style="color:var(--variable)">height</span>.<span style="color:var(--variable)">max</span><span style="color:var(--operator)">)</span>
+
+<span style="color:var(--comment)">// result</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">CHAMBER_W</span> <span style="color:var(--operator)">=</span> <span style="color:var(--operator)">{</span><span style="color:var(--variable)">min</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">MIN_WIDTH</span> <span style="color:var(--operator)">+</span> <span style="color:var(--number)">1</span>, <span style="color:var(--variable)">max</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">MIN_WIDTH</span> <span style="color:var(--operator)">+</span> <span style="color:var(--number)">10</span><span style="color:var(--operator)">}</span>
+<span style="color:var(--keyword)">const</span> <span style="color:var(--variable)">CHAMBER_H</span> <span style="color:var(--operator)">=</span> <span style="color:var(--operator)">{</span><span style="color:var(--variable)">min</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">MIN_HEIGHT</span> <span style="color:var(--operator)">+</span> <span style="color:var(--number)">3</span>, <span style="color:var(--variable)">max</span><span style="color:var(--operator)">:</span> <span style="color:var(--variable)">MIN_HEIGHT</span> <span style="color:var(--operator)">+</span> <span style="color:var(--number)">5</span><span style="color:var(--operator)">}</span></pre>
+                        </div>
+
+                        <p class = spaced>
+                            You can learn more about the enemies of
+                            <a href = /games/snakes-and-ladders target = _blank class = link>
+                                Snakes and Ladders</a>
+                            in the
+                            <a href = /blog/snakes-and-ladders-enemies class = link>
+                                next post</a>
+                            of this series.
+                        </p>
+
+                        <p class = spaced>
+                            That's it for this post, I hope it clarified things
+                            for you and maybe it will come in handy for projects
+                            in the months to come!
+                        </p>
+                    </div>
+                </div>
+
+                <div class = 'content top bottom-huge'>
+                    <form class = 'comment bottom-big-pad' data-url = DungeonRoomGeneration>
+                        <h3 class = 'h3 top-small bottom-small center'>
+                            <span class = slightly-dim>
+                                Please leave a comment!
+                            </span>
+                        </h3>
+
+                        <input class = form placeholder = 'name'>
+                        <label for = notify class = checkbox-label>
+                            <div class = checkbox-hold>
+                                <input id = notify class = checkbox data-checked type = checkbox>
+                            </div>
+                            <span class = 'smallish slightly-dim'>Make this comment public</span>
+                        </label>
+
+                        <div class = comment-box-hold>
+                            <textarea class = comment-box required contenteditable placeholder = 'Write your message here'></textarea>
+                        </div>
+
+                        <input class = form placeholder = 'email (optional)'>
+                        <button class = comment-send>Post Comment</button>
+                        <span class = 'dim small-font shift-right right'>(Your email will never be shared or sold. <button class = popup-link data-id = terms type = button>Terms</button>)</span>
+                    </form>
+                </div>
+            </section>
+
+            <section class = footer>
+                <div class = footer-left>
+                    <span>&copy; Joachim Ford <span id = year>2025</span></span>
+                    <span>All rights reserved</span>
+                    <span class = top-small>
+                        <form class = 'subscribe-form-tiny'>
+                            <div class = flex-x>
+                                <input type = email class = form placeholder = 'email' required>
+                                <button class = send-form-button type = submit>
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </span>
+                    <div class = 'footer-socials top-small'>
+                        <a href = mailto:hi@joachimford.uk target = _blank><img src = /assets/mail.svg alt = 'email icon'></a>
+                        <a href = https://github.com/Hope41 target = _blank><img src = /assets/github.svg alt = 'github icon'></a>
+                        <a href = https://youtube.com/@JoachimFord target = _blank><img src = /assets/youtube.svg alt = 'youtube icon'></a>
+                        <a href = https://joachimford.itch.io target = _blank><img src = /assets/itch.svg alt = 'itch.io icon'></a>
+                        <a href = https://x.com/JoachimFord target = _blank><img src = /assets/x.svg alt = 'x logo'></a>
+                    </div>
+                </div>
+                <div class = footer-right>
+                    <a href = /index# class = basic-link>Home</a>
+                    <a href = /games# class = basic-link>Games</a>
+                    <a href = /projects# class = basic-link>Projects</a>
+                    <a href = /blog# class = basic-link>Blog</a>
+                    <a href = /news# class = basic-link>News</a>
+                    <a href = /about# class = basic-link>About</a>
+                    <a href = /contact# class = basic-link>Contact</a>
+                </div>
+            </section>
+        </div>
+
+        <div class = popup id = terms>
+            <div class = popup-text-hold>
+                <div class = popup-close data-id = terms>
+                    <img src = /assets/close.svg>
+                </div>
+                <div class = popup-text>
+                    <h2 class = h4><span class = gray-green>Posting a Comment</span></h2>
+                    <h2 class = h2>Terms</h2>
+                    <div class = 'text shift-right'>
+                        <p class = spaced>
+                            <span class = 'bullet-point big-pad'>
+                                If you post your comment publicly, you agree to
+                                have your <b>name</b> and <b>message</b> posted
+                                on this website. Your comment may also appear in
+                                advertisements for this site.
+                            </span>
+                        </p>
+                        <p class = spaced>
+                            <span class = 'bullet-point big-pad'>
+                                By providing an email address, you will be notified
+                                of any replies. I may also respond to you directly
+                                via the email address provided.
+                            </span>
+                        </p>
+                        <p class = spaced>
+                            Your email will only be used for these purposes
+                            and will never be published, shared or sold.
+                        </p>
+                        <p class = 'spaced smallish'>
+                            The only catch is I get to make you a profile picture
+                            based on your name
+                            <img class = emoji src = /assets/Microsoft-Fluentui-Emoji-3d-Smirking-Face-3d.svg>
+                        </p>
+                        <button class = popup-close data-id = terms>
+                            I Understand
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id = lightbox-overlay>
+            <div id = lightbox-topnav>
+                <div id = lightbox-copy class = lightbox-button>
+                    <img src = /assets/copy.svg>
+                </div>
+                <div id = lightbox-download class = lightbox-button>
+                    <img src = /assets/download.svg>
+                </div>
+                <div id = lightbox-close class = lightbox-button>
+                    <img src = /assets/close.svg>
+                </div>
+            </div>
+            <img src = /assets/ios-mission-1-thumbnail.png id = lightbox-img>
+            <div id = lightbox-prev><img src = /assets/arrow-left.svg></div>
+            <div id = lightbox-next><img src = /assets/arrow-right.svg></div>
+        </div>
+
+        <script src = /assets/main.js></script>
+        <script src = /assets/infinite-carousel.js></script>
+        <script src = /assets/hero.js></script>
+        <script src = /assets/cool-text.js></script>
+        <script src = /assets/popup.js></script>
+        <script src = /assets/profile-interact.js></script>
+        <script src = /assets/demo-carousel.js></script>
+        <script src = /assets/lightbox.js></script>
+        <script src = /assets/code.js></script>
+    </body>
+</html>

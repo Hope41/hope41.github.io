@@ -1,78 +1,214 @@
 <!DOCTYPE html>
-<html lang = en-gb>
+<html lang = en-GB>
     <head>
-        <meta charset = utf-8>
-        <meta name = viewport content = 'width = device-width, initial-scale = 1'>
-        <meta name = description content = 'Free online coding blogs and open source games'>
+        <meta charset = UTF-8>
+        <meta name = viewport content = 'width=device-width, initial-scale=1.0'>
+        <meta name = description content = 'Check out online free tools, assets, resources, infinite zoom and simulations at JoachimFord.uk!'>
+        <meta name = author content = 'Joachim Ford'>
 
-        <script async src = 'https://www.googletagmanager.com/gtag/js?id=G-2MDQ9F697V'></script>
-        <script src = /src/js/analytics.js></script>
-        <script src = /src/js/main.js></script>
-        <title>Projects | Joachim Ford</title>
-        <link rel = stylesheet href = /src/main.css>
-        <link rel = icon type = image/x-icon  href = /src/favs/favicon.ico>
+        <meta property = og:title content = 'Projects - Joachim Ford'>
+        <meta property = og:description content = 'Check out online free tools, assets, resources, infinite zoom and simulations at JoachimFord.uk!'>
+        <meta property = og:image content = https://joachimford.uk/assets/ios-mission-1.png>
+
+        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Joachim" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <title>Free Tools & Resources - Joachim Ford</title>
+        <link rel = stylesheet href = /assets/styles.css>
+        <link rel = stylesheet href = /assets/topnav.css>
+        <link rel = stylesheet href = /assets/main.css>
+        <link rel = stylesheet href = /assets/hero.css>
+        <link rel = stylesheet href = /assets/infinite-carousel.css>
+        <link rel = stylesheet href = /assets/forms.css>
+        <link rel = stylesheet href = /assets/footer.css>
+        <link rel = stylesheet href = /assets/a.css>
+        <link rel = stylesheet href = /assets/demo.css>
+
+        <link rel = stylesheet href = /assets/controls.css>
     </head>
+    <body class = dark>
+        <div class = over-hold>
+            <section class = topnav>
+                <div class = topnav-container>
+                    <a class = topnav-home href = /index#>
+                        <div class = topnav-logo>
+                            <img src = /assets/logo.png alt = logo>
+                        </div>
+                        <div class = topnav-title>
+                            <h2>Joachim</h2>
+                            <h2>Ford.uk</h2>
+                        </div>
+                    </a>
+                    <div class = topnav-menu>
+                        <div class = topnav-menu-wide>
+                            <a href = /games#>Games</a>
+                            <a href = /projects# class = active>Projects</a>
+                            <a href = /blog#>Blog</a>
+                        </div>
 
-    <body>
-        <section class = topnav>
-            <div class = title>
-                <a class = brand href = '/'>Joachim Ford</a>
-                <a class = about href = /about>About</a>
-            </div>
-            <div class = nav>
-                <a href = /games>Games</a>
-                <a href = /projects>Projects</a>
-                <a href = /blogs>Blogs</a>
-                <a href = /news>News</a>
-            </div>
-        </section>
+                        <div class = topnav-separator></div>
 
-        <section class = main>
-            <a class = demo href = /src/content/canvas_craft>
-                <img class = tiny src = /src/images/canvas_craft.png>
-                <h3>CanvasCraft</h3>
-                <span class = description>
-                    CanvasCraft is a unique online tool designed to allow creators
-                    to easily make images, game levels, and entire worlds within minutes.
-                    Check it out!
-                </span>
-            </a>
+                        <div id = color-theme>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.5 0 13 13">
+                                <path d="M 0 0 A 2.25 2.25 90 0 0 0 13 A 2.25 2.25 90 0 0 0 0 Z M 0 2 A 2.25 2.25 90 0 1 0 11 Z"/>
+                            </svg>
+                        </div>
 
-            <a class = demo href = /src/content/ray_casting_blocks>
-                <img class = tiny src = /src/images/ray_casting_blocks.png>
-                <h3>Ray-casting Blocks</h3>
-                <span class = description>
-                    A 3D city run experiment using ray-casting graphics.
-                    Watch the camera run though a vivid world of blocks.
-                    This experiment is <span class = mobile>mobile friendly.</span>
-                </span>
-            </a>
+                        <div class = topnav-separator></div>
 
-            <a class = demo href = /src/content/infinite_zoom>
-                <img class = tiny src = /src/images/infinite_zoom.png>
-                <h3>Infinite Zoom</h3>
-                <span class = description>
-                    Zoom in on an infinite fractal of faces. Inspired by
-                    Pixel Words by Frank Force.
-                    This experiment is <span class = mobile>mobile friendly.</span>
-                </span>
-            </a>
+                        <div class = topnav-vertical-menu>
+                            <a href = /news#>News</a>
+                            <a href = /about#>About</a>
+                            <a href = /contact#>Contact</a>
+                        </div>
+                    </div>
 
-            <a class = demo href = /src/content/anthrophobia_fear_of_crowds>
-                <img class = tiny src = /src/images/anthrophobia_fear_of_crowds.png>
-                <h3>Procedural Crowd Simulation</h3>
-                <span class = description>
-                    A procedural simulation of weird creatures walking around the screen.
-                    This experiment is <span class = mobile>mobile friendly.</span>
-                </span>
-            </a>
-        </section>
+                    <div id = nav-bars>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 4 3">
+                            <path stroke-width=".5" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 0 0 L 3 0 M 0 1 L 3 1 M 0 2 L 2 2"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
 
-        <button class = theme onclick = toggleTheme()>Change Theme</button>
-        <span class = copyright>
-            &copy; <span class = year></span> Joachim Ford. All rights reserved.
-            <a href = https://github.com/Hope41 target = _blank><img src = /src/images/github.svg></img></a>
-            <a href = mailto:hello@joachimford.uk><img src = /src/images/mail.svg></img></a>
-        </span>
+            <section class = hero-section>
+                <div id = hero>
+                    <div class = hero-target></div>
+                    <h1 id = hero-text>
+                        <div>
+                            <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span><span>s</span>
+                        </div>
+                    </h1>
+                </div>
+            </section>
+
+            <section class = main>
+                <div class = 'content top-huge-pad bottom-huge-pad'>
+                    <div class = demo-gallery>
+                        <a href = /projects/ray-casting# class = demo-box>
+                            <div class = demo-img-container>
+                                <h2 class = 'demo-title h5'>
+                                    Ray Casting
+                                </h2>
+                                <img class = demo-img src = /assets/ray-casting-2-thumbnail.png alt = 'An interactive 3D ray casting tutorial using JavaScript'>
+                            </div>
+                            <div class = demo-text>
+                                <div class = demo-body-text>
+                                    <p>
+                                        A 3D ray casting tutorial using pure JavaScript.
+                                    </p>
+                                </div>
+
+                                <div class = demo-icons>
+                                    <img src = /assets/phone.svg data-tip = 'Mobile friendly'>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href = /projects/infinite-zoom# class = demo-box>
+                            <div class = demo-img-container>
+                                <h2 class = 'demo-title h5'>
+                                    Infinite Zoom
+                                </h2>
+                                <img class = demo-img src = /assets/infinite-zoom-2-thumbnail.png alt = 'A pure JavaScript infinite zoom grid of recurring faces, online free'>
+                            </div>
+                            <div class = demo-text>
+                                <div class = demo-body-text>
+                                    <p>
+                                        A simple zoom demo into an infinite grid
+                                        of faces.
+                                    </p>
+                                </div>
+
+                                <div class = demo-icons>
+                                    <img src = /assets/phone.svg data-tip = 'Mobile friendly'>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a class = demo-box>
+                            <div class = demo-img-container>
+                                <div class = demo-img></div>
+                            </div>
+                            <div class = demo-text>
+                                <div class = demo-body-text>
+                                    <p>
+                                        <span class = yellow>[Under Construction]</span>
+                                    </p>
+                                    <p>
+                                        A simple tool to quickly create 2D
+                                        levels and worlds.
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href = /projects/fear-of-crowds# class = demo-box>
+                            <div class = demo-img-container>
+                                <h2 class = 'demo-title h5'>
+                                    Fear of Crowds
+                                </h2>
+                                <img class = demo-img src = /assets/fear-of-crowds-1-thumbnail.png alt = 'An interactive 3D ray casting tutorial using JavaScript'>
+                            </div>
+                            <div class = demo-text>
+                                <div class = demo-body-text>
+                                    <p>
+                                        A crowd simulation of procedural box-thingies.
+                                    </p>
+                                    <p>
+                                        The first thing ever added here back in
+                                        early 2022, so it kind of has to stay!
+                                    </p>
+                                </div>
+
+                                <div class = demo-icons>
+                                    <img src = /assets/phone.svg data-tip = 'Mobile friendly'>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class = footer>
+                <div class = footer-left>
+                    <span>&copy; Joachim Ford <span id = year>2025</span></span>
+                    <span>All rights reserved</span>
+                    <span class = top-small>
+                        <form class = 'subscribe-form-tiny'>
+                            <div class = flex-x>
+                                <input type = email class = form placeholder = 'email' required>
+                                <button class = send-form-button type = submit>
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </span>
+                    <div class = 'footer-socials top-small'>
+                        <a href = mailto:contact@joachimford.uk target = _blank><img src = /assets/mail.svg alt = 'email icon'></a>
+                        <a href = https://github.com/Hope41 target = _blank><img src = /assets/github.svg alt = 'github icon'></a>
+                        <a href = https://youtube.com/@JoachimFord target = _blank><img src = /assets/youtube.svg alt = 'youtube icon'></a>
+                        <a href = https://joachimford.itch.io target = _blank><img src = /assets/itch.svg alt = 'itch.io icon'></a>
+                        <a href = https://x.com/JoachimFord target = _blank><img src = /assets/x.svg alt = 'x logo'></a>
+                    </div>
+                </div>
+                <div class = footer-right>
+                    <a href = /index# class = basic-link>Home</a>
+                    <a href = /games# class = basic-link>Games</a>
+                    <a href = /projects# class = basic-link>Projects</a>
+                    <a href = /blog# class = basic-link>Blog</a>
+                    <a href = /news# class = basic-link>News</a>
+                    <a href = /about# class = basic-link>About</a>
+                    <a href = /contact# class = basic-link>Contact</a>
+                </div>
+            </section>
+        </div>
+
+        <script src = /assets/main.js></script>
+        <script src = /assets/hero.js></script>
     </body>
 </html>
