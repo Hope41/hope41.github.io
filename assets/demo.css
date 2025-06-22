@@ -7,7 +7,12 @@
     --img-cont-pad: 20px;
     --demo-carousel-height: 100px;
     --demo-carousel-gap: 5px;
-    --demo-box-padding: 40px;
+    --demo-box-padding: 30px;
+    --demo-box-padding-text: 10px;
+    --demo-box-padding-text-top: 10px;
+    --demo-box-padding-text-bottom: 40px;
+    --demo-box-img-rad: 10px;
+    --box-slide-in: .3s cubic-bezier(.74,.16,.26,1.1);
 
     --under-construction-w: 10px;
     --under-construction-gap: 15px;
@@ -24,16 +29,27 @@
     flex: 1 1 calc(var(--demo-gallery-item-w) - var(--demo-gallery-gap) / 2);
     max-width: calc(var(--demo-gallery-item-w) - var(--demo-gallery-gap) / 2);
     background-color: var(--black);
-    border: 1px var(--c333) solid;
+    border: 1px var(--c444) solid;
     border-radius: 25px;
-    padding: var(--demo-box-padding);
+    padding-left: var(--demo-box-padding);
+    padding-right: var(--demo-box-padding);
+    padding-top: var(--demo-box-padding);
     display: flex;
     flex-direction: column;
     gap: 20px;
-    transition: .3s;
-    box-shadow: 0 0 0 transparent;
+    transition: var(--box-slide-in);
     position: relative;
     box-shadow: .5px .5px 7px var(--unbelievably-dark-purple);
+    overflow: hidden;
+}
+
+.demo-text {
+    transform: translate(0);
+    transition: var(--box-slide-in);
+}
+
+.demo-box.hidden .demo-text {
+    transform: translateX(-400px);
 }
 
 .demo-box.padless {
@@ -79,6 +95,12 @@
     width: 100%;
     position: relative;
     display: flex;
+    transition: var(--box-slide-in);
+    transform: translateX(0);
+}
+
+.demo-box.hidden .demo-img-container {
+    transform: translateX(400px);
 }
 
 .demo-img-container.padded-side {
@@ -112,7 +134,7 @@
 
 .demo-img {
     width: 100%;
-    border-radius: 5px;
+    border-radius: var(--demo-box-img-rad);
     box-shadow: .5px .5px 2px #0006;
 }
 
@@ -216,6 +238,10 @@ a.demo-img-container:hover .demo-button-in-image-icon {
 .demo-text {
     display: flex;
     flex-direction: column;
+    padding-left: var(--demo-box-padding-text);
+    padding-right: var(--demo-box-padding-text);
+    padding-top: var(--demo-box-padding-text-top);
+    padding-bottom: var(--demo-box-padding-text-bottom);
     gap: 10px;
     font-family: text-font, monospace, sans-serif;
 }

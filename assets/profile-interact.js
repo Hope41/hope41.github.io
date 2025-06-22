@@ -20,8 +20,8 @@ for (let i = 0; i < profiles.length; i ++) {
         const centerX = rect.width / 2
         const centerY = rect.height / 2
 
-        const strength = 50
-        const weakness = 7
+        const strength = 100
+        const fades = 7
 
         let rotateX = (y - centerY) / centerY
         let rotateY = (x - centerX) / centerX
@@ -45,7 +45,7 @@ for (let i = 0; i < profiles.length; i ++) {
         }
 
         const distance = Math.hypot(rotateX, rotateY)
-        const damping = 1 / (1 + distance * weakness)
+        const damping = 1 / (1 + distance * fades)
 
         rotateX *= damping
         rotateY *= damping

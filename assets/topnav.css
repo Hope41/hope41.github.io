@@ -52,13 +52,15 @@ body.survey-open .topnav {
 }
 
 .topnav-home:hover .topnav-logo img {
-    background-color: var(--c191919);
+    background-color: var(--c333);
+    padding: 8px;
 }
 
 .topnav-title {
     display: flex;
     flex-direction: column;
     position: relative;
+    padding: 0;
 }
 
 .topnav-title h2 {
@@ -190,19 +192,23 @@ body.survey-open .topnav {
 }
 
 #color-theme svg {
+    transition: .1s;
+}
+
+#color-theme path {
     fill: var(--cccc);
     transition: .1s;
 }
 
-#color-theme:hover svg {
+#color-theme:hover path {
     fill: var(--white);
 }
 
-#nav-bars svg {
+#nav-bars path {
     stroke: var(--cccc);
 }
 
-#nav-bars:hover svg {
+#nav-bars:hover path {
     stroke: var(--white);
 }
 

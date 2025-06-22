@@ -5,7 +5,7 @@
     background-color: var(--background-color);
     background: linear-gradient(140deg, var(--background-color) 40%, var(--unbelievably-dark-purple) 100%);
     box-shadow: 0 0 15px #0001;
-    border-top: 1px var(--c191919) solid;
+    border-top: 1px var(--c333) solid;
     border-bottom: 1px var(--c191919) solid;
     position: relative;
     z-index: 1;
@@ -356,11 +356,19 @@ body.light .drop-shadow {
 }
 
 .socials img {
-    width: 50px;
+    width: 60px;
+    transition: .15s;
+    border: 1px transparent solid;
+
+    padding: 8px;
+    background-color: var(--black);
+    border-radius: 20px;
+    border-color: var(--c444);
 }
 
-.socials a:hover {
-    transform: scale(1.1);
+.socials a:hover img {
+    padding: 13px;
+    background-color: var(--c222);
 }
 
 .emoji {
