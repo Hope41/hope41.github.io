@@ -130,17 +130,23 @@ function sendComment(form, event) {
 
     const inputs = form.getElementsByTagName('input')
     const textarea = form.getElementsByTagName('textarea')
+    const button = form.getElementsByTagName('button')[0]
     const notify = document.getElementById('notify')
 
+    const get = (ipt, str) => {
+        return (ipt ? ipt[str] : 'Unknown')
+    }
+
     let data = {
-        url: form.dataset.url,
-        input1: (inputs[0] ? inputs[0].value : ''),
-        input2: (inputs[1] ? inputs[1].value : ''),
-        input3: (inputs[2] ? inputs[2].value : ''),
-        input4: (inputs[3] ? inputs[3].value: ''),
-        message1: (textarea[0] ? textarea[0].value : ''),
-        message2: (textarea[1] ? textarea[1].value : ''),
-        notify: (notify ? notify.checked : 'Undefined')
+        url: (form.dataset.url || location.href),
+        input1: get(inputs[0],'value'),
+        input2: get(inputs[1],'value'),
+        input3: get(inputs[2],'value'),
+        input4: get(inputs[3],'value'),
+        message1: get(textarea[0],'value'),
+        message2: get(textarea[1],'value'),
+        notify: get(notify,'checked'),
+        subscribed: (button.classList.contains('subscribe') ? 'Yes' : 'No')
     }
 
     fetch('https://script.google.com/macros/s/AKfycbwmLCOjsKHDRkhGNE91w1ganjnWbsbjijhxUKEJHbn8lXxFyTvOqJMG6dHiljPlPQgl6Q/exec', {

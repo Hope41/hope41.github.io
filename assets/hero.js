@@ -64,15 +64,15 @@ function updateHero() {
 
     if (heroBg) {
         if (heroHolder)
-            heroHolder.style.transform = 'translateY('+scrollY/4+'px)'
+            heroHolder.style.transform = 'translateY('+scrollY/2+'px)'
 
-        heroBg.style.transform = 'translateY('+scrollY/3+'px)'
-        heroBg.style.opacity = 1-y/1.5
+        heroBg.style.transform = 'translateY('+scrollY/2+'px)'
+        heroBg.style.opacity = 1-y/2
     }
 
     else if (heroHolder) {
-        heroHolder.style.transform = 'translateY('+scrollY/4+'px) scale('+(1-y/5)+')'
-        heroHolder.style.opacity = 1-y/1.5
+        heroHolder.style.transform = 'translateY('+scrollY/2+'px) scale('+(1-y/2)+')'
+        heroHolder.style.opacity = 1-y*2
     }
 
     requestAnimationFrame(() => updateHero())

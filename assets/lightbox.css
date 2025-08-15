@@ -16,18 +16,16 @@
     z-index: 3;
     opacity: 0;
     pointer-events: none;
-    transition: .2s;
+    transition: .5s;
     display: flex;
     align-items: center;
     justify-content: center;
     touch-action: none;
-    transform: scale(.5);
 }
 
 #lightbox-overlay.open {
     opacity: 1;
     pointer-events: all;
-    transform: scale(1);
 }
 
 #lightbox-img {
@@ -39,6 +37,14 @@
     pointer-events: none;
     user-select: none;
     image-rendering: crisp-edges;
+
+    opacity: 1;
+    padding: 0;
+}
+
+#lightbox-img.faded {
+    opacity: 0;
+    padding: 10px;
 }
 
 #lightbox-topnav {

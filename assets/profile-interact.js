@@ -8,7 +8,7 @@ for (let i = 0; i < profiles.length; i ++) {
     const img = item.firstElementChild
 
     const resetTransform = () => {
-        item.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg)'
+        item.style.transform = 'translate(0,0)'
     }
 
     const moveImage = () => {
@@ -21,12 +21,12 @@ for (let i = 0; i < profiles.length; i ++) {
         const centerY = rect.height / 2
 
         const strength = 100
-        const fades = 7
+        const fades = 20
 
-        let rotateX = (y - centerY) / centerY
-        let rotateY = (x - centerX) / centerX
+        let dx = (x - centerX) / centerX
+        let dy = (y - centerY) / centerY
 
-        const xOft = rotateY
+        const xOft = dx
         if (xOft < -.6) {
             img.src = '/assets/logo-white-left.png'
             reset = false
@@ -44,14 +44,13 @@ for (let i = 0; i < profiles.length; i ++) {
             }, 100)
         }
 
-        const distance = Math.hypot(rotateX, rotateY)
+        const distance = Math.hypot(dx, dy)
         const damping = 1 / (1 + distance * fades)
 
-        rotateX *= damping
-        rotateY *= damping
+        dx *= damping
+        dy *= damping
 
-        item.style.transform =
-            'perspective(500px) rotateX('+(rotateX*-strength)+'deg) rotateY('+(rotateY*strength)+'deg)'
+        item.style.transform = 'translate('+(dx*strength)+'px, '+(dy*strength)+'px)'
     }
 
     let reset = false

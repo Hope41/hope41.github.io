@@ -13,7 +13,7 @@
 
         <meta charset = UTF-8>
         <meta name = viewport content = 'width=device-width, initial-scale=1.0'>
-        <meta name = description content = 'Your hub of HTML5 indie games, coding tutorials, and creative tech projects at JoachimFord.uk. Play games online and learn to code in JavaScript!'>
+        <meta name = description content = 'Your hub of HTML5 indie game dev, coding tutorials, and JavaScript games at JoachimFord.uk. Play games online and learn to code with JavaScript!'>
         <meta name = author content = 'Joachim Ford'>
 
         <meta property = og:title content = 'Home - Joachim Ford'>
@@ -27,7 +27,7 @@
         <meta name="apple-mobile-web-app-title" content="Joachim" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
 
-        <title>Indie Games, Dev Blog & Free Tools - Joachim Ford</title>
+        <title>Indie Games, HTML5 Coding Blog & Free Tools - Joachim Ford</title>
         <link rel = stylesheet href = /assets/styles.css>
         <link rel = stylesheet href = /assets/topnav.css>
         <link rel = stylesheet href = /assets/main.css>
@@ -57,14 +57,14 @@
     </head>
     <body class = dark>
         <div class = over-hold>
-            <div id = survey>
+            <!-- <div id = survey>
                 <label>
                     <div>Try the </div><span>Complete the </span>2025 Visitor
                     Survey<div></div><span> for the chance to get a shout-out</span>
                 </label>
                 <a href = https://forms.gle/aPjD4oWB24MzEpb16 target = _blank class = survey-button>Survey</a>
                 <button id = survey-close class = survey-button>Dismiss</button>
-            </div>
+            </div> -->
 
             <section class = topnav>
                 <div class = topnav-container>
@@ -150,6 +150,7 @@
                             <div class = infinite-carousel>
                                 <img src = assets/squirtcopter-1-thumbnail.png alt = 'Squirtcopter - the fast-paced online 2D adventure shooter game about upgrading, strategy, and power'>
                                 <img src = assets/ios-mission-1-thumbnail.png alt = "Io's Mission - play the free online 2D indie platform adventure game with epic boss battles, procedurally generated worlds, and a captivating storyline">
+                                <img src = assets/balance-fish-thumbnail-2.png alt = 'Balance FISH - A puzzle adventure about balancing electricity'>
                                 <img src = assets/snakes-and-ladders-1-thumbnail.png alt = 'Snakes and Ladders - an exciting online action platform adventure game with boss battles, upgrades, and the quest to defeat the X-ray Orb'>
                                 <img src = assets/the-mitigator-1-thumbnail.png alt = 'The Mitigator - an exciting online 2D action adventure game focused on fighting climate change, upgrading abilities, and purifying the planet'>
                                 <img src = assets/ios-mission-2-thumbnail.png alt = "Io's Mission - play the free online 2D indie platform adventure game with epic boss battles, procedurally generated worlds, and a captivating storyline">
@@ -160,6 +161,7 @@
                             <div aria-hidden = true class = infinite-carousel>
                                 <img src = assets/squirtcopter-1-thumbnail.png>
                                 <img src = assets/ios-mission-1-thumbnail.png>
+                                <img src = assets/balance-fish-thumbnail-2.png>
                                 <img src = assets/snakes-and-ladders-1-thumbnail.png>
                                 <img src = assets/the-mitigator-1-thumbnail.png>
                                 <img src = assets/ios-mission-2-thumbnail.png>
@@ -170,27 +172,25 @@
                     </div>
                 </a>
 
-                <div class = 'content bottom-big-pad right'>
-                    <h2 class = 'right h1 cool-text'>Game Development</h2>
-                    <h3 class = 'h5 right'><span class = 'dim heading-thin'>(The best way to combine all your life skills)</span></h3>
-                    <div class = 'text shift-right top'>
-                        <a class = 'button right top-small' href = /games#>
-                            Play Games Now
-                            <svg class = button-arrow xmlns="http://www.w3.org/2000/svg" viewBox="-1.5 -1.5 5 7">
+                <div class = 'content bottom-big-pad'>
+                    <h2 class = 'h1 cool-text'>
+                        Free Online Games
+                    </h2>
+                    <div class = 'text shift top'>
+                        <a class = 'button top-small active' href = /games#>
+                            PLAY GAMES NOW
+                            <svg class = button-arrow-l xmlns="http://www.w3.org/2000/svg" viewBox="-1.5 -1.5 5 7">
                                 <path d="M 0 0 L 2 2 L 0 4"/>
                             </svg>
+                            <svg class = button-arrow-r xmlns="http://www.w3.org/2000/svg" viewBox="-1.5 -1.5 5 7">
+                                <path d="M 2 0 L 0 2 L 2 4"/>
+                            </svg>
                         </a>
-                        <p class = 'spaced top-big'>
-                            My fascination for coding my own games started right back in
-                            early 2020... and I've been addicted to coding ever since.
-                            Oops.
-                        </p>
-                        <img class = 'deco squiggles right bottom' src = /assets/squiggles.svg>
                         <p class = spaced>
-                            Game feedback is always appreciated! Please to say hi
-                            or share some of your thoughts at
+                            Game feedback is always appreciated! Say hi or share some of your own ideas at
                             <a class = small-link href = mailto:hello@joachimford.uk>hello@joachimford.uk</a>!
                         </p>
+                        <img class = 'deco squiggles center bottom' src = /assets/squiggles.svg>
                     </div>
                 </div>
 
@@ -216,7 +216,7 @@
                             <form class = 'subscribe-form top'>
                                 <div class = flex-x>
                                     <input type = email class = form placeholder = 'email address' required>
-                                    <button class = send-form-button type = submit>
+                                    <button class = 'send-form-button subscribe' type = submit>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1.5 -1.5 5 7">
                                             <path d="M 0 0 L 2 2 L 0 4"/>
                                         </svg>
@@ -252,7 +252,7 @@
                         <form class = 'subscribe-form-tiny'>
                             <div class = flex-x>
                                 <input type = email class = form placeholder = 'email' required>
-                                <button class = send-form-button type = submit>
+                                <button class = 'send-form-button subscribe' type = submit>
                                     Subscribe
                                 </button>
                             </div>
@@ -294,7 +294,7 @@
                             only and will never be shared or sold.
                         </p>
                         <p class = spaced>
-                            Emails will typically be sent once a month, though
+                            Emails will typically be sent once every few months, though
                             occasional updates may be more frequent (up to once
                             per week). You can unsubscribe at any time using the
                             link provided in each email.

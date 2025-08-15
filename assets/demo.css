@@ -43,12 +43,13 @@
     overflow: hidden;
 }
 
-.demo-text {
+.demo-box .demo-text {
     transform: translate(0);
     transition: var(--box-slide-in);
 }
 
 .demo-box.hidden .demo-text {
+    transition-duration: 0s;
     transform: translateX(-400px);
 }
 
@@ -64,7 +65,7 @@
 
 .demo-box.wide {
     flex: 1 1 auto;
-    max-width: 100%;
+    max-width: 80%;
 }
 
 .demo-box:hover {
@@ -91,7 +92,7 @@
     opacity: .8;
 }
 
-.demo-img-container {
+.demo-box .demo-img-container {
     width: 100%;
     position: relative;
     display: flex;
@@ -100,6 +101,7 @@
 }
 
 .demo-box.hidden .demo-img-container {
+    transition-duration: 0s;
     transform: translateX(400px);
 }
 

@@ -20,3 +20,11 @@ for (let i = 0; i < popupCloses.length; i ++) {
         elem.classList.remove('open')
     }
 }
+
+for (let i = 0; i < popups.length; i ++) {
+    const item = popups[i]
+    item.onclick = (e) => {
+        if (e.target == item)
+            item.classList.remove('open')
+    }
+}

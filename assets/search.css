@@ -3,7 +3,7 @@
 }
 
 .search-input {
-    background-color: var(--c191919);
+    background-color: var(--black);
     padding: 20px 30px;
     border: 1px var(--c333) solid;
     border-radius: 100px;
@@ -53,7 +53,7 @@
     padding: 5px 10px;
     border-radius: 10px;
     border: 1px var(--c333) solid;
-    background-color: var(--c191919);
+    background-color: var(--c111);
     color: var(--text-color);
     font-size: var(--font-size-small);
     font-family: main, monospace, sans-serif;
@@ -62,16 +62,16 @@
 }
 
 .search-tag:hover {
-    background-color: var(--c222);
+    background-color: var(--c191919);
 }
 
 .search-tag.selected {
-    background-color: var(--c444);
+    background-color: var(--c191919);
     border: 1px var(--mid-green) solid;
 }
 
 .search-tag.selected:hover {
-    background-color: var(--c333);
+    background-color: var(--c111);
 }
 
 .search-filter {

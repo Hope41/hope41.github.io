@@ -10,6 +10,14 @@ const lightboxNext = document.getElementById('lightbox-next')
 const html = document.getElementById('html')
 const cursor = {x: 0, y: 0}
 
+const lightboxTransitionSeconds = .2
+const lightBoxStr = lightboxTransitionSeconds + 's'
+const lightboxTransition = `opacity ${lightBoxStr}, padding ${lightBoxStr}`
+
+const shouldNotHaveArrows = () => {
+    return (selected ? selected.parentElement.children.length < 2 : false)
+}
+
 lightboxImg.scale = 1
 lightboxImg.oft = {x: 0, y: 0}
 lightboxImg.transform = () => {
@@ -129,10 +137,19 @@ lightboxOverlay.oncontextmenu = e => e.preventDefault()
 
 lightboxOverlay.openImage = img => {
     lightboxOverlay.resetAll()
+    html.classList.add('no-scroll')
+
+    if (img.src == lightboxImg.src || !lightboxOverlay.classList.contains('open'))
+        lightboxImg.style.transition = '0s'
 
     lightboxOverlay.classList.add('open')
-    html.classList.add('no-scroll')
-    lightboxImg.src = img.src
+    lightboxImg.classList.add('faded')
+
+    setTimeout(() => {
+        lightboxImg.style.transition = lightboxTransition
+        lightboxImg.classList.remove('faded')
+        lightboxImg.src = img.src
+    }, lightboxTransitionSeconds * 1000)
 }
 
 lightboxOverlay.calcZoom = amt => {
@@ -142,7 +159,7 @@ lightboxOverlay.calcZoom = amt => {
     lightboxPrev.classList.remove('hide')
     lightboxNext.classList.remove('hide')
 
-    if (lightboxImg.scale > 1.15) {
+    if (lightboxImg.scale > 1.15 || shouldNotHaveArrows()) {
         lightboxPrev.classList.add('hide')
         lightboxNext.classList.add('hide')
     }
@@ -212,18 +229,14 @@ if (!PC) {
 }
 
 lightboxCopy.onclick = () => {
-    const cvs = document.createElement('canvas')
-    cvs.width = lightboxImg.width
-    cvs.height = lightboxImg.height
-    cvs.getContext('2d').drawImage(lightboxImg, 0, 0, cvs.width, cvs.height)
-    cvs.toBlob(blob => {
-        navigator.clipboard.write([
-            new ClipboardItem({'image/png': blob})
-        ])
-    }, 'image/png')
+    const imageUrl = lightboxImg.src
 
-    lightboxCopy.firstElementChild.src = '/assets/check.svg'
-    setTimeout(() => lightboxCopy.firstElementChild.src = '/assets/copy.svg', 1000)
+    navigator.clipboard.writeText(imageUrl)
+        .then(() => {
+            lightboxCopy.firstElementChild.src = '/assets/check.svg'
+            setTimeout(() => lightboxCopy.firstElementChild.src = '/assets/copy.svg', 1000)
+        })
+        .catch(err => {console.error('Failed to copy URL: ', err)})
 }
 
 lightboxDownload.onclick = () => {
@@ -243,17 +256,24 @@ for (let i = 0; i < imagesToView.length; i ++) {
     item.onclick = () => {
         lightboxOverlay.openImage(item.firstElementChild)
         selected = item
+
+        if (shouldNotHaveArrows()) {
+            lightboxPrev.classList.add('hide')
+            lightboxNext.classList.add('hide')
+        }
     }
 }
 
 lightboxPrev.onclick = () => {
-    if (!selected) return
+    if (!selected || selected.parentElement.children.length < 2) return
+
     selected = (selected.previousElementSibling || selected.parentElement.lastElementChild || selected)
     lightboxOverlay.openImage(selected.firstElementChild)
 }
 
 lightboxNext.onclick = () => {
-    if (!selected) return
+    if (!selected || selected.parentElement.children.length < 2) return
+
     selected = (selected.nextElementSibling || selected.parentElement.firstElementChild || selected)
     lightboxOverlay.openImage(selected.firstElementChild)
 }

@@ -192,7 +192,8 @@ body.survey-open .topnav {
 }
 
 #color-theme svg {
-    transition: .1s;
+    width: 100%;
+    transition: .2s cubic-bezier(.89,.02,.57,.89);
 }
 
 #color-theme path {

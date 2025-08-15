@@ -30,7 +30,7 @@ p {margin: 17px 0}
     --survey-h: 35px;
     --survey-transition: .5s cubic-bezier(.16,1,.35,1);
 
-    --button-pad: 15px;
+    --button-pad: 15px 30px;
     --mid-gray: #888;
     --max-width: 1100px;
     --footer-size: 16px;
@@ -38,12 +38,12 @@ p {margin: 17px 0}
 
     --demo-title-bg-color: #090909;
     --text-color: #ddd;
-    --button-hover: #333;
+    --button-hover: #000;
     --button-border: #000;
     --button-hover-border: #000;
     --button-in-image-bg: #191919;
     --button-in-image-border: #000;
-    --button-bg: #222;
+    --button-bg: #000;
     --black: #000;
     --black-faint: #2225;
     --black-transparent: #000d;
@@ -146,6 +146,23 @@ h5, .h5 {font-size: var(--h5)}
 
 h1.flex, h2.flex, h3.flex, h4.flex {
     display: flex; align-items: center; gap: 15px
+}
+
+.side-by-side-flex {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px
+}
+
+svg.before-heading {
+    width: 25px;
+    height: auto;
+    stroke: var(--dark-green);
+    stroke-width: 4;
+    fill: none;
+    stroke-linejoin: round;
+    stroke-linecap: round;
 }
 
 hr {

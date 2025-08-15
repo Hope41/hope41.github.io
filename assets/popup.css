@@ -6,6 +6,7 @@
     height: 100%;
     background-color: var(--black-faint);
     z-index: 2;
+    cursor: pointer;
 
     opacity: 0;
     pointer-events: none;
@@ -30,6 +31,7 @@
     transform: translate(-50%, -50%) scale(.5);
     transition: .2s cubic-bezier(.44,0,.79,-0.3);
     opacity: 0;
+    cursor: auto;
 }
 
 .popup.open .popup-text-hold {

@@ -98,8 +98,9 @@ span.right {
     height: 100%;
     background-color: #fff;
     overflow: hidden;
-    border: 10px var(--mid-green) solid;
-    transition: .2s;
+    border: 10px var(--black) solid;
+    outline: 5px var(--yellow-green) solid;
+    transition: .5s ease-out;
     border-radius: 50%;
 }
 
@@ -118,11 +119,11 @@ span.right {
     font-family: main, monospace, sans-serif;
     font-size: var(--button-font-size);
     padding: var(--button-pad);
-    background-color: var(--button-bg);
+    background-color: var(--black);
     color: var(--bright-green);
-    border: 4px var(--button-border) solid;
-    border-radius: 15px;
-    transition: .3s cubic-bezier(1,-0.38,.3,1);
+    border: 1px var(--green) solid;
+    border-radius: 10px;
+    transition: .1s;
     position: relative;
 }
 
@@ -142,14 +143,12 @@ span.right {
 }
 
 .button:hover {
-    padding-right: calc(var(--button-pad) + 20px);
-    background-color: var(--button-hover);
-    border-color: var(--button-hover-border);
+    border-color: var(--yellow-green);
     color: var(--yellow-green);
     cursor: pointer;
 }
 
-.button .button-arrow {
+.button .button-arrow, .button .button-arrow-l, .button .button-arrow-r {
     stroke: var(--bright-green);
     stroke-width: .8;
     stroke-linecap: round;
@@ -157,14 +156,25 @@ span.right {
     fill: none;
     position: absolute;
     top: 50%;
-    right: 10px;
     width: 13px;
     transition: .2s cubic-bezier(.82,-0.51,.43,1.48);
     transform: translateY(calc(-50% - 1px));
     opacity: 0;
 }
 
-.button:hover .button-arrow {
+.button .button-arrow, .button .button-arrow-r {
+    right: 5px;
+}
+.button .button-arrow-l {
+    left: 5px;
+}
+
+.button:hover .button-arrow-l {
+    opacity: 1;
+    left: 11px
+}
+
+.button:hover .button-arrow, .button:hover .button-arrow-r {
     opacity: 1;
     right: 11px
 }
@@ -358,17 +368,17 @@ body.light .drop-shadow {
 .socials img {
     width: 60px;
     transition: .15s;
-    border: 1px transparent solid;
+    border: 1px var(--c444) solid;
 
     padding: 8px;
     background-color: var(--black);
     border-radius: 20px;
-    border-color: var(--c444);
 }
 
 .socials a:hover img {
     padding: 13px;
     background-color: var(--c222);
+    border-color: var(--yellow-green);
 }
 
 .emoji {
