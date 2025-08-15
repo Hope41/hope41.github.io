@@ -2,10 +2,10 @@
 
 Hello, and welcome to joachimford.uk! This is a personal website designed to help coders and game devs with their projects, as well as sharing some of my own games and tools.
 
-## [`visit the website`![joachimford.uk website preview](https://github.com/user-attachments/assets/77520455-8fe3-49cf-ac23-9c1c1bf81851)](https://joachimford.uk)
+## [`visit the website`](https://joachimford.uk)
 
 
-> [!TIP]
+> [!NOTE]
 > Feedback goes a long way! Please feel free share your thoughts on the website or via email!
 > - [Subscribe to the newsletter!](https://joachimford.uk/#subscribe)
 > - [Play some games](https://joachimford.uk/games)
